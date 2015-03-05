@@ -1,0 +1,11 @@
+email.hypr
+new-user.hypr
+order-confirmation.hypr
+order-shipped.hypr
+password-reset.hypr
+product-instock.hypr
+product-return-authorized.hypr
+product-return-changed.hypr
+product-return-closed.hypr
+product-return-received.hypr
+product-return-rejected.hypr

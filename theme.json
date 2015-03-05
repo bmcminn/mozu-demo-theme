@@ -1,0 +1,13 @@
+{
+  "about": {
+    "name": "Blank Base Theme",
+    "version": "0.0.0",
+    "extends": "core6",
+    "isDesktop": true,
+    "isTablet": true,
+    "isMobile": true
+  },
+  "settings": {},
+  "pageTypes": [],
+  "widgets": []
+}
