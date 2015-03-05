@@ -1,0 +1,45 @@
+
+<h2>{{ labels.contactUs|title }}</h2>
+
+<div class="mz-company-contact__info">
+  <div class="mz-row">
+    <dl class="mz-col">
+
+      <dt>
+        {{ labels.email|title }}:
+      </dt>
+      <dd>
+        {% with siteContext.generalSettings.senderEmailAlias as companyEmail %}
+        <a href="mailto:{{ companyEmail }}">{{ companyEmail }}</a>
+        {% endwith %}
+      </dd>
+
+
+      <dt>
+        {{ labels.phone|title }}:
+      </dt>
+      <dd>
+        {{ model.config.companyPhone }}
+      </dd>
+
+
+      <dt>
+        {{ labels.address|title }}:
+      </dt>
+      <dd>
+        <address>
+          {{ model.config.companyAddress|safe }}
+        </address>
+      </dd>
+
+
+      <dt>
+        {{ labels.hours|title }}:
+      </dt>
+      <dd>
+        {{ model.config.companyHours|safe }}
+      </dd>
+
+    </dl>
+  </div>
+</div>
