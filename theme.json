@@ -1,7 +1,7 @@
 {
   "about": {
-    "name": "Blank Base Theme",
-    "version": "0.0.0",
+    "name": "Awesome Theme v0.0.1",
+    "version": "0.0.1",
     "extends": "core6",
     "isDesktop": true,
     "isTablet": true,
