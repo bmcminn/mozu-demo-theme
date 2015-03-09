@@ -1,0 +1,26 @@
+{% extends "page" %}
+
+
+{% block title-tag-content %}
+  {% firstof pageContext.metaTitle model.name %} - {% parent %}
+{% endblock title-tag-content %}
+
+
+{% block body-tag-classes %}
+  {% parent %} mz-page mz-company-info
+{% endblock body-tag-classes %}
+
+
+{% block body-content %}
+  <div class="mz-page-company-info">
+
+    <div class="mz-company-info-body">
+    {% dropzone "company-info~body" scope="page" %}
+    </div>
+
+    <div class="mz-company-info-footer">
+    {% dropzone "company-info~footer" scope="template" %}
+    </div>
+
+  </div>
+{% endblock   %}
