@@ -1,7 +1,7 @@
 {
   "about": {
-    "name": "Awesome Theme v0.0.5",
-    "version": "0.0.5",
+    "name": "Awesome Theme v0.0.6",
+    "version": "0.0.6",
     "extends": "core6",
     "isDesktop": true,
     "isTablet": true,
@@ -139,6 +139,25 @@
           "fieldLabel": "Hours",
           "name": "companyHours",
           "xtype": "mz-input-richtext"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "displayName": "Video",
+      "displayTemplate": "cms/video",
+      "icon": "/resources/admin/widgets/08_video.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "defaultConfig": {
+        "anchor": "100%",
+        "xtype": "mz-input-text"
+      },
+      "editViewFields": [
+        {
+          "fieldLabel": "Video URL",
+          "name": "url"
         }
       ]
     }
