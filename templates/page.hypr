@@ -112,6 +112,9 @@
                 {% include "modules/page-footer" %}
             {% endblock page-footer %}
 
+            {% block softcart %}
+                {% include "modules/soft-cart/soft-cart-container" %}
+            {% endblock softcart %}
         </div>
 
         {% block trailing-scripts %}

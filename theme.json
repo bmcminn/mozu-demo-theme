@@ -1,7 +1,7 @@
 {
   "about": {
-    "name": "Awesome Theme v0.0.6",
-    "version": "0.0.6",
+    "name": "Awesome Theme v0.0.7",
+    "version": "0.0.7",
     "extends": "core6",
     "isDesktop": true,
     "isTablet": true,
