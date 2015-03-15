@@ -55,6 +55,7 @@ grunt.initConfig({
           window: true,
           document: true,
           setTimeout: true,
+          typeOf: true,
           clearTimeout: true,
           module: true,
           define: true,
