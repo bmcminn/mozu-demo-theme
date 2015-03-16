@@ -23,17 +23,31 @@ module.exports = function(grunt) {
 
   grunt.registerTask('themeSettingsLess', 'Transpile a list of veriables from our themeSettings for local less compilation.', function() {
 
-    var pkg     = grunt.file.readJSON('package.json')
-      , theme   = grunt.file.readJSON('theme.json')
-      , debug   = grunt.option('dbg') ? true : false
+    var pkg         = grunt.file.readJSON('package.json')
+      , theme       = grunt.file.readJSON('theme.json')
+      , debug       = grunt.option('dbg') ? true : false
+      , extendsRef  = theme.about.extends
 
       , variables = []
 
       , temp
       , string
-      , less
-      , lessFiles
       ;
+
+
+    // if we're extending another theme, merge its settings with ours
+    if (extendsRef) {
+      temp = grunt.file.readJSON('./references/' + extendsRef + '/theme.json');
+      theme.settings = _.merge(theme.settings, temp.settings);
+      // console.log(JSON.stringify(theme.settings, null, 2));
+      grunt.log.ok(
+          'merging'
+        , chalk.cyan(extendsRef)
+        , 'settings with'
+        , chalk.cyan('theme.json')
+        , 'settings'
+      );
+    }
 
 
     // iterate over our theme settings and build a list of variables
@@ -45,7 +59,7 @@ module.exports = function(grunt) {
         case 'string':
 
           // if it doesn't contain a hex code, percentage, has quotes, etc
-          if (!value.match(/^#[\dA-F]|\%|\"|\'/i)) {
+          if (!value.match(/^#[\dA-F]|\%|\"|\'|px|r?em|%/i)) {
             value = '"' + value + '"';
           }
           break;
@@ -60,24 +74,22 @@ module.exports = function(grunt) {
 
       string = '@theme-settings-' + temp + ': ' + value + ';';
 
-      grunt.log.debug(string);
+      grunt.log.debug(chalk.white.bgMagenta(string));
       variables.push(string);
 
     });
 
 
-    // reset string so we have something to write our new imports to
-    string    = [];
-    lessFiles = [];
-
     // get our storefront.less file
-    less    = grunt.file.read('./stylesheets/storefront.less').split('\n');
+    var less    = grunt.file.read('./stylesheets/storefront.less').split('\n')
+      , imports = []
+      ;
 
 
     // iterate against each import in our storefront.less file
     _.each(less, function(importPath, row) {
 
-      // if this isn't an import...
+      // if this isn't an import, lets get out of here
       if (!importPath.match(/\@import/)) {
         return;
       }
@@ -88,22 +100,22 @@ module.exports = function(grunt) {
       // if import doesn't exist in our theme
       if (!grunt.file.exists('.' + temp)) {
 
-        // if we don't inherit from another theme, error out
-        if (!theme.about.extends) {
+        // and if we don't extend another theme, error out
+        if (!extendsRef) {
           grunt.fail.fatal(temp + ' doesn\'t exist...');
         }
 
         // if the file exists in our inherited theme
-        if (grunt.file.exists('./references/' + theme.about.extends + temp)) {
-          // grunt.log.ok(temp + ' exists in ' + theme.about.extends);
-          lessFiles.push('@import "/references/' + theme.about.extends + temp + '";');
+        if (grunt.file.exists('./references/' + extendsRef + temp)) {
+          string = '@import "../references/' + extendsRef + temp + '";';
         }
 
       // otherwise leave it as-is
       } else {
-        lessFiles.push('@import "' + temp + '";');
+        string = '@import "..' + temp + '";';
       }
 
+      imports.push(string);
     });
 
 
@@ -111,7 +123,7 @@ module.exports = function(grunt) {
         ['// compiled variables']
       , variables
       , ['', '', '// less imports', '']
-      , lessFiles
+      , imports
     );
 
 
@@ -119,9 +131,15 @@ module.exports = function(grunt) {
     grunt.file.write('./.grunt/variables.less', variables.join('\n'));
     grunt.file.write('./.grunt/compiled-storefront.less', less.join('\n'));
 
+    grunt.log.ok(
+        'writing'
+      , chalk.yellow('".grunt/variables.less"...')
+      );
 
-    grunt.log.ok('writing ".grunt/variables.less"...');
-    grunt.log.ok('writing ".grunt/compiled-storefront.less"...');
+    grunt.log.ok(
+        'writing'
+      , chalk.yellow('".grunt/compiled-storefront.less"...')
+      );
 
   });
 };

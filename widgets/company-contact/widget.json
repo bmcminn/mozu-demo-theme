@@ -1,0 +1,28 @@
+{
+  "id": "contact-us",
+  "title": "contact-us",
+  "displayName": "Company Contact",
+  "displayTemplate": "cms/company-contact",
+  "icon": "/resources/admin/widgets/company-contact.png",
+  "validPageTypes": [
+    "*"
+  ],
+  "defaultConfig": {},
+  "editViewFields": [
+    {
+      "fieldLabel": "Company Phone #",
+      "name": "companyPhone",
+      "xtype": "mz-input-text"
+    },
+    {
+      "fieldLabel": "Company Address",
+      "name": "companyAddress",
+      "xtype": "mz-input-richtext"
+    },
+    {
+      "fieldLabel": "Hours",
+      "name": "companyHours",
+      "xtype": "mz-input-richtext"
+    }
+  ]
+}
