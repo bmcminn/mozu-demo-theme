@@ -1,7 +1,12 @@
 @import "/stylesheets/base/variables.less";
 @import "/stylesheets/base/mixins.less";
+@import "/stylesheets/debug.less";
+@import "/stylesheets/modules/soft-cart.less";
+@import "/stylesheets/widgets/employee-card.less";
 
-
+//
+// Layout overrides
+//
 
 body {
   background-image: url('@{bodyBackgroundImage}');
@@ -13,13 +18,16 @@ body {
   padding: 0;
 }
 
-
 .mz-l-pagecontent {
   background-color: @white;
   max-width: 1220px;
   margin: 0 auto;
 }
 
+
+//
+// Product category overrides
+//
 
 .mz-productlist-item {
   height: 400px;
@@ -32,7 +40,6 @@ body {
   .mz-productlisting-info {
     margin-top: 1rem;
   }
-
 }
 
 

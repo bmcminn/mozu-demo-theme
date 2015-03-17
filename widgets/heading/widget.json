@@ -1,0 +1,40 @@
+{
+  "id": "page_heading",
+  "displayName": "Heading",
+  "displayTemplate": "cms/heading",
+  "icon": "/resources/admin/widgets/heading.png",
+  "validPageTypes": [
+    "*"
+  ],
+  "defaultConfig": {
+    "anchor": "100%",
+    "xtype": "mz-input-text",
+    "headingText": "Heading Text here",
+    "headingType": "h1"
+  },
+  "editViewFields": [
+    {
+      "name": "headingText",
+      "fieldLabel": "Heading Text"
+    },
+    {
+      "name": "headingType",
+      "fieldLabel": "Heading Type",
+      "xtype": "mz-input-dropdown",
+      "store": [
+        [
+          "h1",
+          "H1"
+        ],
+        [
+          "h2",
+          "H2"
+        ],
+        [
+          "h3",
+          "H3"
+        ]
+      ]
+    }
+  ]
+}

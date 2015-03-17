@@ -1,0 +1,19 @@
+{
+  "id": "video",
+  "displayName": "Video",
+  "displayTemplate": "cms/video",
+  "icon": "/resources/admin/widgets/08_video.png",
+  "validPageTypes": [
+    "*"
+  ],
+  "defaultConfig": {
+    "anchor": "100%",
+    "xtype": "mz-input-text"
+  },
+  "editViewFields": [
+    {
+      "fieldLabel": "Video URL",
+      "name": "url"
+    }
+  ]
+}

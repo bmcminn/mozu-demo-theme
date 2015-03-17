@@ -4,7 +4,8 @@ module.exports = function(grunt) {
         'theme.json',
         'theme-ui.json',
         'package.json',
-        'labels/*.json'
+        'labels/*.json',
+        'widgets/**/*.json'
       ],
 
       jsFiles = [
@@ -43,7 +44,10 @@ grunt.initConfig({
     jshint: {
       theme_js: jsFiles,
       options: {
-        ignores: ['scripts/vendor/**/*.js'],
+        ignores: [
+          'scripts/vendor/**/*.js',
+          'build.js'
+        ],
         undef: true,
         laxcomma: true,
         unused: false,
@@ -52,6 +56,7 @@ grunt.initConfig({
           window: true,
           document: true,
           setTimeout: true,
+          typeOf: true,
           clearTimeout: true,
           module: true,
           define: true,
@@ -117,6 +122,12 @@ grunt.initConfig({
         ],
         tasks: ['jshint']
       },
+      widgets: {
+        files: [
+          'widgets/**'
+        ],
+        tasks: ['widgetize']
+      },
       compress: {
         files: filesToArchive,
         tasks: ['compress']
@@ -129,6 +140,7 @@ grunt.initConfig({
   grunt.loadTasks('./tasks/');
 
   grunt.registerTask('default', [
+    'widgetize',
     'jsonlint',
     'jshint',
     'setver',

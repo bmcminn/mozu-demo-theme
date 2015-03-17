@@ -1,0 +1,48 @@
+
+<h2>{{ labels.contactUs|title }}</h2>
+
+<div class="mz-company-contact__info">
+  <div class="mz-row">
+    <dl class="mz-col">
+
+      <dt>
+        {{ labels.email|title }}:
+      </dt>
+      <dd>
+        {% with siteContext.generalSettings.senderEmailAlias as companyEmail %}
+        <a href="mailto:{{ companyEmail }}">{{ companyEmail }}</a>
+        {% endwith %}
+      </dd>
+
+      {% with themeSettings.companyContact as company %}
+      <dt>
+        {{ labels.phone|title }}:
+      </dt>
+      <dd>
+        {{ company.phone }}
+      </dd>
+
+
+      <dt>
+        {{ labels.address|title }}:
+      </dt>
+      <dd>
+        <address>
+          {{ company.address }}<br>
+          {{ company.city }}, {{ company.state }} {{ company.zip }}<br>
+          {{ labels.building }} {{ company.building }}, {{ labels.suite }} {{ company.suite }} <br>
+        </address>
+      </dd>
+
+
+      <dt>
+        {{ labels.hours|title }}:
+      </dt>
+      <dd>
+        {{ company.hours|string_format(labels.closed)|safe }}
+      </dd>
+      {% endwith %}
+
+    </dl>
+  </div>
+</div>

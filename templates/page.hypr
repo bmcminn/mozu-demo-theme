@@ -4,7 +4,9 @@
 {% endblock doctype %}
 
 {% comment %}
-    The comment tag lets you write comments that will be visible when editing the template file, but don't appear in the rendered HTML. It's essentially just an "ignore this" tag.
+    The comment tag lets you write comments that will be visible when editing
+    the template file, but don't appear in the rendered HTML. It's essentially
+    just an "ignore this" tag.
 {% endcomment %}
 
 {% comment %}
@@ -43,15 +45,15 @@
         {% block meta-tags %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.5">
-        <meta name="description" content="{{ PageContext.MetaDescription }}">
-        <meta name="keywords" content="{{ PageContext.MetaKeywords }}">
+        <meta name="description" content="{{ pageContext.MetaDescription }}">
+        <meta name="keywords" content="{{ pageContext.MetaKeywords }}">
         <meta name="correlationId" content="{{ pageContext.correlationId }}">
         {% endblock meta-tags %}
 
         <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }} {% endblock title-tag-content %}</title>
 
-        {% if PageContext.FeedUrl  %}
-        <link rel="alternate" type="application/rss+xml" title="{{ PageContext.Title }}" href="{{ PageContext.FeedUrl }}" />
+        {% if pageContext.FeedUrl  %}
+        <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
         {% endif %}
 
         {% block stylesheets %}
@@ -65,7 +67,7 @@
         {% endblock head-tag-scripts %}
         {% cms_resources %}
 
-        {%header_content%}
+        {% header_content %}
 
     </head>
 {% endblock head-tag %}
@@ -107,12 +109,12 @@
             </div>
 
             {% block page-footer %}
-            {% include "modules/page-footer" %}
+                {% include "modules/page-footer" %}
             {% endblock page-footer %}
 
-            {% require_script "modules/soft-cart" %}
-            <div class="soft-cart-wrap" data-mz-role="soft-cart"></div>
-
+            {% block softcart %}
+                {% include "modules/soft-cart/soft-cart-container" %}
+            {% endblock softcart %}
         </div>
 
         {% block trailing-scripts %}
