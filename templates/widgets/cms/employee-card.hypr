@@ -2,17 +2,7 @@
 <div class="mz-employee-card" data-widget-data="{% json_attribute model.config %}">
   <div class="mz-row">
 
-    {% if model.config.imageSource == "externalUrl" %}
-      {% if model.config.imageExternalUrl %}
-        <img src="{{ model.config.imageExternalUrl }}" alt="{{ model.config.imageAltText }}">
-      {% endif %}
-    {% endif %}
-
-    {% if model.config.imageSource == "file" %}
-      {% if model.config.imageFileId %}
-        <img src="{{ siteContext.cdnPrefix }}/cms/{{ siteContext.siteId }}/files/{{ model.config.imageFileId }}?max={{ model.config.maxWidth }}" alt="{{ model.config.imageAltText }}">
-      {% endif %}
-    {% endif %}
+    <img src="{{ model.config.employeeImage }}?max={{ model.config.maxWidth }}" alt="">
 
     <h3>{{ model.config.employeeName }}</h3>
 

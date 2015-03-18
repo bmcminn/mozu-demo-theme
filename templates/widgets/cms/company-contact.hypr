@@ -14,12 +14,12 @@
         {% endwith %}
       </dd>
 
-
+      {% with themeSettings.companyContact as company %}
       <dt>
         {{ labels.phone|title }}:
       </dt>
       <dd>
-        {{ model.config.companyPhone }}
+        {{ company.phone }}
       </dd>
 
 
@@ -28,7 +28,9 @@
       </dt>
       <dd>
         <address>
-          {{ model.config.companyAddress|safe }}
+          {{ company.address }}<br>
+          {{ company.city }}, {{ company.state }} {{ company.zip }}<br>
+          {{ labels.building }} {{ company.building }}, {{ labels.suite }} {{ company.suite }} <br>
         </address>
       </dd>
 
@@ -37,8 +39,9 @@
         {{ labels.hours|title }}:
       </dt>
       <dd>
-        {{ model.config.companyHours|safe }}
+        {{ company.hours|string_format(labels.closed)|safe }}
       </dd>
+      {% endwith %}
 
     </dl>
   </div>

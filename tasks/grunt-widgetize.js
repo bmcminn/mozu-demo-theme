@@ -1,5 +1,5 @@
 /* jshint laxbreak:true, laxcomma:true */
-/* global module, require */
+/* global module, require, __dirname */
 
 module.exports = function(grunt) {
 
@@ -27,6 +27,7 @@ module.exports = function(grunt) {
   // Load modules
   var _     = require('lodash')
     , chalk = require('chalk')
+    , path  = require('path')
     ;
 
 
@@ -41,37 +42,38 @@ module.exports = function(grunt) {
     var theme   = grunt.file.readJSON('theme.json')
       // , debug   = grunt.option('dbg') ? true : false
 
-      , getPath = function(absPath) {
-          absPath  = absPath.split('/');
-          absPath.pop();
-          return absPath.join('/') + '/';
-        }
-
-      , path = {
-          grunt: './.grunt/'
-        , less: './stylesheets/'
+      , paths = {
+          grunt: './.grunt'
+        , less: './stylesheets'
+        , assetsJson: path.resolve('./.grunt', 'assets.json')
+        , storefrontLess: path.resolve('./stylesheets', 'storefront.less')
         , dest: {
-            hypr:   './templates/widgets/',
-            less:   './stylesheets/widgets/',
-            js:     './scripts/widgets/',
-            vendor: './scripts/vendor/'
+            hypr:   './templates/widgets',
+            less:   './stylesheets/widgets',
+            js:     './scripts/widgets',
+            vendor: './scripts/vendor'
           }
         }
 
       , assets    = []
       , lessFiles = []
 
+      , basepathLength = path.resolve(__dirname, '..').length
       , currentDir
       , writeDir
       , temp
+
+      , destPath = function(path) {
+          return path.substr(basepathLength).replace(/\\/g, '/');
+        }
       ;
 
 
     // determine if widgets.less is imported via storefront.less
-    if (grunt.file.exists(path.less + 'storefront.less')) {
+    if (grunt.file.exists(paths.storefrontLess)) {
 
       // get storefront.less from the core theme we're extending
-      temp = grunt.file.read(path.less + 'storefront.less');
+      temp = grunt.file.read(paths.storefrontLess);
 
       // if we haven't imported 'widgest.less' yet
       if (!temp.match(/widgets\.less/)) {
@@ -80,13 +82,13 @@ module.exports = function(grunt) {
         temp += [
           '',
           '// Imported Widgets',
-          '@import "' + path.less.substring(1) + 'widgets.less";'
+          '@import "' + paths.less.substring(1) + 'widgets.less";'
         ].join('\n');
 
-        grunt.log.ok('adding import for', chalk.cyan('widgets.less'), 'to', chalk.cyan('storefront.less'));
+        grunt.log.ok('adding import for', chalk.cyan('widgets.less'), 'to', chalk.cyan(destPath(paths.storefrontLess)));
 
         // write our file to the stylesheets directory
-        grunt.file.write(path.less + 'storefront.less', temp);
+        grunt.file.write(paths.storefrontLess, temp);
 
       }
 
@@ -99,15 +101,14 @@ module.exports = function(grunt) {
     }
 
 
-
     // get our assets listing and delete all files
-    if (grunt.file.exists(path.grunt + 'assets.json')) {
+    if (grunt.file.exists(paths.assetsJson)) {
 
       grunt.log.subhead('Deleting widget asset files');
 
       // delete all of our assets
-      _.each(grunt.file.readJSON(path.grunt + 'assets.json'), function(filepath) {
-        grunt.log.warn(chalk.red(filepath));
+      _.each(grunt.file.readJSON(paths.assetsJson), function(filepath) {
+        grunt.log.warn('deleting:', chalk.red(destPath(filepath)));
         grunt.file.delete(filepath);
       });
     }
@@ -125,8 +126,8 @@ module.exports = function(grunt) {
       temp  = grunt.file.readJSON(widgetJsonFile);
 
       // get directory paths
-      currentDir  = getPath(widgetJsonFile);
-      writeDir    = getPath(temp.displayTemplate);
+      currentDir  = path.dirname(widgetJsonFile);
+      writeDir    = path.dirname(temp.displayTemplate);
 
 
       grunt.log.subhead('Widget:', temp.displayName);
@@ -147,31 +148,35 @@ module.exports = function(grunt) {
 
         // copy our vendor scripts
         if (subdir === 'vendor') {
-          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(path.dest.vendor));
-          grunt.file.copy(abspath, path.dest.vendor + filename);
-          assets.push(path.dest.vendor + filename);
+          temp = path.resolve(paths.dest.vendor, filename);
+          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.file.copy(abspath, temp);
+          assets.push(temp);
         }
 
         // copy our js files over
-        if (subdir === null && filename.match(/\.js/)) {
-          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(path.dest.js));
-          grunt.file.copy(abspath, path.dest.js + filename);
-          assets.push(path.dest.js + filename);
+        if (subdir === undefined && filename.match(/\.js/)) {
+          temp = path.resolve(paths.dest.js, filename);
+          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.file.copy(abspath, temp);
+          assets.push(temp);
         }
 
         // copy our less files over
         if (filename.match(/\.less/)) {
-          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(path.dest.less));
-          grunt.file.copy(abspath, path.dest.less + filename);
-          lessFiles.push('@import "' + path.dest.less.substr(1) + filename + '";');
-          assets.push(path.dest.less + filename);
+          temp = path.resolve(paths.dest.less, filename);
+          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.file.copy(abspath, temp);
+          lessFiles.push('@import "' + paths.dest.less.substr(1) + filename + '";');
+          assets.push(temp);
         }
 
         // copy our hypr and hypr.live files over
         if (filename.match(/\.hypr(?:\.live)?/)) {
-          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(path.dest.hypr + writeDir));
-          grunt.file.copy(abspath, path.dest.hypr + filename);
-          assets.push(path.dest.hypr + filename);
+          temp = path.resolve(paths.dest.hypr, writeDir, filename);
+          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
+          grunt.file.copy(abspath, temp);
+          assets.push(temp);
         }
 
       });
@@ -182,16 +187,19 @@ module.exports = function(grunt) {
     grunt.log.subhead('Cacheing...');
 
     // write our assets.json data
-    grunt.log.ok('writing', chalk.cyan(path.grunt.substr(2) + 'assets.json'));
-    grunt.file.write(path.grunt + 'assets.json', JSON.stringify(assets, null, 2));
+    temp = path.resolve(paths.grunt, 'assets.json');
+    grunt.log.ok('writing', chalk.cyan(destPath(temp)));
+    grunt.file.write(temp, JSON.stringify(assets, null, 2));
 
     // write our widgets.less file
-    grunt.log.ok('writing', chalk.cyan(path.dest.less.substr(2) + 'widgets.less'));
-    grunt.file.write(path.less + 'widgets.less', lessFiles.join('\n'));
+    temp = path.resolve(paths.less, 'widgets.less');
+    grunt.log.ok('writing', chalk.cyan(destPath(temp)));
+    grunt.file.write(temp, lessFiles.join('\n'));
 
     // write our changes to theme.json
-    grunt.log.ok('writing', chalk.cyan('theme.json'));
-    grunt.file.write('theme.json', JSON.stringify(theme, null, 2));
+    temp = path.resolve('theme.json');
+    grunt.log.ok('writing', chalk.cyan(destPath(temp)));
+    grunt.file.write(temp, JSON.stringify(theme, null, 2));
 
   });
 };
