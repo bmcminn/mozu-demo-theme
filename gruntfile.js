@@ -1,166 +1,52 @@
+
 module.exports = function(grunt) {
 
-  var jsonFiles = [
-        'theme.json',
-        'theme-ui.json',
-        'package.json',
-        'labels/*.json',
-        'widgets/**/*.json'
-      ],
+  'use strict';
 
-      jsFiles = [
-        'Gruntfile.js',
-        'build.js',
-        'scripts/**/*.js'
-      ],
+  var path          = require('path')
+    , watchAdapter  = require('grunt-mozu-appdev-sync/watch-adapter')
+    , pkg           = grunt.file.readJSON('package.json')
+    , versionCmd    = ''
+    ;
 
-      filesToArchive = [
-        'compiled/**',
-        'labels/**',
-        'resources/**',
-        'scripts/**',
-        'stylesheets/**',
-        'templates/**',
-        'LICENSE',
-        'theme.json',
-        'theme-ui.json',
-        'thumb.png'
-      ],
+  require('time-grunt')(grunt);
 
-      // Set the versioning command for your VCS
-      versionCmd = ':' // e.g. 'git describe --tags --always' or 'svn info'
-  ;
-
-grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    theme: grunt.file.readJSON('theme.json'),
-
-    jsonlint: {
-      theme_json: {
-        src: jsonFiles
+  require('load-grunt-config')(grunt, {
+      configPath: path.join(process.cwd(), 'grunt')
+    , data: {
+        pkg:    grunt.file.readJSON('package.json')
+      , theme:  grunt.file.readJSON('theme.json')
       }
-    },
+    });
 
-    jshint: {
-      theme_js: jsFiles,
-      options: {
-        ignores: [
-          'scripts/vendor/**/*.js',
-          'build.js'
-        ],
-        undef: true,
-        laxcomma: true,
-        unused: false,
-        globals: {
-          console: true,
-          window: true,
-          document: true,
-          setTimeout: true,
-          typeOf: true,
-          clearTimeout: true,
-          module: true,
-          define: true,
-          require: true,
-          Modernizr: true,
-          process: true
-        }
-      }
-    },
 
-    zubat: {
-      main: {
-        dir: '.',
-        manualancestry: ['./references/<%= theme.about.extends %>'],
-        ignore: ['/references','\\.git','node_modules','^/resources','^/tasks','\\.zip$']
-      }
-    },
-
-    compress: {
-      options: {
-        mode: 'zip'
-      },
-      build: {
-        options: {
-          archive: 'theme-files.zip',
-          pretty: true
-        },
-        files: [{
-          src: filesToArchive,
-          dest: '/'
-        }]
-      }
-    },
-
-    setver: {
-      release: {
-        cmd: versionCmd,
-        themejson: true,
-        packagejson: true,
-        readmemd: true
-      },
-      build: {
-        cmd: versionCmd,
-        themejson: true,
-      }
-    },
-
-    watch: {
-      styles: {
-        files: [
-          'stylesheets/**/*.less'
-        ],
-        tasks: []
-      },
-      json: {
-        files: jsonFiles,
-        tasks: ['jsonlint']
-      },
-      javascript: {
-        files: [
-          'scripts/**/*.js',
-          '!scripts/vendor/**/*.js'
-        ],
-        tasks: ['jshint']
-      },
-      widgets: {
-        files: [
-          'widgets/**'
-        ],
-        tasks: ['widgetize']
-      },
-      compress: {
-        files: filesToArchive,
-        tasks: ['compress']
-      }
-    }
+  watchAdapter(grunt, {
+      src: 'mozusync.upload.src',
+      action: 'upload',
+      always: ['./assets/functions.json']
   });
 
-  require('load-grunt-tasks')(grunt);
+  watchAdapter(grunt, {
+      src: 'mozusync.del.remove',
+      action: 'delete'
+  });
+
+
+  var lastVersionGot;
+  function getVersion(cb) {
+    if (!versionCmd) return cb(null, pkg.version);
+    var cmd = versionCmd.split(' ');
+    grunt.util.spawn({
+      cmd: cmd[0],
+      args: cmd.slice(1)
+    }, function(err, res) {
+      lastVersionGot = res.stdout.replace(/^v/,'');
+      cb(err, lastVersionGot);
+    });
+  }
+
 
   grunt.loadTasks('./tasks/');
+  grunt.loadNpmTasks('thmaa');
 
-  grunt.registerTask('default', [
-    'widgetize',
-    'jsonlint',
-    'jshint',
-    'setver',
-    'compress'
-    ]);
-
-  grunt.registerTask('build', [
-    'jsonlint',
-    'jshint',
-    'checkreferences',
-    'zubat',
-    'setver:build',
-    'compress'
-    ]);
-
-  grunt.registerTask('release', [
-    'jsonlint',
-    'jshint',
-    'zubat',
-    'setver:release',
-    'compress'
-    ]);
 };

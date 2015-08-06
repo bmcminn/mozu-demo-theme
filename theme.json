@@ -1,8 +1,8 @@
 {
   "about": {
-    "name": "Awesome Theme v0.0.5",
-    "version": "0.0.5",
-    "extends": "core6",
+    "name": "Awesome Theme vexercise-7-13-g94b1c87 vexercise-7-13-g94b1c87 vexercise-7-13-g94b1c87",
+    "version": "exercise-7-13-g94b1c87",
+    "extends": "core7",
     "isDesktop": true,
     "isTablet": true,
     "isMobile": true

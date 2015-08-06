@@ -31,21 +31,16 @@ module.exports = function(grunt) {
     ;
 
 
-  // if our grunt directory doesn't exist already, create it
-  if (!grunt.file.exists('./.grunt')) {
-    grunt.file.mkdir('./.grunt');
-  }
-
-
   grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
 
     var theme   = grunt.file.readJSON('theme.json')
+      , gruntFolder = './grunt'
       // , debug   = grunt.option('dbg') ? true : false
 
       , paths = {
-          grunt: './.grunt'
+          grunt: gruntFolder
         , less: './stylesheets'
-        , assetsJson: path.resolve('./.grunt', 'assets.json')
+        , assetsJson: path.resolve(gruntFolder, 'assets.json')
         , storefrontLess: path.resolve('./stylesheets', 'storefront.less')
         , dest: {
             hypr:   './templates/widgets',

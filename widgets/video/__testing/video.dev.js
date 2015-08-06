@@ -4,8 +4,8 @@
 
     var temp
       , base = {
-          youtube:  '//www.youtube.com/embed/'
-        , vimeo:    '//player.vimeo.com/video/'
+          youtube:  'https://www.youtube.com/embed/'
+        , vimeo:    'https://player.vimeo.com/video/'
         , autoPlay: 'autoplay=false'
         }
       , regex = {
@@ -77,9 +77,34 @@
       }
 
 
+      // build the url depending what type of video it is
+      switch($this.video.type) {
+        case 'youtube':
+          $this.video.url = [
+            base.youtube
+          , $this.video.id
+          , '?'
+          , $this.video.list
+          // , $this.video.time ? '?' + $this.video.time : ''
+          ].join('');
+
+          break;
+
+        case 'vimeo':
+          $this.video.url = [
+            base.vimeo
+          , $this.video.id
+          , $this.video.time
+          , '?'
+          ].join('');
+
+          break;
+      }
+
+
       // if the youtube link has a privacy url
       if ($this.video.config.match(regex.youtubePrivacy)) {
-        $this.video.url.replace(regex.youtubeUrl, 'youtube-nocookie');
+        $this.video.url = $this.video.url.replace(regex.youtubeUrl, 'youtube-nocookie');
       }
 
 
@@ -102,28 +127,13 @@
 
 
 
-      // build the url depending what type of video it is
-      switch($this.video.type) {
-        case 'youtube':
-          $this.video.url = [
-            base.youtube
-          , $this.video.id
-          , $this.video.list ? '?' + $this.video.list : ''
-          // , $this.video.time ? '?' + $this.video.time : ''
-          ].join('');
-
-          break;
-
-        case 'vimeo':
-          $this.video.url = [
-            base.vimeo
-          , $this.video.id
-          , $this.video.time
-          , '?'
-          ].join('');
-
-          break;
-      }
+      // <iframe
+      //   width="420"
+      //   height="315"
+      //   src="https://www.youtube.com/embed/d0dD59FYxJ4?rel=0&controls=0&showinfo=0"
+      //   frameborder="0"
+      //   allowfullscreen>
+      // </iframe>
 
 
       // append any other URL arguments here
@@ -132,6 +142,7 @@
       $this.video.config = $this.video.type;
 
 
+      $this.attr('data-mz-widget-config', JSON.stringify($this.video, null));
 
       console.log($this.video);
 
@@ -146,6 +157,7 @@
         });
         return;
       }
+
 
 
       // Append the video into the video container module
