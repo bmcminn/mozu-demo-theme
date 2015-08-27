@@ -1,0 +1,26 @@
+{% if pageContext.isDebugMode %}
+  {% preload_json siteContext "sitecontext" %}
+{% endif %}
+
+
+
+{% with pageContext.url|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName) as urlPath %}
+  {# CHECK FOR HOMEPAGE CANONICAL #}
+  {% if urlPath == "/" or urlPath == "/?" %}
+    <link rel="canonical" href="{{ "//{0}/"|string_format(siteContext.domains.primary.domainName) }}">
+
+  {% else %}
+
+    {# CHECK FOR PRODUCT CANONICAL #}
+    {% if model.productCode %}
+      <link rel="canonical" href="{{ "//{0}/p/{1}"|string_format(siteContext.domains.primary.domainName, model.productCode) }}">
+    {% endif %}
+
+    {# CHECK FOR CATEGORY CANONICAL #}
+    {% if pageContext.categoryId %}
+      <link rel="canonical" href="{{ "//{0}/c/{1}"|string_format(siteContext.domains.primary.domainName, pageContext.categoryId) }}">
+    {% endif %}
+
+  {% endif %}
+
+{% endwith %}
