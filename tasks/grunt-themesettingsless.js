@@ -16,8 +16,8 @@ module.exports = function(grunt) {
 
 
   // if our grunt directory doesn't exist already, create it
-  if (!grunt.file.exists('./.grunt')) {
-    grunt.file.mkdir('./.grunt');
+  if (!grunt.file.exists('./grunt/assets')) {
+    grunt.file.mkdir('./grunt/assets');
   }
 
 
@@ -128,17 +128,17 @@ module.exports = function(grunt) {
 
 
     // write our cached files
-    grunt.file.write('./.grunt/variables.less', variables.join('\n'));
-    grunt.file.write('./.grunt/compiled-storefront.less', less.join('\n'));
+    grunt.file.write('./grunt/assets/variables.less', variables.join('\n'));
+    grunt.file.write('./grunt/assets/compiled-storefront.less', less.join('\n'));
 
     grunt.log.ok(
         'writing'
-      , chalk.yellow('".grunt/variables.less"...')
+      , chalk.yellow('"grunt/assets/variables.less"...')
       );
 
     grunt.log.ok(
         'writing'
-      , chalk.yellow('".grunt/compiled-storefront.less"...')
+      , chalk.yellow('"grunt/assets/compiled-storefront.less"...')
       );
 
   });

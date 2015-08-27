@@ -34,7 +34,7 @@ module.exports = function(grunt) {
   grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
 
     var theme   = grunt.file.readJSON('theme.json')
-      , gruntFolder = './grunt'
+      , gruntFolder = './grunt/assets'
       // , debug   = grunt.option('dbg') ? true : false
 
       , paths = {

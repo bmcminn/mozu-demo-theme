@@ -4,15 +4,14 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'widgetize'
-  , 'jsonlint'
-  , 'jshint'
+  , 'lintify'
   , 'setver:build'
   , 'compress'
   ]);
 
   grunt.registerTask('build', [
-    'jsonlint'
-  , 'jshint'
+    'widgetize'
+  , 'lintify'
   , 'checkreferences'
   , 'zubat'
   , 'setver:release'
@@ -22,11 +21,11 @@ module.exports = function(grunt) {
   grunt.registerTask('email', [
     'juice'
   , 'strainer'
+  , 'compress'
   ]);
 
   grunt.registerTask('push', [
-    'jsonlint'
-  , 'jshint'
+    'lintify'
   , 'mozutheme:check'
   , 'mozutheme:quickcompile'
   // , 'mozutheme:buildver'
@@ -35,6 +34,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('sync', [
     'watch:sync'
+  ]);
+
+
+  grunt.registerTask('lintify', [
+    'jsonlint'
+  , 'jshint'
   ]);
 
 };
