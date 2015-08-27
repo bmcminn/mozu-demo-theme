@@ -162,7 +162,7 @@ module.exports = function(grunt) {
           temp = path.resolve(paths.dest.less, filename);
           grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
-          lessFiles.push('@import "' + paths.dest.less.substr(1) + filename + '";');
+          lessFiles.push('@import "' + paths.dest.less.substr(1) + '/' + filename + '";');
           assets.push(temp);
         }
 
@@ -180,6 +180,7 @@ module.exports = function(grunt) {
 
 
     grunt.log.subhead('Cacheing...');
+
 
     // write our assets.json data
     temp = path.resolve(paths.grunt, 'assets.json');
