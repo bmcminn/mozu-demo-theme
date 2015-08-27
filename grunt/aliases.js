@@ -29,7 +29,7 @@ module.exports = function(grunt) {
   , 'jshint'
   , 'mozutheme:check'
   , 'mozutheme:quickcompile'
-  , 'mozutheme:buildver'
+  // , 'mozutheme:buildver'
   , 'mozusync:upload'
   ]);
 

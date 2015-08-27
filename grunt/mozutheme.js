@@ -1,4 +1,29 @@
 
+  var lastVersionGot
+
+    , path        = require('path')
+    , pkg         = require(path.resolve('./package.json'))
+    , versionCmd  = null
+
+    , getVersion = function(cb) {
+        if (!versionCmd) {
+          return cb(null, pkg.version)
+        };
+
+        var cmd = versionCmd.split(' ');
+
+        grunt.util.spawn({
+          cmd: cmd[0],
+          args: cmd.slice(1)
+        }, function(err, res) {
+          lastVersionGot = res.stdout.replace(/^v/,'');
+          cb(err, lastVersionGot);
+        });
+      }
+
+    ;
+
+
 module.exports = {
 
   check: {}
