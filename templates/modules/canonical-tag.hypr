@@ -3,6 +3,7 @@
 {% endif %}
 
 
+{# // TODO: add themeSetting for canonicalLinkProtocol dropdown so canonicals have protocols #}
 
 {% with pageContext.url|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName) as urlPath %}
 
