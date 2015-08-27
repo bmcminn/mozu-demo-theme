@@ -23,4 +23,7 @@ mozu.config.json
 
 # Files
 *.zip
-*.sublime-*
+*.sublime-workspace
+
+# File system stuff
+.DS_Store
