@@ -18,6 +18,9 @@ assets.json
 # Compiled assets
 /compiled
 
+# Mozu configs
+mozu.config.json
+
 # Files
 *.zip
 *.sublime-*
