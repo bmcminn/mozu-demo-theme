@@ -1,0 +1,10 @@
+{
+  "appKey": "SYNCAPP_APP_KEY",
+  "sharedSecret": "SYNCAPP_SHARED_SECRET_HERE",
+  "baseUrl": "https://home.mozu.com",
+  "developerAccountId": DEVELOPER_ACCOUNT_ID,
+  "developerAccount": {
+    "emailAddress": "YOUR_DEVELOPER_ACCOUNT_EMAIL"
+  },
+  "workingApplicationKey": "THEME_APP_ID"
+}
