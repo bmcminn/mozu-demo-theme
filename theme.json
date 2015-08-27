@@ -1,8 +1,8 @@
 {
   "about": {
-    "name": "Awesome Theme v0.0.7",
-    "version": "0.0.7",
-    "extends": "core6",
+    "name": "Awesome Theme vexercise-7-13-g94b1c87 vexercise-7-13-g94b1c87 vexercise-7-13-g94b1c87",
+    "version": "exercise-7-13-g94b1c87",
+    "extends": "core7",
     "isDesktop": true,
     "isTablet": true,
     "isMobile": true
@@ -10,19 +10,7 @@
   "settings": {
     "showBreadcrumbs": false,
     "bodyBackgroundColor": "#f90",
-    "somethingElseHere": "1rem",
-    "somethingElseElseHere": "1em",
-    "bodyBackgroundImage": "http://cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png",
-    "companyContact": {
-      "address": "1234 Waffle Cone Way",
-      "city": "Austin",
-      "state": "TX",
-      "zip": 78755,
-      "phone": "555-123-1234",
-      "hours": "Mon-Fri: 8am-5pm<br>Sat: 10am-5pm<br>Sun: {0}",
-      "building": 4,
-      "suite": 420
-    }
+    "bodyBackgroundImage": "http://cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png"
   },
   "pageTypes": [
     {
@@ -38,42 +26,30 @@
   ],
   "widgets": [
     {
-      "id": "page_heading",
-      "displayName": "Heading",
-      "displayTemplate": "cms/heading",
-      "icon": "/resources/admin/widgets/heading.png",
+      "id": "contact-us",
+      "title": "contact-us",
+      "displayName": "Company Contact",
+      "displayTemplate": "cms/company-contact",
+      "icon": "/resources/admin/widgets/company-contact.png",
       "validPageTypes": [
         "*"
       ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-text",
-        "headingText": "Heading Text here",
-        "headingType": "h1"
-      },
+      "defaultConfig": {},
       "editViewFields": [
         {
-          "name": "headingText",
-          "fieldLabel": "Heading Text"
+          "fieldLabel": "Company Phone #",
+          "name": "companyPhone",
+          "xtype": "mz-input-text"
         },
         {
-          "name": "headingType",
-          "fieldLabel": "Heading Type",
-          "xtype": "mz-input-dropdown",
-          "store": [
-            [
-              "h1",
-              "H1"
-            ],
-            [
-              "h2",
-              "H2"
-            ],
-            [
-              "h3",
-              "H3"
-            ]
-          ]
+          "fieldLabel": "Company Address",
+          "name": "companyAddress",
+          "xtype": "mz-input-richtext"
+        },
+        {
+          "fieldLabel": "Hours",
+          "name": "companyHours",
+          "xtype": "mz-input-richtext"
         }
       ]
     },
@@ -117,30 +93,42 @@
       ]
     },
     {
-      "id": "contact-us",
-      "title": "contact-us",
-      "displayName": "Company Contact",
-      "displayTemplate": "cms/company-contact",
-      "icon": "/resources/admin/widgets/company-contact.png",
+      "id": "page_heading",
+      "displayName": "Heading",
+      "displayTemplate": "cms/heading",
+      "icon": "/resources/admin/widgets/heading.png",
       "validPageTypes": [
         "*"
       ],
-      "defaultConfig": {},
+      "defaultConfig": {
+        "anchor": "100%",
+        "xtype": "mz-input-text",
+        "headingText": "Heading Text here",
+        "headingType": "h1"
+      },
       "editViewFields": [
         {
-          "fieldLabel": "Company Phone #",
-          "name": "companyPhone",
-          "xtype": "mz-input-text"
+          "name": "headingText",
+          "fieldLabel": "Heading Text"
         },
         {
-          "fieldLabel": "Company Address",
-          "name": "companyAddress",
-          "xtype": "mz-input-richtext"
-        },
-        {
-          "fieldLabel": "Hours",
-          "name": "companyHours",
-          "xtype": "mz-input-richtext"
+          "name": "headingType",
+          "fieldLabel": "Heading Type",
+          "xtype": "mz-input-dropdown",
+          "store": [
+            [
+              "h1",
+              "H1"
+            ],
+            [
+              "h2",
+              "H2"
+            ],
+            [
+              "h3",
+              "H3"
+            ]
+          ]
         }
       ]
     },

@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       , debug       = grunt.option('dbg') ? true : false
       , extendsRef  = theme.about.extends
 
-      , variables = []
+      , variables   = []
 
       , temp
       , string

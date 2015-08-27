@@ -15,8 +15,5 @@
       "fieldLabel": "Video URL",
       "name": "url"
     }
-  ],
-  "vendorScripts": [
-    "fitvids.js"
   ]
 }

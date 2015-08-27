@@ -1,17 +1,29 @@
 {
   "name": "demo-theme",
-  "version": "0.0.7",
+  "version": "exercise-7-13-g94b1c87",
+  "config": {
+    "baseTheme": "core7",
+    "baseThemeRepo": "mozu/core-theme",
+    "baseThemeVersion": "7.0.0"
+  },
   "devDependencies": {
     "async": "^0.2",
+    "chalk": "~1.0.0",
     "grunt": "^0.4",
-    "grunt-contrib-watch": "^0.5",
-    "grunt-contrib-jshint": "^0.8",
     "grunt-contrib-compress": "^0.6",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-jshint": "^0.8",
+    "grunt-contrib-watch": "^0.5",
+    "grunt-debug-task": "^0.1.7",
     "grunt-jsonlint": "^1.0",
+    "grunt-mozu-appdev-sync": "^0.5.1",
+    "grunt-newer": "^1.1.1",
+    "load-grunt-config": "^0.17.2",
     "load-grunt-tasks": "^3.1.0",
-    "semver": "^3.0",
-    "zubat": "*",
     "lodash": "^3.5.0",
-    "chalk": "~1.0.0"
+    "semver": "^5.0.1",
+    "thmaa": "^0.10.4",
+    "time-grunt": "^1.2.1",
+    "zubat": "^0.4.0"
   }
 }
