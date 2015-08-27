@@ -102,12 +102,13 @@ module.exports = function(grunt) {
       applyVersion(manualVer);
       //done(true);
     } else {
-      childProcess.exec(this.data.cmd || 'git describe --tags --always', function(err, stdout, stderr) {
-        if (err || stderr) {
-          return grunt.fail.fatal(err || stderr);
-        }
-        applyVersion(stdout.trim());
-      });
+      applyVersion(theme.about.version)
+      // childProcess.exec(this.data.cmd || 'git describe --tags --always', function(err, stdout, stderr) {
+      //   if (err || stderr) {
+      //     return grunt.fail.fatal(err || stderr);
+      //   }
+      //   applyVersion(stdout.trim());
+      // });
     }
   });
 };

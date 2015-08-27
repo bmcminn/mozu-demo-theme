@@ -1,6 +1,6 @@
 {
   "name": "demo-theme",
-  "version": "exercise-7-13-g94b1c87",
+  "version": "1.0.0",
   "config": {
     "baseTheme": "core7",
     "baseThemeRepo": "mozu/core-theme",
