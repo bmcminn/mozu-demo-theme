@@ -10,7 +10,7 @@
       , "LICENSE"
       , "README.md"
       , "*.base"
-      , "assets.json"
+      , "*workspace"
       ]
     , "folder_exclude_patterns": [
         "compiled"
