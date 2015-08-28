@@ -1,5 +1,5 @@
-{% autoescape on %}
 {% spaceless %}
+{% autoescape on %}
 {% block doctype %}
 <!doctype html>
 {% endblock doctype %}
@@ -47,23 +47,22 @@
       <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
     {% endif %}
 
-
     {% block canonical-tag %}
       {% include "modules/canonical-tag" %}
     {% endblock canonical-tag %}
 
 
     {% block stylesheets %}
-    {{ "stylesheets/storefront.less"|stylesheet_tag:"default" }}
-    {{ "stylesheets/overrides.less"|stylesheet_tag:"default" }}
+      {{ "stylesheets/storefront.less"|stylesheet_tag("default") }}
+      {{ "stylesheets/overrides.less"|stylesheet_tag("default") }}
     {% endblock stylesheets %}
 
     {% block head-tag-scripts %}
-    <script src="{{siteContext.cdnPrefix}}/scripts/vendor/modernizr.min.js"></script>
-    {% include "modules/web-fonts-loader" %}
+      <script src="{{ siteContext.cdnPrefix }}/scripts/vendor/modernizr.min.js"></script>
+      {% include "modules/web-fonts-loader" %}
     {% endblock head-tag-scripts %}
-    {% cms_resources %}
 
+    {% cms_resources %}
     {% header_content %}
 
   </head>
@@ -81,27 +80,27 @@
     <div id="page-wrapper" class="mz-l-pagewrapper">
 
       {% block page-header %}
-      {% include "modules/page-header" %}
+        {% include "modules/page-header" %}
       {% endblock page-header %}
 
       {% block site-nav %}
-      {% include "modules/site-nav" %}
+        {% include "modules/site-nav" %}
       {% endblock site-nav %}
 
       <div role="main" id="page-content" class="mz-l-pagecontent">
 
         {% block breadcrumbs %}
-        {% if themeSettings.showBreadcrumbs %}
-        {% include "modules/breadcrumbs" %}
-        {% endif %}
+          {% if themeSettings.showBreadcrumbs %}
+            {% include "modules/breadcrumbs" %}
+          {% endif %}
         {% endblock breadcrumbs %}
 
         {% block body-content %}
-        {% dropzone "body" scope="page" %}
+          {% dropzone "body" scope="page" %}
         {% endblock body-content %}
 
         {% block body-below-content %}
-        {% dropzone "body-bottom" scope="template" %}
+          {% dropzone "body-bottom" scope="template" %}
         {% endblock body-below-content %}
 
       </div>
@@ -116,7 +115,7 @@
     </div>
 
     {% block trailing-scripts %}
-    {% include "modules/trailing-scripts" %}
+      {% include "modules/trailing-scripts" %}
     {% endblock trailing-scripts %}
 
     {% visitor_tracking_pixel %}
@@ -125,5 +124,5 @@
 {% endblock body-tag %}
 
 </html>
-{% endspaceless %}
 {% endautoescape %}
+{% endspaceless %}
