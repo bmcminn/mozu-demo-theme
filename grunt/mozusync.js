@@ -13,7 +13,7 @@ module.exports = {
     }
 
   , src: [
-      'theme.json'
+      'theme*.json'
     , 'templates/**'
     , 'stylesheets/**'
     , 'resources/**'
