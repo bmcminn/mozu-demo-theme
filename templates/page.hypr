@@ -1,15 +1,13 @@
 {% autoescape on %}
+{% spaceless %}
 {% block doctype %}
 <!doctype html>
 {% endblock doctype %}
-
 {% comment %}
   The comment tag lets you write comments that will be visible when editing
   the template file, but don't appear in the rendered HTML. It's essentially
   just an "ignore this" tag.
-{% endcomment %}
 
-{% comment %}
   The conditional statements below detect if visitor is on a particular
   version of IE and adds the appropriate classes to the HTML element. You can then target
   these browsers in your CSS without hacks, like:
@@ -26,15 +24,8 @@
   available. Again you can use this as a way to make sensible fallbacks if javascript
   is not available.
 {% endcomment %}
-
 {% block open-html-tag %}
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
-<!--[if (gt IE 9)|(!IE) ]><!-->
 <html class="no-js" lang="en">
-<!--<![endif]-->
 {%endblock open-html-tag %}
 
 {% block head-tag %}
@@ -43,22 +34,24 @@
     {% include "modules/json-required-for-hyprlive" %}
 
     {% block meta-tags %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.5">
-    <meta name="description" content="{{ pageContext.MetaDescription }}">
-    <meta name="keywords" content="{{ pageContext.MetaKeywords }}">
-    <meta name="correlationId" content="{{ pageContext.correlationId }}">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.5">
+      <meta name="description" content="{{ pageContext.MetaDescription }}">
+      <meta name="keywords" content="{{ pageContext.MetaKeywords }}">
+      <meta name="correlationId" content="{{ pageContext.correlationId }}">
     {% endblock meta-tags %}
 
     <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }} {% endblock title-tag-content %}</title>
 
     {% if pageContext.FeedUrl  %}
-    <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
+      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
     {% endif %}
+
 
     {% block canonical-tag %}
       {% include "modules/canonical-tag" %}
     {% endblock canonical-tag %}
+
 
     {% block stylesheets %}
     {{ "stylesheets/storefront.less"|stylesheet_tag:"default" }}
@@ -132,4 +125,5 @@
 {% endblock body-tag %}
 
 </html>
+{% endspaceless %}
 {% endautoescape %}
