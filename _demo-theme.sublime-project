@@ -1,8 +1,8 @@
 {
-	"folders":
-	[
-		{
-			"path": "."
+  "folders":
+  [
+    {
+      "path": "."
     , "file_exclude_patterns": [
         "thumb.*"
       , "*.zip"
@@ -22,6 +22,6 @@
       , "references/typeahead*"
       , "references/underscore"
       ]
-		}
-	]
+    }
+  ]
 }
