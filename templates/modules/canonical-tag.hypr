@@ -5,32 +5,41 @@
 
 {# // TODO: add themeSetting for canonicalLinkProtocol dropdown so canonicals have protocols #}
 
-{% with pageContext.url|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName) as urlPath %}
+{% with pageContext.url|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName)|make_list as urlPath %}
 
   {# CHECK FOR HOMEPAGE CANONICAL #}
   {# - homepage url paths are either /, /?, or /#... this checks all of them #}
-  {% if urlPath == "/" or urlPath|make_list|slice(':2')|last == "?" or urlPath|make_list|slice(':2')|last == "#" %}
+  {% if urlPath|first == "/" or urlPath|slice(':2')|last == "?" or urlPath|slice(':2')|last == "#" %}
 
     <link rel="canonical" href="{{ "//{0}/"|string_format(siteContext.domains.primary.domainName) }}">
 
   {% else %}
 
-    {# CHECK FOR PRODUCT CANONICAL #}
-    {% if model.productCode %}
-      <link rel="canonical" href="{{ "//{0}/p/{1}"|string_format(siteContext.domains.primary.domainName, model.productCode) }}">
-    {% endif %}
+    {# CHECK FOR 404 PAGE #}
+    {% if pageContext.cmsContext.template.path == '404' %}
+
+      {# don't do anything, because 404's don't need canonicals #}
+
+    {% else %}
+
+      {# CHECK FOR PRODUCT CANONICAL #}
+      {% if model.productCode %}
+        <link rel="canonical" href="{{ "//{0}/p/{1}"|string_format(siteContext.domains.primary.domainName, model.productCode) }}">
+      {% endif %}
 
 
-    {# CHECK FOR CATEGORY CANONICAL #}
-    {% if pageContext.categoryId %}
-      {# ends up getting triggered if  #}
-      <link rel="canonical" href="{{ "//{0}/c/{1}"|string_format(siteContext.domains.primary.domainName, pageContext.categoryId) }}">
-    {% endif %}
+      {# CHECK FOR CATEGORY CANONICAL #}
+      {% if pageContext.categoryId %}
+        {# ends up getting triggered if  #}
+        <link rel="canonical" href="{{ "//{0}/c/{1}"|string_format(siteContext.domains.primary.domainName, pageContext.categoryId) }}">
+      {% endif %}
 
 
-    {# CHECK FOR CMS CANONICAL #}
-    {% if not model.productCode and not pageContext.categoryId %}
-      <link rel="canonical" href="{{ "//{0}/{1}"|string_format(siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
+      {# CHECK FOR CMS CANONICAL #}
+      {% if not model.productCode and not pageContext.categoryId %}
+        <link rel="canonical" href="{{ "//{0}/{1}"|string_format(siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
+      {% endif %}
+
     {% endif %}
 
   {% endif %}
