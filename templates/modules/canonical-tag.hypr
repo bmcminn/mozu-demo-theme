@@ -1,13 +1,8 @@
-{% if pageContext.isDebugMode %}
-{% preload_json siteContext "sitecontext" %}
-{% endif %}
-
-
 {% with "{0}///"|string_format(pageContext.url)|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName)|make_list|slice(':2') as urlPath %}
 
   {# CHECK FOR HOMEPAGE CANONICAL #}
   {# - homepage url paths are either /, /?, or /#... this checks all of them #}
-  {% if not pageContext.categoryId and not model.productCode and urlPath|last == "/" or urlPath|last == "?" or urlPath|last == "#" %}
+  {% if urlPath|last == "/" or urlPath|last == "?" or urlPath|last == "#" %}
 
     <link rel="canonical" href="{{ "{0}://{1}/"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName) }}">
 
