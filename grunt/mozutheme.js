@@ -7,8 +7,8 @@
 
     , getVersion = function(cb) {
         if (!versionCmd) {
-          return cb(null, pkg.version)
-        };
+          return cb(null, pkg.version);
+        }
 
         var cmd = versionCmd.split(' ');
 
@@ -20,7 +20,6 @@
           cb(err, lastVersionGot);
         });
       }
-
     ;
 
 

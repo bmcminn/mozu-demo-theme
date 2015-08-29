@@ -2,15 +2,15 @@
 module.exports = {
 
   theme_js: [
-    'Gruntfile.js'
-  , 'build.js'
+    'gruntfile.js'
+  , 'grunt/**/*.js'
   , 'scripts/**/*.js'
+  , '!scripts/vendor/**/*.js'
   ],
 
   options: {
     ignores: [
-      'scripts/vendor/**/*.js'
-    , 'build.js'
+      'build.js'
     ]
 
   , undef: true
@@ -20,6 +20,7 @@ module.exports = {
       console: true
     , window: true
     , document: true
+    , grunt: true
     , setTimeout: true
     , typeOf: true
     , clearTimeout: true
