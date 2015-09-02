@@ -1,11 +1,21 @@
 
+{% require_script "widgets/video" %}
+
+{% comment %}
+  NOTE:
+  data-mz-video-data="{{ model.config.url|default(model) }}"
+  - This assumes that you are including this template on another template using
+    the `with` declaration that model=model.item.videoUrl or something.
+
+  TODO: need more work on this type of integration and a practical use case.
+{% endcomment %}
+
 <div data-mz-widget="video-embed" data-mz-video-data="{{ model.config.url|default(model) }}">
   <noscript>Please enable JavaScript in order to load this Video.</noscript>
 </div>
 
-{% require_script "widgets/video" %}
 
-
+{% comment %}
 <style type="text/css">
   [data-mz-widget="youtube-embed"] {
     display: block;
@@ -21,3 +31,4 @@
     opacity: 1;
   }
 </style>
+{% endcomment %}

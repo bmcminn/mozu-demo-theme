@@ -25,7 +25,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('push', [
-    'lintify'
+    'widgetize'
+  , 'lintify'
   , 'mozutheme:check'
   , 'mozutheme:quickcompile'
   // , 'mozutheme:buildver'
