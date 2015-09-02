@@ -1,32 +1,42 @@
 
 module.exports = {
 
-  watch: {
+  options: {
+    spawn: false
+  }
 
-    json: {
-      files: require('./jsonlint.js').theme_json.src
-    , tasks: ['jsonlint']
-    }
 
-  , javascript: {
-      files: [
-        'scripts/**/*.js'
-      , '!scripts/vendor/**/*.js'
-      ]
-    , tasks: ['jshint']
-    }
+, json: {
+    files: [
+      'theme*.json'
+    ]
+  , tasks: ['jsonlint']
+  }
 
-  , widgets: {
-      files: [
-        'widgets/**'
-      ]
-    , tasks: ['widgetize']
-    }
 
-  , compress: {
-      files: require('./compress.js').build.files[0].src
-    , tasks: ['compress']
-    }
+, javascript: {
+    files: require('./jshint.js').theme_js
+  , tasks: ['jshint']
+  }
+
+
+, widgets: {
+    files: [
+      'widgets/**'
+    ]
+  , tasks: ['widgetize']
+  }
+
+
+, compress: {
+    files: require('./compress.js').build.files[0].src
+  , tasks: ['compress']
+  }
+
+
+, sync: {
+    files: '<%= mozusync.upload.src %>',
+    tasks: ['mozusync:upload']
   }
 
 };

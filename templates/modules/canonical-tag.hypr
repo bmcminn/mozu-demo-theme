@@ -1,48 +1,40 @@
-{% spaceless %}
-{% if pageContext.isDebugMode %}
-  {% preload_json siteContext "sitecontext" %}
-{% endif %}
+{% with "{0}///"|string_format(pageContext.url)|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName)|make_list|slice(':2') as urlPath %}
 
+  {# CHECK FOR HOMEPAGE CANONICAL #}
+  {# - homepage url paths are either /, /?, or /#... this checks all of them #}
+  {% if urlPath|last == "/" or urlPath|last == "?" or urlPath|last == "#" %}
 
-  {% with "{0}///"|string_format(pageContext.url)|cut("https://")|cut("http://")|cut("admin-pending-view.")|cut(siteContext.domains.primary.domainName)|make_list|slice(':2') as urlPath %}
+    <link rel="canonical" href="{{ "{0}://{1}/"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName) }}">
 
-    {# CHECK FOR HOMEPAGE CANONICAL #}
-    {# - homepage url paths are either /, /?, or /#... this checks all of them #}
-    {% if not pageContext.categoryId and not model.productCode and urlPath|last == "/" or urlPath|last == "?" or urlPath|last == "#" %}
+  {% else %}
 
-      <link rel="canonical" href="{{ "{0}://{1}/"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName) }}">
+    {# CHECK FOR 404 PAGE #}
+    {% if pageContext.cmsContext.template.path == '404' %}
+
+      {# don't do anything, because 404's don't need canonicals #}
 
     {% else %}
 
-      {# CHECK FOR 404 PAGE #}
-      {% if pageContext.cmsContext.template.path == '404' %}
-
-        {# don't do anything, because 404's don't need canonicals #}
-
-      {% else %}
-
-        {# CHECK FOR PRODUCT CANONICAL #}
-        {% if model.productCode %}
-          <link rel="canonical" href="{{ "{0}://{1}/p/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, model.productCode) }}">
-        {% endif %}
+      {# CHECK FOR PRODUCT CANONICAL #}
+      {% if model.productCode %}
+        <link rel="canonical" href="{{ "{0}://{1}/p/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, model.productCode) }}">
+      {% endif %}
 
 
-        {# CHECK FOR CATEGORY CANONICAL #}
-        {% if pageContext.categoryId %}
-          {# ends up getting triggered if  #}
-          <link rel="canonical" href="{{ "{0}://{1}/c/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.categoryId) }}">
-        {% endif %}
+      {# CHECK FOR CATEGORY CANONICAL #}
+      {% if pageContext.categoryId %}
+        {# ends up getting triggered if  #}
+        <link rel="canonical" href="{{ "{0}://{1}/c/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.categoryId) }}">
+      {% endif %}
 
 
-        {# CHECK FOR CMS CANONICAL #}
-        {% if not model.productCode and not pageContext.categoryId %}
-          <link rel="canonical" href="{{ "{0}://{1}/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
-        {% endif %}
-
+      {# CHECK FOR CMS CANONICAL #}
+      {% if not model.productCode and not pageContext.categoryId %}
+        <link rel="canonical" href="{{ "{0}://{1}/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
       {% endif %}
 
     {% endif %}
 
-  {% endwith %}
+  {% endif %}
 
-{% endspaceless %}
+{% endwith %}

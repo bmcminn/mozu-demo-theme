@@ -1,11 +1,9 @@
-        {% if pageContext.isDebugMode %}
-        <div class="mz-debug-block">
-            <label>siteContext</label><input type="text" value="{% json_attribute siteContext %}"><br>
-            <label>pageContext</label><input type="text" value="{% json_attribute pageContext %}"><br>
-            <label>model</label><input type="text" value="{% json_attribute model %}"><br>
-            <label>user</label><input type="text" value="{% json_attribute user %}">
-            <style type="text/css">
-                .mz-debug-block label { width: 5rem; }
-            </style>
-        </div>
-        {% endif %} 
+
+{% if pageContext.isDebugMode %}
+
+  {% preload_json siteContext "sitecontext" %}
+  {% preload_json pageContext "pagecontext" %}
+  {% preload_json model       "model" %}
+  {% preload_json user        "user" %}
+
+{% endif %}
