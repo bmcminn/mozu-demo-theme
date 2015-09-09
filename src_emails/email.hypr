@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	{%if pageContext.isEditMode %}
+	{% if pageContext.isEditMode %}
 		{% include "modules/json-required-for-hyprlive" %}
 		{% include "modules/trailing-scripts" %}
 		{% cms_resources %}
@@ -13,6 +13,10 @@
 </head>
 
 <body>
+	{% if pageContext.isEditMode && pageContext.isDebugMode %}
+		{% include "modules/debug-emails" %}
+	{% endif %}
+
 	<table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td class="center" align="center" valign="top">
@@ -39,7 +43,8 @@
 									<tr>
 										<td class="wrapper last">
 											<p>
-												{{ labels.emailClosing|string_format(siteContext.domains.current.domainName, siteContext.generalSettings.websiteName)|safe }},
+												{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }},
+												{{ siteContext.domains.current.domainName|urlize|safe }}
 											</p>
 										</td>
 									</tr>

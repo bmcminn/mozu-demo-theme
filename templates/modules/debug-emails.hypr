@@ -1,0 +1,7 @@
+<input id="debug-model" type="text" value="{% json_attribute model %}">
+<input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
+<input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
+<input id="debug-domainName" type="text" value="{% json_attribute domainName %}">
+{% comment %}
+<input id="debug-model" type="text" value="{% json model %}">
+{% endcomment %}

@@ -17,25 +17,22 @@
 	<table class="twelve columns details" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; padding: 0; vertical-align: top; text-align: left; margin: 0 auto; width: 580px; margin-bottom: 10px;">
 		<thead>
 			<tr style="padding: 0; vertical-align: top; text-align: left;">
-				<td colspan="2" style="-webkit-hyphens: auto; word-break: break-word; hyphens: auto; vertical-align: top; text-align: left; -moz-hyphens: auto; color: #222; font-family: 'Helvetica','Arial',sans-serif; margin: 0; line-height: 19px; font-size: 14px; padding: 5px 0; white-space: nowrap; font-weight: bold; border-bottom: 1px solid #666; padding-bottom: 0; border-collapse: collapse;">{{ labels.orderDetails }}</td>
+				<td colspan="2" style="-webkit-hyphens: auto; word-break: break-word; hyphens: auto; vertical-align: top; text-align: left; -moz-hyphens: auto; color: #222; font-family: 'Helvetica','Arial',sans-serif; margin: 0; line-height: 19px; font-size: 14px; padding: 5px 0; white-space: nowrap; font-weight: bold; border-bottom: 1px solid #666; padding-bottom: 0; border-collapse: collapse;"><b>{{ labels.orderNo }}</b>: <i>{{ model.orderNumber }}</i></td>
 			</tr>
 		</thead>
 
 		<tbody>
 
 			<tr style="padding: 0; vertical-align: top; text-align: left;">
-				<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 10px 0; padding-bottom: 0; border-collapse: collapse;">
-					<b>{{ labels.orderNo }}</b>: {{ model.orderNumber }}<br><br>
+				<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; padding: 10px 0; border-collapse: collapse;">
 					<b>{{ labels.shipTo }}</b>:<br>
 					<br>
 					{% include "modules/common/email-address-summary" with model=model.fulfillmentInfo.fulfillmentContact %}<br><br>
 					<b>{{ labels.shippingMethod }}</b>: {{ model.fulfillmentInfo.shippingMethodName }}<br>
 				</td>
-			</tr>
 
-			{% ifnotequal model.total 0 %}
-				<tr style="padding: 0; vertical-align: top; text-align: left;">
-					<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 10px 0; padding-bottom: 0; border-collapse: collapse;">
+				{% ifnotequal model.total 0 %}
+					<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; padding: 10px 0; border-collapse: collapse;">
 						<b>{{ labels.billingInformation }}</b>:<br>
 						<br>
 						{% include "modules/common/email-address-summary" with model=model.billingInfo.billingContact %}<br><br>
@@ -47,11 +44,13 @@
 							<b>{{ labels.paymentMethod }}</b>: {{ labels.paypalExpress }}
 						{% endif %}
 					</td>
-				</tr>
-			{% endifnotequal %}
+				{% endifnotequal %}
+			</tr>
+
+
 
 			<tr style="padding: 0; vertical-align: top; text-align: left;">
-				<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 10px 0; padding-bottom: 0; border-collapse: collapse;">
+				<td colspan="2" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; line-height: 19px; vertical-align: top; word-break: break-word; margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 10px 0; padding-bottom: 0; border-collapse: collapse;">
 					{% include "modules/common/email-order-summary" %}
 				</td>
 			</tr>
@@ -71,9 +70,5 @@
 		<br>
 		<p style="margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 0; text-align: left; line-height: 19px; font-size: 14px; margin-bottom: 0;">{{ model.shopperNotes.giftMessage }}</p>
 	{% endif %}
-
-	<p style="margin: 0; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; padding: 0; text-align: left; line-height: 19px; font-size: 14px; margin-bottom: 0;">
-		{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
-	</p>
 
 {% endblock body-content %}

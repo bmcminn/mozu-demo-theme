@@ -19,6 +19,7 @@
       , "bower_components"
       , "templates/email"
       , "references/backbone"
+      // , "references/core*"
       , "references/bootstrap"
       , "references/jquery*"
       , "references/typeahead*"
