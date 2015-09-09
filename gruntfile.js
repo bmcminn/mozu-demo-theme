@@ -5,8 +5,6 @@ module.exports = function(grunt) {
 
   var path          = require('path')
     , watchAdapter  = require('grunt-mozu-appdev-sync/watch-adapter')
-    , pkg           = grunt.file.readJSON('package.json')
-    , versionCmd    = null
     ;
 
   require('time-grunt')(grunt);
@@ -18,7 +16,6 @@ module.exports = function(grunt) {
       , theme:      grunt.file.readJSON('theme.json')
       , mozuconfig: grunt.file.readJSON('mozu.config.json')
       }
-
     });
 
 

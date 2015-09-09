@@ -1,42 +1,54 @@
 
+var configs = {
+			emails:   require('./juice.js')
+		, jsonlint: require('./jsonlint.js')
+		, jshint:   require('./jshint.js')
+		, compress: require('./compress.js')
+		}
+	;
+
 module.exports = {
 
-  options: {
-    spawn: false
-  }
+	options: {
+		spawn: false
+	}
 
 
 , json: {
-    files: [
-      'theme*.json'
-    ]
-  , tasks: ['jsonlint']
-  }
+		files: configs.jsonlint.theme_json.src
+	, tasks: ['jsonlint']
+	}
 
 
 , javascript: {
-    files: require('./jshint.js').theme_js
-  , tasks: ['jshint']
-  }
+		files: configs.jshint.theme_js
+	, tasks: ['jshint']
+	}
 
 
 , widgets: {
-    files: [
-      'widgets/**'
-    ]
-  , tasks: ['widgetize']
-  }
+		files: [
+			'widgets/**'
+		]
+	, tasks: ['widgetize']
+	}
+
+
+, emails: {
+		files: [ configs.emails.emailSrc + '/**/*' ],
+		tasks: ['juice', 'strainer:' + configs.emails.emailSrc + '/*.hypr*']
+	}
 
 
 , compress: {
-    files: require('./compress.js').build.files[0].src
-  , tasks: ['compress']
-  }
+		files: configs.compress.build.files[0].src
+	, tasks: ['compress']
+	}
 
 
 , sync: {
-    files: '<%= mozusync.upload.src %>',
-    tasks: ['mozusync:upload']
-  }
+		files: '<%= mozusync.upload.src %>',
+		tasks: ['mozusync:upload']
+	}
 
 };
