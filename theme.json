@@ -12,7 +12,18 @@
     "bodyBackgroundColor": "#f90",
     "bodyBackgroundImage": "http://cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png",
     "canonicalProtocol": "https",
-    "showCategoryFacets": null
+    "showCategoryFacets": null,
+    "hiddenCatgeries": null,
+    "contactUsEmail": "contact@aubuchon.com"
+  },
+  "pageSettings": {
+    "itesm": [
+      {
+        "validPageTypes": [
+          "*"
+        ]
+      }
+    ]
   },
   "pageTypes": [
     {

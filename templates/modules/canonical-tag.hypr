@@ -9,31 +9,34 @@
   {% else %}
 
     {# CHECK FOR 404 PAGE #}
-    {% if pageContext.cmsContext.template.path == '404' %}
+    {% with pageContext.cmsContext.template.path as templatePath %}
 
-      {# don't do anything, because 404's don't need canonicals #}
+      {% if templatePath == '404' or templatePath == 'search-results' %}
 
-    {% else %}
+        {# don't do anything, because these pages don't need canonicals #}
 
-      {# CHECK FOR PRODUCT CANONICAL #}
-      {% if model.productCode %}
-        <link rel="canonical" href="{{ "{0}://{1}/p/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, model.productCode) }}">
+      {% else %}
+
+        {# CHECK FOR PRODUCT CANONICAL #}
+        {% if model.productCode %}
+          <link rel="canonical" href="{{ "{0}://{1}/p/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, model.productCode) }}">
+        {% endif %}
+
+
+        {# CHECK FOR CATEGORY CANONICAL #}
+        {% if pageContext.categoryId %}
+          {# ends up getting triggered if  #}
+          <link rel="canonical" href="{{ "{0}://{1}/c/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.categoryId) }}">
+        {% endif %}
+
+
+        {# CHECK FOR CMS CANONICAL #}
+        {% if not model.productCode and not pageContext.categoryId %}
+          <link rel="canonical" href="{{ "{0}://{1}/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
+        {% endif %}
+
       {% endif %}
-
-
-      {# CHECK FOR CATEGORY CANONICAL #}
-      {% if pageContext.categoryId %}
-        {# ends up getting triggered if  #}
-        <link rel="canonical" href="{{ "{0}://{1}/c/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.categoryId) }}">
-      {% endif %}
-
-
-      {# CHECK FOR CMS CANONICAL #}
-      {% if not model.productCode and not pageContext.categoryId %}
-        <link rel="canonical" href="{{ "{0}://{1}/{2}"|string_format(themeSettings.canonicalProtocol, siteContext.domains.primary.domainName, pageContext.cmsContext.page.path) }}">
-      {% endif %}
-
-    {% endif %}
+    {% endwith %}
 
   {% endif %}
 

@@ -20,6 +20,30 @@
     },
     {
       "xtype": "panel",
+      "title": "Categories",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-categorymulti",
+          "name": "hiddenCategories",
+          "fieldLabel": "Hidden Categories"
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
+      "title": "Email Management",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-text",
+          "name": "contactUsEmail",
+          "fieldLabel": "Contact us Email"
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
       "title": "SEO Content",
       "collapsed": false,
       "items": [
