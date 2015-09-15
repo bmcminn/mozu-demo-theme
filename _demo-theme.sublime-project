@@ -17,7 +17,7 @@
         "compiled"
       , "node_modules"
       , "bower_components"
-      , "templates/email"
+      // , "templates/email"
       , "references/backbone"
       // , "references/core*"
       , "references/bootstrap"
