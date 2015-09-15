@@ -48,6 +48,12 @@
       "collapsed": false,
       "items": [
         {
+          "name": "canonicalHomepageSlug",
+          "fieldLabel": "Homepage slug (update this anytime you change the homepage in Site Builder)",
+          "xtype": "mz-input-text",
+          "anchor": "90%"
+        },
+        {
           "name": "canonicalProtocol",
           "fieldLabel": "Force secure Canonical links (ex: <code>https://domain.tld/</code>)",
           "xtype": "mz-input-dropdown",
