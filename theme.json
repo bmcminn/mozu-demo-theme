@@ -1,0 +1,19 @@
+{
+  "about": {
+    "name": "Mozu Demo Theme",
+    "version": "0.0.0",
+    "extends": "core7",
+    "isDesktop": true,
+    "isTablet": true,
+    "isMobile": true
+  },
+  "settings": {
+
+  },
+  "pageTypes": [
+
+  ],
+  "widgets": [
+
+  ]
+}

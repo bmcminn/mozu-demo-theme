@@ -1,0 +1,14 @@
+
+{% if pageContext.isDebugMode %}
+
+	<label for="dbg-model">model</label><input type="text" value="{% json_attribute model %}">
+	<label for="dbg-pageContext">pageContext</label><input type="text" value="{% json_attribute pageContext %}">
+	<label for="dbg-siteContext">siteContext</label><input type="text" value="{% json_attribute siteContext %}">
+	<label for="dbg-user">user</label><input type="text" value="{% json_attribute user %}">
+
+  {% preload_json model       "model" %}
+  {% preload_json pageContext "pagecontext" %}
+  {% preload_json siteContext "sitecontext" %}
+  {% preload_json user        "user" %}
+
+{% endif %}

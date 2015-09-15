@@ -1,0 +1,21 @@
+{
+  "about": {
+    "name": "My Custom Theme v0.0.3",
+    "version": "0.0.3",
+    "extends": "core7",
+    "isDesktop": true,
+    "isTablet": true,
+    "isMobile": true
+  },
+  "settings": {
+    "showBreadcrumbs": false,
+    "bodyBackgroundColor": "#f90",
+    "bodyBackgroundImage": ""
+  },
+  "pageTypes": [
+
+  ],
+  "widgets": [
+
+  ]
+}

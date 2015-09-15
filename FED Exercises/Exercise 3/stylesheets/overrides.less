@@ -1,0 +1,67 @@
+@import "/stylesheets/base/colors.less";
+@import "/stylesheets/base/variables.less";
+@import "/stylesheets/base/mixins.less";
+@import "/stylesheets/debug.less";
+@import "/stylesheets/modules/soft-cart.less";
+@import "/stylesheets/widgets/employee-card.less";
+
+//
+// Layout overrides
+//
+
+body {
+  background-image: url('@{bodyBackgroundImage}');
+  background-color: @bodyBackgroundColor;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+.mz-l-pagecontent {
+  background-color: @white;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+
+//
+// Product category overrides
+//
+
+.mz-productlist-item {
+  height: 400px;
+  padding: 0 1rem 1rem 0;
+}
+
+
+.mz-productlisting {
+
+  .mz-productlisting-info {
+    margin-top: 1rem;
+  }
+}
+
+
+.mz-productlisting-image {
+  background-color: @white;
+  border: 1px solid @gray-light;
+
+  a {
+    display: block;
+    width: 100%;
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+
+.fade-in {
+  opacity: 1;
+}

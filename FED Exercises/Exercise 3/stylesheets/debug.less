@@ -1,0 +1,57 @@
+
+//
+// Debugging
+//
+
+@dz-scope: "dz-scope";
+
+.mz-cms-editing {
+
+  .mz-drop-zone {
+    position: relative;
+    margin-top: 28px;
+
+    &::before {
+      position: absolute;
+      left: -2px;
+      top: -29px;
+      line-height: 26px;
+      height: 28px;
+      padding: 0 1rem;
+    }
+
+    &[data-drop-zone*="page"] {
+      outline: 1px solid @green;
+
+      &::before {
+        content: "@{dz-scope}: page";
+        color: @white;
+        text-shadow: darken(@green, 20%);
+        background-color: @green;
+      }
+    }
+
+    &[data-drop-zone*="template"] {
+      outline: 1px solid @orange;
+
+      &::before {
+        content: "@{dz-scope}: template";
+        color: @white;
+        text-shadow: darken(@orange, 20%);
+        background-color: @orange;
+      }
+    }
+
+    &[data-drop-zone*="site"] {
+      outline: 1px solid @red;
+
+      &::before {
+        content: "@{dz-scope}: template";
+        color: @white;
+        text-shadow: darken(@red, 20%);
+        background-color: @red;
+      }
+    }
+
+  }
+}
