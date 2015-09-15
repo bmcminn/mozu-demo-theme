@@ -21,7 +21,6 @@
         'modules/api',
         'modules/backbone-mozu',
         'modules/cart-monitor',
-        'modules/soft-cart',
         'modules/contextify',
         'modules/jquery-mozu',
         'modules/login-links',
