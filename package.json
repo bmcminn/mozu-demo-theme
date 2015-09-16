@@ -1,6 +1,8 @@
 {
   "name": "demo-theme",
   "version": "0.0.0",
+  "repository": "https://github.com/bmcminn/mozu-demo-theme",
+  "license": "MIT",
   "config": {
     "baseTheme": "core7",
     "baseThemeRepo": "mozu/core-theme",
