@@ -50,7 +50,7 @@ For Windows users, we recommend using Git Bash as it is a fully featured termina
 	```
 
 	- Once these are installed correctly and returning the correct version number(s), move on to the next step.
-	- **NOTE:** if you encountered an error here, refer to the above [Installation guide](https://github.com/bmcminn/mozu-demo-theme/tree/training#installation) for more information.
+	- **NOTE:** if you encountered an error here, refer to the above [Installation guide](#installation) for more information.
 
 1. Next, we will need a project folder to host our theme(s), so in your shell app, enter the following commands:
 
