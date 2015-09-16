@@ -1,0 +1,76 @@
+@fontFamily:            {{ themeSettings.primaryFont }}, sans-serif;
+@fontSize:              {{ themeSettings.fontSize }};
+@fontSizeSmall:         @fontSize - 2px;
+@fontSizeLarger:        @fontSize + 2px;
+@fontSizeLarge:         @fontSize + 6px;
+@storeBrandingFontSize: 36px;
+
+
+//
+// Color defs
+//
+
+@white:         #fff;
+
+@gray:          #666;
+@gray-light:    #a7a7a7;
+@gray-dark:     #4F4F4F;
+
+@white:         #fff;
+@off-white:     #eee;
+@black:         #3f3f3f;
+
+@blue:          #00f;
+
+@red:           #b94a48;
+@red-light:     #f2dede;
+@red-dark:      #ae1231;
+
+@orange:        #f90;
+
+@yellow-light:  #ffefcf;
+
+@green:         #237e0e;
+
+
+@textColor:             {{ themeSettings.textColor }};
+@linkColor:             @gray-dark;
+@linkHoverColor:        @gray;
+@linkVisitedColor:      @black;
+@errorText:             @red;
+@errorBackground:       @red-light;
+@warningText:           @textColor;
+@warningBackground:     @yellow-light;
+@successText:           @textColor;
+@successBackground:     @off-white;
+
+@availableText:         @green;
+@unavailableText:       @red-dark;
+
+
+
+@bodyBackgroundColor:   {{ themeSettings.bodyBackgroundColor }};
+@bodyBackgroundImage:   "{{ themeSettings.bodyBackgroundImage }}";
+
+
+@errorBorder:   darken(spin(@errorBackground, -10), 3%);
+@successBorder: darken(spin(@successBackground, -10), 3%);
+@warningBorder: darken(spin(@warningBackground, -10), 3%);
+
+
+@errorIcon: "../resources/images/error-exclamation.png";
+@columnWidth-2col: 435px;
+@gutter: {{themeSettings.gutterWidth}};
+@inputBorder: @gray-light;
+
+
+@defaultTileHeight: 250px;
+@defaultTileWidth: 250px;
+@productTileHeight: 360px;
+@productTileWidth: @defaultTileWidth;
+@addressTileHeight: 240px;
+@addressTileWidth: @defaultTileWidth;
+@productImagesContainerWidth: {{ themeSettings.productImagesContainerWidth }}px;
+@orderDetailWidth: 200px;
+@itemListingThumbSize: {{ themeSettings.itemListingThumbSize }};
+@productListingThumbSize: {{ themeSettings.listProductThumbSize }}px;
