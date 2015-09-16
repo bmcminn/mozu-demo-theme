@@ -1,19 +1,19 @@
 {
-  "about": {
-    "name": "My Custom Theme v0.0.1",
-    "version": "0.0.1",
-    "extends": "core7",
-    "isDesktop": true,
-    "isTablet": true,
-    "isMobile": true
-  },
-  "settings": {
+	"about": {
+		"name": "My Custom Theme v0.0.1",
+		"version": "0.0.1",
+		"extends": "core7",
+		"isDesktop": true,
+		"isTablet": true,
+		"isMobile": true
+	},
+	"settings": {
 
-  },
-  "pageTypes": [
+	},
+	"pageTypes": [
 
-  ],
-  "widgets": [
+	],
+	"widgets": [
 
-  ]
+	]
 }

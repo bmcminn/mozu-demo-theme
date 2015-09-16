@@ -11,6 +11,15 @@ grunt/assets
 /node_modules
 /__*
 
+# Don't track files that are handled by widgetize
+resources/admin
+templates/widgets
+scripts/widgets
+stylesheets/widgets
+stylesheets/widgets.less
+stylesheets/storefront.less
+
+
 # Core References
 /references
 

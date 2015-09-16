@@ -6,9 +6,9 @@
 	<label for="dbg-siteContext">siteContext</label><input type="text" value="{% json_attribute siteContext %}">
 	<label for="dbg-user">user</label><input type="text" value="{% json_attribute user %}">
 
-  {% preload_json model       "model" %}
-  {% preload_json pageContext "pagecontext" %}
-  {% preload_json siteContext "sitecontext" %}
-  {% preload_json user        "user" %}
+	{% preload_json model       "model" %}
+	{% preload_json pageContext "pagecontext" %}
+	{% preload_json siteContext "sitecontext" %}
+	{% preload_json user        "user" %}
 
 {% endif %}

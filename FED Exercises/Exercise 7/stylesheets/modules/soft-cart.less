@@ -1,0 +1,129 @@
+@-webkit-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:@orange;}
+    100% {background-color:none;}
+}
+
+@-moz-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:@orange;}
+    100% {background-color:none;}
+}
+
+@-ms-keyframes flash {
+    0% { background-color:none;}
+    50% { background-color:@orange;}
+    100% {background-color:none;}
+}
+
+.soft-cart-wrap {
+  background: rgba(33,33,33,0.95);
+  position: fixed;
+  right: -315px;
+  top: 0;
+  height: 100%;
+  .box-shadow(~"0 0 15px rgba(0,0,0,0.2)");
+  width: 300px;
+  color: @gray-light;
+  .transition(~"right 0.2s ease");
+  &.is-active {
+    right: 0;
+  }
+}
+
+.soft-cart {
+  a {
+    color: @gray-light;
+    text-decoration: none;
+    &:hover {
+      color: #ffffff;
+      background: @gray-dark;
+    }
+  }
+  h1 {
+    margin: @gutter/2;
+    color: @gray-light;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  .soft-cart-controls {
+    background: #000000;
+    margin: @gutter/4 0;
+    overflow: auto;
+  }
+  .soft-cart-control {
+    float: right;
+    display: block;
+    padding: @gutter/2;
+
+  }
+  .soft-cart-total {
+    overflow: auto;
+    margin: @gutter/2;
+    border-bottom: 1px solid @gray-light;
+    font-size: @fontSizeLarger;
+    text-transform: uppercase;
+  }
+  .soft-cart-total-label {
+    float: left;
+  }
+  .soft-cart-total-amount {
+    float: right;
+  }
+  .soft-cart-items-label {
+    margin: @gutter/2;
+    border-bottom: 1px solid @gray-light;
+    font-size: @fontSizeLarger;
+    text-transform: uppercase;
+  }
+  .soft-cart-items {
+    height: 100%;
+    max-height: 640px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: @gutter/2;
+  }
+  .soft-cart-item {
+    border-bottom: 1px solid @gray-light;
+    margin: @gutter/4;
+    &.highlight {
+      -moz-animation: flash 1s ease-out;
+      -moz-animation-iteration-count: 2;
+
+      -webkit-animation: flash 1s ease-out;
+      -webkit-animation-iteration-count: 2;
+
+      -ms-animation: flash 1s ease-out;
+      -ms-animation-iteration-count: 2;
+    }
+  }
+  .soft-cart-item-image {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .soft-cart-item-title {
+    display: block;
+    font-size: @fontSizeLarger;
+    margin-bottom: @gutter/4;
+  }
+  .soft-cart-item-quantity {
+    display: inline-block;
+  }
+  .soft-cart-item-action {
+    display: inline-block;
+    position: relative;
+    margin: 0 @gutter/2;
+    &-more {
+      bottom: 4px;
+    }
+    &-less {
+      top: 4px;
+    }
+  }
+  .soft-cart-item-total {
+    font-weight: bold;
+    float: right;
+    margin-right: @gutter/4;
+  }
+}

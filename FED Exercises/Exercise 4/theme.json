@@ -1,0 +1,28 @@
+{
+	"about": {
+		"name": "My Custom Theme v0.0.4",
+		"version": "0.0.4",
+		"extends": "core7",
+		"isDesktop": true,
+		"isTablet": true,
+		"isMobile": true
+	},
+	"settings": {
+		"showBreadcrumbs": false,
+		"bodyBackgroundColor": "#f90",
+		"bodyBackgroundImage": ""
+	},
+	"pageTypes": [
+		{
+			"id": "company-info",
+			"title": "Company Info",
+			"template": "pages/company-info",
+			"documentType": "web_page",
+			"entityType": "webpage",
+			"customEditor": "about-us",
+			"userCreatable": true,
+			"zones": []
+		}
+	],
+	"widgets": []
+}

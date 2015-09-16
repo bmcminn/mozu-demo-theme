@@ -2,7 +2,7 @@
   "appKey": "SYNCAPP_APP_KEY",
   "sharedSecret": "SYNCAPP_SHARED_SECRET_HERE",
   "baseUrl": "https://home.mozu.com",
-  "developerAccountId": DEVELOPER_ACCOUNT_ID,
+  "developerAccountId": "DEVELOPER_ACCOUNT_ID__MAKE_THIS_AN_INT",
   "developerAccount": {
     "emailAddress": "YOUR_DEVELOPER_ACCOUNT_EMAIL"
   },

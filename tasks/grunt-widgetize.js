@@ -46,7 +46,8 @@ module.exports = function(grunt) {
 						hypr:   './templates/widgets',
 						less:   './stylesheets/widgets',
 						js:     './scripts/widgets',
-						vendor: './scripts/vendor'
+						vendor: './scripts/vendor',
+						icons:  './resources/admin/widgets'
 					}
 				}
 
@@ -169,6 +170,14 @@ module.exports = function(grunt) {
 				// copy our hypr and hypr.live files over
 				if (filename.match(/\.hypr(?:\.live)?/)) {
 					temp = path.resolve(paths.dest.hypr, writeDir, filename);
+					grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
+					grunt.file.copy(abspath, temp);
+					assets.push(temp);
+				}
+
+				// copy our widget icons/graphics over
+				if (filename.match(/\.(?:png|gif|jpeg|jpg)/)) {
+					temp = path.resolve(paths.dest.icons, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
 					assets.push(temp);

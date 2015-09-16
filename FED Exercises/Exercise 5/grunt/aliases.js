@@ -3,14 +3,14 @@
 module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
-		// 'widgetize'
+		'widgetize'
 	, 'lintify'
 	, 'setver:build'
 	, 'compress'
 	]);
 
 	grunt.registerTask('build', [
-		// 'widgetize'
+		'widgetize'
 	, 'lintify'
 	, 'checkreferences'
 	, 'zubat'
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('push', [
-		// 'widgetize'
+		'widgetize'
 	, 'lintify'
 	, 'mozutheme:check'
 	, 'mozutheme:quickcompile'
