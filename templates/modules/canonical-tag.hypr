@@ -1,0 +1,31 @@
+
+{% with themeSettings.canonicalProtocol as canonicalProtocol %}
+{% with siteContext.domains.primary.domainName as domainName %}
+{% with pageContext.cmsContext.template.path as templateType %}
+
+	{# CHECK HOMEPAGE AND HOMEPAGE SLUG #}
+	{% if model.name == themeSettings.canonicalHomepageSlug %}
+		{{ '<link rel="canonical" href="{0}://{1}/">'|string_format(canonicalProtocol, domainName) }}
+
+	{% else %}
+
+		{# CHECK CMS PAGE SLUG #}
+		{% if model.name and not templateType == "category" and not templateType == "product" %}
+			{{ '<link rel="canonical" href="{0}://{1}/{2}/">'|string_format(canonicalProtocol, domainName, model.name) }}
+		{% endif %}
+
+		{# CHECK PRODUCT/CATEGORY SLUG #}
+		{% if model.url %}
+			{{ '<link rel="canonical" href="{0}://{1}{2}/">'|string_format(canonicalProtocol, domainName, model.url) }}
+		{% endif %}
+
+		{# CHECK FOR SEARCH/404/CART/CHECKOUT/MY ACCOUNT PAGES #}
+		{% if templateType == "search-results" or templateType == "404" or templateType == "cart" or templateType == "checkout" or templateType == "my-account" %}
+			{# it's a page that doesn't require a canonical so don't render anything #}
+		{% endif %}
+
+	{% endif %}
+
+{% endwith %}
+{% endwith %}
+{% endwith %}

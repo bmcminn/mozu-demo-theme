@@ -5,8 +5,6 @@ module.exports = function(grunt) {
 
   var path          = require('path')
     , watchAdapter  = require('grunt-mozu-appdev-sync/watch-adapter')
-    , pkg           = grunt.file.readJSON('package.json')
-    , versionCmd    = ''
     ;
 
   require('time-grunt')(grunt);
@@ -14,8 +12,9 @@ module.exports = function(grunt) {
   require('load-grunt-config')(grunt, {
       configPath: path.join(process.cwd(), 'grunt')
     , data: {
-        pkg:    grunt.file.readJSON('package.json')
-      , theme:  grunt.file.readJSON('theme.json')
+        pkg:        grunt.file.readJSON('package.json')
+      , theme:      grunt.file.readJSON('theme.json')
+      , mozuconfig: grunt.file.readJSON('mozu.config.json')
       }
     });
 
@@ -31,19 +30,6 @@ module.exports = function(grunt) {
       action: 'delete'
   });
 
-
-  var lastVersionGot;
-  function getVersion(cb) {
-    if (!versionCmd) return cb(null, pkg.version);
-    var cmd = versionCmd.split(' ');
-    grunt.util.spawn({
-      cmd: cmd[0],
-      args: cmd.slice(1)
-    }, function(err, res) {
-      lastVersionGot = res.stdout.replace(/^v/,'');
-      cb(err, lastVersionGot);
-    });
-  }
 
 
   grunt.loadTasks('./tasks/');

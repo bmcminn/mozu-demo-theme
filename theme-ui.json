@@ -3,6 +3,70 @@
   "items": [
     {
       "xtype": "panel",
+      "title": "General",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-checkbox",
+          "name": "showAddressTypeDropdown",
+          "fieldLabel": "Show Address Type dropdown in Address Forms (Residential/Commercial)"
+        },
+        {
+          "xtype": "mz-input-checkbox",
+          "name": "enablePartialCaching",
+          "fieldLabel": "Enable partial caching using the Hypr {% partial_cache %} tag"
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
+      "title": "Categories",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-categorymulti",
+          "name": "hiddenCategories",
+          "fieldLabel": "Hidden Categories"
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
+      "title": "Email Management",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-text",
+          "name": "contactUsEmail",
+          "fieldLabel": "Contact us Email"
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
+      "title": "SEO Content",
+      "collapsed": false,
+      "items": [
+        {
+          "name": "canonicalHomepageSlug",
+          "fieldLabel": "Homepage slug (update this anytime you change the homepage in Site Builder)",
+          "xtype": "mz-input-text",
+          "anchor": "90%"
+        },
+        {
+          "name": "canonicalProtocol",
+          "fieldLabel": "Force secure Canonical links (ex: <code>https://domain.tld/</code>)",
+          "xtype": "mz-input-dropdown",
+          "anchor": "90%",
+          "store": [
+            ["http", "HTTP"],
+            ["https", "HTTPS"]
+          ]
+        }
+      ]
+    },
+    {
+      "xtype": "panel",
       "title": "Theme Appearance",
       "collapsed": false,
       "items": [
@@ -16,23 +80,6 @@
           "name": "bodyBackgroundImage",
           "fieldLabel": "Body Background Image",
           "dataFormat": "urlOnly"
-        }
-      ]
-    },
-    {
-      "xtype": "panel",
-      "title": "General",
-      "collapsed": false,
-      "items": [
-        {
-          "xtype": "mz-input-checkbox",
-          "name": "showAddressTypeDropdown",
-          "fieldLabel": "Show Address Type dropdown in Address Forms (Residential/Commercial)"
-        },
-        {
-          "xtype": "mz-input-checkbox",
-          "name": "enablePartialCaching",
-          "fieldLabel": "Enable partial caching using the Hypr {% partial_cache %} tag"
         }
       ]
     },

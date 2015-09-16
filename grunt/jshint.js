@@ -1,34 +1,36 @@
 
 module.exports = {
 
-  theme_js: [
-    'Gruntfile.js'
-  , 'build.js'
-  , 'scripts/**/*.js'
-  ],
+	theme_js: [
+		'gruntfile.js'
+	, 'grunt/**/*.js'
+	, 'scripts/**/*.js'
+	, '!scripts/vendor/**/*.js'
+	],
 
-  options: {
-    ignores: [
-      'scripts/vendor/**/*.js'
-    , 'build.js'
-    ]
+	options: {
+		ignores: [
+			'build.js'
+		]
 
-  , undef: true
-  , laxcomma: true
-  , unused: false
-  , globals: {
-      console: true
-    , window: true
-    , document: true
-    , setTimeout: true
-    , typeOf: true
-    , clearTimeout: true
-    , module: true
-    , define: true
-    , require: true
-    , Modernizr: true
-    , process: true
-    }
-  }
+	, undef: true
+	, laxcomma: true
+	, laxbreak: true
+	, unused: false
+	, globals: {
+			console: true
+		, window: true
+		, document: true
+		, grunt: true
+		, setTimeout: true
+		, typeOf: true
+		, clearTimeout: true
+		, module: true
+		, define: true
+		, require: true
+		, Modernizr: true
+		, process: true
+		}
+	}
 
 };

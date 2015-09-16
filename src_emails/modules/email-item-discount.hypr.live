@@ -1,0 +1,18 @@
+{% comment %} Item-level discounts {% endcomment %}
+{% for productDiscount in item.productDiscounts %}
+  <div class="mz-item-discount">
+    <span class="mz-item-discountname">
+      {{ productDiscount.discount.name }}
+    </span>
+
+    {% if productDiscount.discount.freeShipping %}
+      <span class="mz-item-discountamt">
+        {{ labels.freeShipping }}
+      </span>
+    {% else %}
+      <span class="mz-item-discountamt">
+        -{{ productDiscount.impact|currency }}
+      </span>
+    {% endif %}
+  </div>
+{% endfor %}
