@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "appKey": "SYNC_TOOL_APPKEY_HERE",
   "sharedSecret": "SYNC_TOOL_SHARED_SECRET_HERE",
   "baseUrl": "https://home.mozu.com",
@@ -8,14 +7,4 @@
     "emailAddress": "YOUR_EMAIL_HERE"
   },
   "workingApplicationKey": "YOUR_THEME_APPLICATION_HERE"
-=======
-  "appKey": "SYNCAPP_APP_KEY",
-  "sharedSecret": "SYNCAPP_SHARED_SECRET_HERE",
-  "baseUrl": "https://home.mozu.com",
-  "developerAccountId": DEVELOPER_ACCOUNT_ID,
-  "developerAccount": {
-    "emailAddress": "YOUR_DEVELOPER_ACCOUNT_EMAIL"
-  },
-  "workingApplicationKey": "THEME_APP_ID"
->>>>>>> 7ab7b8338e269b990d79ec2e4c547ec39ae8db96
 }

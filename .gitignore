@@ -17,6 +17,7 @@ grunt/assets
 
 # Compiled assets
 /compiled
+/widgets
 
 # Mozu configs
 mozu.config.json
