@@ -5,6 +5,10 @@ module.exports = function(grunt) {
 
 	'use strict';
 
+
+	// @TODO: figure out how to parse themeSetting references from theme-ui.json and widget configs
+
+
 	// load modules
 	var _     = require('lodash')
 		, chalk = require('chalk')
@@ -12,13 +16,8 @@ module.exports = function(grunt) {
 		, EOL   = require('os').EOL
 		, temp
 
-		, jsonify = function(data, color, space) {
-
-				color = color ? color : 'cyan';
-				space = space ? space : 2;
-
-				return chalk[color](JSON.stringify(data, null, space));
-			}
+		, helpers = require('./helpers.js')
+		, jsonify = helpers.jsonify
 		;
 
 
@@ -53,10 +52,6 @@ module.exports = function(grunt) {
 			, theme = grunt.file.readJSON(path.resolve(process.cwd(), 'theme.json'))
 			;
 
-			grunt.log.debug(jsonify(theme));
-
-			grunt.log.debug(jsonify(files));
-
 
 			// get all the theme settings
 
@@ -66,8 +61,8 @@ module.exports = function(grunt) {
 
 			// get reference theme if available
 			if (theme.about.extends.match(/core\d/i)) {
-				temp = require(path.resolve('.', 'references', theme.about.extends, 'theme.json')).settings;
-				settings = _.merge(temp, settings);
+				temp      = require(path.resolve('.', 'references', theme.about.extends, 'theme.json')).settings;
+				settings  = _.merge(temp, settings);
 			}
 
 
@@ -130,12 +125,12 @@ module.exports = function(grunt) {
 
 
 						// check if we have defined the current theme setting
-						if (!theme.settings[settingName] && theme.settings[settingName] !== false) {
+						if (!settings[''+settingName+''] && settings[''+settingName+''] !== false) {
 
 							passed = false;
 
 							grunt.log.warn([
-								chalk.bgCyan(settingName)
+								chalk.bgYellow.bold.black(settingName)
 							, 'is not defined'
 							, chalk.magenta('>>')
 							, 'referenced in'
@@ -151,7 +146,7 @@ module.exports = function(grunt) {
 			});
 
 
-			grunt.log.writeln('');
+			// grunt.log.writeln('');
 
 			// setup messaging for end of task
 			if (passed) {

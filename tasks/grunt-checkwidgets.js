@@ -9,6 +9,9 @@ module.exports = function(grunt) {
 		, _       = require('lodash')
 		, EOL     = require('os').EOL
 
+		, helpers = require('./helpers.js')
+		, jsonify = helpers.jsonify
+
 
 		// Sizing for widget preview stuff
 		, maxWidth      = 80
