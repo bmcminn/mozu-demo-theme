@@ -3,116 +3,132 @@
 
 module.exports = function(grunt) {
 
-  'use strict';
+	'use strict';
 
-  // load modules
-  var _     = require('lodash')
-    , chalk = require('chalk')
-    , path  = require('path')
-    , EOL   = require('os').EOL
-    , theme = grunt.file.readJSON('./theme.json')
-    ;
+	// load modules
+	var _     = require('lodash')
+		, chalk = require('chalk')
+		, path  = require('path')
+		, EOL   = require('os').EOL
+		, theme = grunt.file.readJSON('./theme.json')
+		, temp
 
-  // rename task
-  grunt.registerTask(
-    'checklabels'
-  , 'Checks your template files for label references that don\'t exist'
-  , function() {
+		, jsonify = function(data, spaces) {
+				spaces = spaces ? spaces : 2;
+				return JSON.stringify(data, null, spaces);
+			}
+		;
 
-      var files   = grunt.file.expand('templates/**/*.hypr*')
-        , i18ns   = grunt.file.expand('labels/**/*.json')
-        , core    = theme.about.extends
-        , labels  = []
-        ;
+	// rename task
+	grunt.registerTask(
+		'checklabels'
+	, 'Static analysis missing label references in theme files'
+	, function() {
 
-      // iterate over our template files and build a collectoin of labels we find
-      _.each(files, function(file) {
-        var matches = grunt.file.read(file).match(/(labels\..+?)[\)\%\}\|]/gi) || []
-          ;
+			var files   = grunt.file.expand('templates/**/*.hypr*')
+				, i18ns   = grunt.file.expand('labels/**/*.json')
+				, core    = theme.about.extends
+				, labels  = []
+				, passed  = true
+				;
 
-        // if we have labels
-        if (matches.length>0) {
-          _.each(matches, function(label) {
-            labels.push({
-              label: label
-                      .replace(/\s+|[\)\%\}\|]/g, '')
-                      .replace(/labels\./gi, '')
-            , file: file
-            });
-          });
-        }
+			// iterate over our template files and build a collectoin of labels we find
+			_.each(files, function(file) {
+				var matches = grunt.file.read(file).match(/(labels\..+?)[\)\%\}\|]/gi) || []
+					;
 
-      });
+				// if we have labels
+				if (matches.length>0) {
+					_.each(matches, function(label) {
+						labels.push({
+							label: label
+											.replace(/\s+|[\)\%\}\|]/g, '')
+											.replace(/labels\./gi, '')
+						, file: file
+						});
+					});
+				}
 
-      grunt.log.debug('labels found:', JSON.stringify(labels, null, 2));
+			});
 
-      // iterate over each language file we've defined and validate it
-      _.each(i18ns, function(i18n) {
-        var lang      = i18n.match(/\/([\S]+.json)$/)[1]
-          , coreFile  = ''
-          ;
+			grunt.log.debug('labels found:', jsonify(labels));
 
-        grunt.log.ok(
-          'Checking'
-        , chalk.yellow(i18n)
-        );
+			// iterate over each language file we've defined and validate it
+			_.each(i18ns, function(i18n) {
+				var lang      = i18n.match(/\/([\S]+.json)$/)[1]
+					, coreFile  = ''
+					;
 
-        // check if we're extending the core theme and grab the original i18n file if available
-        if (core && core.match(/core/)) {
-          coreFile = path.resolve(process.cwd(), 'references', core, 'labels', lang);
+				grunt.log.ok(
+					'Checking'
+				, chalk.yellow(i18n)
+				);
 
-          // if the core label file doesn't exist
-          if (!grunt.file.exists(coreFile)) {
+				// check if we're extending the core theme and grab the original i18n file if available
+				if (core && core.match(/core/)) {
+					coreFile = path.resolve(process.cwd(), 'references', core, 'labels', lang);
 
-            // we'll just ignore it
-            coreFile = null;
-          }
-        }
+					// if the core label file doesn't exist
+					if (!grunt.file.exists(coreFile)) {
 
-
-        // merge the current labels file into the core file we found
-        if (coreFile) {
-          i18n = _.merge(
-            grunt.file.readJSON(coreFile) || {}
-          , grunt.file.readJSON(i18n)
-          );
-        // or just get the current labels file contents
-        } else {
-          i18n = grunt.file.readJSON(i18n);
-        }
+						// we'll just ignore it
+						coreFile = null;
+					}
+				}
 
 
-        // iterate over the labels collection we pulled from our templates and make sure they are defined
-        _.each(labels, function(label) {
-          if (!i18n[label.label]) {
-            var maxLength = 24
-              , refFile = label.file
-              , label = 'labels.'+label.label
-              , message = ''
-              ;
+				// merge the current labels file into the core file we found
+				if (coreFile) {
+					i18n = _.merge(
+						grunt.file.readJSON(coreFile) || {}
+					, grunt.file.readJSON(i18n)
+					);
+				// or just get the current labels file contents
+				} else {
+					i18n = grunt.file.readJSON(i18n);
+				}
 
-            if (label.length < maxLength) {
-              label += Array(maxLength-label.length).join(' ');
-            }
 
-            message = [
-                chalk.cyan(label)
-              , 'is not defined in'
-              , chalk.yellow(lang)
-              ].join(' ')
-              ;
+				// iterate over the labels collection we pulled from our templates and make sure they are defined
+				_.each(labels, function(label) {
+					if (!i18n[label.label]) {
 
-            grunt.log.warn(
-              message
-            , chalk.magenta('>>')
-            , 'referenced in'
-            , chalk.red(refFile)
-            );
-          }
-        });
+						// set fail condition
+						passed = false;
 
-        grunt.log.writeln('');
+						var maxLength = 24
+							, refFile = label.file
+							, label = 'labels.'+label.label
+							, message = ''
+							;
 
-      });
-  });
+						message = [
+								chalk.bgCyan(label)
+							, 'is not defined in'
+							, chalk.yellow(lang)
+							].join(' ')
+							;
+
+						grunt.log.warn(
+							message
+						, chalk.magenta('>>')
+						, 'referenced in'
+						, chalk.red(refFile)
+						);
+					}
+				});
+			});
+
+
+			// setup messaging for end of task
+			if (passed) {
+				grunt.log.ok('Looks good to me! :)');
+			} else {
+				grunt.log.warn(EOL, EOL, "Looks like you've got some more work to do...");
+			}
+
+
+			grunt.log.writeln('');
+
+	});
 };

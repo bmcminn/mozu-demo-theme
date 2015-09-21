@@ -1,6 +1,18 @@
 'use strict';
 
-var coreVersions = [7];
+var path = require('path')
+	, theme = require(path.resolve('.', 'theme.json'))
+	, core
+	, coreVersions = []
+	;
+
+
+if (theme.about.extends.match(/core\d/i)) {
+	core = theme.about.extends.replace(/core/, '');
+}
+
+coreVersions.push(core ? parseInt(core) : 7);
+
 
 var task = function(grunt) {
   grunt.registerTask('checkreferences', 'Check to see if core has updated', function() {
