@@ -9,10 +9,10 @@
 		{% include "modules/trailing-scripts" %}
 		{% cms_resources %}
 	{% endif %}
-
 </head>
 
 <body style="padding: 0; background-color: #fff; min-width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; margin: 0; line-height: 19px; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; text-align: left; font-size: 14px; width: 100%;">
+
 	{% if pageContext.isEditMode && pageContext.isDebugMode %}
 		{% include "modules/debug-emails" %}
 	{% endif %}
@@ -22,6 +22,11 @@
 			<td class="center" align="center" valign="top" style="word-break: break-word; font-size: 14px; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; -webkit-hyphens: auto; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; text-align: center; border-collapse: collapse;">
 				<center style="width: 100%;">
 					<table class="container" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; padding: 0; vertical-align: top; text-align: inherit; width: 580px; margin: 0 auto;">
+						<thead>
+							<th>
+								</th></thead><td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><img src="https://{{ domainName }}/resources/images/email-banner.jpg" style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; float: left; clear: both; display: block;"></td>
+							
+						
 						<tr style="padding: 0; vertical-align: top; text-align: left;">
 							<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 								<table class="row" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: top; text-align: left; padding: 0; width: 100%; position: relative; display: block;">

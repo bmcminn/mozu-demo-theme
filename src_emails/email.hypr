@@ -9,10 +9,10 @@
 		{% include "modules/trailing-scripts" %}
 		{% cms_resources %}
 	{% endif %}
-
 </head>
 
 <body>
+
 	{% if pageContext.isEditMode && pageContext.isDebugMode %}
 		{% include "modules/debug-emails" %}
 	{% endif %}
@@ -22,6 +22,11 @@
 			<td class="center" align="center" valign="top">
 				<center>
 					<table class="container">
+						<thead>
+							<th>
+								<td><img src="https://{{ domainName }}/resources/images/email-banner.jpg"></td>
+							</th>
+						</thead>
 						<tr>
 							<td>
 								<table class="row">

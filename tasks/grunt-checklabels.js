@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 							;
 
 						message = [
-								chalk.bgCyan(label)
+								chalk.bgCyan.black(label)
 							, 'is not defined in'
 							, chalk.yellow(lang)
 							].join(' ')
