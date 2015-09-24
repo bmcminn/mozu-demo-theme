@@ -78,12 +78,6 @@ define([
       }
 
 
-      // if the youtube link has a privacy url
-      if ($this.video.config.match(regex.youtubePrivacy)) {
-        $this.video.url.replace(regex.youtubeUrl, 'youtube-nocookie');
-      }
-
-
       // TODO: accomodate all these variable settings...
 
       // https://player.vimeo.com/video/129806257?
