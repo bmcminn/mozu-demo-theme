@@ -1,0 +1,4 @@
+
+{% require_script "widgets/slideshow" %}
+
+{# TODO: add slideshow markup container here #}

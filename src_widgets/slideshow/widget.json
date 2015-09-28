@@ -1,0 +1,89 @@
+{
+	"id": "namespace~slideshow",
+	"displayName": "Slideshow",
+	"displayTemplate": "cms/slideshow",
+	"icon": "/resources/admin/widgets/slideshow.png",
+	"validPageTypes": [
+		"*"
+	],
+	"defaultConfig": {
+		"anchor": "100%",
+		"xtype": "mz-input-text",
+	},
+	"editViewFields": [
+		{
+			"xtype": "label",
+			"title": "Slideshow Options"
+		},
+
+		{
+			"name": "slideshow~PauseOnHover",
+			"fieldLabel": "Pause slideshow on hover",
+			"xtype": "mz-input-checkbox"
+		},
+
+		{
+			"name": "slideshow~PauseOnHover",
+			"fieldLabel": "Pause slideshow on hover",
+			"xtype": "mz-input-checkbox"
+		},
+
+
+
+
+		{
+			"xtype": "label",
+			"title": "Slide configurations"
+		},
+
+
+		{
+			"name": "slideUrl1",
+			"fieldLabel": "Slide 1 Url"
+		},
+		{
+			"name": "slideImage1",
+			"fieldLabel": "Slide 1 Image"
+		},
+
+
+		{
+			"name": "slideUrl2",
+			"fieldLabel": "Slide 2 Url"
+		},
+		{
+			"name": "slideImage2",
+			"fieldLabel": "Slide 2 Image"
+		},
+
+
+		{
+			"name": "slideUrl3",
+			"fieldLabel": "Slide 3 Url"
+		},
+		{
+			"name": "slideImage3",
+			"fieldLabel": "Slide 3 Image"
+		},
+
+
+		{
+			"name": "slideUrl4",
+			"fieldLabel": "Slide 4 Url"
+		},
+		{
+			"name": "slideImage4",
+			"fieldLabel": "Slide 4 Image"
+		},
+
+
+		{
+			"name": "slideUrl5",
+			"fieldLabel": "Slide 5 Url"
+		},
+		{
+			"name": "slideImage5",
+			"fieldLabel": "Slide 5 Image"
+		}
+	]
+}
