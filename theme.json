@@ -151,7 +151,7 @@
       "id": "namespace~slideshow",
       "displayName": "Slideshow",
       "displayTemplate": "cms/slideshow",
-      "icon": "/resources/admin/widgets/slideshow.png",
+      "icon": "/resources/admin/widgets/09_slideshow.png",
       "validPageTypes": [
         "*"
       ],
