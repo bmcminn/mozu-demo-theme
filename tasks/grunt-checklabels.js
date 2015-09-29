@@ -6,18 +6,19 @@ module.exports = function(grunt) {
 	'use strict';
 
 	// load modules
-	var _     = require('lodash')
-		, chalk = require('chalk')
-		, path  = require('path')
-		, EOL   = require('os').EOL
-		, theme = grunt.file.readJSON('./theme.json')
-		, temp
+	var helpers = require('./helpers.js')
+		, jsonify = helpers.jsonify
 
-		, jsonify = function(data, spaces) {
-				spaces = spaces ? spaces : 2;
-				return JSON.stringify(data, null, spaces);
-			}
+		, _       = require('lodash')
+		, chalk   = require('chalk')
+		, path    = require('path')
+		, EOL     = require('os').EOL
+		, theme   = grunt.file.readJSON('./theme.json')
+
+
+		, temp
 		;
+
 
 	// rename task
 	grunt.registerTask(
@@ -42,14 +43,15 @@ module.exports = function(grunt) {
 					_.each(matches, function(label) {
 						labels.push({
 							label: label
-											.replace(/\s+|[\)\%\}\|]/g, '')
-											.replace(/labels\./gi, '')
+									.replace(/\s+|[\)\%\}\|]/g, '')
+									.replace(/labels\./gi, '')
 						, file: file
 						});
 					});
 				}
 
 			});
+
 
 			grunt.log.debug('labels found:', jsonify(labels));
 
@@ -59,10 +61,12 @@ module.exports = function(grunt) {
 					, coreFile  = ''
 					;
 
+
 				grunt.log.ok(
 					'Checking'
 				, chalk.yellow(i18n)
 				);
+
 
 				// check if we're extending the core theme and grab the original i18n file if available
 				if (core && core.match(/core/)) {

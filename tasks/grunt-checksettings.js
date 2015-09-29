@@ -57,8 +57,6 @@ module.exports = function(grunt) {
 
 			settings = theme.settings;
 
-			// console.log(jsonify(settings));
-
 			// get reference theme if available
 			if (theme.about.extends.match(/core\d/i)) {
 				temp      = require(path.resolve('.', 'references', theme.about.extends, 'theme.json')).settings;
@@ -103,7 +101,6 @@ module.exports = function(grunt) {
 
 					grunt.log.debug(
 						chalk.yellow(file.location)
-					, EOL
 					, jsonify(file.settings)
 					);
 

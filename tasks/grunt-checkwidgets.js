@@ -9,6 +9,9 @@ module.exports = function(grunt) {
 		, _       = require('lodash')
 		, EOL     = require('os').EOL
 
+		, helpers = require('./helpers.js')
+		, jsonify = helpers.jsonify
+
 
 		// Sizing for widget preview stuff
 		, maxWidth      = 80
@@ -36,9 +39,6 @@ module.exports = function(grunt) {
 					if (highlight) {
 						color = ['bg', color.toUpperCase().substr(0,1), color.substr(1)].join('');
 					}
-
-					// console.log(color);
-					// return;
 
 					return [
 							'|'
@@ -171,7 +171,11 @@ module.exports = function(grunt) {
 
 						// check if we have a fieldLabel
 						if (!conf.fieldLabel) {
-							conf.fieldLabel = chalk.red('missing field label');
+							if (!conf.xtype.match(/mz-input-/)) {
+								conf.fieldLabel = '';
+							} else {
+								conf.fieldLabel = chalk.red('missing field label');
+							}
 						}
 
 
@@ -182,12 +186,17 @@ module.exports = function(grunt) {
 								conf.fieldLabel += chalk.red(' <- *required');
 							}
 
-							widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+							// if (!conf.fieldLabel === '') {
+								// widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+							// }
 
 							switch(conf.xtype) {
 
 								// text field?
 								case 'mz-input-text': {
+
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									var opts = {
 												text: '(text goes here)'
 											}
@@ -208,10 +217,12 @@ module.exports = function(grunt) {
 
 								// image?
 								case 'mz-input-image': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									widgetAdmin.push(helpers.writeLine(' _________________',  'yellow'));
 									widgetAdmin.push(helpers.writeLine('|                 |', 'yellow'));
 									widgetAdmin.push(helpers.writeLine('|      Image      |', 'yellow'));
-									widgetAdmin.push(helpers.writeLine('|     Preveiw     |', 'yellow'));
+									widgetAdmin.push(helpers.writeLine('|     Preview     |', 'yellow'));
 									widgetAdmin.push(helpers.writeLine('|      Here       |', 'yellow'));
 									widgetAdmin.push(helpers.writeLine('|_________________|', 'yellow'));
 									break;
@@ -220,6 +231,8 @@ module.exports = function(grunt) {
 
 								// category?
 								case 'mz-input-category': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									widgetAdmin.push(helpers.writeLine(' -------------------------',  'green'));
 									widgetAdmin.push(helpers.writeLine('| Category Dropdown     ^ |', 'green'));
 									widgetAdmin.push(helpers.writeLine('|=========================|', 'green'));
@@ -235,8 +248,10 @@ module.exports = function(grunt) {
 								}
 
 
-								// category?
+								// category multi?
 								case 'mz-input-categorymulti': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									widgetAdmin.push(helpers.writeLine(' -------------------------',  'green'));
 									widgetAdmin.push(helpers.writeLine('| Category Dropdown     ^ |', 'green'));
 									widgetAdmin.push(helpers.writeLine('|=========================|', 'green'));
@@ -254,6 +269,7 @@ module.exports = function(grunt) {
 
 								// dropdown?
 								case 'mz-input-dropdown': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
 
 									var dropdown = {
 												topBottom:    [' ', Array(dropdownWidth - pipeCount).join('-'), ''].join('')
@@ -298,6 +314,8 @@ module.exports = function(grunt) {
 
 								// product?
 								case 'mz-input-product': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									widgetAdmin.push(helpers.writeLine(' ---------------------------',  'green'));
 									widgetAdmin.push(helpers.writeLine('| Product Dropdown        ^ |', 'green'));
 									widgetAdmin.push(helpers.writeLine('|===========================|', 'green'));
@@ -313,8 +331,10 @@ module.exports = function(grunt) {
 								}
 
 
-								// productmulti?
+								// product multi?
 								case 'mz-input-productmulti': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									widgetAdmin.push(helpers.writeLine(' ---------------------------',  'green'));
 									widgetAdmin.push(helpers.writeLine('| Product Multi Dropdown  ^ |', 'green'));
 									widgetAdmin.push(helpers.writeLine('|===========================|', 'green'));
@@ -332,50 +352,83 @@ module.exports = function(grunt) {
 
 								// TODO: Add remaining control preview types below
 								case 'mz-input-checkbox': {
+
+									// TODO: add check for default "true"
+									widgetAdmin.push(helpers.writeLine('[ ] ' + conf.fieldLabel, 'green'));
 									break;
 								}
 
+
+								case 'label': {
+									conf.text = conf.text ? conf.text : chalk.red('missing `text` field');
+									widgetAdmin.push(helpers.writeLine(chalk.bold(conf.text), 'yellow'));
+									break;
+								}
+
+
 								case 'mz-input-number': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-discount': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-discountmulti': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-navnode': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-navnodemulti': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-date': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-code': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-richtext': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-textarea': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-selectmulti': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 
 								case 'mz-input-color': {
+									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
+
 									break;
 								}
 

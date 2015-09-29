@@ -55,6 +55,7 @@
     {% block stylesheets %}
       {{ "stylesheets/storefront.less"|stylesheet_tag("default") }}
       {{ "stylesheets/overrides.less"|stylesheet_tag("default") }}
+      {{ "stylesheets/widgets.less"|stylesheet_tag("default") }}
     {% endblock stylesheets %}
 
     {% block head-tag-scripts %}

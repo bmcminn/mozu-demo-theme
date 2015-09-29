@@ -30,6 +30,11 @@ module.exports = function(grunt) {
 		, path  = require('path')
 		;
 
+	// load JSON.minify
+	JSON.minify = function(string) {
+		return JSON.parse(string.replace(/\/\/.+/g, ''));
+	};
+
 
 	grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
 
@@ -64,35 +69,27 @@ module.exports = function(grunt) {
 			;
 
 
-		// determine if widgets.less is imported via storefront.less
-		if (grunt.file.exists(paths.storefrontLess)) {
+		// make widgets.less a standalone import for page.hypr
+		lessFiles.push('// base styles/configs');
+		lessFiles.push('@import "/stylesheets/base/colors.less";');
+		lessFiles.push('@import "/stylesheets/base/variables.less";');
+		lessFiles.push('');
+		lessFiles.push('// widget imports');
 
-			// get storefront.less from the core theme we're extending
-			temp = grunt.file.read(paths.storefrontLess);
 
-			// if we haven't imported 'widgest.less' yet
-			if (!temp.match(/widgets\.less/)) {
+		// check if there is a reference to widgets.less in page.hypr
+		if (grunt.file.exists(path.resolve('.','tempaltes','page.hypr'))) {
+			temp = grunt.file.read(path.resolve('.','tempaltes','page.hypr'));
 
-				// append the "custom widgets" section so we can inject stuff
-				temp += [
-					'',
-					'// Imported Widgets',
-					'@import "' + paths.less.substring(1) + 'widgets.less";'
-				].join('\n');
-
-				grunt.log.ok('adding import for', chalk.cyan('widgets.less'), 'to', chalk.cyan(destPath(paths.storefrontLess)));
-
-				// write our file to the stylesheets directory
-				grunt.file.write(paths.storefrontLess, temp);
-
+			if (!temp.match('widgets.less')) {
+				grunt.log.warn('You should add the following snippet to /templates/page.hypr:');
+				grunt.log.warn(chalk.yellow(
+      		'{{ "stylesheets/widgets.less"|stylesheet_tag("default") }}'
+				));
 			}
 
 		} else {
-
-			// error out that the developer should copy this over from their reference theme
-			grunt.log.warn(chalk.cyan('storefront.less'), chalk.red('doesn\'t exist...'));
-			grunt.log.warn(chalk.yellow('copy one from the core theme of your choice.'));
-			return;
+			grunt.log.warn('You should probably add /templates/page.hypr to your theme.')
 		}
 
 
@@ -118,7 +115,8 @@ module.exports = function(grunt) {
 		_.each(grunt.file.expand('./src_widgets/**/widget.json'), function(widgetJsonFile) {
 
 			// get our widget config
-			temp  = grunt.file.readJSON(widgetJsonFile);
+			temp  = JSON.minify(grunt.file.read(widgetJsonFile));
+			// temp  = grunt.file.readJSON(widgetJsonFile);
 
 			// get directory paths
 			currentDir  = path.dirname(widgetJsonFile);

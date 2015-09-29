@@ -1,6 +1,7 @@
 {
   "name": "demo-theme",
   "version": "1.0.0",
+  "description": "",
   "repository": "https://github.com/bmcminn/mozu-demo-theme",
   "license": "MIT",
   "config": {
@@ -10,7 +11,8 @@
   },
   "devDependencies": {
     "async": "^0.2",
-    "chalk": "~1.0.0",
+    "better-console": "^0.2.4",
+    "chalk": "^1.1.1",
     "grunt": "^0.4",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-compress": "^0.6",
