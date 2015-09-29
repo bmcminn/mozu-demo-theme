@@ -14,7 +14,7 @@
 				<td class="mz-ordersummary-item-product">
 					{{ item.product.name }}
 
-					{% if item.product.productUsage == 'Bundle' %}
+					{% if item.product.productUsage|lower == 'bundle' %}
 						<dl class="mz-propertylist">
 							{% for bundledProduct in item.product.bundledProducts %}
 								<dt>{{ bundledProduct.productCode }}</dt>&nbsp;

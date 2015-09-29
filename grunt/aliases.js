@@ -9,6 +9,13 @@ module.exports = function(grunt) {
 	, 'compress'
 	]);
 
+	grunt.registerTask('check', [
+		'checklabels'
+	, 'checkwidgets'
+	, 'checksettings'
+	, 'checkreferences'
+	]);
+
 	grunt.registerTask('build', [
 		'widgetize'
 	, 'lintify'

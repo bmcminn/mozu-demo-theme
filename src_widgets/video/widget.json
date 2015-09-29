@@ -1,19 +1,103 @@
 {
-  "id": "video",
-  "displayName": "Video",
-  "displayTemplate": "cms/video",
-  "icon": "/resources/admin/widgets/08_video.png",
-  "validPageTypes": [
-    "*"
-  ],
-  "defaultConfig": {
-    "anchor": "100%",
-    "xtype": "mz-input-text"
-  },
-  "editViewFields": [
-    {
-      "fieldLabel": "Video URL",
-      "name": "url"
-    }
-  ]
+	"id": "video",
+	"displayName": "Video",
+	"displayTemplate": "cms/video",
+	"icon": "/resources/admin/widgets/08_video.png",
+	"validPageTypes": [
+		"*"
+	],
+
+	"defaultConfig": {
+		"anchor": "100%",
+		"xtype": "mz-input-checkbox",
+
+		"autoplay": false,
+		"loop": false,
+		"timestart": "0:00",
+
+		"youtube-rel": false,
+		"youtube-controls": true,
+		"youtube-showinfo": true,
+
+		"vimeo-portrait": true,
+		"vimeo-title": true,
+		"vimeo-byline": true,
+		"vimeo-color": "#00adef"
+	},
+
+	"editViewFields": [
+		{
+			"fieldLabel": "Video ID or URL",
+			"name": "url",
+			"anchor": "90%"
+		},
+
+		{
+			"xtype": "label",
+			"text": "Optional Video config",
+			"margin": "20px 0 0 0"
+		},
+			{
+				"fieldLabel": "Autoplay this video",
+				"xtype": "mz-input-checkbox",
+				"name": "autoplay"
+			},
+			{
+				"fieldLabel": "Loop this video",
+				"xtype": "mz-input-checkbox",
+				"name": "loop"
+			},
+			{
+				"fieldLabel": "Start video at specific time (ex: 13:31)",
+				"name": "timestart"
+			},
+
+
+		{
+			"xtype": "label",
+			"text": "YouTube Settings"
+		},
+			{
+				"fieldLabel": "Show Related videos after video",
+				"xtype": "mz-input-checkbox",
+				"name": "youtube-rel"
+			},
+			{
+				"fieldLabel": "Show video controls",
+				"xtype": "mz-input-checkbox",
+				"name": "youtube-controls"
+			},
+			{
+				"fieldLabel": "Show video info",
+				"xtype": "mz-input-checkbox",
+				"name": "youtube-showinfo"
+			},
+
+
+		{
+			"xtype": "label",
+			"text": "Vimeo Settings"
+		},
+			{
+				"fieldLabel": "Show Portrait",
+				"xtype": "mz-input-checkbox",
+				"name": "vimeo-portrait"
+			},
+			{
+				"fieldLabel": "Show Title",
+				"xtype": "mz-input-checkbox",
+				"name": "vimeo-title"
+			},
+			{
+				"fieldLabel": "Show Byline",
+				"xtype": "mz-input-checkbox",
+				"name": "vimeo-byline"
+			},
+			{
+				"fieldLabel": "Player controls color",
+				"xtype": "mz-input-color",
+				"name": "vimeo-color"
+			}
+
+	]
 }
