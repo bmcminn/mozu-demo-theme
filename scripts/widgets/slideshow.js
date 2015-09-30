@@ -1,6 +1,6 @@
 define([
   'modules/jquery-mozu'
-, 'shim!vendor/slick[jQuery=jquery]'
+, 'vendor/slick'
 ], function($) {
 
 		var temp
