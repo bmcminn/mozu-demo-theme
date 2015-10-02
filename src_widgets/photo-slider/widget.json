@@ -9,10 +9,11 @@
 
 	"defaultConfig": {
 		"anchor": "100%",
-		"xtype": "mz-input-checkbox",
+		"xtype": "mz-input-checkbox"
 	},
 
 	"editViewFields": [
+
 		// {
 		// 	"fieldLabel": "Video ID or URL",
 		// 	"name": "url",

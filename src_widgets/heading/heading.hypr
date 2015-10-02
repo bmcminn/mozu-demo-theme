@@ -1,4 +1,4 @@
 
-{{ '<{0} class="mz-heading-module">'|string_format(model.config.headingType)}}
+{{ '<{0} class="mz-heading-module">'|string_format(model.config.headingType) }}
   {{ model.config.headingText|title }}
-{{ "</{0}>"|string_format(model.config.headingType)}}
+{{ "</{0}>"|string_format(model.config.headingType) }}
