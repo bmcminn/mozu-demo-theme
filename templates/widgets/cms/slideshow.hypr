@@ -1,8 +1,8 @@
 
 {% require_script "widgets/slideshow" %}
 
-{# TODO: consider allocating this into it's own stylesheet #}
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css"/>
+{# <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.8/slick-theme.css"/> #}
 
 
 <div data-mz-widget="slideshow" data-slick="{% json_attribute model.config %}" data-widget-config="{% json_attribute model %}">
@@ -33,26 +33,6 @@
 			<div>
 				<a href="{{ slide.slideUrl3 }}">
 					<img src="{{ slide.slideImage3.imageUrl }}" alt="{% if slide.slideImage3.altText %}{{ slide.slideImage3.altText }}{% endif %}">
-				</a>
-			</div>
-		{% endif %}
-
-
-		{# SLIDE FOUR #}
-		{% if slide.slideImage4 %}
-			<div>
-				<a href="{{ slide.slideUrl4 }}">
-					<img src="{{ slide.slideImage4.imageUrl }}" alt="{% if slide.slideImage4.altText %}{{ slide.slideImage4.altText }}{% endif %}">
-				</a>
-			</div>
-		{% endif %}
-
-
-		{# SLIDE FIVE #}
-		{% if slide.slideImage5 %}
-			<div>
-				<a href="{{ slide.slideUrl5 }}">
-					<img src="{{ slide.slideImage5.imageUrl }}" alt="{% if slide.slideImage5.altText %}{{ slide.slideImage5.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}

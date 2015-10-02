@@ -33,12 +33,16 @@
 									<tr>
 										<td class="wrapper last">
 
-											<div>{{ pageContext.cmsContext.page.document.properties.html_1|safe }}</div>
+											<div>
+												{{ pageContext.cmsContext.page.document.properties.html_1|safe }}
+											</div>
 
 											{% block body-content %}
 											{% endblock body-content %}
 
-											<div>{{ pageContext.cmsContext.page.document.properties.html_2|safe }}</div>
+											<div>
+												{{ pageContext.cmsContext.page.document.properties.html_2|safe }}
+											</div>
 
 										</td>
 									</tr>
@@ -69,5 +73,10 @@
 			</td>
 		</tr>
 	</table> <!-- end main container -->
+
+	{% block email-tracking-pixel %}
+		{# TODO: add snippet for tracking pixel here #}
+	{% endblock email-tracking-pixel %}
+
 </body>
 </html>
