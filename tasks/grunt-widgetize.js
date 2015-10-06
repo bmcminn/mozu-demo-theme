@@ -116,20 +116,35 @@ module.exports = function(grunt) {
 		_.each(grunt.file.expand('./src_widgets/**/widget.json'), function(widgetJsonFile) {
 
 			// get our widget config
-			temp  = JSON.minify(grunt.file.read(widgetJsonFile));
-			// temp  = grunt.file.readJSON(widgetJsonFile);
+			var widgetDef  = JSON.minify(grunt.file.read(widgetJsonFile));
+			// widgetDef  = grunt.file.readJSON(widgetJsonFile);
 
 			// get directory paths
 			currentDir  = path.dirname(widgetJsonFile);
-			writeDir    = path.dirname(temp.displayTemplate);
+			writeDir    = path.dirname(widgetDef.displayTemplate);
 
 
-			grunt.log.subhead('Widget:', temp.displayName);
+			grunt.log.subhead('Widget:', widgetDef.displayName);
 
 
 			// add our widget config to theme.json 'widgets'
 			grunt.log.ok('appending widget config into', chalk.cyan('theme.json'), chalk.magenta('> widgets'));
-			theme.widgets.push(temp);
+			theme.widgets.push(widgetDef);
+
+
+			// merge label definitions
+			grunt.log.ok('merging label definitions');
+
+			// collect all widget labels files
+
+
+			// iterate over labels files
+
+				// if ./labels/file exists
+					// merge files
+
+				// else
+					// copy file into ./labels.file
 
 
 			// iterate over all files in the widget directory
