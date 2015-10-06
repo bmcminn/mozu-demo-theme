@@ -1,0 +1,43 @@
+
+[data-mz-widget="video-embed"] {
+	position: relative;
+	padding: 0;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+
+	iframe,
+	object,
+	embed ,
+	noscript {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	// center the noscript content on the video widget
+	noscript {
+		// position: absolute;
+		// top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 0;
+		// width: 100%;
+    text-align: center;
+	}
+
+}
+
+
+
+.no-js {
+
+	[data-mz-widget="video-embed"] {
+		iframe {
+			background-color: #e3e3e3;
+		}
+	}
+
+}

@@ -11,24 +11,9 @@
 {% endcomment %}
 
 <div data-mz-widget="video-embed" data-mz-video-data="{{ model.config.url|default(model) }}">
-  <noscript>Please enable JavaScript in order to load this Video.</noscript>
+  <iframe src="" width="560" height="349"></iframe>
+	<noscript>{{ label.nojsVideoLoad }}</noscript>
 </div>
 
 
-{% comment %}
-<style type="text/css">
-  [data-mz-widget="youtube-embed"] {
-    display: block;
-    width: 100%;
-    opacity: 0;
-  }
-  [data-mz-widget="youtube-embed"].fade-in {
-    opacity: 1;
-    transition: opacity 0.2s linear;
-  }
-
-  .fade-in {
-    opacity: 1;
-  }
-</style>
-{% endcomment %}
+{# https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php #}
