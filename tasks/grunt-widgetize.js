@@ -143,7 +143,7 @@ module.exports = function(grunt) {
 				// copy our vendor scripts
 				if (subdir === 'vendor') {
 					temp = path.resolve(paths.dest.vendor, filename);
-					grunt.log.ok('copying', chalk.magenta(filename), 'to', chalk.yellow(destPath(temp)));
+					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
 					assets.push(temp);
 				}
@@ -151,7 +151,7 @@ module.exports = function(grunt) {
 				// copy our js files over
 				if (subdir === undefined && filename.match(/\.js/)) {
 					temp = path.resolve(paths.dest.js, filename);
-					grunt.log.ok('copying', chalk.magenta(filename), 'to', chalk.yellow(destPath(temp)));
+					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
 					assets.push(temp);
 				}
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 				// copy our hypr and hypr.live files over
 				if (filename.match(/\.hypr(?:\.live)?/)) {
 					temp = path.resolve(paths.dest.hypr, writeDir, filename);
-					grunt.log.ok('copying', chalk.red(filename), 'into', chalk.yellow(destPath(temp)));
+					grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
 					assets.push(temp);
 				}
@@ -176,7 +176,7 @@ module.exports = function(grunt) {
 				// copy our widget icons to our resources/admin/widgets directory
 				if (filename.match(/\.(png|jpeg|jpg|gif)/)) {
 					temp = path.resolve(paths.dest.icons, filename);
-					grunt.log.ok('copying', chalk.green(filename), 'to', chalk.yellow(destPath(temp)));
+					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
 					assets.push(temp);
 				}
