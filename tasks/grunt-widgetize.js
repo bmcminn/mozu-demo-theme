@@ -48,6 +48,7 @@ module.exports = function(grunt) {
 				, assetsJson: path.resolve(gruntFolder, 'assets.json')
 				, storefrontLess: path.resolve('./stylesheets', 'storefront.less')
 				, dest: {
+						labels: './labels',
 						hypr:   './templates/widgets',
 						less:   './stylesheets/widgets',
 						js:     './scripts/widgets',
@@ -58,6 +59,7 @@ module.exports = function(grunt) {
 
 			, assets    = []
 			, lessFiles = []
+			, labels    = {}
 
 			, basepathLength = path.resolve(__dirname, '..').length
 			, currentDir
@@ -112,6 +114,18 @@ module.exports = function(grunt) {
 		assets = [];
 
 
+		// labels files
+		labels.origin = grunt.file.expand(path.resolve('.', 'labels', '*.json'));
+		labels.langs  = [];
+
+		_.each(labels.origin, function(lang) {
+			labels.langs.push({
+				name:   path.basename(lang, '.json')
+			, labels: grunt.file.readJSON(lang)
+			});
+		});
+
+
 		// iterate over each widget.json config we find
 		_.each(grunt.file.expand('./src_widgets/**/widget.json'), function(widgetJsonFile) {
 
@@ -136,15 +150,35 @@ module.exports = function(grunt) {
 			grunt.log.ok('merging label definitions');
 
 			// collect all widget labels files
-
+			labels.files  = grunt.file.expand(path.resolve(currentDir, 'labels', '*.json'));
 
 			// iterate over labels files
+			_.each(labels.files, function(langFile) {
 
-				// if ./labels/file exists
-					// merge files
+				var ext       = path.basename(langFile, '.json')
+					, langIndex =
+							_.findIndex(labels.langs, function(lang) {
+								return lang.name == ext;
+							})
+					;
 
-				// else
-					// copy file into ./labels.file
+				// if the lang file doesn't exist, generate it
+				if (!labels.langs[langIndex]) {
+					labels.langs.push({
+						name: ext
+					, labels: {}
+					});
+
+					// reindex our new langs def
+					langIndex =
+						_.findIndex(labels.langs, function(lang) {
+							return lang.name == ext;
+						});
+				}
+
+				labels.langs[langIndex].labels = _.merge(labels.langs[langIndex].labels, grunt.file.readJSON(langFile));
+
+			});
 
 
 			// iterate over all files in the widget directory
@@ -164,7 +198,7 @@ module.exports = function(grunt) {
 				}
 
 				// copy our js files over
-				if (subdir === undefined && filename.match(/\.js/)) {
+				if (subdir === undefined && filename.match(/\.js$/)) {
 					temp = path.resolve(paths.dest.js, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
@@ -172,7 +206,7 @@ module.exports = function(grunt) {
 				}
 
 				// copy our less files over
-				if (filename.match(/\.less/)) {
+				if (filename.match(/\.less$/)) {
 					temp = path.resolve(paths.dest.less, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
@@ -181,7 +215,7 @@ module.exports = function(grunt) {
 				}
 
 				// copy our hypr and hypr.live files over
-				if (filename.match(/\.hypr(?:\.live)?/)) {
+				if (filename.match(/\.hypr(?:\.live)?$/)) {
 					temp = path.resolve(paths.dest.hypr, writeDir, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
@@ -189,7 +223,7 @@ module.exports = function(grunt) {
 				}
 
 				// copy our widget icons to our resources/admin/widgets directory
-				if (filename.match(/\.(png|jpeg|jpg|gif)/)) {
+				if (filename.match(/\.(png|jpeg|jpg|gif)$/)) {
 					temp = path.resolve(paths.dest.icons, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
@@ -199,6 +233,20 @@ module.exports = function(grunt) {
 			});
 
 		});
+
+
+
+
+
+		// write all labels we updated
+		grunt.log.subhead('Writing new labels files...');
+
+		_.each(labels.langs, function(lang) {
+			temp = path.resolve(paths.dest.labels, lang.name+'.json')
+			grunt.log.ok('writing', chalk.cyan(destPath(temp)));
+			grunt.file.write(temp, JSON.stringify(lang.labels, null, 2));
+		});
+
 
 
 		grunt.log.subhead('Cacheing...');

@@ -1,9 +1,11 @@
 {
-	"hours": "Hours",
-	"editOrCheckout": "Checkout",
-	"items": "Items",
-	"closed": "Closed",
-	"building": "Bulding",
-	"suite": "Suite",
-	"contactUs": "Contact Us"
+  "hours": "Hours",
+  "editOrCheckout": "Checkout",
+  "items": "Items",
+  "closed": "Closed",
+  "building": "Bulding",
+  "suite": "Suite",
+  "contactUs": "Contact Us",
+  "addContentHere": "Add content here.",
+  "nojsVideoLoad": "Please enable JavaScript to load this Video."
 }
