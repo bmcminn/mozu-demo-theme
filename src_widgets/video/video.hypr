@@ -12,8 +12,7 @@
 
 <div data-mz-widget="video-embed" data-mz-video-data="{{ model.config.url|default(model) }}">
   <iframe src="" width="560" height="349"></iframe>
-	<noscript>{{ label.nojsVideoLoad }}</noscript>
+	<noscript>{{ label.videoNojsLoadMessage }}</noscript>
 </div>
-
 
 {# https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php #}

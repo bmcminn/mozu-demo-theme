@@ -1,0 +1,12 @@
+{
+	"id": "content",
+	"displayName": "Text Editor",
+	"displayTemplate": "cms/text-editor",
+	"icon": "/resources/admin/widgets/03_heading_p.png",
+	"validPageTypes": [
+	    "*"
+	],
+	"defaultConfig": {
+	    "body": "<h2>Insert Title</h2><p>Insert Content</p>"
+	}
+}
