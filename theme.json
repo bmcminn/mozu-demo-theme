@@ -10,7 +10,7 @@
   "settings": {
     "showBreadcrumbs": false,
     "bodyBackgroundColor": "#f90",
-    "bodyBackgroundImage": "http://cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png",
+    "bodyBackgroundImage": "//cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png",
     "canonicalProtocol": "https",
     "canonical HomepageSlug": "homepage",
     "showCategoryFacets": null,
@@ -465,6 +465,18 @@
           "xtype": "mz-input-number"
         }
       ]
+    },
+    {
+      "id": "content",
+      "displayName": "Text Editor",
+      "displayTemplate": "cms/text-editor",
+      "icon": "/resources/admin/widgets/03_heading_p.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "defaultConfig": {
+        "body": "<h2>Insert Title</h2><p>Insert Content</p>"
+      }
     },
     {
       "id": "video",
