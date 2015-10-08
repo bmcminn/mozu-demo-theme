@@ -12,11 +12,11 @@
     "bodyBackgroundColor": "#f90",
     "bodyBackgroundImage": "//cdn-sb.mozu.com/10629-m1/cms/files/bright-lights_1.png",
     "canonicalProtocol": "https",
-    "canonical HomepageSlug": "homepage",
+    "canonicalHomepageSlug": "stuff",
+    "invoiceThumbnailSize": 180,
     "showCategoryFacets": null,
     "hiddenCatgeries": null,
-    "contactUsEmail": "contact@aubuchon.com",
-    "canonicalHomepageSlug": "stuff"
+    "contactUsEmail": "contact@aubuchon.com"
   },
   "pageTypes": [
     {
@@ -163,6 +163,12 @@
       "defaultConfig": {
         "anchor": "100%",
         "xtype": "mz-input-text",
+        "lazyLoadImages": true,
+        "slideImage1": null,
+        "slideImage2": null,
+        "slideImage3": null,
+        "slideImage4": null,
+        "slideImage5": null,
         "accessibility": true,
         "autoplay": false,
         "autoplaySpeed": 3000,
@@ -206,6 +212,17 @@
         {
           "xtype": "label",
           "text": "Slide configurations"
+        },
+        {
+          "name": "lazyLoadImages",
+          "fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https://css-tricks.com/snippets/javascript/lazy-loading-images/\">[?]</a>",
+          "xtype": "mz-input-checkbox"
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<hr/>"
+          }
         },
         {
           "name": "slideUrl1",
