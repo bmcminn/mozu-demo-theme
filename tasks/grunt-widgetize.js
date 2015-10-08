@@ -222,8 +222,10 @@ module.exports = function(grunt) {
 					assets.push(temp);
 				}
 
+				// TODO: task for copying images into theme
+
 				// copy our widget icons to our resources/admin/widgets directory
-				if (filename.match(/\.(png|jpeg|jpg|gif)$/)) {
+				if (subdir === undefined && filename.match(/\.(png|jpeg|jpg|gif)$/)) {
 					temp = path.resolve(paths.dest.icons, filename);
 					grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
 					grunt.file.copy(abspath, temp);
