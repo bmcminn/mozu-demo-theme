@@ -5,7 +5,9 @@
   "closed": "Closed",
   "building": "Bulding",
   "suite": "Suite",
+  "orderTotal": "Order Total",
   "contactUs": "Contact Us",
   "addContentHere": "Add content here.",
-  "nojsVideoLoad": "Please enable JavaScript to load this Video."
+  "nojsVideoLoad": "Please enable JavaScript to load this Video.",
+  "videoNojsLoadMessage": "Please enable JavaScript to load this Video."
 }

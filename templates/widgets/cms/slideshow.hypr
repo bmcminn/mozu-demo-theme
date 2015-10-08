@@ -6,53 +6,60 @@
 
 
 <div data-mz-widget="slideshow" data-slick="{% json_attribute model.config %}" data-widget-config="{% json_attribute model %}">
-	{% with model.config as slide %}
+	{% with model.config as slides  %}
+
+		{% if model.config.lazyLoadImages %}
+			{% set_var srcOrLazy "data-lazy" %}
+		{% else %}
+			{% set_var srcOrLazy "src" %}
+		{% endif %}
+
 
 		{# SLIDE ONE #}
-		{% if slide.slideImage1 %}
+		{% if slides.slideImage1 %}
 			<div>
-				<a href="{{ slide.slideUrl1 }}">
-					<img src="{{ slide.slideImage1.imageUrl }}" alt="{% if slide.slideImage1.altText %}{{ slide.slideImage1.altText }}{% endif %}">
+				<a href="{{ slides.slideUrl1 }}">
+					<img {{ srcOrLazy }}="{{ slides.slideImage1.imageUrl }}" alt="{% if slides.slideImage1.altText %}{{ slides.slideImage1.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}
 
 
 		{# SLIDE TWO #}
-		{% if slide.slideImage2 %}
+		{% if slides.slideImage2 %}
 			<div>
-				<a href="{{ slide.slideUrl2 }}">
-					<img src="{{ slide.slideImage2.imageUrl }}" alt="{% if slide.slideImage2.altText %}{{ slide.slideImage2.altText }}{% endif %}">
+				<a href="{{ slides.slideUrl2 }}">
+					<img {{ srcOrLazy }}="{{ slides.slideImage2.imageUrl }}" alt="{% if slides.slideImage2.altText %}{{ slides.slideImage2.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}
 
 
 		{# SLIDE THREE #}
-		{% if slide.slideImage3 %}
+		{% if slides.slideImage3 %}
 			<div>
-				<a href="{{ slide.slideUrl3 }}">
-					<img src="{{ slide.slideImage3.imageUrl }}" alt="{% if slide.slideImage3.altText %}{{ slide.slideImage3.altText }}{% endif %}">
+				<a href="{{ slides.slideUrl3 }}">
+					<img {{ srcOrLazy }}="{{ slides.slideImage3.imageUrl }}" alt="{% if slides.slideImage3.altText %}{{ slides.slideImage3.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}
 
 
 		{# SLIDE FOUR #}
-		{% if slide.slideImage4 %}
+		{% if slides.slideImage4 %}
 			<div>
-				<a href="{{ slide.slideUrl4 }}">
-					<img src="{{ slide.slideImage4.imageUrl }}" alt="{% if slide.slideImage4.altText %}{{ slide.slideImage4.altText }}{% endif %}">
+				<a href="{{ slides.slideUrl4 }}">
+					<img {{ srcOrLazy }}="{{ slides.slideImage4.imageUrl }}" alt="{% if slides.slideImage4.altText %}{{ slides.slideImage4.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}
 
 
 		{# SLIDE FIVE #}
-		{% if slide.slideImage5 %}
+		{% if slides.slideImage5 %}
 			<div>
-				<a href="{{ slide.slideUrl5 }}">
-					<img src="{{ slide.slideImage5.imageUrl }}" alt="{% if slide.slideImage5.altText %}{{ slide.slideImage5.altText }}{% endif %}">
+				<a href="{{ slides.slideUrl5 }}">
+					<img {{ srcOrLazy }}="{{ slides.slideImage5.imageUrl }}" alt="{% if slides.slideImage5.altText %}{{ slides.slideImage5.altText }}{% endif %}">
 				</a>
 			</div>
 		{% endif %}

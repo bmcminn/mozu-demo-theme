@@ -10,6 +10,20 @@
 		"anchor": "100%",
 		"xtype": "mz-input-text",
 
+		//----------------------------------
+
+		"lazyLoadImages": true,
+
+		"slideImage1": null,
+		"slideImage2": null,
+		"slideImage3": null,
+		"slideImage4": null,
+		"slideImage5": null,
+
+		//----------------------------------
+
+		// TODO: figure out how to make the commented features configurable
+
 		"accessibility":        true,
 		"autoplay":             false,
 		"autoplaySpeed":        3000,
@@ -62,6 +76,21 @@
 			"text": "Slide configurations"
 		},
 
+			{
+				"name": "lazyLoadImages",
+				"fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https:\/\/css-tricks.com\/snippets\/javascript\/lazy-loading-images\/\">[?]</a>",
+				"xtype": "mz-input-checkbox"
+			},
+
+
+		// ==================================================
+
+		{
+			"xtype": "box",
+			"autoEl": {
+				"html": "<hr/>"
+			}
+		},
 
 			{
 				"name": "slideUrl1",
@@ -76,6 +105,7 @@
 			// EXAMPLE IMAGES:
 			// http://fotonin.com/data_images/out/10/839000-landscape-photos.jpg
 			// http://www.dffy.co/wp-content/uploads/2015/06/landscape-architecture-plan-graphics-inspiration-abdul-hakim-kussim-landscape-architect-and-illustrator.jpg
+
 
 		// ==================================================
 
@@ -96,6 +126,7 @@
 				"xtype": "mz-input-image"
 			},
 
+
 		// ==================================================
 
 		{
@@ -114,6 +145,7 @@
 				"fieldLabel": "Slide 3 Image",
 				"xtype": "mz-input-image"
 			},
+
 
 		// ==================================================
 
@@ -134,6 +166,7 @@
 				"xtype": "mz-input-image"
 			},
 
+
 		// ==================================================
 
 		{
@@ -153,6 +186,7 @@
 				"xtype": "mz-input-image"
 			},
 
+
 		// ==================================================
 
 		{
@@ -161,6 +195,7 @@
 				"html": "<hr/>"
 			}
 		},
+
 
 		// ==================================================
 
