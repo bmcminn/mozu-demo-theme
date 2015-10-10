@@ -1,0 +1,7 @@
+{
+	"id": "signup",
+	"title": "Sign Up",
+	"entityType": "signup",
+	"template": "signup",
+	"userCreatable": false
+}

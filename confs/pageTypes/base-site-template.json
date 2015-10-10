@@ -1,0 +1,6 @@
+{
+	"id": "site_page",
+	"title": "Base Site Template",
+	"entityType": "siteTemplate",
+	"template": "page"
+}

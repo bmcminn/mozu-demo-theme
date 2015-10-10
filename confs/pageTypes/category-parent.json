@@ -1,0 +1,8 @@
+{
+	"id": "parent-category",
+	"title": "ParentCategory",
+	"entityType": "category",
+	"template": "parent-category",
+	"customEditor": "categoryContent@mozu",
+	"userCreatable": false
+}

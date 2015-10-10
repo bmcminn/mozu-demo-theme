@@ -1,0 +1,9 @@
+{
+	"id": "landing",
+	"title": "Landing Page",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "blank-page",
+	"editor": "landing-page",
+	"userCreatable": true
+}

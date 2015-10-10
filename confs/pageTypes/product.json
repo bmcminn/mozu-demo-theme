@@ -1,0 +1,8 @@
+{
+	"id": "product",
+	"title": "Product",
+	"entityType": "product",
+	"template": "product",
+	"customEditor": "productContent@mozu",
+	"userCreatable": false
+}

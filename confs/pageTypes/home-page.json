@@ -1,0 +1,8 @@
+{
+	"id": "home",
+	"title": "Home Page",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "home",
+	"userCreatable": true
+}

@@ -1,0 +1,7 @@
+{
+	"id": "search-results",
+	"title": "Search Results",
+	"entityType": "searchresult",
+	"template": "search-results",
+	"userCreatable": false
+}

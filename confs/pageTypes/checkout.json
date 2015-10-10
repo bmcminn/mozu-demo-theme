@@ -1,0 +1,7 @@
+{
+	"id": "checkout",
+	"title": "Checkout",
+	"entityType": "order",
+	"template": "checkout",
+	"userCreatable": false
+}

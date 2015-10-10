@@ -1,0 +1,8 @@
+{
+	"id": "location",
+	"title": "Store Locator",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "location",
+	"userCreatable": true
+}

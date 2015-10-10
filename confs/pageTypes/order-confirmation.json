@@ -1,0 +1,7 @@
+{
+	"id": "confirmation",
+	"title": "Order Confirmation",
+	"entityType": "order",
+	"template": "confirmation",
+	"userCreatable": false
+}

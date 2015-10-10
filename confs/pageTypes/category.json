@@ -1,0 +1,7 @@
+{
+	"id": "category",
+	"title": "Category",
+	"entityType": "category",
+	"template": "category",
+	"userCreatable": false
+}

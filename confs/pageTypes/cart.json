@@ -1,0 +1,7 @@
+{
+	"id": "cart",
+	"title": "Cart",
+	"entityType": "cart",
+	"template": "cart",
+	"userCreatable": false
+}

@@ -1,0 +1,33 @@
+{
+	"id": "about-us",
+	"title": "About Us",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "about-us",
+	"customEditor": "about-us",
+	"userCreatable": true,
+	"zones": [
+		{
+			"id": "body",
+			"rows": [
+				{
+					"columns": [
+						{
+							"rows": null,
+							"span": 12,
+							"widgets": [
+								{
+									"config": {
+										"body": "<h2>Insert Title</h2><p>Insert Content</p>"
+									},
+									"definitionId": "content",
+									"isRichText": true
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

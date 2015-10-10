@@ -1,0 +1,7 @@
+{
+	"id": "no-search-results",
+	"title": "Empty Search Results",
+	"entityType": "nosearchresult",
+	"template": "no-search-results",
+	"userCreatable": false
+}
