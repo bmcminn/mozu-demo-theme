@@ -33,12 +33,16 @@
 									<tr style="padding: 0; vertical-align: top; text-align: left;">
 										<td class="wrapper last" style="word-break: break-word; font-size: 14px; -moz-hyphens: auto; hyphens: auto; vertical-align: top; text-align: left; -webkit-hyphens: auto; line-height: 19px; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; position: relative; padding: 10px 20px 0 0; padding-right: 0; border-collapse: collapse;">
 
-											<div>{{ pageContext.cmsContext.page.document.properties.html_1|safe }}</div>
+											<div>
+												{{ pageContext.cmsContext.page.document.properties.html_1|safe }}
+											</div>
 
 											{% block body-content %}
 											{% endblock body-content %}
 
-											<div>{{ pageContext.cmsContext.page.document.properties.html_2|safe }}</div>
+											<div>
+												{{ pageContext.cmsContext.page.document.properties.html_2|safe }}
+											</div>
 
 										</td>
 									</tr>
@@ -69,5 +73,10 @@
 			</td>
 		</tr>
 	</table> <!-- end main container -->
+
+	{% block email-tracking-pixel %}
+		{# TODO: add snippet for tracking pixel here #}
+	{% endblock email-tracking-pixel %}
+
 </body>
 </html>

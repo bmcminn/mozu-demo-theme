@@ -30,8 +30,10 @@ module.exports = function (grunt) {
 
 		emails.less = grunt.file.read(temp.lessTarget);
 
-		emails.less = emails.less.replace(/(@import\s*"(?:\.|\/)*stylesheets\/)/gi, emails.basepath);
-		emails.less = emails.less.replace(/\.less/gi, '');
+		emails.less = emails.less
+			.replace(/(@import\s*"(?:\.|\/)*stylesheets\/)/gi, emails.basepath)
+			.replace(/\.less/gi, '')
+			;
 
 		grunt.file.write(temp.lessGen, emails.less);
 		grunt.log.ok(chalk.cyan(temp.lessGen), 'written to disc.');
@@ -46,8 +48,8 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('email-settings', "Add email configs to theme.json", function() {
 
-		var theme = require(path.resolve('.', 'theme.json'))
-			, config = require(path.resolve('.', 'src_emails', 'theme-emails.json'))
+		var theme  = require(path.resolve('.', 'theme.json'))
+			, config = require(path.resolve('.', 'components', 'emails', 'theme-emails.json'))
 			;
 
 		console.log(config);
@@ -78,17 +80,33 @@ module.exports = function (grunt) {
 	 * @param  {[type]} partials) {		grunt.file.expand(partials).map(function(filePath) {			var oldHtml [description]
 	 * @return {[type]}           [description]
 	 */
-	grunt.registerTask('email-strainer', "Remove unnecessary HTML tags in email partials.", function (partials) {
-		grunt.file.expand(partials).map(function(filePath) {
-			var oldHtml = grunt.file.read(filePath),
-			newHtml = oldHtml.replace(/<html><body+\s+[^>]*>/g, '').replace('</body></html>', '');
+	grunt.registerTask('email-strainer', "Remove unnecessary HTML tags in email partials.", function () {
 
-			grunt.file.write(filePath, newHtml);
+		var conf = {};
 
-			grunt.log.ok('File"', chalk.cyan(filePath), '"filtered.');
-		});
+		conf.emailsPath  = path.resolve('.', 'templates', 'email', '*.hypr');
+
+		grunt.file
+			.expand(conf.emailsPath)
+			.map(function(filePath) {
+
+				var oldHtml = grunt.file.read(filePath),
+
+				newHtml = oldHtml
+					.replace(/<html><body+\s+[^>]*>/g, '')
+					.replace('</body></html>', '')
+					;
+
+				grunt.file.write(filePath, newHtml);
+
+				grunt.log.ok('File"', chalk.cyan(filePath), '"filtered.');
+
+			})
+		;
+
 
 		grunt.log.oklns('Email partials are now pulp-free and ready for production.');
+
 	});
 
 };

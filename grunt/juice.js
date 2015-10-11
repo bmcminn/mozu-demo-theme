@@ -1,7 +1,7 @@
 
 var paths = {
 			labels:   './labels'
-		, emailSrc: './src_emails'
+		, emailSrc: './components/emails'
 		, emails:   './templates/email'
 		, extraCSS: './grunt/assets/email.css'
 		}

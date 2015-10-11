@@ -25,12 +25,12 @@ module.exports = function(grunt) {
 	, 'compress'
 	]);
 
-	grunt.registerTask('email', [
+	grunt.registerTask('emails', [
 		'lintify'
 	, 'email-lessify'
 	, 'less:emails'
 	, 'juice'
-	, ['email-strainer:', require('./juice.js').emails.options.paths.emails, '/*.hypr*'].join('')
+	, 'email-strainer'
 	, 'email-delessify'
 	, 'compress'
 	]);
