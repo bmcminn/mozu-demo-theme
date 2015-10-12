@@ -1,0 +1,11 @@
+{
+	"id": "deal-of-the-day",
+	"displayName": "Deal of the Day",
+	"displayTemplate": "catalog/deal-of-the-day",
+	"icon": "/resources/admin/widgets/deal-of-the-day.png",
+	"category": "catalog",
+	"editView": "taco-dealoftheday-widgeteditor",
+	"validPageTypes": [
+		"*"
+	]
+}

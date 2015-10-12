@@ -7,10 +7,10 @@
 			<td class="intro">
 
 				<dl class="mz-orderheader">
-				<!--
-					<dt>{{ labels.orderNo }}</dt>
-					<dd><a href="https://{{domainName}}/checkout/{{model.id}}/confirmation">{{ model.orderNumber }}</a></dd>
-					-->
+					{% comment %}
+						<dt>{{ labels.orderNo }}</dt>
+						<dd><a href="https://{{ domainName }}/checkout/{{ model.id }}/confirmation">{{ model.orderNumber }}</a></dd>
+					{% endcomment %}
 
 					<dt>{{ labels.return }}</dt>
 					<dd>{{ model.returnNumber }}</dd>
@@ -22,6 +22,7 @@
 					<dd>{{ model.rmaDeadline }}</dd>
 				</dl>
 				<br>
+
 
 				<p class="greeting">
 					{% if user and user.firstName %}

@@ -1,37 +1,53 @@
-﻿  {% extends "email/email" %}
+{% extends "email/email" %}
 
-  {% block body-content %}
+{% block body-content %}
 
-	<dl class="mz-orderheader">
-	<!--
-		<dt>{{ labels.orderNo }}</dt>
-		<dd><a href="https://{{domainName}}/checkout/{{model.id}}/confirmation">{{ model.orderNumber }}</a></dd>
-		-->
+	<!-- basic message -->
+	<table class="twelve columns">
+		<tr>
+			<td class="intro">
+				<dl class="mz-orderheader">
 
-		<dt>{{ labels.return }}</dt>
-		<dd>{{ model.returnNumber }}</dd>
+					{% comment %}
+						<dt>{{ labels.orderNo }}</dt>
+						<dd><a href="https://{{ domainName }}/checkout/{{ model.id }}/confirmation">{{ model.orderNumber }}</a></dd>
+					{% endcomment %}
 
-		<dt>{{ labels.orderDate }}:</dt>
-		<dd>{{ model.order.submittedDate }}</dd>
+					<dt>{{ labels.return }}</dt>
+					<dd>{{ model.returnNumber }}</dd>
 
-		<dt>{{ labels.returnRequestDate }}</dt>
-		<dd>{{ model.rmaDeadline }}</dd>
-	</dl>
-	<br />
+					<dt>{{ labels.orderDate }}:</dt>
+					<dd>{{ model.order.submittedDate }}</dd>
+
+					<dt>{{ labels.returnRequestDate }}</dt>
+					<dd>{{ model.rmaDeadline }}</dd>
+				</dl>
+				<br>
+
+				<p class="greeting">
+					{% if user and user.firstName %}
+						{{ labels.emailOpening|string_format(user.firstName)|safe }}
+					{% else %}
+						{{ labels.emailOpeningAlternative|safe }}
+					{% endif %}
+				</p>
+
+
+				<p>
+					{{ labels.returnClosedBlob1|safe }}
+				</p>
+
+				<p>
+					{{ labels.returnClosedBlob2|safe }}
+				</p>
+
+			</td>
+		</tr>
+	</table>
+
 
 	<p>
-	{% if user and user.firstName %}
-		{{ labels.emailOpening|string_format(user.firstName)|safe }}
-	{% else %}
-		{{ labels.emailOpeningAlternative|safe }}
-	{% endif %}
+		{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
 	</p>
-
-	{{ labels.returnClosedBlob1|safe }}
-
-
-	{{ labels.returnClosedBlob2|safe }}
-
-	{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
 
 {% endblock body-content %}

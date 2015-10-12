@@ -1,0 +1,50 @@
+{
+	"id": "crosssells",
+	"displayName": "Cross Sells",
+	"displayTemplate": "catalog/related-products",
+	"icon": "/resources/admin/widgets/23_cross_sells.png",
+	"defaultConfig": {
+		"attributeId": "tenant~product-crosssell",
+		"count": "4",
+		"template": "modules/product/product-list-carousel",
+		"title": "Related Items"
+	},
+	"editViewFields": [
+		{
+			"anchor": "100%",
+			"fieldLabel": "Title",
+			"name": "title",
+			"xtype": "mz-input-text"
+		},
+		{
+			"anchor": "100%",
+			"fieldLabel": "Template",
+			"name": "template",
+			"store": [
+				[
+					"modules/product/product-list-carousel",
+					"carousel"
+				],
+				[
+					"modules/product/product-list-tiled",
+					"tiled"
+				],
+				[
+					"modules/product/product-list",
+					"list"
+				]
+			],
+			"xtype": "mz-input-dropdown"
+		},
+		{
+			"anchor": "100%",
+			"fieldLabel": "Number to display",
+			"name": "count",
+			"xtype": "mz-input-number"
+		}
+	],
+	"validPageTypes": [
+		"product",
+		"cart"
+	]
+}

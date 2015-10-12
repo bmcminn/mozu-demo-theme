@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     , data: {
         pkg:        grunt.file.readJSON('package.json')
       , theme:      grunt.file.readJSON('theme.json')
-      , mozuconfig: grunt.file.readJSON('mozu.config.json')
+      , mozuconfig: grunt.file.exists('./mozu.config.json') ? grunt.file.readJSON('./mozu.config.json') : {}
       }
     });
 

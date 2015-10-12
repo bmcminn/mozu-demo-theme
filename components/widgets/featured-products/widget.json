@@ -1,0 +1,40 @@
+{
+    "id": "featured_product",
+    "displayName": "Featured Products",
+    "displayTemplate": "catalog/featuredproducts",
+    "icon": "/resources/admin/widgets/19_tags.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "template": "modules/product/product-list"
+    },
+    "editViewFields": [
+        {
+            "anchor": "100%",
+            "fieldLabel": "Products",
+            "name": "productCodes",
+            "xtype": "mz-input-productmulti"
+        },
+        {
+            "anchor": "100%",
+            "fieldLabel": "Template",
+            "name": "template",
+            "store": [
+                [
+                    "modules/product/product-list-tiled",
+                    "tiled"
+                ],
+                [
+                    "modules/product/product-list",
+                    "list"
+                ],
+                [
+                    "modules/product/product-list-carousel",
+                    "carousel"
+                ]
+            ],
+            "xtype": "mz-input-dropdown"
+        }
+    ]
+}

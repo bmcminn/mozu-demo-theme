@@ -28,14 +28,13 @@ module.exports = function(grunt) {
 	var _           = require('lodash')
 		, chalk       = require('chalk')
 		, path        = require('path')
-		, jsonHelper  = require('./helpers-json.js')
+		, jsonHelper  = require(process.cwd() + '/tasks/helpers-json.js')
 		;
 
-	// load JSON.minify
-	JSON.minify = jsonHelper.minify;
-
-
 	grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
+
+		// load JSON.minify
+		JSON.minify = jsonHelper.minify;
 
 		var theme   = grunt.file.readJSON('theme.json')
 			, gruntFolder = './grunt/assets'
@@ -54,6 +53,7 @@ module.exports = function(grunt) {
 						vendor: './scripts/vendor',
 						icons:  './resources/admin/widgets'
 					}
+				, widgetsSrc: path.resolve('.', 'components', 'widgets', '**', 'widget.json')
 				}
 
 			, assets    = []
@@ -80,8 +80,8 @@ module.exports = function(grunt) {
 
 
 		// check if there is a reference to widgets.less in page.hypr
-		if (grunt.file.exists(path.resolve('.','tempaltes','page.hypr'))) {
-			temp = grunt.file.read(path.resolve('.','tempaltes','page.hypr'));
+		if (grunt.file.exists(path.resolve('.','templates','page.hypr'))) {
+			temp = grunt.file.read(path.resolve('.','templates','page.hypr'));
 
 			if (!temp.match('widgets.less')) {
 				grunt.log.warn('You should add the following snippet to /templates/page.hypr:');
@@ -126,18 +126,22 @@ module.exports = function(grunt) {
 
 
 		// iterate over each widget.json config we find
-		_.each(grunt.file.expand('./src_widgets/**/widget.json'), function(widgetJsonFile) {
+		_.each(grunt.file.expand(paths.widgetsSrc), function(widgetJsonFile) {
 
 			// get our widget config
-			var widgetDef  = JSON.minify(grunt.file.read(widgetJsonFile));
-			// widgetDef  = grunt.file.readJSON(widgetJsonFile);
+			var widgetDef = "";
+
+			widgetDef = grunt.file.read(widgetJsonFile);
+			widgetDef = widgetDef.replace(/^[\s\t]*\/\/.+/gmi, '');
+			widgetDef = JSON.parse(widgetDef);
+
 
 			// get directory paths
 			currentDir  = path.dirname(widgetJsonFile);
 			writeDir    = path.dirname(widgetDef.displayTemplate);
 
 
-			grunt.log.subhead('Widget:', widgetDef.displayName);
+			grunt.log.subhead('Widget:', _.unescape(widgetDef.displayName.replace(/<\/?\w+>/g, '')));
 
 
 			// add our widget config to theme.json 'widgets'

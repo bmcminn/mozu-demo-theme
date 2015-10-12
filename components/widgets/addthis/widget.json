@@ -1,0 +1,48 @@
+{
+    "id": "addthis",
+    "displayName": "Add This",
+    "displayTemplate": "social/addthis",
+    "icon": "/resources/admin/widgets/13_social.png",
+    "category": "social",
+    "defaultConfig": {
+        "style": "1"
+    },
+    "editViewFields": [
+        {
+            "xtype": "mz-input-dropdown",
+            "name": "style",
+            "fieldLabel": "AddThis Button Style",
+            "store": [
+                [
+                    "1",
+                    "small"
+                ],
+                [
+                    "2",
+                    "medium"
+                ],
+                [
+                    "3",
+                    "large"
+                ],
+                [
+                    "4",
+                    "compact"
+                ]
+            ]
+        },
+        {
+            "html": "Register with <a target=\"_blank\" href=\"https://www.addthis.com\">AddThis</a> for a free in-depth analytics reports and better understand your site's social traffic.",
+            "xtype": "box"
+        },
+        {
+            "allowBlank": true,
+            "fieldLabel": "AddThis<br/> profile ID",
+            "name": "profileId",
+            "xtype": "mz-input-text"
+        }
+    ],
+    "validPageTypes": [
+        "*"
+    ]
+}

@@ -3,21 +3,22 @@
 module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
-		'widgetize'
+		'buildTheme'
 	, 'lintify'
 	, 'setver:build'
-	, 'compress'
+	, 'mozutheme:quickcompile'
 	]);
 
 	grunt.registerTask('check', [
-		'checklabels'
+		'buildTheme'
+	, 'checklabels'
 	, 'checkwidgets'
 	, 'checksettings'
 	, 'checkreferences'
 	]);
 
 	grunt.registerTask('build', [
-		'widgetize'
+		'buildTheme'
 	, 'lintify'
 	, 'checkreferences'
 	, 'zubat'
@@ -37,9 +38,9 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('push', [
-		'widgetize'
+		'buildTheme'
 	, 'lintify'
-	, 'mozutheme:check'
+	// , 'mozutheme:check'
 	, 'mozutheme:quickcompile'
 	// , 'mozutheme:buildver'
 	, 'mozusync:upload'
@@ -53,6 +54,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('lintify', [
 		'jsonlint'
 	, 'jshint'
+	]);
+
+
+	grunt.registerTask('buildTheme', [
+		'widgetize'
+	, 'build-settings'
+	, 'build-pagetypes'
 	]);
 
 };

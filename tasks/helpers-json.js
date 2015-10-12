@@ -6,7 +6,9 @@ module.exports = {
 	 * @return {string}     Commentless JSON content
 	 */
 	minify: function(str) {
-		return JSON.parse(str.replace(/\/\/.+/g, ''));
+
+		return JSON.parse(str.replace(/^[\s\t]*\/\/.+/g, ''));
+
 	}
 
 }

@@ -1,41 +1,84 @@
-@fontFamily:            {{ themeSettings.primaryFont }}, sans-serif;
-@fontSize:              {{ themeSettings.fontSize }};
-@fontSizeSmall:         @fontSize - 2px;
-@fontSizeLarger:        @fontSize + 2px;
-@fontSizeLarge:         @fontSize + 6px;
-@storeBrandingFontSize: 36px;
+@fontFamily:                      {{ themeSettings.primaryFont }}, sans-serif;
+@fontSize:                        1rem;
+@fontSizeSmall:                   @fontSize * 0.8;
+@fontSizeLarger:                  @fontSize * 1.4;
+@fontSizeLarge:                   @fontSize * 1.2;
+@storeBrandingFontSize:           @fontSize * 3;
 
 
 //
 // Color defs
 //
 
-@textColor:             {{ themeSettings.textColor }};
+@white:                           #fff;
+
+@gray:                            #666;
+@gray-light:                      #a7a7a7;
+@gray-dark:                       #4f4f4f;
+
+@white:                           #fff;
+@off-white:                       #eee;
+@black:                           #3f3f3f;
+
+@blue:                            #00f;
+
+@red:                             #b94a48;
+@red-light:                       #f2dede;
+@red-dark:                        #ae1231;
+
+@orange:                          #f90;
+
+@yellow-light:                    #ffefcf;
+
+@green:                           #237e0e;
 
 
+//
+// Color Variables
+//
 
-@bodyBackgroundColor: {{ themeSettings.bodyBackgroundColor }};
-@bodyBackgroundImage: "{{ themeSettings.bodyBackgroundImage }}";
+@textColor:                       {{ themeSettings.textColor }};
+@linkColor:                       @gray-dark;
+@linkHoverColor:                  @gray;
+@linkVisitedColor:                @black;
+@errorText:                       @red;
+@errorBackground:                 @red-light;
+@warningText:                     @textColor;
+@warningBackground:               @yellow-light;
+@successText:                     @textColor;
+@successBackground:               @off-white;
+
+@availableText:                   @green;
+@unavailableText:                 @red-dark;
 
 
-@errorBorder: darken(spin(@errorBackground, -10), 3%);
-@successBorder: darken(spin(@successBackground, -10), 3%);
-@warningBorder: darken(spin(@warningBackground, -10), 3%);
+@bodyBackgroundColor:             {{ themeSettings.bodyBackgroundColor }};
+@bodyBackgroundImage:             "{{ themeSettings.bodyBackgroundImage }}";
 
 
-@errorIcon: "../resources/images/error-exclamation.png";
-@columnWidth-2col: 435px;
-@gutter: {{themeSettings.gutterWidth}};
-@inputBorder: @gray-light;
+@errorBorder:                     darken(spin(@errorBackground, -10), 3%);
+@successBorder:                   darken(spin(@successBackground, -10), 3%);
+@warningBorder:                   darken(spin(@warningBackground, -10), 3%);
 
 
-@defaultTileHeight: 250px;
-@defaultTileWidth: 250px;
-@productTileHeight: 360px;
-@productTileWidth: @defaultTileWidth;
-@addressTileHeight: 240px;
-@addressTileWidth: @defaultTileWidth;
-@productImagesContainerWidth: {{ themeSettings.productImagesContainerWidth }}px;
-@orderDetailWidth: 200px;
-@itemListingThumbSize: {{ themeSettings.itemListingThumbSize }};
-@productListingThumbSize: {{ themeSettings.listProductThumbSize }}px;
+@errorIcon:                       "../resources/images/error-exclamation.png";
+@columnWidth-2col:                435px;
+@gutter:                          {{ themeSettings.gutterWidth }};
+@inputBorder:                     @gray-light;
+
+
+@defaultTileHeight:               250px;
+@defaultTileWidth:                250px;
+
+@productTileHeight:               360px;
+@productTileWidth:                @defaultTileWidth;
+
+@addressTileHeight:               240px;
+@addressTileWidth:                @defaultTileWidth;
+
+@productImagesContainerWidth:     {{ themeSettings.productImagesContainerWidth }}px;
+
+@orderDetailWidth:                200px;
+
+@itemListingThumbSize:            {{ themeSettings.itemListingThumbSize }};
+@productListingThumbSize:         {{ themeSettings.listProductThumbSize }}px;

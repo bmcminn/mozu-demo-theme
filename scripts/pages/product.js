@@ -23,9 +23,15 @@ function ($, _, Hypr, Backbone, CartMonitor, SoftCart, ProductModels, ProductIma
 
 		render: function () {
 			var me = this;
+
 			Backbone.MozuView.prototype.render.apply(this);
+
 			this.$('[data-mz-is-datepicker]').each(function (ix, dp) {
-				$(dp).dateinput().css('color', Hypr.getThemeSetting('textColor')).on('change  blur', _.bind(me.onOptionChange, me));
+				$(dp)
+					.dateinput()
+					.css('color', Hypr.getThemeSetting('textColor'))
+					.on('change  blur', _.bind(me.onOptionChange, me))
+					;
 			});
 		},
 
@@ -85,7 +91,12 @@ function ($, _, Hypr, Backbone, CartMonitor, SoftCart, ProductModels, ProductIma
 			var me = this;
 
 			this.$('[data-mz-product-option]').each(function () {
-				var $this = $(this), isChecked, wasChecked;
+
+				var $this = $(this)
+					, isChecked
+					, wasChecked
+					;
+
 				if ($this.val()) {
 					switch ($this.attr('type')) {
 						case "checkbox":

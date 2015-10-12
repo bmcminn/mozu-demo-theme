@@ -1,0 +1,19 @@
+{
+	"id": "instockrequest",
+	"displayName": "Instock Request",
+	"displayTemplate": "misc/instock-request",
+	"icon": "/resources/admin/widgets/25_instock_requests.png",
+	"validPageTypes": [
+		"product"
+	],
+	"defaultConfig": {
+		"title": "Related Items"
+	},
+	"editViewFields": [
+		{
+			"anchor": "100%",
+			"fieldLabel": "Title",
+			"xtype": "mz-input-text"
+		}
+	]
+}

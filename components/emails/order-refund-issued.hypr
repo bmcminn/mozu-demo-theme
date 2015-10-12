@@ -9,7 +9,8 @@
 		<dt>{{ labels.orderDate }}:</dt>
 		<dd>{{ model.submittedDate }}</dd>
 	</dl>
-	<br />
+
+	<br>
 
 	<p>
 		{% if user and user.firstName %}
@@ -33,17 +34,18 @@
 
 			{% for refund in model.refunds %}
 				<tr class="mz-ordersummary-line">
-
 					<td class="mz-ordersummary-item-product">
 						{% if refund.payment.paymentType == "CreditCard" %}
 							{{ refund.payment.billingInfo.card.paymentOrCardType }} {{ refund.payment.billingInfo.card.cardNumberPartOrMask }}
-						{% else %}
 
+						{% else %}
 							{% if refund.payment.paymentType == "PaypalExpress" %}
 								{{ labels.payPal }}
+
 							{% else %}
 								{% if refund.payment.paymentType == "StoreCredit" %}
 									{{ labels.storeCredit }} {{ refund.payment.billingInfo.storeCreditCode|default("") }}
+
 								{% endif %}
 							{% endif %}
 						{% endif %}

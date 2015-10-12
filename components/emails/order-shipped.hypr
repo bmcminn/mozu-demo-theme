@@ -14,10 +14,13 @@
 					{{ labels.orderShipmentBlob1|string_format(siteContext.generalSettings.websiteName, domainName, model.fulfillmentInfo.shippingMethodName)|safe }}
 				</p>
 
-				<p><b>{{ labels.orderNo }}:</b> {{ model.orderNumber }}</p>
-				<p><b>{{ labels.orderDate }}:</b> {{ model.submittedDate }}</p>
+				<p>
+					<b>{{ labels.orderNo }}:</b> {{ model.orderNumber }} <a href="http://{{ domainName }}/user/login">{{ labels.checkOrderStatus }}</a>
+				</p>
 
+				<p><b>{{ labels.orderDate }}:</b> {{ model.submittedDate }}</p>
 				<p><b>{{ labels.shipTo }}:</b></p>
+
 				{% include "modules/common/email-address-summary" with model=model.fulfillmentInfo.fulfillmentContact %}
 
 				<h2>{{ labels.itemsShipped }}</h2>

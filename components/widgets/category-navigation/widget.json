@@ -1,0 +1,53 @@
+{
+    "id": "catNav",
+    "displayName": "Navigation Subsection",
+    "displayTemplate": "misc/category-navigation",
+    "icon": "/resources/admin/widgets/22_category_navigation.png",
+    "defaultConfig": {
+        "numberToDisplay": 4,
+        "template": "primary"
+    },
+    "editViewFields": [
+        {
+            "anchor": "100%",
+            "fieldLabel": "Parent Navigation Node",
+            "name": "mainCategory",
+            "xtype": "mz-input-navnode"
+        },
+        {
+            "anchor": "100%",
+            "fieldLabel": "Template",
+            "name": "template",
+            "store": [
+                [
+                    "primary",
+                    "primary"
+                ],
+                [
+                    "secondary",
+                    "secondary"
+                ],
+                [
+                    "tertiary",
+                    "tertiary"
+                ]
+            ],
+            "xtype": "mz-input-dropdown"
+        },
+        {
+            "anchor": "100%",
+            "fieldLabel": "Number to display",
+            "name": "numberToDisplay",
+            "xtype": "mz-input-number"
+        },
+        {
+            "anchor": "100%",
+            "fieldLabel": "Hide Empty Child Nodes",
+            "name": "hideEmptyChildNodes",
+            "xtype": "mz-input-checkbox"
+        }
+    ],
+    "validPageTypes": [
+        "*"
+    ]
+}

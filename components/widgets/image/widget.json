@@ -1,0 +1,17 @@
+{
+    "id": "cms-image",
+    "displayName": "Image",
+    "displayTemplate": "cms/image",
+    "icon": "/resources/admin/widgets/00_photo.png",
+    "customEditor": "image",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "height": 400,
+        "heightResizable": true,
+        "imageHeight": 400,
+        "imageSource": "file",
+        "linkSource": "externalUrl"
+    }
+}

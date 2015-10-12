@@ -1,0 +1,17 @@
+{
+    "id": "horizontal_rule",
+    "displayName": "Horizontal Rule",
+    "displayTemplate": "cms/horizontalrule",
+    "icon": "/resources/admin/widgets/05_horizontal_divider.png",
+    "customEditor": "horizontalrule",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "hrBorderColor": "#000",
+        "hrBorderStyle": "solid",
+        "hrBorderWidth": "1px",
+        "hrMarginBottom": "0px",
+        "hrMarginTop": "0px"
+    }
+}

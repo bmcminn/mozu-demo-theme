@@ -22,7 +22,11 @@ module.exports = {
 		, window: true
 		, document: true
 		, grunt: true
+		, navigator: true
+		, Image: true
+		, V: true
 		, setTimeout: true
+		, order: true
 		, typeOf: true
 		, clearTimeout: true
 		, module: true

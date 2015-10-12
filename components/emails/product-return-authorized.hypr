@@ -3,10 +3,10 @@
 {% block body-content %}
 
 	<dl class="mz-orderheader">
-	<!--
+	{% comment %}
 		<dt>{{ labels.orderNo }}</dt>
-		<dd><a href="https://{{domainName}}/checkout/{{model.id}}/confirmation">{{ model.orderNumber }}</a></dd>
-		-->
+		<dd><a href="https://{{ domainName }}/checkout/{{ model.id }}/confirmation">{{ model.orderNumber }}</a></dd>
+	{% endcomment %}
 
 		<dt>{{ labels.return }}</dt>
 		<dd>{{ model.returnNumber }}</dd>
@@ -50,7 +50,6 @@
 		</thead>
 
 		<tbody class="mz-ordersummary-lineitems">
-
 			{% for item in model.items %}
 				{% for reason in item.reasons %}
 					<tr class="mz-ordersummary-line mz-ordersummary-line-item">
@@ -59,7 +58,6 @@
 					</tr>
 				{% endfor %}
 			{% endfor %}
-
 		</tbody>
 
 	</table>
@@ -71,7 +69,7 @@
 
 
 	<dd class="mz-addresssummary">
-		<span>{{ rmaLocation.shippingOriginContact.firstName}} {{ rmaLocation.shippingOriginContact.lastNameOrSurname }}</span>
+		<span>{{ rmaLocation.shippingOriginContact.firstName }} {{ rmaLocation.shippingOriginContact.lastNameOrSurname }}</span>
 		<span>{{ rmaLocation.shippingOriginContact.companyOrOrganization }}</span>
 		{% include "modules/common/address-summary" with model=rmaLocation %}
 	</dd>

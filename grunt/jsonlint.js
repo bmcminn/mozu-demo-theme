@@ -6,8 +6,7 @@ module.exports = {
 			'theme.json',
 			'theme-ui.json',
 			'package.json',
-			'labels/*.json',
-			'widgets/**/*.json'
+			'labels/*.json'
 		]
 	}
 
