@@ -17,7 +17,6 @@ references/
 # Compiled assets
 compiled/
 scripts/widgets/
-templates/email/
 templates/widgets/
 stylesheets/widgets/
 resources/admin/widgets/
@@ -28,6 +27,7 @@ mozu.config.json
 # Files
 *.zip
 *.sublime-workspace
+*.fileList
 
 # File system stuff
 .DS_Store
