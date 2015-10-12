@@ -1,26 +1,48 @@
 "use strict";
 
-var path  = require('path')
+var _     = require('lodash')
+	, path  = require('path')
 	, chalk = require('chalk')
-	, temp = {}
+	, temp  = {}
 
 	, helpers = require('./helpers.js')
 	, jsonify = helpers.jsonify
+
+	, paths = {
+			themeJson:  path.resolve('.', 'theme.json')
+		, emailConf:  path.resolve('.', 'components', 'emails', 'emailTemplates.json')
+		, lessTarget: path.resolve('.', 'stylesheets', 'email.less')
+		, lessGen:    path.resolve('.', 'stylesheets', 'src_email.less')
+		}
 	;
 
 
-temp.lessTarget = './stylesheets/email.less';
-temp.lessGen    = './stylesheets/src_email.less'
-
+/**
+ * [exports description]
+ * @param  {object}   grunt The initial grunt instance
+ * @return {function}       [description]
+ */
 module.exports = function (grunt) {
 
 
 	/**
-	 * Generate parsable email.less file
-	 * @param  {Object} )                              {		var       emails      [description]
-	 * @param  {[type]} emails.basepath);		emails.less [description]
-	 * @param  {[type]} 'written                       to            disc.');	} [description]
-	 * @return {[type]}                                [description]
+	 * [writeJSON description]
+	 * @param  {[type]} path [description]
+	 * @param  {[type]} data [description]
+	 * @return null
+	 */
+	grunt.file.writeJSON = function(path, data) {
+		grunt.file.write(path, JSON.stringify(data, null, 2));
+	};
+
+
+
+	/**
+	 * [description]
+	 * @param  {Object} )                                      {		var                                  emails                                                [description]
+	 * @param  {[type]} emails.basepath)			.replace(/.less/gi, '')			;		grunt.file.write(paths.lessGen, emails.less);		grunt.log.ok(chalk.cyan(paths.lessGen) [description]
+	 * @param  {[type]} 'written                               to                                       disc.');	}                                           [description]
+	 * @return {[type]}                                        [description]
 	 */
 	grunt.registerTask('email-lessify', "Process email.less as needed.", function() {
 
@@ -28,15 +50,16 @@ module.exports = function (grunt) {
 
 		emails.basepath = '@import "';
 
-		emails.less = grunt.file.read(temp.lessTarget);
+		emails.less = grunt.file.read(paths.lessTarget);
 
 		emails.less = emails.less
 			.replace(/(@import\s*"(?:\.|\/)*stylesheets\/)/gi, emails.basepath)
 			.replace(/\.less/gi, '')
 			;
 
-		grunt.file.write(temp.lessGen, emails.less);
-		grunt.log.ok(chalk.cyan(temp.lessGen), 'written to disc.');
+		grunt.file.write(paths.lessGen, emails.less);
+		grunt.log.ok(chalk.cyan(paths.lessGen), 'written to disc.');
+
 	});
 
 
@@ -48,11 +71,15 @@ module.exports = function (grunt) {
 	 */
 	grunt.registerTask('email-settings', "Add email configs to theme.json", function() {
 
-		var theme  = require(path.resolve('.', 'theme.json'))
-			, config = require(path.resolve('.', 'components', 'emails', 'theme-emails.json'))
+		var theme       = require(paths.themeJson)
+			, emailConfig = grunt.file.readJSON(paths.emailConf)
 			;
 
-		console.log(config);
+		// init or ovewrite emailTemplates object in theme.json
+		theme.emailTemplates = emailConfig;
+
+		grunt.log.subhead('Loading email configs into', chalk.cyan('theme.json'));
+		grunt.file.writeJSON(paths.themeJson, theme);
 
 	});
 
@@ -60,16 +87,16 @@ module.exports = function (grunt) {
 
 	/**
 	 * Remove generated parsable email.less file
-	 * @param  {[type]} ) {		if        (grunt.file.exists(temp.lessGen)) {			grunt.file.delete(temp.lessGen);			grunt.log.ok(chalk.cyan(temp.lessGen), 'deleted...');		} else {			grunt.log.warn(chalk.cyan(temp.lessGen), "doesn't exist...");		}	} [description]
+	 * @param  {[type]} ) {		if        (grunt.file.exists(paths.lessGen)) {			grunt.file.delete(paths.lessGen);			grunt.log.ok(chalk.cyan(paths.lessGen), 'deleted...');		} else {			grunt.log.warn(chalk.cyan(paths.lessGen), "doesn't exist...");		}	} [description]
 	 * @return {[type]}   [description]
 	 */
 	grunt.registerTask('email-delessify', "Process email.less as needed.", function() {
 
-		if (grunt.file.exists(temp.lessGen)) {
-			grunt.file.delete(temp.lessGen);
-			grunt.log.ok(chalk.cyan(temp.lessGen), 'deleted...');
+		if (grunt.file.exists(paths.lessGen)) {
+			grunt.file.delete(paths.lessGen);
+			grunt.log.ok(chalk.cyan(paths.lessGen), 'deleted...');
 		} else {
-			grunt.log.warn(chalk.cyan(temp.lessGen), "doesn't exist...");
+			grunt.log.warn(chalk.cyan(paths.lessGen), "doesn't exist...");
 		}
 	});
 

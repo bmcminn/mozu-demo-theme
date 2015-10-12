@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('emails', [
 		'lintify'
+	, 'email-settings'
 	, 'email-lessify'
 	, 'less:emails'
 	, 'juice'

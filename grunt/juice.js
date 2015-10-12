@@ -2,7 +2,7 @@
 var paths = {
 			labels:   './labels'
 		, emailSrc: './components/emails'
-		, emails:   './templates/email'
+		, emailDest:   './templates/email'
 		, extraCSS: './grunt/assets/email.css'
 		}
 	, grunt = require('grunt')
@@ -25,7 +25,7 @@ module.exports = {
 				src: [
 					'**/*.hypr*'
 				],
-				dest: paths.emails + '/',
+				dest: paths.emailDest + '/',
 				ext: '.hypr'
 			}
 		]
