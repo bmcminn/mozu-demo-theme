@@ -17,6 +17,7 @@ references/
 # Compiled assets
 compiled/
 scripts/widgets/
+templates/email/
 templates/widgets/
 stylesheets/widgets/
 resources/admin/widgets/
