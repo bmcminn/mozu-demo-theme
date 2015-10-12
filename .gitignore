@@ -1,26 +1,25 @@
 # Logs
-/logs
+logs/
 *.log
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-grunt/assets
+grunt/
 
 # Dependency directory
 # Commenting this out is preferred by some people, see
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-/node_modules
-/__*
+node_modules/
+__*/
 
 # Core References
-/references
+references/
 
 # Compiled assets
-/compiled
-/scripts/widgets
-/templates/widgets
-/stylesheets/widgets
-/resources/admin/widgets
+compiled/
+scripts/widgets/
+templates/widgets/
+stylesheets/widgets/
+resources/admin/widgets/
 
 # Mozu configs
 mozu.config.json
