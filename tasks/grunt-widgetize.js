@@ -25,15 +25,14 @@ module.exports = function(grunt) {
 
 
 	// Load modules
-	var _     = require('lodash')
-		, chalk = require('chalk')
-		, path  = require('path')
+	var _           = require('lodash')
+		, chalk       = require('chalk')
+		, path        = require('path')
+		, jsonHelper  = require('./helpers-json.js')
 		;
 
 	// load JSON.minify
-	JSON.minify = function(string) {
-		return JSON.parse(string.replace(/\/\/.+/g, ''));
-	};
+	JSON.minify = jsonHelper.minify;
 
 
 	grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {

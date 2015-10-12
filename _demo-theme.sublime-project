@@ -4,13 +4,13 @@
 		{
 			"file_exclude_patterns":
 			[
-				"thumb.*",
-				"*filelist",
-				"*.zip",
 				"configure.js",
 				"LICENSE",
 				"README.md",
+				"*filelist",
+				"*.zip",
 				"*.base",
+				"thumb.*",
 				"*workspace"
 			],
 			"folder_exclude_patterns":
@@ -18,6 +18,7 @@
 				"compiled",
 				"node_modules",
 				"bower_components",
+				"templates/email",
 				"references/backbone",
 				"references/bootstrap",
 				"references/jquery*",

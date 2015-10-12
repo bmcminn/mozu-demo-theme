@@ -14,7 +14,6 @@
     "better-console": "^0.2.4",
     "chalk": "^1.1.1",
     "grunt": "^0.4",
-    "grunt-cli": "^0.1.13",
     "grunt-contrib-compress": "^0.6",
     "grunt-contrib-imagemin": "^0.9.4",
     "grunt-contrib-jshint": "^0.8",

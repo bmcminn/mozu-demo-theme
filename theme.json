@@ -2,11 +2,25 @@
   "about": {
     "name": "Awesome Theme v1.2.0",
     "version": "1.2.0",
-    "extends": "core7",
+    "extends": "core8",
     "isDesktop": true,
     "isTablet": true,
     "isMobile": true
   },
+  "backOfficeTemplates": [
+    {
+      "id": "order-details",
+      "title": "Order Details",
+      "template": "back-office/order-details",
+      "customEditor": "back-office@mozu"
+    },
+    {
+      "id": "packing-slip",
+      "title": "Packing Slip",
+      "template": "back-office/packing-slip",
+      "customEditor": "back-office@mozu"
+    }
+  ],
   "settings": {
     "showBreadcrumbs": false,
     "bodyBackgroundColor": "#f90",
@@ -15,581 +29,257 @@
     "invoiceThumbnailSize": 180,
     "canonicalHomepageSlug": "homepage",
     "nestedCollection": {
-    	"property": "value",
-    	"secondProp": true
+      "property": "value",
+      "secondProp": true
     },
     "showCategoryFacets": null,
     "hiddenCatgeries": null,
     "contactUsEmail": "contact@aubuchon.com"
   },
+  "widgets": [],
   "pageTypes": [
     {
-      "documentType": "web_page",
+      "id": "about-us",
+      "title": "About Us",
       "entityType": "webpage",
-      "id": "company-info",
-      "template": "pages/company-info",
+      "documentType": "web_page",
+      "template": "about-us",
       "customEditor": "about-us",
-      "title": "Company Info",
       "userCreatable": true,
-      "zones": []
-    }
-  ],
-  "widgets": [
-    {
-      "id": "contact-us",
-      "title": "contact-us",
-      "displayName": "Company Contact",
-      "displayTemplate": "cms/company-contact",
-      "icon": "/resources/admin/widgets/company-contact.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {},
-      "editViewFields": [
+      "zones": [
         {
-          "fieldLabel": "Company Phone #",
-          "name": "companyPhone",
-          "xtype": "mz-input-text"
-        },
-        {
-          "fieldLabel": "Company Address",
-          "name": "companyAddress",
-          "xtype": "mz-input-richtext"
-        },
-        {
-          "fieldLabel": "Hours",
-          "name": "companyHours",
-          "xtype": "mz-input-richtext"
-        }
-      ]
-    },
-    {
-      "id": "employee-card",
-      "displayName": "Employee Card",
-      "displayTemplate": "cms/employee-card",
-      "icon": "/resources/admin/widgets/employee-card.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-text",
-        "maxWidth": 200
-      },
-      "editViewFields": [
-        {
-          "fieldLabel": "Employee Name",
-          "name": "employeeName"
-        },
-        {
-          "fieldLabel": "Employee Title",
-          "name": "employeeTitle"
-        },
-        {
-          "fieldLabel": "Employee Bio",
-          "name": "employeeBio",
-          "xtype": "mz-input-textarea"
-        },
-        {
-          "fieldLabel": "Image Max Width",
-          "name": "maxWidth"
-        },
-        {
-          "fieldLabel": "Employee Image",
-          "name": "employeeImage",
-          "xtype": "mz-input-image",
-          "dataFormat": "urlOnly"
-        }
-      ]
-    },
-    {
-      "id": "page_heading",
-      "displayName": "Heading",
-      "displayTemplate": "cms/heading",
-      "icon": "/resources/admin/widgets/heading.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-text",
-        "headingText": "Heading Text here",
-        "headingType": "h1"
-      },
-      "editViewFields": [
-        {
-          "name": "headingText",
-          "fieldLabel": "Heading Text"
-        },
-        {
-          "name": "headingType",
-          "fieldLabel": "Heading Type",
-          "xtype": "mz-input-dropdown",
-          "store": [
-            [
-              "h1",
-              "H1"
-            ],
-            [
-              "h2",
-              "H2"
-            ],
-            [
-              "h3",
-              "H3"
-            ]
+          "id": "body",
+          "rows": [
+            {
+              "columns": [
+                {
+                  "rows": null,
+                  "span": 12,
+                  "widgets": [
+                    {
+                      "config": {
+                        "body": "<h2>Insert Title</h2><p>Insert Content</p>"
+                      },
+                      "definitionId": "content",
+                      "isRichText": true
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         }
       ]
     },
     {
-      "id": "photo-slider",
-      "displayName": "Photo Slider",
-      "displayTemplate": "cms/photo-slider",
-      "icon": "/resources/admin/widgets/10_photo-slider.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-checkbox"
-      },
-      "editViewFields": []
+      "id": "site_page",
+      "title": "Base Site Template",
+      "entityType": "siteTemplate",
+      "template": "page"
     },
     {
-      "id": "namespace~slideshow",
-      "displayName": "Slideshow",
-      "displayTemplate": "cms/slideshow",
-      "icon": "/resources/admin/widgets/09_slideshow.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-text",
-        "lazyLoadImages": true,
-        "slideImage1": null,
-        "slideImage2": null,
-        "slideImage3": null,
-        "slideImage4": null,
-        "slideImage5": null,
-        "accessibility": true,
-        "autoplay": false,
-        "autoplaySpeed": 3000,
-        "centerMode": false,
-        "centerPadding": "50px",
-        "cssEase": "ease",
-        "dots": false,
-        "dotsClass": "slick-dots",
-        "draggable": true,
-        "easing": "linear",
-        "edgeFriction": 0.15,
-        "fade": false,
-        "arrows": true,
-        "mobileFirst": false,
-        "infinite": true,
-        "initialSlide": 0,
-        "lazyLoad": "ondemand",
-        "pauseOnHover": true,
-        "pauseOnDotsHover": false,
-        "respondTo": "window",
-        "responsive": null,
-        "rows": 1,
-        "slide": "",
-        "slidesPerRow": 1,
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-        "speed": 300,
-        "swipe": true,
-        "swipeToSlide": false,
-        "touchMove": true,
-        "touchThreshold": 5,
-        "useCSS": true,
-        "variableWidth": false,
-        "vertical": false,
-        "verticalSwiping": false,
-        "rtl": false,
-        "waitForAnimate": true,
-        "zIndex": 1000
-      },
-      "editViewFields": [
-        {
-          "xtype": "label",
-          "text": "Slide configurations"
-        },
-        {
-          "name": "lazyLoadImages",
-          "fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https://css-tricks.com/snippets/javascript/lazy-loading-images/\">[?]</a>",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl1",
-          "fieldLabel": "Slide 1 Url"
-        },
-        {
-          "name": "slideImage1",
-          "fieldLabel": "Slide 1 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl2",
-          "fieldLabel": "Slide 2 Url"
-        },
-        {
-          "name": "slideImage2",
-          "fieldLabel": "Slide 2 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl3",
-          "fieldLabel": "Slide 3 Url"
-        },
-        {
-          "name": "slideImage3",
-          "fieldLabel": "Slide 3 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl4",
-          "fieldLabel": "Slide 4 Url"
-        },
-        {
-          "name": "slideImage4",
-          "fieldLabel": "Slide 4 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl5",
-          "fieldLabel": "Slide 5 Url"
-        },
-        {
-          "name": "slideImage5",
-          "fieldLabel": "Slide 5 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "xtype": "label",
-          "text": "Slideshow Options"
-        },
-        {
-          "name": "accessibility",
-          "fieldLabel": "Enables tabbing and arrow key navigation",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "autoplay",
-          "fieldLabel": "Enables auto play of slides",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "autoplaySpeed",
-          "fieldLabel": "Auto play change interval",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "centerMode",
-          "fieldLabel": "Enables centered view with partial prev/next slides. Use with odd numbe}red slidesToShow counts.",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "centerPadding",
-          "fieldLabel": "Side padding when in center mode. (px or %)"
-        },
-        {
-          "name": "cssEase",
-          "fieldLabel": "CSS3 easing"
-        },
-        {
-          "name": "dots",
-          "fieldLabel": "Current slide indicator dots",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "dotsClass",
-          "fieldLabel": "Class for slide indicator dots container"
-        },
-        {
-          "name": "draggable",
-          "fieldLabel": "Enables desktop dragging",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "easing",
-          "fieldLabel": "animate() fallback easing"
-        },
-        {
-          "name": "edgeFriction",
-          "fieldLabel": "Resistance when swiping edges of non-infinite carousels",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "fade",
-          "fieldLabel": "Enables fade",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "arrows",
-          "fieldLabel": "Enable Next/Prev arrows",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "mobileFirst",
-          "fieldLabel": "Responsive settings use mobile first calculation",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "infinite",
-          "fieldLabel": "Infinite looping",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "initialSlide",
-          "fieldLabel": "Slide to start on",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "lazyLoad",
-          "fieldLabel": "Accepts 'ondemand' or 'progressive' for lazy load technique"
-        },
-        {
-          "name": "pauseOnHover",
-          "fieldLabel": "Pauses autoplay on hover",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "pauseOnDotsHover",
-          "fieldLabel": "Pauses autoplay when a dot is hovered",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "respondTo",
-          "fieldLabel": "Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two)."
-        },
-        {
-          "name": "rows",
-          "fieldLabel": "Setting this to more than 1 initializes grid mode. Use slidesPerRow to set how many slides should be in each row.",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "slide",
-          "fieldLabel": "Slide element query"
-        },
-        {
-          "name": "slidesPerRow",
-          "fieldLabel": "With grid mode intialized via the rows option, this sets how many slides are in each grid row. dver",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "slidesToShow",
-          "fieldLabel": "# of slides to show at a time",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "slidesToScroll",
-          "fieldLabel": "# of slides to scroll at a time",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "speed",
-          "fieldLabel": "Transition speed",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "swipe",
-          "fieldLabel": "Enables touch swipe",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "swipeToSlide",
-          "fieldLabel": "Swipe to slide irrespective of slidesToScroll",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "touchMove",
-          "fieldLabel": "Enables slide moving with touch",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "touchThreshold",
-          "fieldLabel": "To advance slides, the user must swipe a length of (1/touchThreshold) * the width of the slider.",
-          "xtype": "mz-input-number"
-        },
-        {
-          "name": "useCSS",
-          "fieldLabel": "Enable/Disable CSS Transitions",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "variableWidth",
-          "fieldLabel": "Disables automatic slide width calculation",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "vertical",
-          "fieldLabel": "Vertical slide direction",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "verticalSwiping",
-          "fieldLabel": "Changes swipe direction to vertical",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "rtl",
-          "fieldLabel": "Change the slider's direction to become right-to-left",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "waitForAnimate",
-          "fieldLabel": "Ignores requests to advance the slide while animating",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "zIndex",
-          "fieldLabel": "Set the zIndex values for slides, useful for IE9 and lower",
-          "xtype": "mz-input-number"
-        }
-      ]
+      "id": "blank-page",
+      "title": "Blank Page",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "blank-page",
+      "userCreatable": true
     },
     {
-      "id": "content",
-      "displayName": "Text Editor",
-      "displayTemplate": "cms/text-editor",
-      "icon": "/resources/admin/widgets/03_heading_p.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "body": "<h2>Insert Title</h2><p>Insert Content</p>"
-      }
+      "id": "cart",
+      "title": "Cart",
+      "entityType": "cart",
+      "template": "cart",
+      "userCreatable": false
     },
     {
-      "id": "video",
-      "displayName": "Video",
-      "displayTemplate": "cms/video",
-      "icon": "/resources/admin/widgets/08_video.png",
-      "validPageTypes": [
-        "*"
-      ],
-      "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-checkbox",
-        "autoplay": false,
-        "loop": false,
-        "timestart": "0:00",
-        "youtube-rel": false,
-        "youtube-controls": true,
-        "youtube-showinfo": true,
-        "vimeo-portrait": true,
-        "vimeo-title": true,
-        "vimeo-byline": true,
-        "vimeo-color": "#00adef"
+      "id": "parent-category",
+      "title": "ParentCategory",
+      "entityType": "category",
+      "template": "parent-category",
+      "customEditor": "categoryContent@mozu",
+      "userCreatable": false
+    },
+    {
+      "id": "category",
+      "title": "Category",
+      "entityType": "category",
+      "template": "category",
+      "userCreatable": false
+    },
+    {
+      "id": "checkout",
+      "title": "Checkout",
+      "entityType": "order",
+      "template": "checkout",
+      "userCreatable": false
+    },
+    {
+      "id": "home",
+      "title": "Home Page",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "home",
+      "userCreatable": true
+    },
+    {
+      "id": "404",
+      "title": "404 Not Found",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "404",
+      "userCreatable": false
+    },
+    {
+      "id": "landing",
+      "title": "Landing Page",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "blank-page",
+      "editor": "landing-page",
+      "userCreatable": true
+    },
+    {
+      "id": "forgotpassword",
+      "title": "Forgot Password",
+      "entityType": "forgotpassword",
+      "template": "forgot-password",
+      "userCreatable": false
+    },
+    {
+      "id": "login",
+      "title": "Login",
+      "entityType": "login",
+      "template": "login",
+      "userCreatable": false
+    },
+    {
+      "id": "signup",
+      "title": "Sign Up",
+      "entityType": "signup",
+      "template": "signup",
+      "userCreatable": false
+    },
+    {
+      "id": "my_account",
+      "title": "My Account",
+      "entityType": "customer",
+      "template": "my-account",
+      "userCreatable": false
+    },
+    {
+      "id": "confirmation",
+      "title": "Order Confirmation",
+      "entityType": "order",
+      "template": "confirmation",
+      "userCreatable": false
+    },
+    {
+      "id": "product",
+      "title": "Product",
+      "entityType": "product",
+      "template": "product",
+      "customEditor": "productContent@mozu",
+      "userCreatable": false
+    },
+    {
+      "id": "no-search-results",
+      "title": "Empty Search Results",
+      "entityType": "nosearchresult",
+      "template": "no-search-results",
+      "userCreatable": false
+    },
+    {
+      "id": "search-results",
+      "title": "Search Results",
+      "entityType": "searchresult",
+      "template": "search-results",
+      "userCreatable": false
+    },
+    {
+      "id": "location",
+      "title": "Store Locator",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "location",
+      "userCreatable": true
+    }
+  ],
+  "emailTemplates": [
+    {
+      "id": "order.shipped",
+      "properties": {},
+      "template": "email/order-shipped",
+      "title": "Order Shipped"
+    },
+    {
+      "id": "order.changed",
+      "customEditor": "email-orderconfirmation",
+      "properties": {
+        "fancy": "waffles"
       },
-      "editViewFields": [
-        {
-          "fieldLabel": "Video ID or URL",
-          "name": "url",
-          "anchor": "90%"
-        },
-        {
-          "xtype": "label",
-          "text": "Optional Video config",
-          "margin": "20px 0 0 0"
-        },
-        {
-          "fieldLabel": "Autoplay this video",
-          "xtype": "mz-input-checkbox",
-          "name": "autoplay"
-        },
-        {
-          "fieldLabel": "Loop this video",
-          "xtype": "mz-input-checkbox",
-          "name": "loop"
-        },
-        {
-          "fieldLabel": "Start video at specific time (ex: 13:31)",
-          "name": "timestart"
-        },
-        {
-          "xtype": "label",
-          "text": "YouTube Settings"
-        },
-        {
-          "fieldLabel": "Show Related videos after video",
-          "xtype": "mz-input-checkbox",
-          "name": "youtube-rel"
-        },
-        {
-          "fieldLabel": "Show video controls",
-          "xtype": "mz-input-checkbox",
-          "name": "youtube-controls"
-        },
-        {
-          "fieldLabel": "Show video info",
-          "xtype": "mz-input-checkbox",
-          "name": "youtube-showinfo"
-        },
-        {
-          "xtype": "label",
-          "text": "Vimeo Settings"
-        },
-        {
-          "fieldLabel": "Show Portrait",
-          "xtype": "mz-input-checkbox",
-          "name": "vimeo-portrait"
-        },
-        {
-          "fieldLabel": "Show Title",
-          "xtype": "mz-input-checkbox",
-          "name": "vimeo-title"
-        },
-        {
-          "fieldLabel": "Show Byline",
-          "xtype": "mz-input-checkbox",
-          "name": "vimeo-byline"
-        },
-        {
-          "fieldLabel": "Player controls color",
-          "xtype": "mz-input-color",
-          "name": "vimeo-color"
-        }
-      ]
+      "template": "email/order-confirmation",
+      "title": "Order Confirmation"
+    },
+    {
+      "id": "refund.created",
+      "properties": {},
+      "template": "email/order-refund-issued",
+      "title": "Refund Issued"
+    },
+    {
+      "id": "return.created",
+      "properties": {},
+      "template": "email/product-return-changed",
+      "title": "Return Created"
+    },
+    {
+      "id": "return.authorized",
+      "properties": {},
+      "template": "email/product-return-authorized",
+      "title": "Return Authorized"
+    },
+    {
+      "id": "return.rejected",
+      "properties": {},
+      "template": "email/product-return-rejected",
+      "title": "Return Request Rejected"
+    },
+    {
+      "id": "return.closed",
+      "properties": {},
+      "template": "email/product-return-received",
+      "title": "Return Item Received"
+    },
+    {
+      "id": "return.changed",
+      "properties": {},
+      "template": "email/product-return-changed",
+      "title": "Return Has Been Updated"
+    },
+    {
+      "id": "user.created",
+      "properties": {},
+      "template": "email/new-user",
+      "title": "Welcome"
+    },
+    {
+      "id": "user.passwordreset",
+      "properties": {},
+      "template": "email/password-reset",
+      "title": "Password Reset"
+    },
+    {
+      "id": "product.instock",
+      "properties": {},
+      "template": "email/product-instock",
+      "title": "Back in Stock"
+    },
+    {
+      "id": "giftcard.created",
+      "properties": {},
+      "template": "email/giftcard-created",
+      "title": "Gift Card Created"
     }
   ]
 }
