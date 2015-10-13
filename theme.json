@@ -1,8 +1,9 @@
 {
   "about": {
-    "name": "Awesome Theme v1.2.0",
+    "name": "Awesome Theme v1.3.0",
     "defaultLanguage": "en-US",
-    "version": "1.2.0",
+    "projectName": "Awesome Theme",
+    "version": "1.3.0",
     "extends": null,
     "isDesktop": true,
     "isTablet": true,

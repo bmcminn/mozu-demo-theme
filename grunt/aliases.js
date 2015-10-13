@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'buildTheme'
 	, 'lintify'
-	, 'setver:build'
+	, 'setver'
+	// , 'setver:build'
 	, 'mozutheme:quickcompile'
 	]);
 
@@ -22,7 +23,8 @@ module.exports = function(grunt) {
 	, 'lintify'
 	, 'checkreferences'
 	, 'zubat'
-	, 'setver:release'
+	, 'setver'
+	// , 'setver:release'
 	, 'compress'
 	]);
 

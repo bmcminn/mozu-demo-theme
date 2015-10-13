@@ -24,42 +24,52 @@ module.exports = function(grunt) {
         self            = this,
 
         applyVersion = function(newver) {
-          if (!newver) newver = currentVersion;
+
           var next = function(cb) {
                 process.nextTick(function() {
                   cb(null, true);
                 });
               },
+
               tasks = {
                 packagejson: function(cb) {
                   pkg.version = newver;
                   grunt.file.write('package.json', JSON.stringify(pkg, null, 2));
                   grunt.log.ok('Updated package.json version to ' + newver);
                   next(cb);
-                },
-                bowerjson: function(cb) {
-                  pkg.version = newver;
-                  grunt.file.write('bower.json', JSON.stringify(pkg, null, 2));
+                }
+
+              , bowerjson: function(cb) {
+                  var bower = grunt.file.readJSON('bower.json');
+
+                  bower.version = newver;
+
+                  grunt.file.write('bower.json', JSON.stringify(bower, null, 2));
                   grunt.log.ok('Updated bower.json version to ' + newver);
+
                   next(cb);
-                },
-                themejson: function(cb) {
+                }
+
+              , themejson: function(cb) {
                   theme.about.version = newver;
-                  if (!theme.about.name.match(/v[\d\.]+/)) {
-                    theme.about.name += ' v0.1.0';
-                  }
-                  theme.about.name    = theme.about.name.replace(/\s+v[\d\.]+/, ' v' + newver);
+                  theme.about.name    = theme.about.projectName + ' v' + newver;
+
                   grunt.file.write('theme.json', JSON.stringify(theme, null, 2));
                   grunt.log.ok('Updated theme.json version to ' + newver);
+
                   next(cb);
-                },
-                readmemd: function(cb) {
+                }
+
+              , readmemd: function(cb) {
                   var readmetxt = grunt.file.read('README.md');
-                  grunt.file.write('README.md', readmetxt.replace(/\nVersion:.*\n/, "\nVersion: " + newver + "\n"));
+
+                  grunt.file.write('README.md', readmetxt.replace(/> Version:.*\n/, "> Version: " + newver + "\n"));
                   grunt.log.ok('Updated readme.md version to ' + newver);
+
                   next(cb);
-                },
-                filenames: function(cb) {
+                }
+
+              , filenames: function(cb) {
                   if (!Array.isArray(self.data.filenames)) {
                     var err = 'Please supply an array of filenames to rename with the version, instead of "' + filenames + '".';
                     grunt.log.error(err);
@@ -80,7 +90,7 @@ module.exports = function(grunt) {
           var toRun = {};
 
           for (var task in tasks) {
-            if (self.data[task]) {
+            if (self.data.files[task]) {
               toRun[task] = tasks[task];
             }
           }
