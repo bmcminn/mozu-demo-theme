@@ -84,6 +84,8 @@
 
 
         // ==================================================
+        // SLIDE ONE CONFIG
+        // --------------------------------------------------
 
         {
             "xtype": "box",
@@ -94,8 +96,15 @@
 
             {
                 "name": "slideUrl1",
-                "fieldLabel": "Slide 1 Url"
+                "fieldLabel": "Slide 1 Url",
+                "xtype": "mz-input-navnode"
             },
+
+            {
+                "name": "slideUrl1Custom",
+                "fieldLabel": "Slide 1 Url (custom url)"
+            },
+
             {
                 "name": "slideImage1",
                 "fieldLabel": "Slide 1 Image",
@@ -108,6 +117,8 @@
 
 
         // ==================================================
+        // SLIDE TWO CONFIG
+        // --------------------------------------------------
 
         {
             "xtype": "box",
@@ -118,8 +129,15 @@
 
             {
                 "name": "slideUrl2",
-                "fieldLabel": "Slide 2 Url"
+                "fieldLabel": "Slide 2 Url",
+                "xtype": "mz-input-navnode"
             },
+
+            {
+                "name": "slideUrl2Custom",
+                "fieldLabel": "Slide 2 Url (custom url)"
+            },
+
             {
                 "name": "slideImage2",
                 "fieldLabel": "Slide 2 Image",
@@ -128,6 +146,8 @@
 
 
         // ==================================================
+        // SLIDE THREE CONFIG
+        // --------------------------------------------------
 
         {
             "xtype": "box",
@@ -138,8 +158,15 @@
 
             {
                 "name": "slideUrl3",
-                "fieldLabel": "Slide 3 Url"
+                "fieldLabel": "Slide 3 Url",
+                "xtype": "mz-input-navnode"
             },
+
+            {
+                "name": "slideUrl3Custom",
+                "fieldLabel": "Slide 3 Url (custom url)"
+            },
+
             {
                 "name": "slideImage3",
                 "fieldLabel": "Slide 3 Image",
@@ -148,6 +175,8 @@
 
 
         // ==================================================
+        // SLIDE FOUR CONFIG
+        // --------------------------------------------------
 
         {
             "xtype": "box",
@@ -158,8 +187,15 @@
 
             {
                 "name": "slideUrl4",
-                "fieldLabel": "Slide 4 Url"
+                "fieldLabel": "Slide 4 Url",
+                "xtype": "mz-input-navnode"
             },
+
+            {
+                "name": "slideUrl4Custom",
+                "fieldLabel": "Slide 4 Url (custom url)"
+            },
+
             {
                 "name": "slideImage4",
                 "fieldLabel": "Slide 4 Image",
@@ -168,7 +204,8 @@
 
 
         // ==================================================
-
+        // SLIDE FIVE CONFIG
+        // --------------------------------------------------
         {
             "xtype": "box",
             "autoEl": {
@@ -178,8 +215,15 @@
 
             {
                 "name": "slideUrl5",
-                "fieldLabel": "Slide 5 Url"
+                "fieldLabel": "Slide 5 Url",
+                "xtype": "mz-input-navnode"
             },
+
+            {
+                "name": "slideUrl5Custom",
+                "fieldLabel": "Slide 5 Url (custom url)"
+            },
+
             {
                 "name": "slideImage5",
                 "fieldLabel": "Slide 5 Image",
