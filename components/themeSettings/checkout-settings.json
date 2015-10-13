@@ -1,0 +1,7 @@
+{
+  "isCvvSuppressed": false,
+  "billingEmailEnabled": true,
+  "requireCheckoutAgreeToTerms": true,
+  "visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",
+  "showCheckoutCommentsField": true
+}

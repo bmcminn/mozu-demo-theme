@@ -1,78 +1,16 @@
 {
-	"allowCustomerInitiatedReturns": true,
-	"backofficeDateTimeFormat": "m/d/Y H:i:s O",
-	"bannerImage": "/resources/images/banner.jpg",
-	"bannerImageEnabled": false,
-	"bannerImageRepeat": "repeat-x",
-	"billingEmailEnabled": true,
-	"bodyBackgroundColor": "#FFFFFF",
-  "bodyBackgroundImage": "",
-	"cmsTextStyles": [
-		{
-			"className": "mz-style-1",
-			"label": "Heading 1",
-			"tagName": "h1"
-		},
-		{
-			"label": "Heading 2",
-			"tagName": "h2"
-		},
-		{
-			"label": "Paragraph",
-			"tagName": "p"
-		}
-	],
-	"defaultPageSize": 15,
-	"defaultSort": "createDate asc",
-	"enablePartialCaching": true,
-	"extendedPropertiesEnabled": false,
-	"extendedPropertyParameters": "",
-	"fontSize": "14px",
-	"gutterWidth": "25px",
-	"internal-themeAddons": [],
-	"isCvvSuppressed": false,
-	"itemListingThumbSize": 80,
-	"listProductCode": true,
-	"listProductShortDesc": true,
-	"listProductThumbSize": 160,
-	"loadGoogleFonts": [
-		"Source Sans Pro"
-	],
-	"maxProductImageThumbnailSize": 50,
-	"maxProductSummaryWords": 40,
-	"maxTopLevelNavItems": 8,
-	"maxTopLevelNavLabelLength": 20,
-	"pageSizeOptions": [
-		15,
-		25,
-		50,
-		100
-	],
-	"phoneNumberEnabled": true,
-	"preselectCountryCode": "US",
-	"primaryFont": "Source Sans Pro",
-	"productImagesContainerWidth": 350,
-	"requireCheckoutAgreeToTerms": true,
-	"searchExpandOnFocus": true,
-	"showAddressTypeDropdown": true,
-	"showBreadcrumbs": true,
-	"showCartItemDimensions": true,
-	"showCartItemImage": true,
-	"showCartItemOptions": true,
-	"showCartItemWeight": true,
-	"showCategoryFacets": true,
-	"showCheckoutCommentsField": true,
-	"showChildCategoriesInFaceting": true,
-	"showMSRP": true,
-	"showProductDetailMeasurements": true,
-	"showProductDetailMfgPartNumber": true,
-	"showProductDetailProperties": true,
-	"showProductDetailShortDesc": true,
-	"showProductDetailUPC": true,
-	"suggestPriorSearchTerms": true,
-	"textColor": "#444444",
-	"useDebugScripts": false,
-	"useSearchAutocomplete": true,
-	"visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",
-	"zipCodeEnabled": true
+  "allowCustomerInitiatedReturns": true,
+  "backofficeDateTimeFormat": "m/d/Y H:i:s O",
+
+  "enablePartialCaching": true,
+  "extendedPropertiesEnabled": false,
+  "extendedPropertyParameters": "",
+  "internal-themeAddons": [],
+
+  "phoneNumberEnabled": true,
+  "searchExpandOnFocus": true,
+  "showAddressTypeDropdown": true,
+  "suggestPriorSearchTerms": true,
+  "useSearchAutocomplete": true,
+  "zipCodeEnabled": true
 }

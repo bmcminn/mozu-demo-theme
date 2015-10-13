@@ -1,0 +1,11 @@
+{
+  "showMSRP": true,
+  "showProductDetailMeasurements": true,
+  "showProductDetailMfgPartNumber": true,
+  "showProductDetailProperties": true,
+  "showProductDetailShortDesc": true,
+  "showProductDetailUPC": true,
+  "productImagesContainerWidth": 350,
+  "maxProductImageThumbnailSize": 50,
+  "maxProductSummaryWords": 40
+}

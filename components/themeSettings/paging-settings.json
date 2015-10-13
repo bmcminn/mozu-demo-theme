@@ -1,0 +1,10 @@
+{
+  "defaultPageSize": 15,
+  "defaultSort": "createDate asc",
+  "pageSizeOptions": [
+    15,
+    25,
+    50,
+    100
+  ]
+}

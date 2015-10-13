@@ -1,0 +1,8 @@
+{
+  "itemListingThumbSize": 80,
+  "listProductCode": true,
+  "listProductShortDesc": true,
+  "listProductThumbSize": 160,
+  "showCategoryFacets": true,
+  "showChildCategoriesInFaceting": true
+}

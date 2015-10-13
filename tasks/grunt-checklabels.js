@@ -48,6 +48,8 @@ module.exports = function(grunt) {
 						, file: file
 						});
 					});
+				} else {
+					grunt.log.error('Mama says, Theme developer ornery cuz he got all them templates and no labels...');
 				}
 
 			});
@@ -61,11 +63,12 @@ module.exports = function(grunt) {
 					, coreFile  = ''
 					;
 
-
+				grunt.log.writeln('');
 				grunt.log.ok(
 					'Checking'
 				, chalk.yellow(i18n)
 				);
+				grunt.log.ok('--------------------------------------------------');
 
 
 				// check if we're extending the core theme and grab the original i18n file if available
@@ -123,6 +126,9 @@ module.exports = function(grunt) {
 				});
 			});
 
+
+			grunt.log.writeln('');
+			grunt.log.writeln('');
 
 			// setup messaging for end of task
 			if (passed) {

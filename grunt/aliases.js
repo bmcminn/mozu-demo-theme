@@ -2,31 +2,39 @@
 
 module.exports = function(grunt) {
 
-	grunt.registerTask('default', [
-		'buildTheme'
-	, 'lintify'
-	, 'setver'
-	// , 'setver:build'
-	, 'mozutheme:quickcompile'
-	]);
-
-	grunt.registerTask('check', [
-		'buildTheme'
+	grunt.registerTask('init', [
+		'default'
 	, 'checklabels'
 	, 'checkwidgets'
 	, 'checksettings'
-	, 'checkreferences'
 	]);
 
-	grunt.registerTask('build', [
-		'buildTheme'
+
+	grunt.registerTask('default', [
+		'theme'
 	, 'lintify'
-	, 'checkreferences'
-	, 'zubat'
 	, 'setver'
-	// , 'setver:release'
-	, 'compress'
+	, 'mozutheme:quickcompile'
 	]);
+
+
+	grunt.registerTask('check', [
+		'theme'
+	, 'checklabels'
+	, 'checkwidgets'
+	, 'checksettings'
+	]);
+
+
+	// DEPRECATED
+	// grunt.registerTask('build', [
+	//  'theme'
+	// , 'lintify'
+	// , 'zubat'
+	// , 'setver'
+	// , 'compress'
+	// ]);
+
 
 	grunt.registerTask('emails', [
 		'lintify'
@@ -39,14 +47,16 @@ module.exports = function(grunt) {
 	, 'compress'
 	]);
 
+
 	grunt.registerTask('push', [
-		'buildTheme'
+		'theme'
 	, 'lintify'
 	// , 'mozutheme:check'
 	, 'mozutheme:quickcompile'
 	// , 'mozutheme:buildver'
 	, 'mozusync:upload'
 	]);
+
 
 	grunt.registerTask('sync', [
 		'watch:sync'
@@ -59,10 +69,11 @@ module.exports = function(grunt) {
 	]);
 
 
-	grunt.registerTask('buildTheme', [
+	grunt.registerTask('theme', [
 		'widgetize'
-	, 'build-settings'
-	, 'build-pagetypes'
+	, 'theme-about'
+	, 'theme-settings'
+	, 'theme-pagetypes'
 	]);
 
 };

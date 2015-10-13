@@ -1,0 +1,22 @@
+{
+  "primaryFont": "Source Sans Pro",
+  "fontSize": "14px",
+  "loadGoogleFonts": [
+    "Source Sans Pro"
+  ],
+  "cmsTextStyles": [
+    {
+      "className": "mz-style-1",
+      "label": "Heading 1",
+      "tagName": "h1"
+    },
+    {
+      "label": "Heading 2",
+      "tagName": "h2"
+    },
+    {
+      "label": "Paragraph",
+      "tagName": "p"
+    }
+  ]
+}

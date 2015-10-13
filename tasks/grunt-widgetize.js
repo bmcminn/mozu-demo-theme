@@ -103,7 +103,13 @@ module.exports = function(grunt) {
 			// delete all of our assets
 			_.each(grunt.file.readJSON(paths.assetsJson), function(filepath) {
 				grunt.log.warn('deleting:', chalk.red(destPath(filepath)));
-				grunt.file.delete(filepath);
+
+				// some widgets use duplicated assets like icons and templates
+				if (!grunt.file.exists(filepath)) {
+					grunt.log.warn('file already deleted:', chalk.yellow(destPath(filepath)));
+				} else {
+					grunt.file.delete(filepath);
+				}
 			});
 		}
 
