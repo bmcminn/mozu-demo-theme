@@ -1,0 +1,23 @@
+{
+  "xtype": "panel",
+  "title": "Search",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "showChildCategoriesInFaceting",
+      "fieldLabel": "Show two levels of the category hierarchy in faceting"
+    },
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "useSearchAutocomplete",
+      "fieldLabel": "Show search suggestions"
+    },
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "suggestPriorSearchTerms",
+      "fieldLabel": "Show search terms others used on this site in search suggestions",
+      "enableIf": "useSearchAutocomplete"
+    }
+  ]
+}

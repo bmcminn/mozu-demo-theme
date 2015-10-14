@@ -1,0 +1,12 @@
+{
+  "xtype": "panel",
+  "title": "Checkout",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "isCvvSuppressed",
+      "fieldLabel": "CVV Suppressed"
+    }
+  ]
+}

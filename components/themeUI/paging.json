@@ -1,0 +1,29 @@
+{
+  "xtype": "panel",
+  "title": "Paging",
+  "collapsed": false,
+  "items": [
+    {
+      "fieldLabel": "Show these page size options",
+      "xtype": "mz-input-selectmulti",
+      "name": "pageSizeOptions",
+      "allowBlank": false,
+      "forceSelection": true,
+      "store": [
+        15,
+        25,
+        50,
+        100,
+        500
+      ]
+    },
+    {
+      "fieldLabel": "Default items per page",
+      "xtype": "mz-input-dropdown",
+      "name": "defaultPageSize",
+      "allowBlank": false,
+      "forceSelection": true,
+      "storeFrom": "pageSizeOptions"
+    }
+  ]
+}

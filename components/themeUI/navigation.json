@@ -1,0 +1,23 @@
+{
+  "xtype": "panel",
+  "title": "Navigation",
+  "collapsed": false,
+  "items": [
+    {
+      "fieldLabel": "Maximum Items In Main Nav",
+      "xtype": "mz-input-number",
+      "name": "maxTopLevelNavItems",
+      "hideTrigger": false,
+      "allowDecimal": false,
+      "minValue": 1
+    },
+    {
+      "fieldLabel": "Maximum Nav Item Label Length",
+      "xtype": "mz-input-number",
+      "name": "maxTopLevelNavLabelLength",
+      "hideTrigger": false,
+      "allowDecimal": false,
+      "minValue": 1
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "xtype": "panel",
+  "title": "Product Lists",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "listProductCode",
+      "fieldLabel": "Show product code in product lists"
+    },
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "listProductShortDesc",
+      "fieldLabel": "Show product short description in product lists"
+    }
+  ]
+}

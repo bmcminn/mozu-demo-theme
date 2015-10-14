@@ -1,23 +1,30 @@
 
 {% with themeSettings.canonicalProtocol as canonicalProtocol %}
+{% with themeSettings.canonicalTrailingSlashes as trailingSlash|default('') %}
 {% with siteContext.domains.primary.domainName as domainName %}
 {% with pageContext.cmsContext.template.path as templateType %}
 
 	{# CHECK HOMEPAGE AND HOMEPAGE SLUG #}
 	{% if model.name == themeSettings.canonicalHomepageSlug %}
-		{{ '<link rel="canonical" href="{0}://{1}/">'|string_format(canonicalProtocol, domainName) }}
+		{{ '<link rel="canonical" href="{0}://{1}{2}">'|string_format(canonicalProtocol, domainName, trailingSlash) }}
 
 	{% else %}
 
+		{# <meta rel="before" content="CMS Check"> #}
+
 		{# CHECK CMS PAGE SLUG #}
 		{% if model.name and not templateType == "category" and not templateType == "product" %}
-			{{ '<link rel="canonical" href="{0}://{1}/{2}/">'|string_format(canonicalProtocol, domainName, model.name) }}
+			{{ '<link rel="canonical" href="{0}://{1}/{2}{3}">'|string_format(canonicalProtocol, domainName, model.name, trailingSlash) }}
 		{% endif %}
+
+		{# <meta rel="before" content="Product/Category Check"> #}
 
 		{# CHECK PRODUCT/CATEGORY SLUG #}
 		{% if model.url %}
-			{{ '<link rel="canonical" href="{0}://{1}{2}/">'|string_format(canonicalProtocol, domainName, model.url) }}
+			{{ '<link rel="canonical" href="{0}://{1}{2}{3}">'|string_format(canonicalProtocol, domainName, model.url, trailingSlash) }}
 		{% endif %}
+
+		{# <meta rel="before" content="Other Check"> #}
 
 		{# CHECK FOR SEARCH/404/CART/CHECKOUT/MY ACCOUNT PAGES #}
 		{% if templateType == "search-results" or templateType == "404" or templateType == "cart" or templateType == "checkout" or templateType == "my-account" %}
@@ -26,6 +33,7 @@
 
 	{% endif %}
 
+{% endwith %}
 {% endwith %}
 {% endwith %}
 {% endwith %}

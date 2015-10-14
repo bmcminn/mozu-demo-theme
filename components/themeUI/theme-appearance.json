@@ -1,0 +1,18 @@
+{
+  "xtype": "panel",
+  "title": "Theme Appearance",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-color",
+      "name": "bodyBackgroundColor",
+      "fieldLabel": "Body Background Color"
+    },
+    {
+      "xtype": "mz-input-image",
+      "name": "bodyBackgroundImage",
+      "fieldLabel": "Body Background Image",
+      "dataFormat": "urlOnly"
+    }
+  ]
+}

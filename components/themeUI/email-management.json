@@ -1,0 +1,12 @@
+{
+  "xtype": "panel",
+  "title": "Email Management",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-text",
+      "name": "contactUsEmail",
+      "fieldLabel": "Contact us Email"
+    }
+  ]
+}

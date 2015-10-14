@@ -1,0 +1,12 @@
+{
+  "xtype": "panel",
+  "title": "Categories",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-categorymulti",
+      "name": "hiddenCategories",
+      "fieldLabel": "Hidden Categories"
+    }
+  ]
+}

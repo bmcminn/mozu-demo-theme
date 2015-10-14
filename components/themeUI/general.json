@@ -1,0 +1,17 @@
+{
+  "xtype": "panel",
+  "title": "General",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "showAddressTypeDropdown",
+      "fieldLabel": "Show Address Type dropdown in Address Forms (Residential/Commercial)"
+    },
+    {
+      "xtype": "mz-input-checkbox",
+      "name": "enablePartialCaching",
+      "fieldLabel": "Enable partial caching using the Hypr {% partial_cache %} tag"
+    }
+  ]
+}
