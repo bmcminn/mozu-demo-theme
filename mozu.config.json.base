@@ -1,6 +1,4 @@
 {
-  "appKey": "SYNC_TOOL_APPKEY_HERE",
-  "sharedSecret": "SYNC_TOOL_SHARED_SECRET_HERE",
   "baseUrl": "https://home.mozu.com",
   "developerAccountId": 6406,
   "developerAccount": {

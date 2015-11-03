@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 	, 'lintify'
 	, 'setver'
 	, 'mozutheme:quickcompile'
+	, 'mozusync:upload'
 	]);
 
 
@@ -26,16 +27,6 @@ module.exports = function(grunt) {
 	]);
 
 
-	// DEPRECATED
-	// grunt.registerTask('build', [
-	//  'theme'
-	// , 'lintify'
-	// , 'zubat'
-	// , 'setver'
-	// , 'compress'
-	// ]);
-
-
 	grunt.registerTask('emails', [
 		'lintify'
 	, 'email-settings'
@@ -44,22 +35,13 @@ module.exports = function(grunt) {
 	, 'juice'
 	, 'email-strainer'
 	, 'email-delessify'
-	, 'compress'
-	]);
-
-
-	grunt.registerTask('push', [
-		'theme'
-	, 'lintify'
-	// , 'mozutheme:check'
-	, 'mozutheme:quickcompile'
-	// , 'mozutheme:buildver'
 	, 'mozusync:upload'
 	]);
 
 
-	grunt.registerTask('sync', [
-		'watch:sync'
+	grunt.registerTask('reset', [
+		'mozusync:wipe'
+	, 'mozusync:upload'
 	]);
 
 

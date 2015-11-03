@@ -4,6 +4,16 @@ module.exports = {
 	options: {
 		applicationKey: '<%= mozuconfig.workingApplicationKey %>'
 	, context: '<%= mozuconfig %>'
+	, 'watchAdapters': [
+			{
+				'src': 'mozusync.upload.src',
+				'action': 'upload'
+			},
+			{
+				'src': 'mozusync.del.remove',
+				'action': 'delete'
+			}
+		]
 	}
 
 , upload: {
@@ -14,12 +24,16 @@ module.exports = {
 
 	, src: [
 			'theme*.json'
-		, 'templates/**'
-		, 'stylesheets/**'
+		, '*thumb.png'
+		, '*thumb.jpg'
+
+		, 'admin/**/*'
+		, 'compiled/**'
+		, 'labels/**'
 		, 'resources/**'
 		, 'scripts/**'
-		, 'labels/**'
-		, 'compiled/**'
+		, 'stylesheets/**'
+		, 'templates/**'
 			// '**',
 			// '**/*',
 			// '!node_modules/**',

@@ -2,11 +2,13 @@ module.exports = function(grunt) {
 
   'use strict';
 
-  var path          = require('path')
-    , watchAdapter  = require('grunt-mozu-appdev-sync/watch-adapter')
+  var path = require('path')
     ;
 
   require('time-grunt')(grunt);
+
+  grunt.loadTasks('./tasks/');
+  grunt.loadNpmTasks('thmaa');
 
   require('load-grunt-config')(grunt, {
       configPath: path.join(process.cwd(), 'grunt')
@@ -17,21 +19,5 @@ module.exports = function(grunt) {
       }
     });
 
-
-  watchAdapter(grunt, {
-      src: 'mozusync.upload.src',
-      action: 'upload',
-      always: ['./assets/functions.json']
-  });
-
-  watchAdapter(grunt, {
-      src: 'mozusync.del.remove',
-      action: 'delete'
-  });
-
-
-
-  grunt.loadTasks('./tasks/');
-  grunt.loadNpmTasks('thmaa');
 
 };
