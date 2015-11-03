@@ -33,14 +33,15 @@
 
 		{% include "modules/json-required-for-hyprlive" %}
 
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		{% block meta-tags %}
-			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="description" content="{{ pageContext.metaDescription }}">
 			<meta name="keywords" content="{{ pageContext.metaKeywords }}">
-			<meta name="correlationId" content="{{ pageContext.correlationId }}">
 		{% endblock meta-tags %}
+
+		<meta name="correlationId" content="{{ pageContext.correlationId }}">
 
 
 		<title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %}</title>

@@ -8,10 +8,10 @@
 {% block canonical-tag %}
 	{% parent %}
 
-	{% with themeSettings.canonicalProtocol as canonicalProtocol %}
+	{% with themeSettings.canonicalProtocol as canonicalProtocol|default('http') %}
 	{% with themeSettings.canonicalTrailingSlashes as trailingSlash|default('') %}
 	{% with siteContext.domains.primary.domainName as domainName %}
-	{% with '{0}://{1}/{2}{3}'|string_format(canonicalProtocol, domainName, model.url, trailingSlash) }} as seoDomainName %}
+	{% with '{0}://{1}{2}{3}'|string_format(canonicalProtocol, domainName, model.url, trailingSlash) as seoDomainName %}
 
 		{% if pageContext.pagination.startIndex %}
 			{% if pageContext.pagination.startIndex > 0 %}
