@@ -11,7 +11,7 @@
 				"*.zip",
 				"*.base",
 				"thumb.*",
-				"*workspace",
+				"*.sublime*",
 				"theme.json"
 			],
 			"folder_exclude_patterns":
