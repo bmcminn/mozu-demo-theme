@@ -1,5 +1,7 @@
 // grunt/tasks/default.js
 
+// TODO: clean out old tooling processes
+
 module.exports = function(grunt) {
 
 	grunt.registerTask('init', [
