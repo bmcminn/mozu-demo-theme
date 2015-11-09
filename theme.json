@@ -531,9 +531,7 @@
     {
       "id": "order.changed",
       "customEditor": "email-orderconfirmation",
-      "properties": {
-        "fancy": "waffles"
-      },
+      "properties": {},
       "template": "email/order-confirmation",
       "title": "Order Confirmation"
     },

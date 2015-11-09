@@ -9,7 +9,7 @@
 				<dl class="mz-orderheader">
 					{% comment %}
 						<dt>{{ labels.orderNo }}</dt>
-						<dd><a href="https://{{domainName}}/checkout/{{model.id}}/confirmation">{{ model.orderNumber }}</a></dd>
+						<dd><a href="https://{{ domainName }}/checkout/{{ model.id }}/confirmation">{{ model.orderNumber }}</a></dd>
 					{% endcomment %}
 
 					<dt>{{ labels.return }}</dt>

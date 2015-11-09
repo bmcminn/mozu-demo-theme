@@ -19,7 +19,6 @@
 
 
 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section">
-
 	<h4 class="mz-l-stack-sectiontitle">{{ labels.price }}</h4>
 
 	{% include "modules/product/price-stack" %}

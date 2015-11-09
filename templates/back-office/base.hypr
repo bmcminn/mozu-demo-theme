@@ -13,6 +13,17 @@
 		<style type="text/css">{% inline_style "back-office.less" %}</style>
 	</head>
 	<body>
+
+		{% if pageContext.isDebugMode or pageContext.isEditMode %}
+
+		  {% preload_json siteContext "sitecontext" %}
+		  {% preload_json pageContext "pagecontext" %}
+		  {% preload_json model       "model" %}
+		  {% preload_json user        "user" %}
+
+		{% endif %}
+
+
 		{% block body-content %}
 		{% endblock body-content %}
 	</body>
