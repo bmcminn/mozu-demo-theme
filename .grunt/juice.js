@@ -1,9 +1,9 @@
 
 var paths = {
 			labels:   './labels'
-		, emailSrc: './components/emails'
+		, emailSrc: './.components/emails'
 		, emailDest:   './templates/email'
-		, extraCSS: './grunt/assets/email.css'
+		, extraCSS: './.grunt/assets/email.css'
 		}
 	, grunt = require('grunt')
 	, extraCSS = grunt.file.exists(paths.extraCSS) ? grunt.file.read(paths.extraCSS) : ''

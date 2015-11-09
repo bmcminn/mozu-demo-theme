@@ -10,7 +10,7 @@ var _     = require('lodash')
 
 	, paths = {
 			themeJson:  path.resolve('.', 'theme.json')
-		, emailConf:  path.resolve('.', 'components', 'emails', 'emailTemplates.json')
+		, emailConf:  path.resolve('.', '.components', 'emails', 'emailTemplates.json')
 		, lessTarget: path.resolve('.', 'stylesheets', 'email.less')
 		, lessGen:    path.resolve('.', 'stylesheets', 'src_email.less')
 		}

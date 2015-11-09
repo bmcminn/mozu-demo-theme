@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 
 
 		// write temp variables.less file
-		grunt.file.write('./grunt/assets/variables.less', variables.join('\n'));
+		grunt.file.write('./.grunt/assets/variables.less', variables.join('\n'));
 		grunt.log.ok(
 				'writing'
 			, chalk.yellow('"grunt/assets/variables.less"...')

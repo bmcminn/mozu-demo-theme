@@ -28,7 +28,7 @@ module.exports = {
 
 , widgets: {
 		files: [
-			'components/widgets/**'
+			'.components/widgets/**'
 		]
 	, tasks: ['widgetize']
 	}

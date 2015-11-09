@@ -9,7 +9,7 @@ module.exports = {
 
 	emails: {
 		files: {
-			'./grunt/assets/email.css': './stylesheets/src_email.less'
+			'./.grunt/assets/email.css': './stylesheets/src_email.less'
 		}
 	}
 

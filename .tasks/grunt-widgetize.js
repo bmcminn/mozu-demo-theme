@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 	var _           = require('lodash')
 		, chalk       = require('chalk')
 		, path        = require('path')
-		, jsonHelper  = require(process.cwd() + '/tasks/helpers-json.js')
+		, jsonHelper  = require(process.cwd() + '/.tasks/helpers-json.js')
 		;
 
 	grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 		JSON.minify = jsonHelper.minify;
 
 		var theme   = grunt.file.readJSON('theme.json')
-			, gruntFolder = './grunt/assets'
+			, gruntFolder = './.grunt/assets'
 			// , debug   = grunt.option('dbg') ? true : false
 
 			, paths = {
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 						vendor: './scripts/vendor',
 						icons:  './resources/admin/widgets'
 					}
-				, widgetsSrc: path.resolve('.', 'components', 'widgets', '**', 'widget.json')
+				, widgetsSrc: path.resolve('.', '.components', 'widgets', '**', 'widget.json')
 				}
 
 			, assets    = []

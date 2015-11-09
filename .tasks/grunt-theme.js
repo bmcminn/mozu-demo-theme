@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('theme-about', 'Inserts theme About data into theme config', function() {
 
 		var theme = grunt.file.readJSON(paths.themeJson)
-			, about = grunt.file.readJSON(path.resolve('.', 'components', 'about.json'))
+			, about = grunt.file.readJSON(path.resolve('.', '.components', 'about.json'))
 			, contract = {
 			    name: about.projectName + ' v' + about.version,
 			    projectName: "Mozu Theme",
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 			;
 
 		// init or reset the about collection in theme.json
-		grunt.log.subhead('Getting about data from', chalk.cyan('components/about.json') + chalk.white('...'));
+		grunt.log.subhead('Getting about data from', chalk.cyan('.components/about.json') + chalk.white('...'));
 
 		grunt.log.debug(JSON.stringify(about, null, 2));
 
@@ -89,13 +89,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('theme-settings', 'Aggregates all theme settings configs.', function() {
 
 		var theme     = grunt.file.readJSON(paths.themeJson)
-			, settings  = grunt.file.expand(path.resolve('.', 'components', 'themeSettings', '*.json'))
+			, settings  = grunt.file.expand(path.resolve('.', '.components', 'themeSettings', '*.json'))
 			;
 
 		// init or reset the settings collection in theme.json
 		theme.settings = {};
 
-		grunt.log.subhead('Merging themeSettings from', chalk.cyan('components/themeSettings') + chalk.white('...'));
+		grunt.log.subhead('Merging themeSettings from', chalk.cyan('.components/themeSettings') + chalk.white('...'));
 
 		grunt.log.debug(JSON.stringify(settings, null, 2));
 
@@ -118,13 +118,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('theme-pagetypes', 'Gather pagetype configs into theme.json.', function() {
 
 		var theme     = grunt.file.readJSON(paths.themeJson)
-			, pageTypes = grunt.file.expand(path.resolve('.', 'components', 'pageTypes', '*.json'))
+			, pageTypes = grunt.file.expand(path.resolve('.', '.components', 'pageTypes', '*.json'))
 			;
 
 		// init or reset the pageTypes collection in theme.json
 		theme.pageTypes = [];
 
-		grunt.log.subhead('Merging pageType configurations from', chalk.cyan('components/pageTypes') + chalk.white('...'));
+		grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/pageTypes') + chalk.white('...'));
 
 		grunt.log.debug(JSON.stringify(pageTypes, null, 2));
 

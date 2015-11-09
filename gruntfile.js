@@ -7,11 +7,11 @@ module.exports = function(grunt) {
 
   require('time-grunt')(grunt);
 
-  grunt.loadTasks('./tasks/');
+  grunt.loadTasks('./.tasks/');
   grunt.loadNpmTasks('thmaa');
 
   require('load-grunt-config')(grunt, {
-      configPath: path.join(process.cwd(), 'grunt')
+      configPath: path.join(process.cwd(), '.grunt')
     , data: {
         pkg:        grunt.file.readJSON('package.json')
       , theme:      grunt.file.readJSON('theme.json')
