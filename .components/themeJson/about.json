@@ -1,0 +1,11 @@
+{
+  "projectName": "Awesome Theme",
+  "version": "1.3.0",
+  "defaultLanguage": "en-US",
+  "baseCoreVersion": 8,
+  "extends": null,
+  "isDesktop": true,
+  "isTablet": true,
+  "isMobile": true,
+  "allowProduction": true
+}
