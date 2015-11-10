@@ -48,8 +48,6 @@ module.exports = function(grunt) {
 						, file: file
 						});
 					});
-				} else {
-					grunt.log.error('Mama says, Theme developer ornery cuz he got all them templates and no labels...');
 				}
 
 			});
@@ -107,10 +105,13 @@ module.exports = function(grunt) {
 							, refFile = label.file
 							, label = 'labels.'+label.label
 							, message = ''
+							, spaceDepth = 30
+							, spacer = label.length > spaceDepth ? null : new Array(Math.abs(spaceDepth-label.length)).join(' ')
 							;
 
 						message = [
 								chalk.bgCyan.black(label)
+							, spacer
 							, 'is not defined in'
 							, chalk.yellow(lang)
 							].join(' ')
