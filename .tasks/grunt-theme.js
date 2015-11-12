@@ -11,7 +11,8 @@ module.exports = function(grunt) {
 		, jsonHelper  = require('./helpers-json.js')
 
 		, paths = {
-				themeJson: path.resolve('.', 'theme.json')
+				basePath:   path.resolve('.', '.components')
+			, themeJson:  path.resolve('.', 'theme.json')
 			}
 		;
 
@@ -36,31 +37,84 @@ module.exports = function(grunt) {
 	 * [description]
 	 * @return null
 	 */
-	grunt.registerTask('theme-about', 'Inserts theme About data into theme config', function() {
+	grunt.registerTask('compile-theme', 'Inserts theme About data into theme config', function() {
 
 		var theme = grunt.file.readJSON(paths.themeJson)
-			, about = grunt.file.readJSON(path.resolve('.', '.components', 'themeJson', 'about.json'))
-			, contract = {
-			    name: about.projectName + ' v' + about.version,
-			    projectName: "Mozu Theme",
-			    version: "0.0.1",
-			    defaultLanguage: "en-US",
-			    baseCoreVersion: 8,
-			    extends: null,
-			    isDesktop: true,
-			    isTablet: true,
-			    isMobile: true,
-			    allowProduction: true
-				}
+			, aboutContract
+			, components
 			;
 
-		// init or reset the about collection in theme.json
-		grunt.log.subhead('Getting about data from', chalk.cyan('.components/themeJson/about.json') + chalk.white('...'));
 
-		grunt.log.debug(JSON.stringify(about, null, 2));
+		// Get filepaths of necessary components
+		paths.about           = path.resolve(paths.basePath, 'themeJson', 'about.json')
+		paths.settingsFiles   = path.resolve(paths.basePath, 'themeSettings', '*.json')
+		paths.pageTypesFiles  = path.resolve(paths.basePath, 'themeJson', 'pageTypes', '*.json')
+		paths.backOfficeTemplates  = path.resolve(paths.basePath, 'themeJson', 'pageTypes', '*.json')
+
+
+		// Hydrate components object
+		components = {
+				about:      grunt.file.readJSON(paths.about)
+			, settings:   grunt.file.expand(paths.settingsFiles)
+			, pageTypes:  grunt.file.expand(paths.pageTypesFiles)
+		}
+
+
+		// update the about contract object
+		aboutContract = {
+			name: components.about.projectName + ' v' + components.about.version,
+			projectName: "Mozu Theme",
+			version: "0.0.1",
+			defaultLanguage: "en-US",
+			baseCoreVersion: 8,
+			extends: null,
+			isDesktop: true,
+			isTablet: true,
+			isMobile: true,
+			allowProduction: true
+		}
+
+
+
+		// ===========================================================================
+
+		grunt.log.subhead('Merging `about` from', chalk.cyan('.components/themeJson/about.json') + chalk.white('...'));
 
 		// asign the new about collection to theme settings
-		theme.about = _.merge(contract, about);
+		theme.about = _.merge(aboutContract, components.about);
+
+
+
+		// ===========================================================================
+
+		// init or reset the settings collection in theme.json
+		theme.settings = {};
+
+		grunt.log.subhead('Merging `themeSettings` from', chalk.cyan('.components/themeJson/themeSettings') + chalk.white('...'));
+
+		// iterate over each theme settings config and merge them into the settings collection
+		_.each(components.settingsFiles, function(settingsFile) {
+			settingsFile = grunt.file.readJSON(settingsFile);
+			theme.settings = _.merge(theme.settings, settingsFile);
+		});
+
+
+
+		// ===========================================================================
+
+		// init or reset the pageTypes collection in theme.json
+		theme.pageTypes = [];
+
+		grunt.log.subhead('Merging `pageTypes` from', chalk.cyan('.components/themeJson/pageTypes') + chalk.white('...'));
+
+		// iterate over each pagetype config and push it into the pageTypes collection
+		_.each(components.pageTypesFiles, function(fileLoc) {
+			theme.pageTypes.push(grunt.file.readJSON(fileLoc));
+		});
+
+
+
+		// ===========================================================================
 
 		// write the theme.json file updates to disk
 		grunt.file.writeJSON(paths.themeJson, theme);
@@ -69,61 +123,61 @@ module.exports = function(grunt) {
 
 
 
-	/**
-	 * Compiles all JSON configs in components/themeSettings and writes them to theme.json as the new "settings" property.
-	 * @return null
-	 */
-	grunt.registerTask('theme-settings', 'Aggregates all theme settings configs.', function() {
+	// /**
+	//  * Compiles all JSON configs in components/themeSettings and writes them to theme.json as the new "settings" property.
+	//  * @return null
+	//  */
+	// grunt.registerTask('theme-settings', 'Aggregates all theme settings configs.', function() {
 
-		var theme     = grunt.file.readJSON(paths.themeJson)
-			, settings  = grunt.file.expand(path.resolve('.', '.components', 'themeSettings', '*.json'))
-			;
+	//  var theme     = grunt.file.readJSON(paths.themeJson)
+	//    , settings  = grunt.file.expand(path.resolve('.', '.components', 'themeSettings', '*.json'))
+	//    ;
 
-		// init or reset the settings collection in theme.json
-		theme.settings = {};
+	//  // init or reset the settings collection in theme.json
+	//  theme.settings = {};
 
-		grunt.log.subhead('Merging themeSettings from', chalk.cyan('.components/themeJson/themeSettings') + chalk.white('...'));
+	//  grunt.log.subhead('Merging themeSettings from', chalk.cyan('.components/themeJson/themeSettings') + chalk.white('...'));
 
-		grunt.log.debug(JSON.stringify(settings, null, 2));
+	//  grunt.log.debug(JSON.stringify(settings, null, 2));
 
-		// iterate over each theme settings config and merge them into the settings collection
-		_.each(settings, function(settingsFile) {
-			settingsFile = grunt.file.readJSON(settingsFile);
-			theme.settings = _.merge(theme.settings, settingsFile);
-		});
+	//  // iterate over each theme settings config and merge them into the settings collection
+	//  _.each(settings, function(settingsFile) {
+	//    settingsFile = grunt.file.readJSON(settingsFile);
+	//    theme.settings = _.merge(theme.settings, settingsFile);
+	//  });
 
-		grunt.file.writeJSON(paths.themeJson, theme);
+	//  grunt.file.writeJSON(paths.themeJson, theme);
 
-	});
+	// });
 
 
 
-	/**
-	 * Compiles all components/pageTypes configs
-	 * @return null
-	 */
-	grunt.registerTask('theme-pagetypes', 'Gather pagetype configs into theme.json.', function() {
+	// /**
+	//  * Compiles all components/pageTypes configs
+	//  * @return null
+	//  */
+	// grunt.registerTask('theme-pagetypes', 'Gather pagetype configs into theme.json.', function() {
 
-		var theme     = grunt.file.readJSON(paths.themeJson)
-			, pageTypes = grunt.file.expand(path.resolve('.', '.components', 'themeJson', 'pageTypes', '*.json'))
-			;
+	//  var theme     = grunt.file.readJSON(paths.themeJson)
+	//    , pageTypes = grunt.file.expand(path.resolve('.', '.components', 'themeJson', 'pageTypes', '*.json'))
+	//    ;
 
-		// init or reset the pageTypes collection in theme.json
-		theme.pageTypes = [];
+	//  // init or reset the pageTypes collection in theme.json
+	//  theme.pageTypes = [];
 
-		grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/themeJson/pageTypes') + chalk.white('...'));
+	//  grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/themeJson/pageTypes') + chalk.white('...'));
 
-		grunt.log.debug(JSON.stringify(pageTypes, null, 2));
+	//  grunt.log.debug(JSON.stringify(pageTypes, null, 2));
 
-		// iterate over each pagetype config and push it into the pageTypes collection
-		_.each(pageTypes, function(fileLoc) {
-			theme.pageTypes.push(grunt.file.readJSON(fileLoc));
-		});
+	//  // iterate over each pagetype config and push it into the pageTypes collection
+	//  _.each(pageTypes, function(fileLoc) {
+	//    theme.pageTypes.push(grunt.file.readJSON(fileLoc));
+	//  });
 
-		// write theme.json back to the file system
-		grunt.file.write(path.resolve('.', 'theme.json'), JSON.stringify(theme, null, 2));
+	//  // write theme.json back to the file system
+	//  grunt.file.write(path.resolve('.', 'theme.json'), JSON.stringify(theme, null, 2));
 
-	});
+	// });
 
 
 

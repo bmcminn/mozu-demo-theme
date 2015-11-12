@@ -11,6 +11,12 @@
             "title": "Packing Slip",
             "template": "back-office/packing-slip",
             "customEditor": "back-office@mozu"
+        },
+        {
+            "id": "WFAFDSDFJKL-slip",
+            "title": "Packing Slip",
+            "template": "back-office/packing-slip",
+            "customEditor": "back-office@mozu"
         }
     ]
 }

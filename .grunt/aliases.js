@@ -55,9 +55,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('theme', [
 		'widgetize'
-	, 'theme-about'
-	, 'theme-settings'
-	, 'theme-pagetypes'
+	, 'compile-theme'
 	]);
 
 };
