@@ -5,23 +5,38 @@
  */
 
 define(['sdk', 'jquery', 'hyprlive'], function (Mozu, $, Hypr) {
-    var apiConfig = require.mozuData('apicontext');
-    Mozu.setServiceUrls(apiConfig.urls);
-    var api = Mozu.Store(apiConfig.headers).api();
+  var apiConfig = require.mozuData('apicontext');
 
-    var extendedPropertyParameters = Hypr.getThemeSetting('extendedPropertyParameters');
-    if (extendedPropertyParameters && Hypr.getThemeSetting('extendedPropertiesEnabled')) {
-        api.setAffiliateTrackingParameters(extendedPropertyParameters.split(','));
-    }
+  Mozu.setServiceUrls(apiConfig.urls);
 
-    if (Hypr.getThemeSetting('useDebugScripts') || require.mozuData('pagecontext').isDebugMode) {
-        api.on('error', function (badPromise, xhr, requestConf) {
-            var e = "Error communicating with Mozu web services";
-            if (requestConf && requestConf.url) e += (" at " + requestConf.url);
-            var correlation = xhr && xhr.getResponseHeader && xhr.getResponseHeader('x-vol-correlation');
-            if (correlation) e += " --- Correlation ID: " + correlation;
-            if (window && window.console) console.error(e, badPromise, xhr);
-        });
-    }
-    return api;
+  var api = Mozu.Store(apiConfig.headers).api();
+  var extendedPropertyParameters = Hypr.getThemeSetting('extendedPropertyParameters');
+
+  if (extendedPropertyParameters && Hypr.getThemeSetting('extendedPropertiesEnabled')) {
+    api.setAffiliateTrackingParameters(extendedPropertyParameters.split(','));
+  }
+
+  if (require.mozuData('pagecontext').isDebugMode) {
+    api.on('error', function (badPromise, xhr, requestConf) {
+
+      var e = "Error communicating with Mozu web services";
+
+      if (requestConf && requestConf.url) {
+        e += (" at " + requestConf.url);
+      }
+
+      var correlation = xhr && xhr.getResponseHeader && xhr.getResponseHeader('x-vol-correlation');
+
+      if (correlation) {
+        e += " --- Correlation ID: " + correlation;
+      }
+
+      if (window && window.console) {
+        console.error(e, badPromise, xhr);
+      }
+
+    });
+  }
+
+  return api;
 });
