@@ -22,9 +22,6 @@ stylesheets/widgets/
 resources/admin/widgets/
 admin/editors/
 
-theme.json
-theme-ui.json
-
 # Mozu configs
 mozu.config.json
 
