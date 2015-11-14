@@ -1,7 +1,7 @@
 
 # Getting Your Mozu Theme Development Environment Up and Running
 
-> Version: 1.3.0
+> Version: 1.1.1
 
 Before we get started, you should have the following software(s) setup:
 
