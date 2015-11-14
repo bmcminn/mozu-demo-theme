@@ -2,25 +2,29 @@
 
 
 {% block title-tag-content %}
-  {% firstof pageContext.metaTitle model.name %} - {% parent %}
+	{{ pageContext.title }} - {% parent %}
 {% endblock title-tag-content %}
 
 
-{% block body-tag-classes %}
-  {% parent %} mz-page mz-company-info
-{% endblock body-tag-classes %}
+{% block body-tag-classes %} mz-company-info mz-page {% endblock body-tag-classes %}
 
 
 {% block body-content %}
-  <div class="mz-page-company-info">
 
-    <div class="mz-company-info-body">
-    {% dropzone "company-info~body" scope="page" %}
-    </div>
+	{# <div>{{ model.properties.blurb|safe }}</div> #}
 
-    <div class="mz-company-info-footer">
-    {% dropzone "company-info~footer" scope="template" %}
-    </div>
+	<div class="mz-page-body mz-company-info-body">
+		{% dropzone "company-info~page-body" scope="page" %}
+	</div>
 
-  </div>
-{% endblock   %}
+	<div class="mz-page-footer mz-company-info-footer">
+		{% dropzone "company-info~template-footer" scope="template" %}
+	</div>
+
+	{# {% dropzone "company-info~site-body" scope="site" span=16 %} #}
+
+{% endblock body-content %}
+
+
+{% block body-below-content %}
+{% endblock body-below-content %}

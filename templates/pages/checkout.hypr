@@ -1,17 +1,23 @@
-﻿{% extends "page" %}
+{% extends "page" %}
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle labels.checkout %} - {% parent %}{% endblock title-tag-content %}
 
+
 {% block head-tag-scripts %}
-{% parent %}
-{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
-{% include "modules/common/anti-clickjacking-script" %}
-{% endif %}
+	{% parent %}
+	{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
+		{% include "modules/common/anti-clickjacking-script" %}
+	{% endif %}
 {% endblock head-tag-scripts %}
+
 
 {% block body-tag-classes %} mz-checkout {% endblock body-tag-classes %}
 
+
+
 {% block site-nav %}{% endblock site-nav %}
+
+
 
 {% block body-content %}
 
@@ -34,7 +40,7 @@
     {% include "modules/common/message-bar" with model=model.messages %}
 
     <div class="mz-l-column" id="checkout-rightcol">
-        
+
         <div class="mz-formstep mz-checkoutform-ordersummary" id="order-summary">
             {% include "modules/checkout/checkout-order-summary" %}
         </div>
@@ -77,3 +83,9 @@
 </div>
 
 {% endblock body-content %}
+
+
+
+
+{% block softcart %}
+{% endblock softcart %}

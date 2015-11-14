@@ -9,9 +9,15 @@
 {% endif %}
 {% endblock head-tag-scripts %}
 
+
+
 {% block body-tag-classes %} mz-cart {% endblock body-tag-classes %}
 
+
+
 {% block site-nav %}{% endblock site-nav %}
+
+
 
 {% block body-content %}
 
