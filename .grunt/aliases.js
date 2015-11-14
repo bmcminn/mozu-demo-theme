@@ -54,11 +54,12 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('theme', [
-		'widgetize'
-	, 'theme-about'
+	  'theme-about'
+  , 'theme-backoffice'
   , 'theme-editors'
 	, 'theme-pagetypes'
   , 'theme-settings'
+  , 'widgetize'
 	]);
 
 };

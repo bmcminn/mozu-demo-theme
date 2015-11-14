@@ -37,13 +37,13 @@ module.exports = function(grunt) {
 		JSON.minify = jsonHelper.minify;
 
 		var theme   = grunt.file.readJSON('theme.json')
-			, gruntFolder = './.grunt/assets'
+			, gruntFolder = path.resolve('.','.grunt', 'assets')
 			// , debug   = grunt.option('dbg') ? true : false
 
 			, paths = {
 					grunt: gruntFolder
 				, less: './stylesheets'
-				, assetsJson: path.resolve(gruntFolder, 'assets.json')
+				, widgetAssets: path.resolve(gruntFolder, 'widget-assets.json')
 				, storefrontLess: path.resolve('./stylesheets', 'storefront.less')
 				, dest: {
 						labels: './labels',
@@ -54,6 +54,7 @@ module.exports = function(grunt) {
 						icons:  './resources/admin/widgets'
 					}
 				, widgetsSrc: path.resolve('.', '.components', 'widgets', '**', 'widget.json')
+        , pageHypr: path.resolve('.','templates','page.hypr')
 				}
 
 			, assets    = []
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
 
 
 		// check if there is a reference to widgets.less in page.hypr
-		if (grunt.file.exists(path.resolve('.','templates','page.hypr'))) {
+		if (grunt.file.exists(paths.pageHypr)) {
 			temp = grunt.file.read(path.resolve('.','templates','page.hypr'));
 
 			if (!temp.match('widgets.less')) {
@@ -96,12 +97,12 @@ module.exports = function(grunt) {
 
 
 		// get our assets listing and delete all files
-		if (grunt.file.exists(paths.assetsJson)) {
+		if (grunt.file.exists(paths.widgetAssets)) {
 
 			grunt.log.subhead('Deleting widget asset files');
 
 			// delete all of our assets
-			_.each(grunt.file.readJSON(paths.assetsJson), function(filepath) {
+			_.each(grunt.file.readJSON(paths.widgetAssets), function(filepath) {
 				grunt.log.warn('deleting:', chalk.red(destPath(filepath)));
 
 				// some widgets use duplicated assets like icons and templates
@@ -264,7 +265,7 @@ module.exports = function(grunt) {
 
 
 		// write our assets.json data
-		temp = path.resolve(paths.grunt, 'assets.json');
+		temp = paths.widgetAssets;
 		grunt.log.ok('writing', chalk.cyan(destPath(temp)));
 		grunt.file.write(temp, JSON.stringify(assets, null, 2));
 
