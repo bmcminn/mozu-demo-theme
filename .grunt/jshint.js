@@ -3,7 +3,7 @@ module.exports = {
 
 	theme_js: [
 		'gruntfile.js'
-	, 'grunt/**/*.js'
+	, '.grunt/**/*.js'
 	, 'scripts/**/*.js'
 	, '!scripts/vendor/**/*.js'
 	],

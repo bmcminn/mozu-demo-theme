@@ -16,13 +16,17 @@ module.exports = {
 
 , json: {
 		files: configs.jsonlint.theme_json.src
-	, tasks: ['jsonlint']
+	, tasks: [
+			'jsonlint'
+		]
 	}
 
 
 , javascript: {
 		files: configs.jshint.theme_js
-	, tasks: ['jshint']
+	, tasks: [
+			'jshint'
+		]
 	}
 
 
@@ -30,25 +34,37 @@ module.exports = {
 		files: [
 			'.components/widgets/**'
 		]
-	, tasks: ['widgetize']
+	, tasks: [
+			'widgetize'
+		, 'mozusync:upload'
+		]
 	}
 
 
 , emails: {
-		files: [ configs.emails.emailSrc + '/**/*' ],
-		tasks: ['juice', 'strainer:' + configs.emails.emailSrc + '/*.hypr*']
+		files: [
+			configs.emails.emailSrc + '/**/*'
+		],
+		tasks: [
+			'juice'
+		, 'strainer:' + configs.emails.emailSrc + '/*.hypr*'
+		]
 	}
 
 
 , compress: {
 		files: configs.compress.build.files[0].src
-	, tasks: ['compress']
+	, tasks: [
+			'compress'
+		]
 	}
 
 
 , sync: {
 		files: '<%= mozusync.upload.src %>',
-		tasks: ['mozusync:upload']
+		tasks: [
+			'mozusync:upload'
+		]
 	}
 
 };
