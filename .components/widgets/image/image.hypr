@@ -1,8 +1,12 @@
-<div class="mz-cms-image" data-mz-cms-image="{% json_attribute model.config|default:'{}' %}">
+
+<img src="{% make_url "image" model.config.imageURL %}" data-image="{% json_attribute model %}" alt="model.config.alt">
+
+{% comment %}
+<div class="mz-cms-image" data-mz-cms-image="{% json_attribute model.config|default('{}') %}">
 
 {% if not model.config  %}
 
-    <img class="mz-cms-image-cover" style="background-image: url('/admin/scripts/resources/images/legacy/AddPhotos.png');"></div>
+    {# <img class="mz-cms-image-cover" style="background-image: url('/admin/scripts/resources/images/legacy/AddPhotos.png');"></div> #}
 
 {% endif %}
 
@@ -96,3 +100,4 @@
 {% endif %}
 </div>
 {% require_script "widgets/image" %}
+{% endcomment %}

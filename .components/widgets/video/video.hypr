@@ -10,9 +10,26 @@
   TODO: need more work on this type of integration and a practical use case.
 {% endcomment %}
 
-<div data-mz-widget="video-embed" data-mz-video-data="{{ model.config.url|default(model) }}">
-  <iframe src="" width="560" height="349"></iframe>
-	<noscript>{{ label.videoNojsLoadMessage }}</noscript>
+<div data-mz-widget="video-embed" data-mz-video-url="{{ model.config.url|default(model) }}" data-mz-widget-model="{% json_attribute model %}">
+  <iframe src="" width="560" height="315"></iframe>
+	<noscript>{{ labels.videoNojsLoadMessage }}</noscript>
 </div>
 
 {# https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php #}
+
+
+{% comment %}
+config: {
+		autoplay: false
+		loop: false
+		timestart: "0:00"
+		url: "https://www.youtube.com/watch?v=35MEiE2Kuog&list=PL57-UxXnYBUHX9hfwheEk1WvTT3ivp58q"
+		vimeo-byline: true
+		vimeo-color: "#00adef"
+		vimeo-portrait: true
+		vimeo-title: true
+		youtube-controls: true
+		youtube-rel: false
+		youtube-showinfo: true
+}
+{% endcomment %}

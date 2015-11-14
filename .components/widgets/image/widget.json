@@ -3,7 +3,6 @@
     "displayName": "Image",
     "displayTemplate": "cms/image",
     "icon": "/resources/admin/widgets/00_photo.png",
-    "customEditor": "image",
     "validPageTypes": [
         "*"
     ],
@@ -12,6 +11,15 @@
         "heightResizable": true,
         "imageHeight": 400,
         "imageSource": "file",
-        "linkSource": "externalUrl"
-    }
+        "linkSource": "externalUrl",
+        "TODO": "add back in cusotm editor",
+        "customEditor": "image"
+    },
+    "editViewFields": [
+      {
+        "name": "imageURL",
+        "xtype": "mz-input-image"
+        // "dataFormat": "urlOnly"
+      }
+    ]
 }

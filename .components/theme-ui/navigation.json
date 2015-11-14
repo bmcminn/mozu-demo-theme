@@ -18,6 +18,11 @@
       "hideTrigger": false,
       "allowDecimal": false,
       "minValue": 1
+    },
+    {
+      "fieldLabel": "Show Breadcrumbs?",
+      "xtype": "mz-input-checkbox",
+      "name": "showBreadcrumbs"
     }
   ]
 }

@@ -1,0 +1,8 @@
+{
+    "id": "productContent@mozu",
+    "path": "productContent.js",
+    "documentTypes": [
+        "productContent@mozu"
+    ],
+    "priority": 0.2
+}

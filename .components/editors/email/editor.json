@@ -1,0 +1,8 @@
+{
+    "id": "email@mozu",
+    "path": "email.js",
+    "documentLists": [
+        "emailTemplateContent@mozu"
+    ],
+    "priority": 0.2
+}

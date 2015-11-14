@@ -1,0 +1,39 @@
+{
+  "id": "agency~company-info",
+  "title": "Company Info",
+  "entityType": "webpage",
+  "documentType": "web_page",
+  "template": "company-info",
+  "userCreatable": true,
+  "zones": [
+    {
+      "id": "company-info~page-body",
+      "rows": [
+        {
+          "columns": [
+            {
+              "rows": null,
+              "span": 12,
+              "widgets": [
+                {
+                  "definitionId": "page_heading",
+                  "config": {
+                    "headingText": "Welcome to Mozu",
+                    "headingType": "h1"
+                  }
+                },
+                {
+                  "definitionId": "page_heading",
+                  "config": {
+                    "headingText": "I'm the second heading",
+                    "headingType": "h2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "id": "order-details",
+    "title": "Order Details",
+    "template": "back-office/order-details",
+    "customEditor": "back-office@mozu"
+}

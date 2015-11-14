@@ -1,0 +1,6 @@
+{
+    "id": "packing-slip",
+    "title": "Packing Slip",
+    "template": "back-office/packing-slip",
+    "customEditor": "back-office@mozu"
+}

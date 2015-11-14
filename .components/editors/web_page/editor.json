@@ -1,0 +1,8 @@
+{
+    "id": "web_page@mozu",
+    "path": "web_page.js",
+    "documentTypes": [
+        "web_page@mozu"
+    ],
+    "priority": 0.2
+}

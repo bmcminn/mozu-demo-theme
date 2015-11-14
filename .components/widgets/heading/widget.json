@@ -7,13 +7,13 @@
     "*"
   ],
   "defaultConfig": {
-    "anchor": "100%",
     "xtype": "mz-input-text",
     "headingText": "Heading Text here",
     "headingType": "h1"
   },
   "editViewFields": [
     {
+      "anchor": "93%",
       "name": "headingText",
       "fieldLabel": "Heading Text"
     },

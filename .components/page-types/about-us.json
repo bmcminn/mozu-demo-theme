@@ -28,6 +28,28 @@
 					]
 				}
 			]
-		}
+		},
+    {
+      "id": "company-info~page-body",
+      "rows": [
+        {
+          "columns": [
+            {
+              "rows": null,
+              "span": 16,
+              "widgets": [
+                {
+                  "definitionId": "page_heading",
+                  "config": {
+                    "headingText": "Welcome to Mozu",
+                    "headingType": "h1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
 	]
 }

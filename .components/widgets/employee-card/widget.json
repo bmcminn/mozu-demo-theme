@@ -7,27 +7,32 @@
     "*"
   ],
   "defaultConfig": {
-    "anchor": "100%",
     "xtype": "mz-input-text",
     "maxWidth": 200
   },
   "editViewFields": [
     {
+      "anchor": "93%",
       "fieldLabel": "Employee Name",
-      "name": "employeeName"
+      "name": "employeeName",
+      "allowBlank": false
     },
     {
+      "anchor": "93%",
       "fieldLabel": "Employee Title",
       "name": "employeeTitle"
     },
     {
+      "anchor": "93%",
       "fieldLabel": "Employee Bio",
       "name": "employeeBio",
-      "xtype": "mz-input-textarea"
+      "xtype": "mz-input-textarea",
+      "maxLength": 400
     },
     {
       "fieldLabel": "Image Max Width",
-      "name": "maxWidth"
+      "name": "maxWidth",
+      "allowBlank": false
     },
     {
       "fieldLabel": "Employee Image",

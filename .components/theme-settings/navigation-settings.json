@@ -1,5 +1,5 @@
 {
   "maxTopLevelNavItems": 8,
   "maxTopLevelNavLabelLength": 20,
-  "showBreadcrumbs": true
+  "showBreadcrumbs": false
 }

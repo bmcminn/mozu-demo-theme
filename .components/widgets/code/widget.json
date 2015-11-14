@@ -1,14 +1,14 @@
 {
-    "id": "html",
+    "id": "code",
     "displayName": "<code>&lt;Code&gt;</code>",
-    "displayTemplate": "cms/content",
+    "displayTemplate": "cms/snippet",
     "icon": "/resources/admin/widgets/07_code.png",
     "defaultConfig": {
         "body": "<h2>Insert Markup</h2>"
     },
     "editViewFields": [
         {
-            "fieldLabel": "Enter HTML",
+            "fieldLabel": "Enter Code Snippet",
             "fieldStyle": "resize:both;font-family:Monaco, Menlo, Consolas, 'Droid Sans Mono', Inconsolata, 'Courier New', monospace;height:100%",
             "height": 400,
             "name": "body",

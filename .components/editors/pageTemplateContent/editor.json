@@ -1,0 +1,8 @@
+{
+    "id": "pageTemplateContent@mozu",
+    "path": "pageTemplateContent.js",
+    "documentTypes": [
+        "pageTemplateContent@mozu"
+    ],
+    "priority": 0.2
+}

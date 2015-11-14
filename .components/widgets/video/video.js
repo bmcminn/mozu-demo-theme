@@ -6,6 +6,7 @@ define([
     var temp
       , base = {
           youtube:  '//www.youtube.com/embed/'
+        , ytNoCookie: '//www.youtube-nocookie.com/embed/'
         , vimeo:    '//player.vimeo.com/video/'
         , autoPlay: 'autoplay=false'
         }
@@ -14,7 +15,7 @@ define([
         , vimeoID:        /^(\d{6,})/i
         , vimeoUrl:       /\/(\d{6,})/i
         , youtubeID:      /^([\w\d-_]{1,})/i
-        , youtubeVideo:   /(?:embed\/|v=)([\w\d-_]{1,})/i
+        , youtubeVideo:   /(?:embed\/|\/|v=)([\w\d-_]{1,})/i
         , youtubeList:    /(list=[\w\d-_]{1,})/i
         , youtubePrivacy: /youtube-nocookie/i
         , youtubeUrl:     /youtu.?be/i
@@ -29,20 +30,24 @@ define([
 
       // $this.addClass('fade');
       $this.video = {
-        'config': $this.data('mzVideoData').toString().replace(/https?:/i, '')
-      , 'url':    null
-      , 'time':   ''
+        'videoUrl': $this.data('mzVideoUrl').toString().replace(/https?:(\/\/)?/i, '')
+      , 'url':    	null
+      , 'time':   	''
       };
+
+      $this.video.model = $this.data('mzWidgetModel');
+
+      // console.log('video widget', $this.video.config);
 
 
       // if it's a vimeo ID
-      if ($this.video.config.match(regex.vimeoID)) {
-        $this.video.id = $this.video.config.match(regex.vimeoID)[0];
+      if ($this.video.videoUrl.match(regex.vimeoID)) {
+        $this.video.id = $this.video.videoUrl.match(regex.vimeoID)[0];
       }
 
       // if it's a vimeo link
-      if ($this.video.config.match(regex.vimeoUrl)) {
-        $this.video.id = $this.video.config.match(regex.vimeoUrl)[1];
+      if ($this.video.videoUrl.match(regex.vimeoUrl)) {
+        $this.video.id = $this.video.videoUrl.match(regex.vimeoUrl)[1];
       }
 
       // set the video type
@@ -53,13 +58,13 @@ define([
       if (!$this.video.id) {
 
         // if it's a youtube ID
-        if ($this.video.config.match(regex.youtubeID)) {
-          $this.video.id = $this.video.config.match(regex.youtubeID)[0];
+        if ($this.video.videoUrl.match(regex.youtubeID)) {
+          $this.video.id = $this.video.videoUrl.match(regex.youtubeID)[0];
         }
 
         // if it's a youtube link
-        if ($this.video.config.match(regex.youtubeVideo)) {
-          $this.video.id = $this.video.config.match(regex.youtubeVideo)[1];
+        if ($this.video.videoUrl.match(regex.youtubeVideo)) {
+          $this.video.id = $this.video.videoUrl.match(regex.youtubeVideo)[1];
         }
 
         $this.video.type = 'youtube';
@@ -67,14 +72,14 @@ define([
 
 
       // if we have a list
-      if ($this.video.config.match(regex.youtubeList)) {
-        $this.video.list = $this.video.config.match(regex.youtubeList)[0];
+      if ($this.video.videoUrl.match(regex.youtubeList)) {
+        $this.video.list = $this.video.videoUrl.match(regex.youtubeList)[0];
       }
 
 
       // if it's a time
-      if ($this.video.config.match(regex.videoTime)) {
-        $this.video.time = $this.video.config.match(regex.videoTime)[0];
+      if ($this.video.videoUrl.match(regex.videoTime)) {
+        $this.video.time = $this.video.videoUrl.match(regex.videoTime)[0];
       }
 
 
@@ -100,11 +105,20 @@ define([
       // build the url depending what type of video it is
       switch($this.video.type) {
         case 'youtube':
+        	if ($this.video.model.config.youtubeNocookie) {
+        		base.youtube = base.ytNoCookie;
+        	}
+
           $this.video.url = [
             base.youtube
           , $this.video.id
           , '?'
           , $this.video.list ? $this.video.list : ''
+          , $this.video.model.config.autoplay ? '&autoplay=1' : '&autoplay=0'
+          , $this.video.model.config.loop ? '&loop=1' : '&loop=0'
+          , $this.video.model.config.youtubeControls ? '&controls=1' : '&controls=0'
+          , $this.video.model.config.youtubeRel ? '&rel=1' : '&rel=0'
+          , $this.video.model.config.youtubeShowinfo ? '&showinfo=1' : '&showinfo=0'
           // , $this.video.time ? '?' + $this.video.time : ''
           ].join('');
 
@@ -125,7 +139,7 @@ define([
       // append any other URL arguments here
       $this.video.url += '&autoplay=false';
 
-      // $this.video.config = $this.video.type;
+      // $this.video.videoUrl = $this.video.type;
 
 
 
