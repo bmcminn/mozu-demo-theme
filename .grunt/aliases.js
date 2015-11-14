@@ -60,6 +60,7 @@ module.exports = function(grunt) {
 	, 'theme-pagetypes'
   , 'theme-settings'
   , 'widgetize'
+  , 'theme-ui'
 	]);
 
 };

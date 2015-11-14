@@ -32,6 +32,7 @@ module.exports = function(grunt) {
   JSON.minify = jsonHelper.minify;
 
 
+
   /**
    * [writeJSON description]
    * @param  {[type]} path [description]
@@ -46,8 +47,10 @@ module.exports = function(grunt) {
   };
 
 
+
   // initialize a mozu object on the grunt instance we can bind stuff to
   grunt.mozu = {};
+
 
 
   /**
@@ -59,10 +62,12 @@ module.exports = function(grunt) {
 
     // merge config with overrides
     var config = _.merge({
-          target:     null  // theme.[target here]
-        , files:      null  // location where
-        , subhead:    null  // message to the user what you're doing
-        , mergeType:  null  // push or merge
+          target:       null  // theme.[target here]
+        , renderTarget: null  // file path of rendered file
+        , files:        null  // location where
+        , baseModel:    null  // supply your own base model object
+        , subhead:      null  // message to the user what you're doing
+        , mergeType:    null  // push or merge
         }, overrides)
       ;
 
@@ -70,31 +75,32 @@ module.exports = function(grunt) {
     grunt.log.subhead(config.subhead);
 
     // setup variables
-    var theme       = grunt.file.readJSON(paths.themeJson) || {}
+    var renderModel = config.baseModel || {}
       , targetFiles = grunt.file.expand(config.files)
       ;
 
-    // init or reset the settings collection in theme.json
-    theme[config.target] = config.mergeType === 'push' ? [] : {};
+    // init or reset the settings collection in renderModel.json
+    renderModel[config.target] = config.mergeType === 'push' ? [] : {};
 
-    // iterate over each theme settings config and merge them into the settings collection
+    // iterate over each renderModel settings config and merge them into the
+    //  settings collection
     _.each(targetFiles, function(targetFile) {
       targetFile = grunt.file.readJSON(targetFile);
 
       // push targetFile results to target
       if (config.mergeType === 'push') {
-        theme[config.target].push(targetFile);
+        renderModel[config.target].push(targetFile);
       }
 
       // merge targetFile results to target
       if (config.mergeType === 'merge') {
-        theme[config.target] = _.merge(theme[config.target], targetFile);
+        renderModel[config.target] = _.merge(renderModel[config.target], targetFile);
       }
 
     });
 
-    // write theme back to system
-    grunt.file.writeJSON(paths.themeJson, theme);
+    // write renderModel back to system
+    grunt.file.writeJSON(config.renderTarget, renderModel);
 
   };
 
@@ -104,19 +110,23 @@ module.exports = function(grunt) {
    * [description]
    * @return null
    */
-  grunt.registerTask('theme-settings', 'Aggregates all theme settings configs.', function() {
+  grunt.registerTask(
+    'theme-settings'
+  , 'Aggregates all theme settings configs.'
+  , function() {
 
-    grunt.mozu.mergeThemeComponents({
-      target:     'settings'
-    , files:      expands.themeSettings
-    , mergeType:  'merge'
-    , subhead: [
-        'Merging themeSettings from'
-      , chalk.cyan('.components/theme-settings') + chalk.white('...')
-      ].join(' ')
+      grunt.mozu.mergeThemeComponents({
+        target:       'settings'
+      , files:        expands.themeSettings
+      , renderTarget: paths.themeJson
+      , mergeType:    'merge'
+      , subhead: [
+          'Merging themeSettings from'
+        , chalk.cyan('.components/theme-settings') + chalk.white('...')
+        ].join(' ')
+      });
+
     });
-
-  });
 
 
 
@@ -124,19 +134,23 @@ module.exports = function(grunt) {
    * [description]
    * @return null
    */
-  grunt.registerTask('theme-backoffice', 'Aggregates all backoffice configs.', function() {
+  grunt.registerTask(
+    'theme-backoffice'
+  , 'Aggregates all backoffice configs.'
+  , function() {
 
-    grunt.mozu.mergeThemeComponents({
-      target:     'backOfficeTemplates'
-    , files:      expands.backofficeTemplates
-    , mergeType:  'push'
-    , subhead: [
-        'Merging backofficeTemplates from'
-      , chalk.cyan('.components/backoffice-templates') + chalk.white('...')
-      ].join(' ')
+      grunt.mozu.mergeThemeComponents({
+        target:       'backOfficeTemplates'
+      , files:        expands.backofficeTemplates
+      , renderTarget: paths.themeJson
+      , mergeType:    'push'
+      , subhead: [
+          'Merging backofficeTemplates from'
+        , chalk.cyan('.components/backoffice-templates') + chalk.white('...')
+        ].join(' ')
+      });
+
     });
-
-  });
 
 
 
@@ -144,97 +158,131 @@ module.exports = function(grunt) {
    * Compiles all components/pageTypes configs
    * @return null
    */
-  grunt.registerTask('theme-pagetypes', 'Gather pagetype configs into theme.json.', function() {
+  grunt.registerTask(
+    'theme-pagetypes'
+  , 'Gather pagetype configs into theme.json.'
+  , function() {
 
-    grunt.mozu.mergeThemeComponents({
-      target:     'pageTypes'
-    , files:      expands.pageTypes
-    , mergeType:  'push'
-    , subhead: [
-        'Merging pageTypes from'
-      , chalk.cyan('.components/page-types') + chalk.white('...')
-      ].join(' ')
+      grunt.mozu.mergeThemeComponents({
+        target:       'pageTypes'
+      , files:        expands.pageTypes
+      , renderTarget: paths.themeJson
+      , mergeType:    'push'
+      , subhead: [
+          'Merging pageTypes from'
+        , chalk.cyan('.components/page-types') + chalk.white('...')
+        ].join(' ')
+      });
+
     });
 
-  });
-
-
-
-  /**
-   * [description]
-   * @return null
-   */
-  grunt.registerTask('theme-about', 'Inserts theme About data into theme config', function() {
-
-    var theme = grunt.file.readJSON(paths.themeJson)
-      , about = grunt.file.readJSON(paths.aboutJson)
-      , contract = {
-          name: about.projectName + ' v' + about.version,
-          projectName: "Mozu Theme",
-          version: "0.0.1",
-          defaultLanguage: "en-US",
-          baseCoreVersion: 8,
-          extends: null,
-          isDesktop: true,
-          isTablet: true,
-          isMobile: true,
-          allowProduction: true
-        }
-      ;
-
-    // init or reset the about collection in theme.json
-    grunt.log.subhead('Getting about data from', chalk.cyan('.components/about.json') + chalk.white('...'));
-
-    // asign the new about collection to theme settings
-    theme.about = _.merge(contract, about);
-
-    // write the theme.json file updates to disk
-    grunt.file.writeJSON(paths.themeJson, theme);
-
-  });
-
 
 
   /**
    * [description]
    * @return null
    */
-  grunt.registerTask('theme-editors', 'Gathers up all editor configs and assets to disseminate into theme folders.', function() {
-    var theme   = grunt.file.readJSON(paths.themeJson)
-      , editors = grunt.file.expand(expands.editors)
-      ;
+  grunt.registerTask(
+    'theme-about'
+  , 'Inserts theme About data into theme config'
+  , function() {
 
-    // init or reset the target collection
-    theme.editors = [];
-
-    grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/editors') + chalk.white('...'));
-
-    _.each(editors, function(fileLoc) {
-      // push the config back into theme.json
-      var editorJson  = grunt.file.readJSON(fileLoc)
-        , editorJS    = grunt.file.expand(path.resolve(path.dirname(fileLoc), '*.js'))[0]
+      var theme = grunt.file.readJSON(paths.themeJson)
+        , about = grunt.file.readJSON(paths.aboutJson)
+        , contract = {
+            name: about.projectName + ' v' + about.version,
+            projectName: "Mozu Theme",
+            version: "0.0.1",
+            defaultLanguage: "en-US",
+            baseCoreVersion: 8,
+            extends: null,
+            isDesktop: true,
+            isTablet: true,
+            isMobile: true,
+            allowProduction: true
+          }
         ;
 
-      // grunt.log.debug(editorJS);
+      // init or reset the about collection in theme.json
+      grunt.log.subhead('Getting about data from', chalk.cyan('.components/about.json') + chalk.white('...'));
 
-      theme.editors.push(editorJson);
+      // asign the new about collection to theme settings
+      theme.about = _.merge(contract, about);
 
-      // check if the
-      if (path.basename(editorJS) !== editorJson.path) {
-        grunt.log.debug('file:', path.basename(editorJS), '!== editor.path:', editorJson.path);
-        grunt.log.debug('expected:', editorJS);
-
-      // copy the editor file to the editors directory
-      } else {
-        grunt.file.copy(editorJS, path.resolve(paths.editorsJS, editorJson.path));
-
-      }
+      // write the theme.json file updates to disk
+      grunt.file.writeJSON(paths.themeJson, theme);
 
     });
 
-    // write theme back to system
-    grunt.file.writeJSON(paths.themeJson, theme);
 
-  });
+
+  /**
+   * [description]
+   * @return null
+   */
+  grunt.registerTask(
+    'theme-editors'
+  , 'Gathers up all editor configs and assets to disseminate into theme folders.'
+  , function() {
+      var theme   = grunt.file.readJSON(paths.themeJson)
+        , editors = grunt.file.expand(expands.editors)
+        ;
+
+      // init or reset the target collection
+      theme.editors = [];
+
+      grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/editors') + chalk.white('...'));
+
+      _.each(editors, function(fileLoc) {
+        // push the config back into theme.json
+        var editorJson  = grunt.file.readJSON(fileLoc)
+          , editorJS    = grunt.file.expand(path.resolve(path.dirname(fileLoc), '*.js'))[0]
+          ;
+
+        // add in the editor config to theme.json
+        theme.editors.push(editorJson);
+
+        // check if the
+        if (path.basename(editorJS) !== editorJson.path) {
+          grunt.log.debug('file:', path.basename(editorJS), '!== editor.path:', editorJson.path);
+          grunt.log.debug('expected:', editorJS);
+
+        // copy the editor file to the editors directory
+        } else {
+          grunt.file.copy(editorJS, path.resolve(paths.editorsJS, editorJson.path));
+
+        }
+
+      });
+
+      // write theme back to system
+      grunt.file.writeJSON(paths.themeJson, theme);
+
+    });
+
+
+
+  /**
+   * Compiles all components/pageTypes configs
+   * @return null
+   */
+  grunt.registerTask(
+    'theme-ui'
+  , 'Gather theme-ui configs into theme-ui.json.'
+  , function() {
+
+      grunt.mozu.mergeThemeComponents({
+        target:       'items'
+      , renderTarget: paths.themeUIJSON
+      , files:        expands.themeUISettings
+      , mergeType:    'push'
+      , baseModel:    { "title": "Navigation" }
+      , subhead: [
+          'Merging theme-ui from'
+        , chalk.cyan('.components/theme-ui') + chalk.white('...')
+        ].join(' ')
+      });
+
+    });
 
 };
