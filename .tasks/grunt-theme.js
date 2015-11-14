@@ -5,7 +5,6 @@ module.exports = function(grunt) {
 
   'use strict';
 
-
   // Load modules
   var _           = require('lodash')
     , path        = require('path')
@@ -62,7 +61,6 @@ module.exports = function(grunt) {
         }
       ;
 
-
     // merge config with overrides
     config = _.merge(config, overrides);
 
@@ -105,10 +103,6 @@ module.exports = function(grunt) {
 
     // write theme back to system
     // grunt.file.writeJSON(paths.themeJson, theme);
-
-
-
-
 
     console.log(config);
   };
@@ -268,6 +262,64 @@ module.exports = function(grunt) {
     grunt.file.writeJSON(paths.themeJson, theme);
 
   });
+
+
+	// /**
+	//  * Compiles all JSON configs in components/themeSettings and writes them to theme.json as the new "settings" property.
+	//  * @return null
+	//  */
+	// grunt.registerTask('theme-settings', 'Aggregates all theme settings configs.', function() {
+
+	//  var theme     = grunt.file.readJSON(paths.themeJson)
+	//    , settings  = grunt.file.expand(path.resolve('.', '.components', 'themeSettings', '*.json'))
+	//    ;
+
+	//  // init or reset the settings collection in theme.json
+	//  theme.settings = {};
+
+	//  grunt.log.subhead('Merging themeSettings from', chalk.cyan('.components/themeJson/themeSettings') + chalk.white('...'));
+
+	//  grunt.log.debug(JSON.stringify(settings, null, 2));
+
+	//  // iterate over each theme settings config and merge them into the settings collection
+	//  _.each(settings, function(settingsFile) {
+	//    settingsFile = grunt.file.readJSON(settingsFile);
+	//    theme.settings = _.merge(theme.settings, settingsFile);
+	//  });
+
+	//  grunt.file.writeJSON(paths.themeJson, theme);
+
+	// });
+
+
+
+	// /**
+	//  * Compiles all components/pageTypes configs
+	//  * @return null
+	//  */
+	// grunt.registerTask('theme-pagetypes', 'Gather pagetype configs into theme.json.', function() {
+
+	//  var theme     = grunt.file.readJSON(paths.themeJson)
+	//    , pageTypes = grunt.file.expand(path.resolve('.', '.components', 'themeJson', 'pageTypes', '*.json'))
+	//    ;
+
+	//  // init or reset the pageTypes collection in theme.json
+	//  theme.pageTypes = [];
+
+	//  grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/themeJson/pageTypes') + chalk.white('...'));
+
+	//  grunt.log.debug(JSON.stringify(pageTypes, null, 2));
+
+	//  // iterate over each pagetype config and push it into the pageTypes collection
+	//  _.each(pageTypes, function(fileLoc) {
+	//    theme.pageTypes.push(grunt.file.readJSON(fileLoc));
+	//  });
+
+	//  // write theme.json back to the file system
+	//  grunt.file.write(path.resolve('.', 'theme.json'), JSON.stringify(theme, null, 2));
+
+	// });
+
 
 
 };

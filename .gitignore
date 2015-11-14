@@ -3,7 +3,7 @@ logs/
 *.log
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-grunt/assets/
+.grunt/assets/
 
 # Dependency directory
 # Commenting this out is preferred by some people, see
