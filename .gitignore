@@ -20,6 +20,7 @@ scripts/widgets/
 templates/widgets/
 stylesheets/widgets/
 resources/admin/widgets/
+admin/editors/
 
 # Mozu configs
 mozu.config.json
