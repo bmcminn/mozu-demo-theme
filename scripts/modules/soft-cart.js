@@ -8,11 +8,14 @@ function($, Backbone, CartModels) {
 
 	// declare a MozuView that can rewrite its contents with a Hypr template
 	var SoftCartView = Backbone.MozuView.extend({
+
 		templateName: "modules/soft-cart/soft-cart",
+
 		goToCart: function() {
 			window.location = "/cart";
 			return false;
 		},
+
 		changeQuantity: function(e, amt) {
 			var $qField = $(e.currentTarget)
 				, id = $qField.data('mz-cart-item')
@@ -21,12 +24,15 @@ function($, Backbone, CartModels) {
 			item.set('quantity', item.get('quantity') + amt);
 			return item.saveQuantity();
 		},
+
 		increaseQuantity: function(e) {
 			return this.changeQuantity(e, 1);
 		},
+
 		decreaseQuantity: function(e) {
 			return this.changeQuantity(e, -1);
 		},
+
 		removeItem: function(e) {
 			var $removeButton = $(e.currentTarget),
 					id = $removeButton.data('mz-cart-item');
@@ -70,11 +76,13 @@ function($, Backbone, CartModels) {
 
 		// create a blank cart model
 		SoftCartInstance.model = new CartModels.Cart();
+
 		// instantiate your view!
 		SoftCartInstance.view = new SoftCartView({
 			el: $('[data-mz-role="soft-cart"]'),
 			model: SoftCartInstance.model
 		});
+
 		// bind a method we'll be using for the promise
 		SoftCartInstance.show = $.proxy(SoftCartInstance.show, SoftCartInstance);
 
