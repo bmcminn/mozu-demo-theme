@@ -4,63 +4,65 @@
 
 module.exports = function(grunt) {
 
-	grunt.registerTask('init', [
-		'default'
-	, 'checklabels'
-	, 'checkwidgets'
-	, 'checksettings'
-	]);
+  'use strict';
+
+  grunt.registerTask('init', [
+    'default'
+  , 'checklabels'
+  , 'checkwidgets'
+  , 'checksettings'
+  ]);
 
 
-	grunt.registerTask('default', [
-		'theme'
-	, 'lintify'
-	, 'setver'
-	, 'mozutheme:quickcompile'
-	, 'mozusync:upload'
-	]);
+  grunt.registerTask('default', [
+    'theme'
+  , 'lintify'
+  , 'setver'
+  , 'mozutheme:quickcompile'
+  , 'mozusync:upload'
+  ]);
 
 
-	grunt.registerTask('check', [
-		'theme'
-	, 'checklabels'
-	, 'checkwidgets'
-	, 'checksettings'
-	]);
+  grunt.registerTask('check', [
+    'theme'
+  , 'checklabels'
+  , 'checkwidgets'
+  , 'checksettings'
+  ]);
 
 
-	grunt.registerTask('emails', [
-		'lintify'
-	, 'email-settings'
-	, 'email-lessify'
-	, 'less:emails'
-	, 'juice'
-	, 'email-strainer'
-	, 'email-delessify'
-	, 'mozusync:upload'
-	]);
+  grunt.registerTask('emails', [
+    'lintify'
+  , 'email-settings'
+  , 'email-lessify'
+  , 'less:emails'
+  , 'juice'
+  , 'email-strainer'
+  , 'email-delessify'
+  , 'mozusync:upload'
+  ]);
 
 
-	grunt.registerTask('reset', [
-		'mozusync:wipe'
-	, 'mozusync:upload'
-	]);
+  grunt.registerTask('reset', [
+    'mozusync:wipe'
+  , 'mozusync:upload'
+  ]);
 
 
-	grunt.registerTask('lintify', [
-		'jsonlint'
-	, 'jshint'
-	]);
+  grunt.registerTask('lintify', [
+    'jsonlint'
+  , 'jshint'
+  ]);
 
 
-	grunt.registerTask('theme', [
-	  'theme-about'
+  grunt.registerTask('theme', [
+    'theme-about'
   , 'theme-backoffice'
   , 'theme-editors'
-	, 'theme-pagetypes'
+  , 'theme-pagetypes'
   , 'theme-settings'
   , 'widgetize'
   , 'theme-ui'
-	]);
+  ]);
 
 };

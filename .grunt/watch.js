@@ -3,7 +3,8 @@ var configs = {
 			emails:   require('./juice.js')
 		, jsonlint: require('./jsonlint.js')
 		, jshint:   require('./jshint.js')
-		, compress: require('./compress.js')
+    , compress: require('./compress.js')
+		, mozusync: require('./mozusync.js')
 		}
 	;
 
@@ -22,12 +23,44 @@ module.exports = {
 	}
 
 
+, lintTooling: {
+    files: configs.jshint.buildtools_js
+  , tasks: [
+      'jshint:buildtools_js'
+    ]
+  }
+
+
 , javascript: {
-		files: configs.jshint.theme_js
+    files: configs.jshint.theme_js
 	, tasks: [
-			'jshint'
+			'jshint:theme_js'
+    , 'mozusync:upload'
 		]
 	}
+
+
+, themeJSON: {
+    files: [
+      '.components/**/*.json',
+      '.components/editors/**/*.js'
+    ],
+    tasks: [
+      'theme'
+    , 'mozusync:upload'
+    ]
+  }
+
+
+, themeUI: {
+    files: [
+      '.components/theme-ui/**'
+    ],
+    tasks: [
+      'theme-ui'
+    , 'mozusync:upload'
+    ]
+  }
 
 
 , widgets: {
@@ -61,7 +94,7 @@ module.exports = {
 
 
 , sync: {
-		files: '<%= mozusync.upload.src %>',
+		files: configs.mozusync.upload.src,
 		tasks: [
 			'mozusync:upload'
 		]

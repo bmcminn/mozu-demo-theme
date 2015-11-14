@@ -2,11 +2,18 @@
 module.exports = {
 
 	theme_js: [
-		'gruntfile.js'
-	, '.grunt/**/*.js'
-	, 'scripts/**/*.js'
+	  'scripts/**/*.js'
+  , '.components/**/*.js'
+  , '!.components/**/vendor/**/*.js'
 	, '!scripts/vendor/**/*.js'
 	],
+
+
+  buildtools_js: [
+      'gruntfile.js'
+    , '.grunt/**/*.js'
+    , '.tasks/**/*.js'
+    ],
 
 	options: {
 		ignores: [
@@ -23,6 +30,8 @@ module.exports = {
 		, document: true
 		, grunt: true
 		, navigator: true
+    , Ext: true
+    , Taco: true  // TODO: get rid of TACO..
 		, Image: true
 		, V: true
 		, setTimeout: true

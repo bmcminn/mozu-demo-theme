@@ -16,10 +16,10 @@
         "customEditor": "image"
     },
     "editViewFields": [
-      {
-        "name": "imageURL",
-        "xtype": "mz-input-image"
-        // "dataFormat": "urlOnly"
-      }
+          {
+            "name": "imageURL",
+            "xtype": "mz-input-image",
+            "dataFormat": "urlOnly"
+          }
     ]
 }

@@ -1,7 +1,7 @@
 module.exports = {
 
 	options: {
-		"stylesheets": "./stylesheets/**/*.less"
+		stylesheets: "./stylesheets/**/*.less"
 	},
 
 	main: {
