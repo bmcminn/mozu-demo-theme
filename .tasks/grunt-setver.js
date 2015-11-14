@@ -1,5 +1,6 @@
-'use strict';
 module.exports = function(grunt) {
+
+  'use strict';
 
   // grunt commands;
   // ------
@@ -71,7 +72,7 @@ module.exports = function(grunt) {
 
               , filenames: function(cb) {
                   if (!Array.isArray(self.data.filenames)) {
-                    var err = 'Please supply an array of filenames to rename with the version, instead of "' + filenames + '".';
+                    var err = 'Please supply an array of filenames to rename with the version, instead of "' + self.data.filenames + '".';
                     grunt.log.error(err);
                     return cb(err);
                   }
@@ -112,7 +113,7 @@ module.exports = function(grunt) {
       applyVersion(manualVer);
       //done(true);
     } else {
-      applyVersion(theme.about.version)
+      applyVersion(theme.about.version);
       // childProcess.exec(this.data.cmd || 'git describe --tags --always', function(err, stdout, stderr) {
       //   if (err || stderr) {
       //     return grunt.fail.fatal(err || stderr);

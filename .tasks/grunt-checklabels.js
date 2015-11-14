@@ -15,7 +15,6 @@ module.exports = function(grunt) {
 		, EOL     = require('os').EOL
 		, theme   = grunt.file.readJSON('./theme.json')
 
-
 		, temp
 		;
 
@@ -103,14 +102,14 @@ module.exports = function(grunt) {
 
 						var maxLength = 24
 							, refFile = label.file
-							, label = 'labels.'+label.label
+							, labelString = 'labels.'+label.label
 							, message = ''
 							, spaceDepth = 30
-							, spacer = label.length > spaceDepth ? null : new Array(Math.abs(spaceDepth-label.length)).join(' ')
+							, spacer = labelString.length > spaceDepth ? null : new Array(Math.abs(spaceDepth-labelString.length)).join(' ')
 							;
 
 						message = [
-								chalk.bgCyan.black(label)
+								chalk.bgCyan.black(labelString)
 							, spacer
 							, 'is not defined in'
 							, chalk.yellow(lang)

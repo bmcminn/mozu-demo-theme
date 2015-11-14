@@ -17,47 +17,58 @@ module.exports = function(grunt) {
 		, maxWidth      = 80
 		, leftMargin    = 2
 		, pipeCount     = 2
-		, spacer        = Array(leftMargin+1).join(' ')
+		, spacer        = new Array(leftMargin+1).join(' ')
 		, dropdownWidth = 70
 
+    ;
 
-		// Helper methods
-		, helpers = {
-				colorizeMetaInfo: function(name, value, color) {
-					if (!color) { color = 'cyan'; }
-					if (value) {
-						value = chalk[color](value);
-					} else {
-						value = '';
-					}
-					return [chalk.gray('>'), name+':', value, EOL].join(' ');
-				}
 
-			, writeLine: function(message, color, highlight) {
-					if (!color) { color = 'white'; }
+  /**
+   * [colorizeMetaInfo description]
+   * @param  {[type]} name  [description]
+   * @param  {[type]} value [description]
+   * @param  {[type]} color [description]
+   * @return {[type]}       [description]
+   */
+	helpers.colorizeMetaInfo = function(name, value, color) {
+		if (!color) { color = 'cyan'; }
 
-					if (highlight) {
-						color = ['bg', color.toUpperCase().substr(0,1), color.substr(1)].join('');
-					}
+		if (value) {
+			value = chalk[color](value);
+		} else {
+			value = '';
+		}
 
-					return [
-							'|'
-						, spacer
-						, chalk[color](message)
-						, Array(maxWidth - leftMargin - pipeCount - message.length).join(' ')
-						// , '|'
-					].join('');
-				}
+		return [chalk.gray('>'), name+':', value, EOL].join(' ');
+	};
 
-			// , drawDropdown: function(conf) {
-			//     // TODO: make this a real thing...
-			//   }
-			}
 
-		// , regex = {
-		//     templatePath: /\S*([\\|\/]template)/i
-		//   }
-		;
+  /**
+   * [writeLine description]
+   * @param  {[type]} message   [description]
+   * @param  {[type]} color     [description]
+   * @param  {[type]} highlight [description]
+   * @return {[type]}           [description]
+   */
+	helpers.writeLine = function(message, color, highlight) {
+		if (!color) { color = 'white'; }
+
+		if (highlight) {
+			color = ['bg', color.toUpperCase().substr(0,1), color.substr(1)].join('');
+		}
+
+		return [
+				'|'
+			, spacer
+			, chalk[color](message)
+			, new Array(maxWidth - leftMargin - pipeCount - message.length).join(' ')
+			// , '|'
+		].join('');
+	};
+
+	// , drawDropdown: function(conf) {
+	//     // TODO: make this a real thing...
+	//   }
 
 
 	grunt.registerTask(
@@ -143,9 +154,9 @@ module.exports = function(grunt) {
 					var widgetAdmin = []
 						, defaults    = widget.defaultConfig || null
 						, adminStrings = {
-								top:    ' ' + Array(maxWidth-leftMargin).join('_')
-							, airgap: '|' + Array(maxWidth-leftMargin).join(' ') + '|'
-							, bottom: '|' + Array(maxWidth-leftMargin).join('_') + '|' + EOL + EOL
+								top:    ' ' + new Array(maxWidth-leftMargin).join('_')
+							, airgap: '|' + new Array(maxWidth-leftMargin).join(' ') + '|'
+							, bottom: '|' + new Array(maxWidth-leftMargin).join('_') + '|' + EOL + EOL
 							}
 						;
 
@@ -272,10 +283,10 @@ module.exports = function(grunt) {
 									widgetAdmin.push(helpers.writeLine(conf.fieldLabel));
 
 									var dropdown = {
-												topBottom:    [' ', Array(dropdownWidth - pipeCount).join('-'), ''].join('')
-											, top:          ['|', Array(dropdownWidth - pipeCount).join('='), '|'].join('')
-											, divider:      ['|', Array(dropdownWidth - pipeCount).join('-'), '|'].join('')
-											, titleOption:  ['| Dropdown', Array(dropdownWidth - 13).join(' '), '^ |'].join('')
+												topBottom:    [' ', new Array(dropdownWidth - pipeCount).join('-'), ''].join('')
+											, top:          ['|', new Array(dropdownWidth - pipeCount).join('='), '|'].join('')
+											, divider:      ['|', new Array(dropdownWidth - pipeCount).join('-'), '|'].join('')
+											, titleOption:  ['| Dropdown', new Array(dropdownWidth - 13).join(' '), '^ |'].join('')
 											, color:        'green'
 											}
 										;
@@ -288,7 +299,7 @@ module.exports = function(grunt) {
 											var opts = {};
 
 											opts.string = '| ' + option[1].toString() + ' (' + option[0].toString() + ')';
-											opts.string = opts.string + Array(dropdownWidth - opts.string.length - 1).join(' ') + '|';
+											opts.string = opts.string + new Array(dropdownWidth - opts.string.length - 1).join(' ') + '|';
 
 											if (defaults) {
 												if (defaults[conf.name] == option[0]) {

@@ -5,7 +5,6 @@ module.exports = function(grunt) {
 
 	'use strict';
 
-
 	// Widgetize me Cap'n!g
 	// -----
 	//
@@ -92,7 +91,7 @@ module.exports = function(grunt) {
 			}
 
 		} else {
-			grunt.log.warn('You should probably add /templates/page.hypr to your theme.')
+			grunt.log.warn('You should probably add /templates/page.hypr to your theme.');
 		}
 
 
@@ -248,17 +247,14 @@ module.exports = function(grunt) {
 
 
 
-
-
 		// write all labels we updated
 		grunt.log.subhead('Writing new labels files...');
 
 		_.each(labels.langs, function(lang) {
-			temp = path.resolve(paths.dest.labels, lang.name+'.json')
+			temp = path.resolve(paths.dest.labels, lang.name+'.json');
 			grunt.log.ok('writing', chalk.cyan(destPath(temp)));
 			grunt.file.write(temp, JSON.stringify(lang.labels, null, 2));
 		});
-
 
 
 		grunt.log.subhead('Cacheing...');

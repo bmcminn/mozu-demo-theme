@@ -1,5 +1,6 @@
-'use strict';
 module.exports = function(grunt) {
+
+  'use strict';
 
 	// Grunt themeSettingsLess
 	// -----
@@ -71,7 +72,7 @@ module.exports = function(grunt) {
 				case 'object':
 				case 'boolean':
 					return;
-					break;
+					// break;
 			}
 
 			string = temp + ': ' + value + ';';

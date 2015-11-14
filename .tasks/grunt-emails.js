@@ -1,4 +1,3 @@
-"use strict";
 
 var _     = require('lodash')
 	, path  = require('path')
@@ -24,6 +23,7 @@ var _     = require('lodash')
  */
 module.exports = function (grunt) {
 
+  'use strict';
 
 	/**
 	 * [writeJSON description]
