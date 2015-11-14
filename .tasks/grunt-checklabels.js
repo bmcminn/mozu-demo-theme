@@ -55,21 +55,23 @@ module.exports = function(grunt) {
 
 			// iterate over each language file we've defined and validate it
 			_.each(i18ns, function(i18n) {
-				var lang      = i18n.match(/\/([\S]+.json)$/)[1]
+				var lang  = i18n.match(/\/([\S]+.json)$/)[1]
 					;
 
 				grunt.log.writeln('');
-				grunt.log.ok(
-					'Checking'
-				, chalk.yellow(i18n)
-				);
+				grunt.log.ok('Checking', chalk.yellow(i18n));
 				grunt.log.ok('--------------------------------------------------');
 
         // get the language file
 				i18n = grunt.file.readJSON(i18n);
 
+        // reset passed flag for each label file check
+        passed = true;
+
+
 				// iterate over the labels collection we pulled from our templates and make sure they are defined
 				_.each(labels, function(label) {
+
 					if (!i18n[label.label]) {
 
 						// set fail condition
@@ -97,20 +99,26 @@ module.exports = function(grunt) {
 						, 'referenced in'
 						, chalk.red(refFile)
 						);
-					}
+          }
 				});
+
+
+        // setup messaging for end of task
+        if (passed) {
+          grunt.log.ok('Looks good to me! :)');
+
+        } else {
+          grunt.log.writeln('');
+          grunt.log.warn("Looks like you've got some more work to do...");
+          grunt.log.writeln('');
+
+        }
+
 			});
 
 
 			grunt.log.writeln('');
 			grunt.log.writeln('');
-
-			// setup messaging for end of task
-			if (passed) {
-				grunt.log.ok('Looks good to me! :)');
-			} else {
-				grunt.log.warn(EOL, EOL, "Looks like you've got some more work to do...");
-			}
 
 
 			grunt.log.writeln('');
