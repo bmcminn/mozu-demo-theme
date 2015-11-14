@@ -27,7 +27,6 @@ module.exports = function(grunt) {
 
 			var files   = grunt.file.expand('templates/**/*.hypr*')
 				, i18ns   = grunt.file.expand('labels/**/*.json')
-				, core    = theme.about.extends
 				, labels  = []
 				, passed  = true
 				;
@@ -57,7 +56,6 @@ module.exports = function(grunt) {
 			// iterate over each language file we've defined and validate it
 			_.each(i18ns, function(i18n) {
 				var lang      = i18n.match(/\/([\S]+.json)$/)[1]
-					, coreFile  = ''
 					;
 
 				grunt.log.writeln('');
@@ -67,31 +65,8 @@ module.exports = function(grunt) {
 				);
 				grunt.log.ok('--------------------------------------------------');
 
-
-				// check if we're extending the core theme and grab the original i18n file if available
-				if (core && core.match(/core/)) {
-					coreFile = path.resolve(process.cwd(), 'references', core, 'labels', lang);
-
-					// if the core label file doesn't exist
-					if (!grunt.file.exists(coreFile)) {
-
-						// we'll just ignore it
-						coreFile = null;
-					}
-				}
-
-
-				// merge the current labels file into the core file we found
-				if (coreFile) {
-					i18n = _.merge(
-						grunt.file.readJSON(coreFile) || {}
-					, grunt.file.readJSON(i18n)
-					);
-				// or just get the current labels file contents
-				} else {
-					i18n = grunt.file.readJSON(i18n);
-				}
-
+        // get the language file
+				i18n = grunt.file.readJSON(i18n);
 
 				// iterate over the labels collection we pulled from our templates and make sure they are defined
 				_.each(labels, function(label) {
