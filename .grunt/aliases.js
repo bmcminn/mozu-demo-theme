@@ -6,6 +6,15 @@ module.exports = function(grunt) {
 
   'use strict';
 
+  grunt.registerTask('default', [
+    'theme'
+  , 'lintify'
+  , 'setver'
+  , 'mozutheme:quickcompile'
+  // , 'mozusync:upload'
+  ]);
+
+
   grunt.registerTask('init', [
     'default'
   , 'checklabels'
@@ -14,20 +23,14 @@ module.exports = function(grunt) {
   ]);
 
 
-  grunt.registerTask('default', [
+  grunt.registerTask('check-theme', [
     'theme'
   , 'lintify'
   , 'setver'
-  , 'mozutheme:quickcompile'
-  , 'mozusync:upload'
-  ]);
-
-
-  grunt.registerTask('check', [
-    'theme'
   , 'checklabels'
-  , 'checkwidgets'
+  // , 'checkwidgets'
   , 'checksettings'
+  , 'mozutheme:quickcompile'
   ]);
 
 

@@ -5,9 +5,7 @@ module.exports = function(grunt) {
 
 	'use strict';
 
-
-	// @TODO: figure out how to parse themeSetting references from theme-ui.json and widget configs
-
+	// TODO: figure out how to parse themeSetting references from theme-ui.json and widget configs
 
 	// load modules
 	var _     = require('lodash')
@@ -49,27 +47,15 @@ module.exports = function(grunt) {
 						, 'src_widgest/**/*.hypr'
 						])
 
-			, theme = grunt.file.readJSON(path.resolve(process.cwd(), 'theme.json'))
+			, theme = grunt.file.readJSON(path.resolve('.', 'theme.json'))
 			;
 
 
 			// get all the theme settings
-
 			settings = theme.settings;
-
-			// get reference theme if available
-			if (theme.about.extends.match(/core\d/i)) {
-				temp      = require(path.resolve('.', 'references', theme.about.extends, 'theme.json')).settings;
-				settings  = _.merge(temp, settings);
-			}
-
-
-			grunt.log.debugHeading('Define Settings');
-			grunt.log.debug(jsonify(settings));
 
 
 			// iterate over each file for references to theme settings
-
 			grunt.log.debugHeading('Looking for theme setting references');
 
 			_.each(files, function(filePath) {

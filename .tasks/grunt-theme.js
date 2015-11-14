@@ -75,7 +75,7 @@ module.exports = function(grunt) {
     grunt.log.subhead(config.subhead);
 
     // setup variables
-    var renderModel = config.baseModel || {}
+    var renderModel = config.baseModel || grunt.file.readJSON(config.renderTarget)
       , targetFiles = grunt.file.expand(config.files)
       ;
 
