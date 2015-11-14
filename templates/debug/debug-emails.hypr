@@ -1,0 +1,24 @@
+{% comment %}
+
+<input id="debug-model" type="text" value="{% json_attribute model %}">
+<input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
+<input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
+<input id="debug-domainName" type="text" value="{% json_attribute domainName %}">
+
+{% endcomment %}
+
+
+<label for="debug-model"><code>model</code></label>
+  <input id="debug-model" type="text" value="{% json_attribute model %}">
+
+
+<label for="debug-pageContext"><code>pageContext</code></label>
+  <input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
+
+
+<label for="debug-siteContext"><code>siteContext</code></label>
+  <input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
+
+
+<label for="debug-domainName"><code>domainName</code></label>
+  <input id="debug-domainName" type="text" value="{% json_attribute domainName %}">

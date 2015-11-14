@@ -14,21 +14,7 @@
 <body>
 
 	{% if pageContext.isEditMode or pageContext.isDebugMode or model.email == "brandtley_mcminn@volusion.com" %}
-		{% include "modules/debug-emails" %}
-
-<label for="debug-model"><code>model</code>
-	<input id="debug-model" type="text" value="{% json_attribute model %}">
-</label>
-<label for="debug-pageContext"><code>pageContext</code>
-	<input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
-</label>
-<label for="debug-siteContext"><code>siteContext</code>
-	<input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
-</label>
-<label for="debug-domainName"><code>domainName</code>
-	<input id="debug-domainName" type="text" value="{% json_attribute domainName %}">
-</label>
-
+		{% include "debug/debug-emails" with model=model %}
 	{% endif %}
 
 	<table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">

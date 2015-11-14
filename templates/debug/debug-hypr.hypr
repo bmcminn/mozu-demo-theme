@@ -1,0 +1,26 @@
+{% if pageContext.isDebugMode %}
+
+  {# TODO: add conditional for optional query param of jsonFields:bool #}
+  <label for="siteContext">siteContext</label>
+      <input type="text" id="siteContext" name="siteContext" value="{% json_attribute siteContext %}"><br>
+
+  <label for="pageContext">pageContext</label>
+      <input type="text" id="pageContext" name="pageContext" value="{% json_attribute pageContext %}"><br>
+
+  <label for="user">user</label>
+      <input type="text" id="user" name="user" value="{% json_attribute user %}"><br>
+
+  <label for="navigation">navigation</label>
+      <input type="text" id="navigation" name="navigation" value="{% json_attribute navigation %}"><br>
+
+  <label for="model">model</label>
+      <input type="text" id="model" name="model" value="{% json_attribute model %}"><br>
+
+
+  {% preload_json siteContext "sitecontext" %}
+  {% preload_json pageContext "pagecontext" %}
+  {% preload_json user "user" %}
+  {% preload_json navigation "navigation" %}
+  {% preload_json model "model" %}
+
+{% endif %}
