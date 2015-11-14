@@ -65,7 +65,7 @@ Before we get started, you should have the following software(s) setup:
     $ git --version   # should be 2.X.X+
     $ python -V       # should be ~2.7.X+
     $ node -v         # should be 4.X.X+
-    $ npm -v          # should be 2.X.X+; installed with Node.js
+    $ npm -v          # should be 3.X.X+; installed with Node.js
     ```
 
     - Once these are installed correctly and returning the correct version number(s), move on to the next step.
