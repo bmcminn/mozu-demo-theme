@@ -131,6 +131,7 @@ function ($, _, Hypr, Backbone, CartMonitor, SoftCart, ProductModels, ProductIma
 				CartMonitor.addToCount(product.get('quantity'));
 				SoftCart.update().then(SoftCart.show).then(function() {
 					SoftCart.highlightItem(cartitem.prop('id'));
+					product.isLoading(false);
 				});
 			} else {
 				product.trigger("error", { message: Hypr.getLabel('unexpectedError') });
