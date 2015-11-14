@@ -11,11 +11,12 @@
 				"*.zip",
 				"*.base",
 				"thumb.*",
-				"*.sublime*",
-				"theme.json"
+				"theme.json",
+				"*.*workspace"
 			],
 			"folder_exclude_patterns":
 			[
+        "admin/editors",
 				"compiled",
 				"node_modules",
 				"bower_components",
