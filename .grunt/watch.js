@@ -35,6 +35,7 @@ module.exports = {
     files: configs.jshint.theme_js
 	, tasks: [
 			'jshint:theme_js'
+    , 'jsbeautifier'
     , 'mozusync:upload'
 		]
 	}

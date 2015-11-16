@@ -1,23 +1,23 @@
-define(["modules/jquery-mozu", "modules/backbone-mozu", "hyprlive", "modules/api"], 
-    function ($, Backbone, Hypr, api) {
+define(["modules/jquery-mozu", "modules/backbone-mozu", "hyprlive", "modules/api"],
+  function ($, Backbone, Hypr, api) {
 
-        var Location = Backbone.MozuModel.extend({
-            mozuType: 'location',
-            idAttribute: 'code'
-        });
+    var Location = Backbone.MozuModel.extend({
+      mozuType: 'location',
+      idAttribute: 'code'
+    });
 
-        var LocationCollection = Backbone.MozuModel.extend({
-            mozuType: 'locations',
-            relations: {
-                items: Backbone.Collection.extend({
-                    model: Location
-                })
-            }
-        });
+    var LocationCollection = Backbone.MozuModel.extend({
+      mozuType: 'locations',
+      relations: {
+        items: Backbone.Collection.extend({
+          model: Location
+        })
+      }
+    });
 
-        return {
-            Location: Location,
-            LocationCollection: LocationCollection
-        };
-    }
+    return {
+      Location: Location,
+      LocationCollection: LocationCollection
+    };
+  }
 );

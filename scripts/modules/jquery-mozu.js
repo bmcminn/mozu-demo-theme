@@ -1,4 +1,4 @@
-﻿/**
+/**
  * This file adds some common plugins to jQuery and then returns jQuery, so you can require it instead of jQuery itself and then you're guaranteed to have these plugins.    * They are:
  *   **$.cookie** -- Adds cookie management, using normal jQuery overload style: $.cookie('foo') gets foo cookie, $.cookie('foo','bar') sets it. *(This plugin is a separate file, shimmed in using the shim plugin.)*
  *   **$.fn.jsonData** -- Equivalent to the getter function of  $.fn.data, but without a weird jQuery bug that fails to parse JSON properly if it's been HTML escaped into an attribute.
@@ -7,38 +7,43 @@
  */
 define(["jquery", "vendor/jquery-scrollto", "vendor/jquery.cookie/jquery.cookie"], function ($) {
 
-   
-    $.fn.jsonData = function (dataAttr) {
-        var d = this.attr("data-mz-" + dataAttr);
-        return (typeof d === 'string' && d.charAt(0).match(/[\{\[\(]/)) ? $.parseJSON(d) : d;
-    };
 
-    // use this instead of fadeIn for elements that are set to visibility: hidden instead of display:none
-    // display:none on large elements makes the page look tiny at first, the footer hugging the header
-    $.fn.noFlickerFadeIn = function () {
-        this.css('visibility', 'visible');
-        if (Modernizr.csstransitions) {
-            this.css('opacity', 1);
-        } else {
-            this.animate({ opacity: 1 }, 300);
-        }
-    };
+  $.fn.jsonData = function (dataAttr) {
+    var d = this.attr("data-mz-" + dataAttr);
+    return (typeof d === 'string' && d.charAt(0).match(/[\{\[\(]/)) ? $.parseJSON(d) : d;
+  };
 
-    // get url query parameters
-    $.deparam = function(querystring) {
-        // remove any preceding url and split
-        querystring = querystring || window.location.search;
-        querystring = querystring.substring(querystring.indexOf('?') + 1).split('&');
-        var params = {}, pair, d = decodeURIComponent, i;
-        // march and parse
-        for (i = querystring.length; i > 0;) {
-            pair = querystring[--i].split('=');
-            if (pair && pair.length > 1) params[d(pair[0])] = d(pair[1].replace(/\+/g, '%20'));
-        }
+  // use this instead of fadeIn for elements that are set to visibility: hidden instead of display:none
+  // display:none on large elements makes the page look tiny at first, the footer hugging the header
+  $.fn.noFlickerFadeIn = function () {
+    this.css('visibility', 'visible');
+    if (Modernizr.csstransitions) {
+      this.css('opacity', 1);
+    }
+    else {
+      this.animate({
+        opacity: 1
+      }, 300);
+    }
+  };
 
-        return params;
-    };//--  fn  deparam
+  // get url query parameters
+  $.deparam = function (querystring) {
+    // remove any preceding url and split
+    querystring = querystring || window.location.search;
+    querystring = querystring.substring(querystring.indexOf('?') + 1).split('&');
+    var params = {},
+      pair, d = decodeURIComponent,
+      i;
+    // march and parse
+    for (i = querystring.length; i > 0;) {
+      pair = querystring[--i].split('=');
+      if (pair && pair.length > 1) params[d(pair[0])] = d(pair[1].replace(/\+/g, '%20'));
+    }
 
-    return $.noConflict();
+    return params;
+  }; //--  fn  deparam
+
+  return $.noConflict();
 
 });

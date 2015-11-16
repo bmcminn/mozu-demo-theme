@@ -1,14 +1,14 @@
 {
 	"js": {
-		"braceStyle": "collapse",
+		"braceStyle": "end-expand",
     "breakChainedMethods": false,
     "e4x": false,
     "evalCode": false,
-    "indentChar": "\t",
+    "indentChar": " ",
     "commafirst": true,
     "indentLevel": 5,
     "indentSize": 2,
-    "indentWithTabs": true,
+    "indentWithTabs": false,
     "jslintHappy": true,
     "keepArrayIndentation": false,
     "keepFunctionIndentation": false,

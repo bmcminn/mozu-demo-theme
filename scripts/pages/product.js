@@ -1,162 +1,160 @@
 require([
-	"modules/jquery-mozu",
-	"underscore",
-	"hyprlive",
-	"modules/backbone-mozu",
-	"modules/cart-monitor",
-	"modules/soft-cart",
-	"modules/models-product",
-	"modules/views-productimages",
-	"modules/jquery-dateinput-localized"
-],
+    "modules/jquery-mozu",
+    "underscore",
+    "hyprlive",
+    "modules/backbone-mozu",
+    "modules/cart-monitor",
+    "modules/soft-cart",
+    "modules/models-product",
+    "modules/views-productimages",
+    "modules/jquery-dateinput-localized"
+  ],
 
-function ($, _, Hypr, Backbone, CartMonitor, SoftCart, ProductModels, ProductImageViews) {
+  function ($, _, Hypr, Backbone, CartMonitor, SoftCart, ProductModels, ProductImageViews) {
 
-	var ProductView = Backbone.MozuView.extend({
-		templateName: 'modules/product/product-detail',
-		autoUpdate: ['quantity'],
+    var ProductView = Backbone.MozuView.extend({
+      templateName: 'modules/product/product-detail',
+      autoUpdate: ['quantity'],
 
-		additionalEvents: {
-			"change [data-mz-product-option]": "onOptionChange",
-			"blur [data-mz-product-option]": "onOptionChange",
-		},
+      additionalEvents: {
+        "change [data-mz-product-option]": "onOptionChange",
+        "blur [data-mz-product-option]": "onOptionChange",
+      },
 
-		render: function () {
-			var me = this;
+      render: function () {
+        var me = this;
 
-			Backbone.MozuView.prototype.render.apply(this);
+        Backbone.MozuView.prototype.render.apply(this);
 
-			this.$('[data-mz-is-datepicker]').each(function (ix, dp) {
-				$(dp)
-					.dateinput()
-					.css('color', Hypr.getThemeSetting('textColor'))
-					.on('change  blur', _.bind(me.onOptionChange, me))
-					;
-			});
-		},
+        this.$('[data-mz-is-datepicker]').each(function (ix, dp) {
+          $(dp)
+            .dateinput()
+            .css('color', Hypr.getThemeSetting('textColor'))
+            .on('change  blur', _.bind(me.onOptionChange, me));
+        });
+      },
 
-		onOptionChange: function (e) {
-			return this.configure($(e.currentTarget));
-		},
+      onOptionChange: function (e) {
+        return this.configure($(e.currentTarget));
+      },
 
-		configure: function ($optionEl) {
-			var newValue  = $optionEl.val()
-				, oldValue
-				, id        = $optionEl.data('mz-product-option')
-				, optionEl  = $optionEl[0]
-				, isPicked  = (optionEl.type !== "checkbox" && optionEl.type !== "radio") || optionEl.checked
-				, option    = this.model.get('options').get(id)
-				;
+      configure: function ($optionEl) {
+        var newValue = $optionEl.val(),
+          oldValue, id = $optionEl.data('mz-product-option'),
+          optionEl = $optionEl[0],
+          isPicked = (optionEl.type !== "checkbox" && optionEl.type !== "radio") || optionEl.checked,
+          option = this.model.get('options').get(id);
 
-			if (option) {
+        if (option) {
 
-				if (option.get('attributeDetail').inputType === "YesNo") {
-					option.set("value", isPicked);
+          if (option.get('attributeDetail').inputType === "YesNo") {
+            option.set("value", isPicked);
 
-				} else if (isPicked) {
-					oldValue = option.get('value');
+          }
+          else if (isPicked) {
+            oldValue = option.get('value');
 
-					if (oldValue !== newValue && !(oldValue === undefined && newValue === '')) {
-						option.set('value', newValue);
-					}
-				}
-			}
-		},
+            if (oldValue !== newValue && !(oldValue === undefined && newValue === '')) {
+              option.set('value', newValue);
+            }
+          }
+        }
+      },
 
-		addToCart: function () {
-			this.model.addToCart();
-		},
+      addToCart: function () {
+        this.model.addToCart();
+      },
 
-		addToWishlist: function () {
-			this.model.addToWishlist();
-		},
+      addToWishlist: function () {
+        this.model.addToWishlist();
+      },
 
-		checkLocalStores: function (e) {
-			var me = this;
-			e.preventDefault();
-			this.model.whenReady(function () {
-				var $localStoresForm = $(e.currentTarget).parents('[data-mz-localstoresform]')
-					, $input = $localStoresForm.find('[data-mz-localstoresform-input]')
-					;
+      checkLocalStores: function (e) {
+        var me = this;
+        e.preventDefault();
+        this.model.whenReady(function () {
+          var $localStoresForm = $(e.currentTarget).parents('[data-mz-localstoresform]'),
+            $input = $localStoresForm.find('[data-mz-localstoresform-input]');
 
-				if ($input.length > 0) {
-					$input.val(JSON.stringify(me.model.toJSON()));
-					$localStoresForm[0].submit();
-				}
-			});
-		},
+          if ($input.length > 0) {
+            $input.val(JSON.stringify(me.model.toJSON()));
+            $localStoresForm[0].submit();
+          }
+        });
+      },
 
-		initialize: function () {
-			// handle preset selects, etc
-			var me = this;
+      initialize: function () {
+        // handle preset selects, etc
+        var me = this;
 
-			this.$('[data-mz-product-option]').each(function () {
+        this.$('[data-mz-product-option]').each(function () {
 
-				var $this = $(this)
-					, isChecked
-					, wasChecked
-					;
+          var $this = $(this),
+            isChecked, wasChecked;
 
-				if ($this.val()) {
-					switch ($this.attr('type')) {
-						case "checkbox":
+          if ($this.val()) {
+            switch ($this.attr('type')) {
+            case "checkbox":
 
-						case "radio":
-							isChecked = $this.prop('checked');
-							wasChecked = !!$this.attr('checked');
+            case "radio":
+              isChecked = $this.prop('checked');
+              wasChecked = !!$this.attr('checked');
 
-							if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
-								me.configure($this);
-							}
+              if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
+                me.configure($this);
+              }
 
-							break;
+              break;
 
-						default:
-							me.configure($this);
-					}
-				}
-			});
-		}
-	});
+            default:
+              me.configure($this);
+            }
+          }
+        });
+      }
+    });
 
 
-	// Run the view stuff
-	$(document).ready(function () {
+    // Run the view stuff
+    $(document).ready(function () {
 
-		var product = ProductModels.Product.fromCurrent();
+      var product = ProductModels.Product.fromCurrent();
 
-		product.on('addedtocart', function (cartitem) {
-			if (cartitem && cartitem.prop('id')) {
-				product.isLoading(true);
-				CartMonitor.addToCount(product.get('quantity'));
-				SoftCart.update().then(SoftCart.show).then(function() {
-					SoftCart.highlightItem(cartitem.prop('id'));
-					product.isLoading(false);
-				});
-			} else {
-				product.trigger("error", { message: Hypr.getLabel('unexpectedError') });
-			}
-		});
+      product.on('addedtocart', function (cartitem) {
+        if (cartitem && cartitem.prop('id')) {
+          product.isLoading(true);
+          CartMonitor.addToCount(product.get('quantity'));
+          SoftCart.update().then(SoftCart.show).then(function () {
+            SoftCart.highlightItem(cartitem.prop('id'));
+            product.isLoading(false);
+          });
+        }
+        else {
+          product.trigger("error", {
+            message: Hypr.getLabel('unexpectedError')
+          });
+        }
+      });
 
-		product.on('addedtowishlist', function (cartitem) {
-			$('#add-to-wishlist').prop('disabled', 'disabled').text(Hypr.getLabel('addedToWishlist'));
-		});
+      product.on('addedtowishlist', function (cartitem) {
+        $('#add-to-wishlist').prop('disabled', 'disabled').text(Hypr.getLabel('addedToWishlist'));
+      });
 
-		var productView = new ProductView({
-			el: $('#product-detail'),
-			model: product,
-			messagesEl: $('[data-mz-message-bar]')
-		});
+      var productView = new ProductView({
+        el: $('#product-detail'),
+        model: product,
+        messagesEl: $('[data-mz-message-bar]')
+      });
 
-		var productImagesView = new ProductImageViews.ProductPageImagesView({
-			el: $('[data-mz-productimages]'),
-			model: product
-		});
+      var productImagesView = new ProductImageViews.ProductPageImagesView({
+        el: $('[data-mz-productimages]'),
+        model: product
+      });
 
-		window.productView = productView;
+      window.productView = productView;
 
-		productView.render();
+      productView.render();
 
-	});
+    });
 
-});
+  });

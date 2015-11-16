@@ -113,7 +113,6 @@
 //   //
 
 
-
 //   console.log('product', product);
 //   console.log('images', images);
 //   console.log('videos', videos);

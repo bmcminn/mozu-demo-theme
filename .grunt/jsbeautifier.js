@@ -8,6 +8,7 @@ module.exports = {
 	default: {
 		src : [
 			path.resolve('./scripts/**/*.js')
+    , path.resolve('./components/**/*.js')
 		],
 		options: {
 			config: "./.jsbeautifyrc",

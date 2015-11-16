@@ -28,15 +28,15 @@
  * @param {function} renderCallback A callback representing the render action.
  */
 
-define(['underscore'], function(_) {
-  return function(view, selectors, renderCallback) {
+define(['underscore'], function (_) {
+  return function (view, selectors, renderCallback) {
     var thisRound = {};
     view._preserved = view._preserved || {};
-    _.each(selectors, function(selector) {
+    _.each(selectors, function (selector) {
       thisRound[selector] = view.$(selector);
     });
     renderCallback.call(view);
-    _.each(thisRound, function($element, selector) {
+    _.each(thisRound, function ($element, selector) {
       var $preserved = view._preserved[selector];
       if ($element.length > 0 && (!$preserved || $preserved.length === 0)) {
         $preserved = view._preserved[selector] = $element;
