@@ -119,6 +119,7 @@ define([
           , $this.video.model.config.youtubeControls ? '&controls=1' : '&controls=0'
           , $this.video.model.config.youtubeRel ? '&rel=1' : '&rel=0'
           , $this.video.model.config.youtubeShowinfo ? '&showinfo=1' : '&showinfo=0'
+          // TODO: video.time property
           // , $this.video.time ? '?' + $this.video.time : ''
           ].join('');
 
@@ -130,6 +131,9 @@ define([
           , $this.video.id
           , $this.video.time
           , '?'
+          , $this.video.model.config.autoplay ? '&autoplay=1' : '&autoplay=0'
+          , $this.video.model.config.loop ? '&loop=1' : '&loop=0'
+
           ].join('');
 
           break;
