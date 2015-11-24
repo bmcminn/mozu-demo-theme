@@ -58,12 +58,12 @@
 
 
 		{% block storefront-less %}
-			<link rel="stylesheet" href="{% make_url "cdn" "/stylesheets/storefront.less" %}" title="default" />
+			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" />
 		{% endblock storefront-less %}
 
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{% make_url "cdn" "/stylesheets/overrides.less" %}" title="default" />
-			<link rel="stylesheet" href="{% make_url "cdn" "/stylesheets/widgets.less" %}" title="default" />
+			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/overrides.less" %}" />
+			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/widgets.less" %}" />
 		{% endblock stylesheets %}
 
 

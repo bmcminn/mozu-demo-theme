@@ -52,7 +52,10 @@
 					</td>
 
 					<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">{{ refund.amount|currency }}</td>
-					<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">{{ refund.auditInfo.createDate }}</td>
+          <td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+            {{ refund.auditInfo.createDate }}<br>
+            {{ refund.auditInfo.createDate|date('m/d/Y') }}
+          </td>
 				</tr>
 			{% endfor %}
 

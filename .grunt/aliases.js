@@ -9,10 +9,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'theme'
   , 'lintify'
-  , 'jsbeautifier'
+  // , 'jsbeautifier'
   , 'setver'
   , 'mozutheme:quickcompile'
-  // , 'mozusync:upload'
+  , 'mozusync:upload'
   ]);
 
 

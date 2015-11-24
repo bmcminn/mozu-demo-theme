@@ -1,55 +1,55 @@
 {
-	"id": "about-us",
-	"title": "About Us",
-	"entityType": "webpage",
-	"documentType": "web_page",
-	"template": "about-us",
-	"customEditor": "about-us",
-	"userCreatable": true,
-	"zones": [
-		{
-			"id": "body",
-			"rows": [
-				{
-					"columns": [
-						{
-							"rows": null,
-							"span": 12,
-							"widgets": [
-								{
-									"config": {
-										"body": "<h2>Insert Title</h2><p>Insert Content</p>"
-									},
-									"definitionId": "content",
-									"isRichText": true
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-    {
-      "id": "company-info~page-body",
-      "rows": [
+    "id": "about-us",
+    "title": "About Us",
+    "entityType": "webpage",
+    "documentType": "web_page",
+    "template": "about-us",
+    "customEditor": "about-us",
+    "userCreatable": true,
+    "zones": [
         {
-          "columns": [
-            {
-              "rows": null,
-              "span": 16,
-              "widgets": [
+            "id": "body",
+            "rows": [
                 {
-                  "definitionId": "page_heading",
-                  "config": {
-                    "headingText": "Welcome to Mozu",
-                    "headingType": "h1"
-                  }
+                    "columns": [
+                        {
+                            "rows": null,
+                            "span": 12,
+                            "widgets": [
+                                {
+                                    "config": {
+                                        "body": "<h2>Insert Title</h2><p>Insert Content</p>"
+                                    },
+                                    "definitionId": "content",
+                                    "isRichText": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+          "id": "company-info~page-body",
+          "rows": [
+            {
+              "columns": [
+                {
+                  "rows": null,
+                  "span": 16,
+                  "widgets": [
+                    {
+                      "definitionId": "page_heading",
+                      "config": {
+                        "headingText": "Welcome to Mozu",
+                        "headingType": "h1"
+                      }
+                    }
+                  ]
                 }
               ]
             }
           ]
         }
-      ]
-    }
-	]
+    ]
 }
