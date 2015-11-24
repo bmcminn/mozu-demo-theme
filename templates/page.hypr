@@ -44,7 +44,7 @@
 		<meta name="correlationId" content="{{ pageContext.correlationId }}">
 
 
-		<title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %}</title>
+		<title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %} Waffles</title>
 
 
 		{% if pageContext.FeedUrl %}
