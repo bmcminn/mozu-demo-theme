@@ -2,7 +2,7 @@
   "baseUrl": "https://home.mozu.com",
   "developerAccountId": 6406,
   "developerAccount": {
-    "emailAddress": "YOUR_EMAIL_HERE"
+    "emailAddress": "YOUR_DEVCENTER_EMAIL_HERE"
   },
-  "workingApplicationKey": "YOUR_THEME_APPLICATION_HERE"
+  "workingApplicationKey": "YOUR_THEME_APPLICATIONKEY_HERE"
 }
