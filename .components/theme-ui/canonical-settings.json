@@ -1,13 +1,14 @@
 {
   "xtype": "panel",
-  "title": "SEO Content",
+  "title": "Canonical Settings",
   "collapsed": false,
   "items": [
     {
       "name": "canonicalHomepageSlug",
       "fieldLabel": "Homepage slug (update this anytime you change the homepage in Site Builder)",
       "xtype": "mz-input-text",
-      "anchor": "90%"
+      "anchor": "90%",
+      "width": "90%"
     },
 
 
@@ -23,6 +24,7 @@
       "fieldLabel": "Force secure Canonical links (ex: <code>https://domain.tld/</code>)",
       "xtype": "mz-input-dropdown",
       "anchor": "90%",
+      "width": "90%",
       "store": [
         [
           "http",
