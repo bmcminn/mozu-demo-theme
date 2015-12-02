@@ -1,0 +1,596 @@
+{
+    "acceptedDate": "2015-12-02T21:55:11.988Z",
+    "amountAvailableForRefund": 0,
+    "amountRefunded": 0,
+    "amountRemainingForPayment": 0,
+    "attributes": [],
+    "auditInfo": {
+        "updateDate": "2015-12-02T21:55:12.004Z",
+        "createDate": "2015-12-02T21:54:16.886Z",
+        "updateBy": "CHANGE_MESSAGE_HASH_ID",
+        "createBy": "FULLFILMENT_UPDATED_BY_ID"
+    },
+    "availableActions": [
+        "ValidateOrder",
+        "SetOrderAsProcessing"
+    ],
+    "billingInfo": {
+        "paymentType": "Check",
+        "paymentWorkflow": "Mozu",
+        "billingContact": {
+            "id": 1003,
+            "email": "test@email.com",
+            "firstName": "Testing",
+            "lastNameOrSurname": "Testing",
+            "phoneNumbers": {
+                "home": "555-123-1234"
+            },
+            "address": {
+                "address1": "2343 Testing Ave",
+                "address2": "",
+                "cityOrTown": "Austin",
+                "stateOrProvince": "TX",
+                "postalOrZipCode": "78787",
+                "countryCode": "US",
+                "addressType": "Residential",
+                "isValidated": false
+            }
+        },
+        "isSameBillingShippingAddress": true,
+        "card": {
+            "isUsedRecurring": false,
+            "isCardInfoSaved": false,
+            "expireMonth": 0,
+            "expireYear": 0
+        },
+        "auditInfo": {
+            "updateDate": "2015-12-02T21:55:11.676Z",
+            "createDate": "2015-12-02T21:55:08.785Z",
+            "updateBy": "CHANGE_MESSAGE_HASH_ID",
+            "createBy": "CHANGE_MESSAGE_HASH_ID"
+        }
+    },
+    "changeMessages": [
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "FULLFILMENT_UPDATED_BY_ID",
+            "userScopeType": "Shopper",
+            "appId": "CHANGE_MESSAGE_APP_ID",
+            "appKey": "APP_KEY_HASH_ID",
+            "subjectType": "StateChange.WorkflowAction",
+            "success": true,
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "CreateOrder",
+            "verb": "Applied",
+            "message": "Workflow action succeeded.",
+            "metadata": [
+                {
+                    "oldValue": "Null",
+                    "newValue": "Pending"
+                }
+            ],
+            "oldValue": "Null",
+            "newValue": "Pending",
+            "createDate": "2015-12-02T21:54:16.87Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "CHANGE_MESSAGE_APP_ID",
+            "appKey": "APP_KEY_HASH_ID",
+            "subjectType": "Order",
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "Fulfillment Info Updated",
+            "verb": "Updated",
+            "message": "Fulfillment information was updated.",
+            "createDate": "2015-12-02T21:54:50.128Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "STORE_FRONT_APP_HASH_ID",
+            "appKey": "STORE_FRONT_APP_HASH_ID",
+            "subjectType": "Order",
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "Fulfillment Info Updated",
+            "verb": "Updated",
+            "message": "Fulfillment information was updated.",
+            "createDate": "2015-12-02T21:54:55.519Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "STORE_FRONT_APP_HASH_ID",
+            "appKey": "STORE_FRONT_APP_HASH_ID",
+            "subjectType": "Order",
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "Fulfillment Info Updated",
+            "verb": "Updated",
+            "message": "Fulfillment information was updated.",
+            "createDate": "2015-12-02T21:55:11.676Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "STORE_FRONT_APP_HASH_ID",
+            "appKey": "STORE_FRONT_APP_HASH_ID",
+            "subjectType": "StateChange.WorkflowAction",
+            "success": true,
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "SubmitOrder",
+            "verb": "Applied",
+            "message": "Workflow action succeeded.",
+            "metadata": [
+                {
+                    "oldValue": "Pending",
+                    "newValue": "Submitted"
+                }
+            ],
+            "oldValue": "Pending",
+            "newValue": "Submitted",
+            "createDate": "2015-12-02T21:55:11.973Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "STORE_FRONT_APP_HASH_ID",
+            "appKey": "STORE_FRONT_APP_HASH_ID",
+            "subjectType": "StateChange.WorkflowAction",
+            "success": true,
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "ValidateOrder",
+            "verb": "Applied",
+            "message": "Workflow action succeeded.",
+            "metadata": [
+                {
+                    "oldValue": "Submitted",
+                    "newValue": "Validated"
+                }
+            ],
+            "oldValue": "Submitted",
+            "newValue": "Validated",
+            "createDate": "2015-12-02T21:55:11.988Z"
+        },
+        {
+            "id": "CHANGE_MESSAGE_ID",
+            "correlationId": "CORRELATION_ID",
+            "userId": "CHANGE_MESSAGE_HASH_ID",
+            "userFirstName": "Testing",
+            "userLastName": "Testing",
+            "userScopeType": "Shopper",
+            "appId": "STORE_FRONT_APP_HASH_ID",
+            "appKey": "STORE_FRONT_APP_HASH_ID",
+            "subjectType": "StateChange.WorkflowAction",
+            "success": true,
+            "identifier": "CHANGE_MESSAGE_HASH_ID",
+            "subject": "AcceptOrder",
+            "verb": "Applied",
+            "message": "Workflow action succeeded.",
+            "metadata": [
+                {
+                    "oldValue": "Validated",
+                    "newValue": "Accepted"
+                }
+            ],
+            "oldValue": "Validated",
+            "newValue": "Accepted",
+            "createDate": "2015-12-02T21:55:12.004Z"
+        }
+    ],
+    "channelCode": "online",
+    "couponCodes": [],
+    "currencyCode": "USD",
+    "customerAccountId": 1004,
+    "customerInteractionType": "Unknown",
+    "digitalPackages": [],
+    "discountTotal": 0,
+    "discountedSubtotal": 250,
+    "discountedTotal": 250,
+    "email": "test@email.com",
+    "expirationDate": "2015-12-16T21:54:13.314Z",
+    "extendedProperties": [],
+    "feeTotal": 0,
+    "fulfillmentInfo": {
+        "fulfillmentContact": {
+            "id": 1003,
+            "email": "test@email.com",
+            "firstName": "Testing",
+            "lastNameOrSurname": "Testing",
+            "phoneNumbers": {
+                "home": "555-123-1234"
+            },
+            "address": {
+                "address1": "2343 Testing Ave",
+                "address2": "",
+                "cityOrTown": "Austin",
+                "stateOrProvince": "TX",
+                "postalOrZipCode": "78787",
+                "countryCode": "US",
+                "addressType": "Residential",
+                "isValidated": false
+            }
+        },
+        "isDestinationCommercial": false,
+        "shippingMethodCode": "SHIPPING_METHOD_CODE_HASH",
+        "shippingMethodName": "Flat Rate",
+        "auditInfo": {
+            "updateDate": "2015-12-02T21:55:11.676Z",
+            "createDate": "2015-12-02T21:54:16.714Z",
+            "updateBy": "CHANGE_MESSAGE_HASH_ID",
+            "createBy": "FULLFILMENT_UPDATED_BY_ID"
+        }
+    },
+    "fulfillmentStatus": "NotFulfilled",
+    "handlingDiscounts": [],
+    "handlingTaxTotal": 0,
+    "handlingTotal": 0,
+    "hasDirectShip": true,
+    "hasDraft": false,
+    "id": "ORDER_HASH_ID",
+    "invalidCoupons": [],
+    "ipAddress": "111.111.111.111",
+    "isDraft": false,
+    "isEligibleForReturns": false,
+    "isImport": false,
+    "isTaxExempt": false,
+    "itemTaxTotal": 0,
+    "items": [
+        {
+            "id": "PRODUCT_HASH_ID",
+            "originalCartItemId": "PRODUCT_CART_ITEM_ID",
+            "fulfillmentLocationCode": "WRH01",
+            "fulfillmentMethod": "Ship",
+            "lineId": 1,
+            "product": {
+                "mfgPartNumber": "",
+                "upc": "",
+                "fulfillmentTypesSupported": [
+                    "DirectShip"
+                ],
+                "imageAlternateText": "",
+                "imageUrl": "//cdn-sb.mozu.com/12177-17015/cms/17015/files/a719f04a-9aa1-41e1-a879-1ee57934cd2a",
+                "variationProductCode": "LUC-BAG-001-2",
+                "options": [
+                    {
+                        "name": "Color",
+                        "value": "Brown",
+                        "attributeFQN": "tenant~color",
+                        "stringValue": "Brown"
+                    }
+                ],
+                "properties": [
+                    {
+                        "attributeFQN": "tenant~availability",
+                        "name": "Availability",
+                        "dataType": "String",
+                        "isMultiValue": false,
+                        "values": [
+                            {
+                                "stringValue": "Usually Ships in 24 Hours",
+                                "value": "24hrs"
+                            }
+                        ]
+                    },
+                    {
+                        "attributeFQN": "tenant~rating",
+                        "name": "Rating",
+                        "dataType": "Number",
+                        "isMultiValue": true,
+                        "values": [
+                            {
+                                "value": 5
+                            }
+                        ]
+                    },
+                    {
+                        "attributeFQN": "tenant~videos",
+                        "name": "Videos",
+                        "dataType": "String",
+                        "isMultiValue": false,
+                        "values": [
+                            {
+                                "stringValue": "https://vimeo.com/channels/staffpicks/137188562\nhttps://vimeo.com/137188562\nhttps://www.youtube.com/watch?v=iL5lrmrbgKc\nhttps://www.youtube.com/watch?v=iL5lrmrbgKc\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/iL5lrmrbgKc\" frameborder=\"0\" allowfullscreen></iframe>\nhttps://youtu.be/iL5lrmrbgKc\nhttps://www.youtube.com/watch?v=JvAPW_YbOYg&list=PLoEggaYbboJEXKB_yw4tDDkSDLB2tTnBM\nhttps://www.youtube.com/watch?v=A1F3y41Tn9A&list=PLoEggaYbboJEXKB_yw4tDDkSDLB2tTnBM",
+                                "value": "https://vimeo.com/channels/staffpicks/137188562\nht"
+                            }
+                        ]
+                    },
+                    {
+                        "attributeFQN": "tenant~test-text-area",
+                        "name": "Test Text Area",
+                        "dataType": "String",
+                        "isMultiValue": false,
+                        "values": [
+                            {
+                                "stringValue": "<div style=\"background-color:#f90;\">Testing <b>this</b> text area thing!!!</div>",
+                                "value": "<div style=\"background-color:#f90;\">Testing <b>thi"
+                            }
+                        ]
+                    },
+                    {
+                        "attributeFQN": "tenant~product-sku",
+                        "name": "Product SKU",
+                        "dataType": "String",
+                        "isMultiValue": false,
+                        "values": [
+                            {
+                                "stringValue": "ALL001",
+                                "value": "ALL001"
+                            }
+                        ]
+                    }
+                ],
+                "categories": [
+                    {
+                        "id": 1
+                    },
+                    {
+                        "id": 2,
+                        "parent": {
+                            "id": 1
+                        }
+                    }
+                ],
+                "price": {
+                    "price": 250
+                },
+                "discountsRestricted": false,
+                "isTaxable": true,
+                "productType": "Purse",
+                "productUsage": "Configurable",
+                "bundledProducts": [],
+                "productCode": "LUC-BAG-001",
+                "name": "Allison Handbag",
+                "description": "Inspired by the timeless glamour and style of a classic carryall but updated with a embossed crocodile pattern. We've combined quality materials and time-tested techniques to craft this handbag in a variety of colors.",
+                "goodsType": "Physical",
+                "isPackagedStandAlone": false,
+                "productReservationId": 8,
+                "measurements": {
+                    "height": {
+                        "unit": "in",
+                        "value": 1
+                    },
+                    "width": {
+                        "unit": "in",
+                        "value": 1
+                    },
+                    "length": {
+                        "unit": "in",
+                        "value": 1
+                    },
+                    "weight": {
+                        "unit": "lbs",
+                        "value": 1
+                    }
+                },
+                "fulfillmentStatus": "PendingFulfillment"
+            },
+            "quantity": 1,
+            "subtotal": 250,
+            "extendedTotal": 250,
+            "taxableTotal": 250,
+            "discountTotal": 0,
+            "discountedTotal": 250,
+            "itemTaxTotal": 0,
+            "shippingTaxTotal": 0,
+            "feeTotal": 0,
+            "total": 250,
+            "unitPrice": {
+                "extendedAmount": 250,
+                "listAmount": 250
+            },
+            "productDiscounts": [],
+            "shippingDiscounts": [],
+            "auditInfo": {
+                "updateDate": "2015-12-02T21:54:16.886Z",
+                "createDate": "2015-12-02T21:54:16.886Z",
+                "updateBy": "FULLFILMENT_UPDATED_BY_ID",
+                "createBy": "FULLFILMENT_UPDATED_BY_ID"
+            }
+        }
+    ],
+    "notes": [],
+    "orderDiscounts": [],
+    "orderNumber": 12,
+    "originalCartId": "075fc6855621e1153cc9043700002f91",
+    "packages": [],
+    "paymentStatus": "Pending",
+    "payments": [
+        {
+            "id": "ORDER_PAYMENT_HASH_ID",
+            "availableActions": [
+                "CapturePayment",
+                "DeclinePayment",
+                "VoidPayment"
+            ],
+            "orderId": "CHANGE_MESSAGE_HASH_ID",
+            "paymentType": "Check",
+            "paymentWorkflow": "Mozu",
+            "billingInfo": {
+                "paymentType": "Check",
+                "paymentWorkflow": "Mozu",
+                "billingContact": {
+                    "id": 1003,
+                    "email": "test@email.com",
+                    "firstName": "Testing",
+                    "lastNameOrSurname": "Testing",
+                    "phoneNumbers": {
+                        "home": "555-123-1234"
+                    },
+                    "address": {
+                        "address1": "2343 Testing Ave",
+                        "address2": "",
+                        "cityOrTown": "Austin",
+                        "stateOrProvince": "TX",
+                        "postalOrZipCode": "78787",
+                        "countryCode": "US",
+                        "addressType": "Residential",
+                        "isValidated": false
+                    }
+                },
+                "isSameBillingShippingAddress": true,
+                "card": {
+                    "isUsedRecurring": false,
+                    "isCardInfoSaved": false,
+                    "expireMonth": 0,
+                    "expireYear": 0
+                },
+                "auditInfo": {
+                    "updateDate": "2015-12-02T21:55:08.785Z",
+                    "createDate": "2015-12-02T21:55:08.785Z",
+                    "updateBy": "USER_HASH_ID",
+                    "createBy": "USER_HASH_ID"
+                }
+            },
+            "status": "Pending",
+            "interactions": [
+                {
+                    "id": "INTERACTION_HASH_ID",
+                    "paymentId": "CHANGE_MESSAGE_HASH_ID",
+                    "orderId": "CHANGE_MESSAGE_HASH_ID",
+                    "currencyCode": "USD",
+                    "interactionType": "RequestCheck",
+                    "status": "CheckRequested",
+                    "paymentEntryStatus": "New",
+                    "isRecurring": false,
+                    "isManual": false,
+                    "amount": 265,
+                    "interactionDate": "2015-12-02T21:55:11.988Z",
+                    "auditInfo": {
+                        "updateDate": "2015-12-02T21:55:11.988Z",
+                        "createDate": "2015-12-02T21:55:11.988Z",
+                        "updateBy": "CHANGE_MESSAGE_HASH_ID",
+                        "createBy": "CHANGE_MESSAGE_HASH_ID"
+                    }
+                }
+            ],
+            "isRecurring": false,
+            "amountCollected": 0,
+            "amountCredited": 0,
+            "amountRequested": 265,
+            "changeMessages": [
+                {
+                    "id": "CHANGE_MESSAGE_HASH_ID",
+                    "correlationId": "CHANGE_MESSAGE_HASH_ID",
+                    "userId": "CHANGE_MESSAGE_HASH_ID",
+                    "userFirstName": "Testing",
+                    "userLastName": "Testing",
+                    "userScopeType": "Shopper",
+                    "appId": "STORE_FRONT_APP_HASH_ID",
+                    "appKey": "STORE_FRONT_APP_HASH_ID",
+                    "subjectType": "StateChange.Payment",
+                    "success": true,
+                    "identifier": "CHANGE_MESSAGE_HASH_ID",
+                    "subject": "CreatePayment",
+                    "verb": "Applied",
+                    "message": "Workflow action succeeded.",
+                    "metadata": [
+                        {
+                            "transactionId": "CHANGE_MESSAGE_HASH_ID",
+                            "paymentServiceTransactionId": null,
+                            "paymentType": "Check",
+                            "amountCollected": 0,
+                            "amountCredited": 0,
+                            "amountRequested": 265,
+                            "oldValue": "New",
+                            "newValue": "New"
+                        }
+                    ],
+                    "oldValue": "New",
+                    "newValue": "New",
+                    "createDate": "2015-12-02T21:55:08.816Z"
+                },
+                {
+                    "id": "CHANGE_MESSAGE_HASH_ID",
+                    "correlationId": "CHANGE_MESSAGE_CORRELATION_ID",
+                    "userId": "CHANGE_MESSAGE_HASH_ID",
+                    "userFirstName": "Testing",
+                    "userLastName": "Testing",
+                    "userScopeType": "Shopper",
+                    "appId": "STORE_FRONT_APP_HASH_ID",
+                    "appKey": "STORE_FRONT_APP_HASH_ID",
+                    "subjectType": "StateChange.Payment",
+                    "success": true,
+                    "identifier": "CHANGE_MESSAGE_HASH_ID",
+                    "subject": "RequestCheck",
+                    "verb": "Applied",
+                    "message": "Workflow action succeeded.",
+                    "metadata": [
+                        {
+                            "transactionId": "CHANGE_MESSAGE_HASH_ID",
+                            "paymentServiceTransactionId": null,
+                            "paymentType": "Check",
+                            "amountCollected": 0,
+                            "amountCredited": 0,
+                            "amountRequested": 265,
+                            "oldValue": "New",
+                            "newValue": "Pending"
+                        }
+                    ],
+                    "oldValue": "New",
+                    "newValue": "Pending",
+                    "createDate": "2015-12-02T21:55:11.988Z"
+                }
+            ],
+            "auditInfo": {
+                "updateDate": "2015-12-02T21:55:08.785Z",
+                "createDate": "2015-12-02T21:55:08.785Z",
+                "updateBy": "CHANGE_MESSAGE_HASH_ID",
+                "createBy": "CHANGE_MESSAGE_HASH_ID"
+            }
+        }
+    ],
+    "pickups": [],
+    "refunds": [],
+    "returnStatus": "None",
+    "shipments": [],
+    "shippingDiscounts": [],
+    "shippingSubTotal": 15,
+    "shippingTaxTotal": 0,
+    "shippingTotal": 15,
+    "shopperNotes": {},
+    "siteId": 17015,
+    "status": "Accepted",
+    "submittedDate": "2015-12-02T21:55:11.957Z",
+    "subtotal": 250,
+    "taxTotal": 0,
+    "tenantId": 12177,
+    "total": 265,
+    "totalCollected": 0,
+    "type": "Online",
+    "validationResults": [],
+    "version": "1",
+
+    "__ORDER_OF_PRICING_DETAILS": [
+        "subtotal",
+        "discountedSubtotal",
+        "discountTotal",
+        "shippingTotal",
+        "shippingSubTotal",
+        "shippingTaxTotal",
+        "itemTaxTotal",
+        "taxTotal",
+        "feeTotal",
+        "total"
+    ]
+}
