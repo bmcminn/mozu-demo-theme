@@ -233,7 +233,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -243,7 +243,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -255,7 +255,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -276,7 +276,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -287,7 +287,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -298,7 +298,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -309,7 +309,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -322,7 +322,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -336,7 +336,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -350,7 +350,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -362,7 +362,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -381,7 +381,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -398,7 +398,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -421,7 +421,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
@@ -433,7 +433,7 @@ require([
 
 
       /**
-       * [updateAcceptsMarketing description]
+       * [description]
        * @param  {[type]} e [description]
        * @return {[type]}   [description]
        */
