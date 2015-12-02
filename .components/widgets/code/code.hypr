@@ -1,0 +1,3 @@
+<div class="code-container" data-config="{% json_attribute model.config.body %}">
+  {{ model.config.body|safe }}
+</div>
