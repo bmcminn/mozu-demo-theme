@@ -412,7 +412,7 @@
     {
       "id": "code",
       "displayName": "<code>&lt;Code&gt;</code>",
-      "displayTemplate": "cms/snippet",
+      "displayTemplate": "cms/code",
       "icon": "/resources/admin/widgets/07_code.png",
       "defaultConfig": {
         "body": "<h2>Insert Markup</h2>"
@@ -421,8 +421,8 @@
         {
           "fieldLabel": "Enter Code Snippet",
           "fieldStyle": "resize:both;font-family:Monaco, Menlo, Consolas, 'Droid Sans Mono', Inconsolata, 'Courier New', monospace;height:100%",
-          "height": 400,
           "name": "body",
+          "height": 400,
           "width": "100%",
           "mode": "html",
           "xtype": "mz-input-code"
