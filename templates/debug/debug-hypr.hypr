@@ -1,20 +1,26 @@
+{# set `debugMode=true` in your browser's address bar #}
 {% if pageContext.isDebugMode %}
 
-  {# TODO: add conditional for optional query param of jsonFields:bool #}
-  <label for="siteContext">siteContext</label>
-      <input type="text" id="siteContext" name="siteContext" value="{% json_attribute siteContext %}"><br>
+  {# TODO: figure out a way to make this 'stick' as a browser session #}
+  {# set `showDebug=true` in your browser's address bar #}
+  {# {% if pageContext.query.showDebug %} #}
 
-  <label for="pageContext">pageContext</label>
+    <label for="model">model</label>
+      <input type="text" id="model" name="model" value="{% json_attribute model %}"><br>
+
+    <label for="pageContext">pageContext</label>
       <input type="text" id="pageContext" name="pageContext" value="{% json_attribute pageContext %}"><br>
 
-  <label for="user">user</label>
+    <label for="siteContext">siteContext</label>
+      <input type="text" id="siteContext" name="siteContext" value="{% json_attribute siteContext %}"><br>
+
+    <label for="user">user</label>
       <input type="text" id="user" name="user" value="{% json_attribute user %}"><br>
 
-  <label for="navigation">navigation</label>
+    <label for="navigation">navigation</label>
       <input type="text" id="navigation" name="navigation" value="{% json_attribute navigation %}"><br>
 
-  <label for="model">model</label>
-      <input type="text" id="model" name="model" value="{% json_attribute model %}"><br>
+  {# {% endif %} #}
 
 
   {% preload_json siteContext "sitecontext" %}
