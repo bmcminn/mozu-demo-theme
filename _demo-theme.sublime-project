@@ -11,7 +11,7 @@
 				"*.zip",
 				"*.base",
 				"thumb.*",
-				"theme*.json",
+				// "theme*.json",
 				"*.*workspace"
 			],
 			"folder_exclude_patterns":
@@ -20,10 +20,10 @@
 				"compiled",
 				"node_modules",
 				"bower_components",
-				"templates/email",
-				"templates/widgets",
-				"scripts/widgets",
-				"stylesheets/widgets",
+				// "templates/email",
+				// "templates/widgets",
+				// "scripts/widgets",
+				// "stylesheets/widgets",
 				"references/backbone",
 				"references/bootstrap",
 				"references/jquery*",
