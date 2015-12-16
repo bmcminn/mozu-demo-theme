@@ -17,8 +17,8 @@ define([
       },
 
       changeQuantity: function (e, amt) {
-        var $qField = $(e.currentTarget),
-          id = $qField.data('mz-cart-item'),
+        var $qtyField = $(e.currentTarget),
+          id = $qtyField.data('mz-cart-item'),
           item = this.model.get("items").get(id);
         item.set('quantity', item.get('quantity') + amt);
         return item.saveQuantity();
@@ -65,7 +65,10 @@ define([
       },
 
       highlightItem: function (itemid) {
-        this.view.$('.soft-cart-item[data-mz-cart-item="' + itemid + '"]').removeClass('highlight').addClass('highlight');
+        this.view.$('.soft-cart-item[data-mz-cart-item="' + itemid + '"]')
+          .removeClass('highlight')
+          .addClass('highlight')
+          ;
       }
     };
 

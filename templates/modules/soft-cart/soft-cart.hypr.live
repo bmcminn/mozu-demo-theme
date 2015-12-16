@@ -28,7 +28,7 @@
 
 				<img class="soft-cart-item-image" src="{{ item.product.imageUrl }}?max=300" alt="{{ item.product.name }}" />
 
-				<a class="soft-cart-item-title" href="{{ item.product.url }}">{{ item.product.name }}</a>
+				<a class="soft-cart-item-title" href="{{ item.product.url }}">{{ item.product.name }} | {{ item.product.price.price|currency }}</a>
 
 				<span class="soft-cart-item-quantity">{{ labels.qty }}: {{ item.quantity }}</span>
 

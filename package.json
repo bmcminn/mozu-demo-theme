@@ -23,7 +23,7 @@
     "grunt-jsbeautifier": "^0.2.10",
     "grunt-jsonlint": "^1.0.6",
     "grunt-juice-email": "^0.1.3",
-    "grunt-mozu-appdev-sync": "^1.0.0",
+    "grunt-mozu-appdev-sync": "^1.1.0",
     "grunt-newer": "^1.1.1",
     "less": "^2.5.1",
     "load-grunt-config": "^0.17.2",

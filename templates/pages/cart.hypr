@@ -18,6 +18,8 @@
 {% block site-nav %}{% endblock site-nav %}
 
 
+{% block softcart %}{% endblock softcart %}
+
 
 {% block body-content %}
 

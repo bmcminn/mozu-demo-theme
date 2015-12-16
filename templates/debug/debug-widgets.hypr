@@ -1,0 +1,12 @@
+
+{% with pageContext.isDebugMode as debugMode %}
+
+  {% if debugMode %}
+    <label for="debug-widget">Widget Model:
+      <input type="text" id="debug-widget" name="debug-widget" value="{% json_attribute model %}">
+    </label>
+
+    <div data-widget-config="{% json_attribute model.config %}"></div>
+  {% endif %}
+
+{% endwith %}

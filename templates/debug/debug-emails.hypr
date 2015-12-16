@@ -9,16 +9,16 @@
 
 
 <label for="debug-model"><code>model</code></label>
-  <input id="debug-model" type="text" value="{% json_attribute model %}">
+  <input id="debug-model" type="text" value="{% json_attribute model %}"><br>
 
 
 <label for="debug-pageContext"><code>pageContext</code></label>
-  <input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
+  <input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}"><br>
 
 
 <label for="debug-siteContext"><code>siteContext</code></label>
-  <input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
+  <input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}"><br>
 
 
 <label for="debug-domainName"><code>domainName</code></label>
-  <input id="debug-domainName" type="text" value="{% json_attribute domainName %}">
+  <input id="debug-domainName" type="text" value="{% json_attribute domainName %}"><br>

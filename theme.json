@@ -568,28 +568,28 @@
       ]
     },
     {
-      "id": "page_heading",
+      "id": "mozu~cms-heading",
       "displayName": "Heading",
       "displayTemplate": "cms/heading",
-      "icon": "/resources/admin/widgets/heading.png",
+      "icon": "/resources/admin/widgets/00_photo.png",
       "validPageTypes": [
         "*"
       ],
       "defaultConfig": {
-        "xtype": "mz-input-text",
-        "headingText": "Heading Text here",
-        "headingType": "h1"
+        "headingText": "Heading Text Goes Here",
+        "headingType": "h2"
       },
       "editViewFields": [
         {
           "anchor": "93%",
           "name": "headingText",
-          "fieldLabel": "Heading Text"
+          "xtype": "mz-input-text",
+          "fieldLabel": "Heading text"
         },
         {
           "name": "headingType",
-          "fieldLabel": "Heading Type",
           "xtype": "mz-input-dropdown",
+          "fieldLabel": "Heading type",
           "store": [
             [
               "h1",
@@ -602,6 +602,18 @@
             [
               "h3",
               "H3"
+            ],
+            [
+              "h4",
+              "H4"
+            ],
+            [
+              "h5",
+              "H5"
+            ],
+            [
+              "h6",
+              "H6"
             ]
           ]
         }
@@ -625,7 +637,7 @@
       }
     },
     {
-      "id": "cms-image",
+      "id": "mozu~cms-image",
       "displayName": "Image",
       "displayTemplate": "cms/image",
       "icon": "/resources/admin/widgets/00_photo.png",
@@ -754,21 +766,21 @@
           "anchor": "100%",
           "fieldLabel": "Template",
           "name": "template",
+          "xtype": "mz-input-dropdown",
           "store": [
             [
               "modules/product/product-list-carousel",
-              "carousel"
+              "Carousel"
             ],
             [
               "modules/product/product-list-tiled",
-              "tiled"
+              "Tiled Listings"
             ],
             [
               "modules/product/product-list",
-              "list"
+              "List"
             ]
-          ],
-          "xtype": "mz-input-dropdown"
+          ]
         },
         {
           "anchor": "100%",
@@ -1139,6 +1151,17 @@
       ]
     },
     {
+      "id": "mozu~social-links",
+      "displayName": "Social Links",
+      "displayTemplate": "cms/social",
+      "icon": "/resources/admin/widgets/13_social.png",
+      "defaultConfig": {},
+      "editViewFields": [],
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
       "id": "content",
       "displayName": "Text Editor",
       "displayTemplate": "cms/text-editor",
@@ -1182,7 +1205,7 @@
         {
           "anchor": "93%",
           "xtype": "label",
-          "text": "Optional Video config",
+          "text": "<h2>Optional Video config</h2>",
           "margin": "20px 0 0 0"
         },
         {
@@ -1203,7 +1226,7 @@
         },
         {
           "xtype": "label",
-          "text": "YouTube Settings"
+          "text": "<h2>YouTube Settings</h2>"
         },
         {
           "fieldLabel": "Show Related videos after video",
@@ -1227,7 +1250,7 @@
         },
         {
           "xtype": "label",
-          "text": "Vimeo Settings"
+          "text": "<h2>Vimeo Settings</h2>"
         },
         {
           "fieldLabel": "Show Portrait",
@@ -1245,7 +1268,7 @@
           "name": "vimeoByline"
         },
         {
-          "fieldLabel": "Player controls color",
+          "fieldLabel": "Vimeo Player controls color",
           "xtype": "mz-input-color",
           "name": "vimeoColor"
         }
@@ -1576,9 +1599,11 @@
   "emailTemplates": [
     {
       "id": "order.shipped",
-      "properties": {},
+      "properties": {
+        "subject": "This is the subject line!"
+      },
       "template": "email/order-shipped",
-      "title": "Order Shipped"
+      "title": "Order Shipped: NO this is the subject!"
     },
     {
       "id": "order.changed",
