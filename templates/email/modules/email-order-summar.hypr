@@ -1,17 +1,17 @@
 <table class="mz-ordersummary" cellpadding="1" width="100%" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; padding: 0; vertical-align: top; text-align: left;">
 	<thead>
 			<tr style="padding: 0; vertical-align: top; text-align: left;">
-					<td bgcolor="#666666" class="mz-ordersummary-header-product" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.product }}</font></td>
-					<td bgcolor="#666666" class="mz-ordersummary-header-qty" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.qty }}</font></td>
-					<td bgcolor="#666666" class="mz-ordersummary-header-each" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.each }}</font></td>
-					<td bgcolor="#666666" class="mz-ordersummary-header-total" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.total }}</font></td>
+					<td bgcolor="#666666" class="mz-ordersummary-header-product" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.product }}</font></td>
+					<td bgcolor="#666666" class="mz-ordersummary-header-qty" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.qty }}</font></td>
+					<td bgcolor="#666666" class="mz-ordersummary-header-each" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.each }}</font></td>
+					<td bgcolor="#666666" class="mz-ordersummary-header-total" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"><font color="#ffffff">{{ labels.total }}</font></td>
 			</tr>
 	</thead>
 
 	{% for item in model.items %}
 		<tbody class="mz-ordersummary-lineitems">
 			<tr class="mz-ordersummary-line mz-ordersummary-line-item {% if item.discountTotal > 0 %}is-discounted{% endif %}" style="padding: 0; vertical-align: top; text-align: left;">
-				<td class="mz-ordersummary-item-product" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+				<td class="mz-ordersummary-item-product" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 					{{ item.product.name }}
 
 					{% if item.product.productUsage|lower == 'bundle' %}
@@ -24,9 +24,9 @@
 					{% endif %}
 
 				</td>
-				<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">{{ item.quantity }}</td>
-				<td align="right" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"> {% include "modules/common/email-item-price" %}</td>
-				<td align="right" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"> {% include "modules/common/email-item-total" %}</td>
+				<td style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">{{ item.quantity }}</td>
+				<td align="right" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"> {% include "modules/common/email-item-price" %}</td>
+				<td align="right" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;"> {% include "modules/common/email-item-total" %}</td>
 			</tr>
 		</tbody>
 	{% endfor %}
@@ -35,7 +35,7 @@
 		{% for discount in model.orderDiscounts %}
 			{% if not discount.excluded %}
 				<tr class="mz-ordersummary-discount" style="padding: 0; vertical-align: top; text-align: left;">
-					<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+					<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 						<span class="mz-ordersummary-discountname">{{ discount.discount.name }}:</span>
 						<span class="mz-ordersummary-discountamt">-{{ discount.impact|currency }}</span>
 					</td>
@@ -43,7 +43,7 @@
 			{% endif %}
 		{% endfor %}
 		<tr class="mz-ordersummary-subtotal" style="padding: 0; vertical-align: top; text-align: left;">
-			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 				<span class="mz-ordersummary-totalname">{{ labels.subtotal }}:</span>
 				<span class="mz-ordersummary-totalvalue">{{ model.discountedSubTotal|currency }}</span>
 			</td>
@@ -51,7 +51,7 @@
 
 		{% if model.dutyTotal %}
 			<tr class="mz-ordersummary-tax" style="padding: 0; vertical-align: top; text-align: left;">
-				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 					<span class="mz-ordersummary-totalname">{{ labels.taxDuty }}:</span>
 					<span class="mz-ordersummary-totalvalue">{{ model.dutyTotal|add(model.taxTotal)|currency }}</span>
 				</td>
@@ -59,7 +59,7 @@
 		{% else %}
 			{% if model.taxTotal %}
 				<tr class="mz-ordersummary-tax" style="padding: 0; vertical-align: top; text-align: left;">
-						<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+						<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 								<span class="mz-ordersummary-totalname">{{ labels.tax }}:</span>
 								<span class="mz-ordersummary-totalvalue">{{ model.taxTotal|currency }}</span>
 						</td>
@@ -68,7 +68,7 @@
 		{% endif %}
 
 		<tr class="mz-ordersummary-shippingtotal" style="padding: 0; vertical-align: top; text-align: left;">
-			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 				<span class="mz-ordersummary-totalname">{{ labels.shippingHandling }}:</span>
 				<span class="mz-ordersummary-totalvalue">{{ model.shippingTotal|currency }}</span>
 			</td>
@@ -76,7 +76,7 @@
 
 		{% for shippingDiscount in model.shippingDiscounts %}
 			<tr class="mz-ordersummary-shippingdiscount" style="padding: 0; vertical-align: top; text-align: left;">
-				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 					<span class="mz-ordersummary-totalname">{{ shippingDiscount.discount.discount.name }}:</span>
 					<span class="mz-ordersummary-totalvalue">-{{ shippingDiscount.discount.impact|currency }}</span>
 				</td>
@@ -85,7 +85,7 @@
 
 		{% if model.handlingAmount %}
 			<tr class="mz-ordersummary-additionalhandling" style="padding: 0; vertical-align: top; text-align: left;">
-				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+				<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 					<span class="mz-ordersummary-totalname">{{ labels.additionalHandling }}{% if model.handlingAmount > model.handlingTotal  %}<span class="is-crossedout" {%="" block="" crossedout-inline-style="" %}{%="" endblock="" %}=""> ({{ model.handlingAmount|currency }})</span>{% endif %}</span>
 					<span class="mz-ordersummary-totalvalue">{{ model.handlingTotal|currency }}</span>
 				</td>
@@ -93,7 +93,7 @@
 		{% endif %}
 
 		<tr class="mz-ordersummary-grandtotal" style="padding: 0; vertical-align: top; text-align: left;">
-			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
+			<td align="right" colspan="4" style="text-align: left; font-size: 14px; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; padding: 0; vertical-align: top; word-break: break-word; color: #222222; font-family: 'Helvetica','Arial',sans-serif; font-weight: normal; margin: 0; line-height: 19px; border-collapse: collapse;">
 				<span class="mz-ordersummary-totalname">{{ labels.total }}:</span>
 				<span class="mz-ordersummary-totalvalue">{{ model.total|currency }}</span>
 			</td>
