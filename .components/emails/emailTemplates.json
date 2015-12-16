@@ -2,10 +2,10 @@
 	{
 		"id": "order.shipped",
 		"properties": {
-
+            "subject": "This is the subject line!"
 		},
 		"template": "email/order-shipped",
-		"title": "Order Shipped"
+		"title": "Order Shipped: NO this is the subject!"
 	},
 	{
 		"id": "order.changed",

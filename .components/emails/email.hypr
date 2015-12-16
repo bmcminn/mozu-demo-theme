@@ -19,10 +19,60 @@
 		{% include "debug/debug-emails" with model=model %}
 	{% endif %}
 
-	<table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">
-		<tr>
-			<td class="center" align="center" valign="top">
-				<center>
+
+  {% with siteContext.generalSettings.websiteName as storeName %}
+
+  	<table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">
+  		<tr>
+  			<td class="center" align="center" valign="top">
+  				<center>
+
+            {% block viewInBrowser %}
+              <table>
+                <tr>
+                  <td class="center text-center" align="center" valign="middle">
+                    {{ labels.emailViewOnlineLink|string_format(domainName)|safe }}
+                  </td>
+                </tr>
+              </table>
+            {% endblock viewInBrowser %}
+
+
+            {% block emailHeading %}
+              <table>
+                <tr class="email-heading">
+                  <td class="left text-left" align="left" valign="middle" height="40">
+                    <span class="store-name">{{ storeName }}</span>
+                  </td>
+                  <td class="right text-right" align="right" valign="middle" height="40">
+                    <span class="email-template-name">
+                      {% block emailTitle %}REPLACE ME {emailTitle}{% endblock emailTitle %}
+                    </span>
+                  </td>
+                </tr>
+
+                {% include "email/modules/email-hr3" %}
+
+              </table>
+            {% endblock emailHeading %}
+
+
+            {% block body-content %}
+            {% endblock body-content %}
+
+
+          </center>
+        </td>
+      </tr>
+    </table>
+
+ {% endwith %}
+
+</body>
+</html>
+
+
+        {% comment %}
 					<table class="container">
 						<thead>
 							<th>
@@ -89,3 +139,4 @@
 
 </body>
 </html>
+        {% endcomment %}
