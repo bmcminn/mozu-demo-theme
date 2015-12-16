@@ -1,0 +1,25 @@
+- remove breadcrumbs
+- ability to change site background (color/image?)
+- new landing page (about us)
+- new companion page (mission statement)
+    - widgets
+        - slideshow
+            - up to 5 slides
+            - actual text overlays
+            - change slide image/background
+            - link a slideshow
+        - videos
+            - landing pages
+            - product pages
+            - youtube OR vimeo
+            - settings for each video service
+        - text content
+        - images
+        - contact
+            - might get from site settings
+        - employee bios
+            - bio image
+            - employee name
+            - emp title
+            - emp bio text
+

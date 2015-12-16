@@ -24,6 +24,8 @@
 	available. Again you can use this as a way to make sensible fallbacks if javascript
 	is not available.
 {% endcomment %}
+
+
 {% block open-html-tag %}
 <html class="no-js" lang="en">
 {% endblock open-html-tag %}
@@ -110,7 +112,7 @@
 			<div role="main" id="page-content" class="mz-l-pagecontent">
 
 				{% block breadcrumbs %}
-					{% if themeSettings.showBreadcrumbs %}
+					{% if themeSettings.showBreadcrumbs and not pageContext.isMobile %}
 						{% include "modules/breadcrumbs" %}
 					{% endif %}
 				{% endblock breadcrumbs %}

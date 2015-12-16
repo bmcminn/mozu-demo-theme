@@ -1,15 +1,17 @@
 
 # Getting Your Mozu Theme Development Environment Up and Running
 
-> Version: 1.1.1
+> Version: 1.0.0
 
 Before we get started, you should have the following software(s) setup:
 
 1. A text editor/IDE:
-    - [Sublime Text](http://www.sublimetext.com/) and [Atom](https://atom.io/) are good cross-platform options (Win/OSX/Linux), but there are others available:
-        - Windows: [Visual Studio Express](http://www.visualstudio.com/downloads/download-visual-studio-vs), [Notepad++](http://notepad-plus-plus.org/)
-        - OSX: [Coda](https://panic.com/coda/), [Textmate](http://macromates.com/)
-        - Linux: [Neovim](http://neovim.org/), Vim/Vi, Emacs, Komodo, etc.
+    - [Sublime Text](http://www.sublimetext.com/) and [Visual Studio Code](https://code.visualstudio.com/) are good cross-platform options (Win/OSX/Linux), but there are others available:
+        - Windows: [Visual Studio Express](http://www.visualstudio.com/downloads/download-visual-studio-vs)
+        - [Notepad++](http://notepad-plus-plus.org/)
+        - [Coda](https://panic.com/coda/)
+        - [Textmate](http://macromates.com/)
+        - [Neovim](http://neovim.org/), Vim/Vi, Emacs, Komodo, etc.
 1. A terminal/shell application:
     - Windows: [Git Bash](https://msysgit.github.io/), Cmd/PowerShell (standard)
     - OSX: [iTerm](http://iterm2.com/), Mac Terminal (standard)
@@ -24,9 +26,13 @@ Before we get started, you should have the following software(s) setup:
 
 ### FOR WINDOWS USERS
 
-- We recommend using [Git Bash//msysgit.github.io/) as it is a fully featured terminal application that works consistently with existing BASH flavors on UNIX systems.
-- If you prefer Cmd/PowerShell, you may need to use different commands to complete this tutorial, OR you may optionally install [GOW (Gnu on Windows)](https://github.com/bmatzelle/gow/wiki).
+We recommend using [Git Bash//msysgit.github.io/) as it is a fully featured terminal application that works consistently with existing BASH flavors on UNIX systems.
+
+Some other options:
+
 - We also recommend setting up [Cmder](https://github.com/cmderdev/cmder) as this provides a much better developer experience with syntax highlighting and better tab completion for system commands and file path completion.
+- If you prefer Cmd/PowerShell, you may need to use different commands to complete this tutorial, OR you may optionally install [GOW (Gnu on Windows)](https://github.com/bmatzelle/gow/wiki).
+
 
 
 -----
@@ -36,12 +42,12 @@ Before we get started, you should have the following software(s) setup:
 1. Install your text editor of choice:
     - I personally prefer Sublime Text and will be using it during the demonstration.
     - If you would like to use Sublime Text as well, I highly suggest installing the following Sublime Text packages:
-        1. Package Control: https://packagecontrol.io/installation
-        1. Djaneiro: https://packagecontrol.io/packages/Djaneiro
-        1. Django: https://packagecontrol.io/packages/Django
-        1. LESS: https://packagecontrol.io/packages/LESS
-        1. Emmet: https://packagecontrol.io/packages/Emmet
-        1. Alignment: https://packagecontrol.io/packages/Alignment
+        - Package Control: https://packagecontrol.io/installation
+        - Djaneiro: https://packagecontrol.io/packages/Djaneiro
+        - Django: https://packagecontrol.io/packages/Django
+        - LESS: https://packagecontrol.io/packages/LESS
+        - Emmet: https://packagecontrol.io/packages/Emmet
+        - Alignment: https://packagecontrol.io/packages/Alignment
     - These mostly provide syntax highlighting, however Django and Emmet provide code completion for common template tags to save time typing.
 1. Be sure your shell application is running correctly.
 1. Install Git, Python, and/or Node.js binaries as needed:

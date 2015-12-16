@@ -1,1 +1,0 @@
-{% include_documents "widgets/cms/snippet-render" with  listFQN=model.config.listName id=model.config.snippetId as_parameter %}
