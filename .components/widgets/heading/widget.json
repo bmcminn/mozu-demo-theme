@@ -1,40 +1,34 @@
 {
-  "id": "page_heading",
-  "displayName": "Heading",
-  "displayTemplate": "cms/heading",
-  "icon": "/resources/admin/widgets/heading.png",
-  "validPageTypes": [
-    "*"
-  ],
-  "defaultConfig": {
-    "xtype": "mz-input-text",
-    "headingText": "Heading Text here",
-    "headingType": "h1"
-  },
-  "editViewFields": [
-    {
-      "anchor": "93%",
-      "name": "headingText",
-      "fieldLabel": "Heading Text"
+    "id": "mozu~cms-heading",
+    "displayName": "Heading",
+    "displayTemplate": "cms/heading",
+    "icon": "/resources/admin/widgets/00_photo.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "headingText": "Heading Text Goes Here",
+        "headingType": "h2"
     },
-    {
-      "name": "headingType",
-      "fieldLabel": "Heading Type",
-      "xtype": "mz-input-dropdown",
-      "store": [
-        [
-          "h1",
-          "H1"
-        ],
-        [
-          "h2",
-          "H2"
-        ],
-        [
-          "h3",
-          "H3"
-        ]
-      ]
-    }
-  ]
+    "editViewFields": [
+        {
+            "anchor": "93%",
+            "name": "headingText",
+            "xtype": "mz-input-text",
+            "fieldLabel": "Heading text"
+        },
+        {
+            "name": "headingType",
+            "xtype": "mz-input-dropdown",
+            "fieldLabel": "Heading type",
+            "store": [
+                ["h1", "H1"],
+                ["h2", "H2"],
+                ["h3", "H3"],
+                ["h4", "H4"],
+                ["h5", "H5"],
+                ["h6", "H6"]
+            ]
+        }
+    ]
 }

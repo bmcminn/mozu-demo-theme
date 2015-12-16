@@ -5,17 +5,17 @@ define([
 
     var temp
       , base = {
-          youtube:  '//www.youtube.com/embed/'
+          youtube:    '//www.youtube.com/embed/'
         , ytNoCookie: '//www.youtube-nocookie.com/embed/'
-        , vimeo:    '//player.vimeo.com/video/'
-        , autoPlay: 'autoplay=false'
+        , vimeo:      '//player.vimeo.com/video/'
+        , autoPlay:   'autoplay=false'
         }
       , regex = {
           videoTime:      /#?t=(\d{1,}s?)/i
         , vimeoID:        /^(\d{6,})/i
         , vimeoUrl:       /\/(\d{6,})/i
         , youtubeID:      /^([\w\d-_]{1,})/i
-        , youtubeVideo:   /(?:embed\/|\/|v=)([\w\d-_]{1,})/i
+        , youtubeVideo:   /(?:embed\/|v=|\/)([\w\d-_]{1,})/i
         , youtubeList:    /(list=[\w\d-_]{1,})/i
         , youtubePrivacy: /youtube-nocookie/i
         , youtubeUrl:     /youtu.?be/i
@@ -100,7 +100,7 @@ define([
       // & showinfo=0
       // & autoplay=1
 
-
+      console.log($this.video);
 
       // build the url depending what type of video it is
       switch($this.video.type) {
@@ -113,15 +113,18 @@ define([
             base.youtube
           , $this.video.id
           , '?'
-          , $this.video.list ? $this.video.list : ''
-          , $this.video.model.config.autoplay ? '&autoplay=1' : '&autoplay=0'
-          , $this.video.model.config.loop ? '&loop=1' : '&loop=0'
-          , $this.video.model.config.youtubeControls ? '&controls=1' : '&controls=0'
-          , $this.video.model.config.youtubeRel ? '&rel=1' : '&rel=0'
-          , $this.video.model.config.youtubeShowinfo ? '&showinfo=1' : '&showinfo=0'
+          , $this.video.list                         ? $this.video.list : ''
+          , $this.video.model.config.autoplay        ? '&autoplay=1'    : '&autoplay=0'
+          , $this.video.model.config.loop            ? '&loop=1'        : '&loop=0'
+          , $this.video.model.config.youtubeControls ? '&controls=1'    : '&controls=0'
+          , $this.video.model.config.youtubeRel      ? '&rel=1'         : '&rel=0'
+          , $this.video.model.config.youtubeShowinfo ? '&showinfo=1'    : '&showinfo=0'
           // TODO: video.time property
           // , $this.video.time ? '?' + $this.video.time : ''
           ].join('');
+
+
+          // '//www.youtube.com/embed/' + 'YOUTUBEID' + '?' + 'OPTIONS'
 
           break;
 
@@ -132,7 +135,7 @@ define([
           , $this.video.time
           , '?'
           , $this.video.model.config.autoplay ? '&autoplay=1' : '&autoplay=0'
-          , $this.video.model.config.loop ? '&loop=1' : '&loop=0'
+          , $this.video.model.config.loop     ? '&loop=1'     : '&loop=0'
 
           ].join('');
 
@@ -141,13 +144,13 @@ define([
 
 
       // append any other URL arguments here
-      $this.video.url += '&autoplay=false';
+      // $this.video.url += '&autoplay=false';
 
       // $this.video.videoUrl = $this.video.type;
 
 
 
-      console.log($this.video);
+      console.log('video widget', $this.video);
 
 
       // If we couldn't figure out what the video was, pass back an error message

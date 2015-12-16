@@ -1,0 +1,15 @@
+{
+    "id": "mozu~social-links",
+    "displayName": "Social Links",
+    "displayTemplate": "cms/social",
+    "icon": "/resources/admin/widgets/13_social.png",
+    "defaultConfig": {
+
+    },
+    "editViewFields": [
+
+    ],
+    "validPageTypes": [
+        "*"
+    ]
+}

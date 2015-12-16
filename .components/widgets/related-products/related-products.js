@@ -1,5 +1,10 @@
-﻿define(['modules/jquery-mozu', 'underscore', "modules/api", "modules/backbone-mozu", "modules/models-product"],
-    function ($, _, api, Backbone, ProductModels) {
+define([
+  'modules/jquery-mozu',
+  'underscore',
+  "modules/api",
+  "modules/backbone-mozu",
+  "modules/models-product"
+], function ($, _, api, Backbone, ProductModels) {
 
         var getRelatedProducts = function(pageType, codes, pageSize) {
             var filter = _.map(codes, function(c) { return "ProductCode eq " + c; }).join(' or ');
@@ -19,7 +24,7 @@
             return !!x;
         };
 
-        
+
 
         var pageContext = require.mozuData('pagecontext');
 
@@ -37,31 +42,31 @@
                     });
                     break;
             }
-            
+
             $('[data-mz-related-products]').each(function (index, rp) {
                 rp = $(rp);
-             
+
                 var config = rp.data('mzRelatedProducts');
                 var attId = config.attributeId || 'tenant~product-crosssell';
                 var template = config.template || 'modules/product/product-list-carousel';
                 var title = config.title;
                 var numberToDisplay = config.count || 5;
                 var productCodes = [];// = _.pluck(currentProduct.properties[0].values, "value");
-                
+
 
                 var RelatedProductsView = Backbone.MozuView.extend({
                     templateName: template
                 });
-                
+
                 for (var i = 0; i < productCollection.length; i++) {
                     var currentProduct = productCollection[i];
-                    
+
                     if (currentProduct && currentProduct.properties) {
                         for (var x = 0; x < currentProduct.properties.length; x++) {
                             if (currentProduct.properties[x].attributeFQN == attId) {
                                 var temp = _.pluck(currentProduct.properties[x].values, "value");
                                 productCodes = productCodes.concat($.grep(temp || [], coerceBoolean));
-                                
+
                             }
                         }
                     }
@@ -87,9 +92,9 @@
                 });
 
 
-                
+
             });
-           
+
 
         });
 

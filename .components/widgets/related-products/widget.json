@@ -1,12 +1,12 @@
 {
 	"id": "relatedproducts",
 	"displayName": "Related Products",
-	"displayTemplate": "catalog\/related-products",
-	"icon": "\/resources\/admin\/widgets\/26_related_products.png",
+	"displayTemplate": "catalog/related-products",
+	"icon": "/resources/admin/widgets/26_related_products.png",
 	"defaultConfig": {
 		"attributeId": "tenant~product-related",
 		"count": "4",
-		"template": "modules\/product\/product-list-carousel",
+		"template": "modules/product/product-list-carousel",
 		"title": "Other Items"
 	},
 	"editViewFields": [
@@ -20,21 +20,21 @@
 			"anchor": "100%",
 			"fieldLabel": "Template",
 			"name": "template",
+            "xtype": "mz-input-dropdown",
 			"store": [
 				[
-					"modules\/product\/product-list-carousel",
-					"carousel"
+					"modules/product/product-list-carousel",
+					"Carousel"
 				],
 				[
-					"modules\/product\/product-list-tiled",
-					"tiled"
+					"modules/product/product-list-tiled",
+					"Tiled Listings"
 				],
 				[
-					"modules\/product\/product-list",
-					"list"
+					"modules/product/product-list",
+					"List"
 				]
-			],
-			"xtype": "mz-input-dropdown"
+			]
 		},
 		{
 			"anchor": "100%",

@@ -1,4 +1,11 @@
-<div class="mz-related-products" data-mz-related-products ="{% json_attribute model.config%}">
-{% include_products "modules/product/product-list" with  productCodes=model.config.productCodes as_parameter %}
-</div>
 {% require_script "widgets/related-products" %}
+
+<div class="mz-related-products" data-mz-related-products ="{% json_attribute model.config %}">
+
+  {% with pageModel.properties|findwhere('attributeFQN', model.config.attributeId) as productCodes %}
+    {% if productCodes %}
+      {% include_products "modules/product/product-list" with productCodes=productCodes as_parameter %}
+    {% endif %}
+  {% endwith %}
+
+</div>

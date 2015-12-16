@@ -1,4 +1,19 @@
 
-{{ '<{0} class="mz-heading-module {1}">'|string_format(model.config.headingType, "randomstring") }}
-  {{ model.config.headingText }}
-{{ '</{0}>'|string_format(model.config.headingType) }}
+{% include "debug/debug-widgets" with model=model %}
+
+
+{% with model.config.headingType as headingType %}
+{% with model.config.headingText as headingText %}
+
+  {{ '<{0}>'|string_format(headingType) }}
+    {% if pageContext.isMobile %}
+      {{ headingText|replace(labels.click, labels.touch) }}
+
+    {% else %}
+      {{ headingText }}
+
+    {% endif %}
+  {{ '</{0}>'|string_format(headingType) }}
+
+{% endwith %}
+{% endwith %}

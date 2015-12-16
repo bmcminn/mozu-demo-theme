@@ -47,7 +47,7 @@
 					{% endif %}
 				{% endif %}
 
-					<img {{ srcOrLazy }}="{{ slides.slideImage2.imageUrl }}" alt="{% if slides.slideImage2.altText %}{{ slides.slideImage2.altText }}{% endif %}">
+				<img {{ srcOrLazy }}="{{ slides.slideImage2.imageUrl }}" alt="{% if slides.slideImage2.altText %}{{ slides.slideImage2.altText }}{% endif %}">
 
 				{% if slides.slideUrl2 or slides.slideUrl2Custom %}
 					</a>

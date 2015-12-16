@@ -35,7 +35,7 @@
         {
             "anchor": "93%",
             "xtype": "label",
-            "text": "Optional Video config",
+            "text": "<h2>Optional Video config</h2>",
             "margin": "20px 0 0 0"
         },
             {
@@ -58,7 +58,7 @@
 
         {
             "xtype": "label",
-            "text": "YouTube Settings"
+            "text": "<h2>YouTube Settings</h2>"
         },
             {
                 "fieldLabel": "Show Related videos after video",
@@ -84,7 +84,7 @@
 
         {
             "xtype": "label",
-            "text": "Vimeo Settings"
+            "text": "<h2>Vimeo Settings</h2>"
         },
             {
                 "fieldLabel": "Show Portrait",
@@ -102,7 +102,7 @@
                 "name": "vimeoByline"
             },
             {
-                "fieldLabel": "Player controls color",
+                "fieldLabel": "Vimeo Player controls color",
                 "xtype": "mz-input-color",
                 "name": "vimeoColor"
             }
