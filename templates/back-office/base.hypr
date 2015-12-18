@@ -14,14 +14,21 @@
 	</head>
 	<body>
 
-		{% if pageContext.isDebugMode or pageContext.isEditMode %}
+{# TODO: make this listen for a query parameter to be applied #}
+{# {% if pageContext.isDebugMode %} #}
+  <label for="dbg-model">model: <input id="dbg-model" type="text" value="{% json_attribute model %}"></label><br>
+  <label for="dbg-order">order: <input id="dbg-order" type="text" value="{% json_attribute order %}"></label><br>
+  <label for="dbg-pageContext">pageContext: <input id="dbg-pageContext" type="text" value="{% json_attribute pageContext %}"></label><br>
+  <label for="dbg-siteContext">siteContext: <input id="dbg-siteContext" type="text" value="{% json_attribute siteContext %}"></label><br>
+  <label for="dbg-user">user: <input id="dbg-user" type="text" value="{% json_attribute user %}"></label><br>
 
-		  {% preload_json siteContext "sitecontext" %}
-		  {% preload_json pageContext "pagecontext" %}
-		  {% preload_json model       "model" %}
-		  {% preload_json user        "user" %}
+  {% preload_json model "model" %}
+  {% preload_json order "order" %}
+  {% preload_json pageContext "pageContext" %}
+  {% preload_json siteContext "siteContext" %}
+  {% preload_json user "user" %}
+{# {% endif %} #}
 
-		{% endif %}
 
 
 		{% block body-content %}

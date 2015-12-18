@@ -2,18 +2,6 @@
 
 {% block body-content %}
 
-{% if pageContext.isDebugMode %}
-	<label for="dbg-model">model: <input id="dbg-model" type="text" value="{% json_attribute model %}"></label><br>
-	<label for="dbg-pageContext">pageContext: <input id="dbg-pageContext" type="text" value="{% json_attribute pageContext %}"></label><br>
-	<label for="dbg-siteContext">siteContext: <input id="dbg-siteContext" type="text" value="{% json_attribute siteContext %}"></label><br>
-	<label for="dbg-user">user: <input id="dbg-user" type="text" value="{% json_attribute user %}"></label><br>
-
-	{% preload_json model "model" %}
-	{% preload_json pageContext "pageContext" %}
-	{% preload_json siteContext "siteContext" %}
-	{% preload_json user "user" %}
-{% endif %}
-
 <table class="mz-printable-order mz-printable-order-details">
 	<thead class="header">
 		<tr>

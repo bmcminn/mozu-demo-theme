@@ -1,4 +1,4 @@
-﻿{% extends "back-office/base" %}
+{% extends "back-office/base" %}
 {% block body-content %}
 <table class="mz-printable-order mz-printable-order-packingslip">
 <thead class="header"><tr>
@@ -61,7 +61,7 @@
                         {% if type.grouper == "DigitalCredit" %}{{ labels.digitalCredit }}{% endif %}
                         {% if type.grouper == "Paypal" %}{{ labels.payPal }}{% endif %}
                         {% if type.grouper == "PaypalExpress" %}{{ labels.paypalExpress }}{% endif %}
-                   
+
                 {% endfor %}
             </td>
             <td>{{ model.shippingMethodName }}</td>
