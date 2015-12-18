@@ -32,20 +32,6 @@
 
   {% endif %}
 
-
-
-
-
-{% with themeSettings.canonicalProtocol as canonicalProtocol %}
-{% with themeSettings.canonicalTrailingSlashes as trailingSlash|default('') %}
-{% with siteContext.domains.primary.domainName as domainName %}
-{% with pageContext.cmsContext.template.path as templateType %}
-
-  {# CHECK HOMEPAGE AND HOMEPAGE SLUG #}
-  {% if model.name == themeSettings.canonicalHomepageSlug %}
-    {{ '<link rel="canonical" href="{0}://{1}{2}">'|string_format(canonicalProtocol, domainName, trailingSlash) }}
-  {% endif %}
-
 {% endwith %}
 {% endwith %}
 {% endwith %}
