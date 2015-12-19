@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "defaultLanguage": "en-US",
     "baseCoreVersion": 8,
+    "baseTheme": "https://github.com/mozu/core-theme",
     "extends": null,
     "isDesktop": true,
     "isTablet": true,

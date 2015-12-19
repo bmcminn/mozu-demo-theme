@@ -1285,7 +1285,8 @@
     "isDesktop": true,
     "isTablet": true,
     "isMobile": true,
-    "allowProduction": true
+    "allowProduction": true,
+    "baseTheme": "https://github.com/mozu/core-theme"
   },
   "backOfficeTemplates": [
     {
