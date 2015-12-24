@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
 	// rename task
 	grunt.registerTask(
-		'checksettings'
+		'check:settings'
 	, 'Static analysis missing theme setting references in theme files'
 	, function() {
 
@@ -39,12 +39,12 @@ module.exports = function(grunt) {
 							'templates/**/*.hypr*'
 						, 'scripts/**/*.js'
 						, 'stylesheets/**/*.less'
-						, '!templates/widgets/**/*.hypr*'
-						, '!scripts/widgets/**/*.js'
-						, '!stylesheets/widgets/**/*.less'
-						, 'src_widgest/**/*.json'
-						, 'src_widgest/**/*.less'
-						, 'src_widgest/**/*.hypr'
+						// , '!templates/widgets/**/*.hypr*'
+						// , '!scripts/widgets/**/*.js'
+						// , '!stylesheets/widgets/**/*.less'
+						// , '.components/**/*.json'
+						// , '.components/**/*.less'
+						// , '.components/**/*.hypr'
 						])
 
 			, theme = grunt.file.readJSON(path.resolve('.', 'theme.json'))

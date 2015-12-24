@@ -30,7 +30,10 @@ module.exports = function(grunt) {
 		, jsonHelper  = require(process.cwd() + '/.tasks/helpers-json.js')
 		;
 
-	grunt.registerTask('widgetize', 'Integrate individual widget configs into the theme project.', function() {
+	grunt.registerTask(
+    'widgetize'
+  , 'Integrate individual widget configs into the theme project.'
+  , function() {
 
 		// load JSON.minify
 		JSON.minify = jsonHelper.minify;

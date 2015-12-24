@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask(
-		'checkwidgets'
+		'check:widgets'
 	, 'Provides an ASCII rendering of your widget config'
 	, function () {
 

@@ -111,7 +111,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-settings'
+    'theme:settings'
   , 'Aggregates all theme settings configs.'
   , function() {
 
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-backoffice'
+    'theme:backoffice'
   , 'Aggregates all backoffice configs.'
   , function() {
 
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-pagetypes'
+    'theme:pagetypes'
   , 'Gather pagetype configs into theme.json.'
   , function() {
 
@@ -183,7 +183,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-about'
+    'theme:about'
   , 'Inserts theme About data into theme config'
   , function() {
 
@@ -221,7 +221,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-editors'
+    'theme:editors'
   , 'Gathers up all editor configs and assets to disseminate into theme folders.'
   , function() {
       var theme   = grunt.file.readJSON(paths.themeJson)
@@ -267,7 +267,7 @@ module.exports = function(grunt) {
    * @return null
    */
   grunt.registerTask(
-    'theme-ui'
+    'theme:ui'
   , 'Gather theme-ui configs into theme-ui.json.'
   , function() {
 

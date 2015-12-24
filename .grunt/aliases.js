@@ -18,19 +18,20 @@ module.exports = function(grunt) {
 
   grunt.registerTask('init', [
     'default'
-  , 'checklabels'
-  , 'checkwidgets'
-  , 'checksettings'
+  , 'check:labels'
+  , 'check:widgets'
+  , 'check:settings'
   ]);
 
 
-  grunt.registerTask('check-theme', [
+  grunt.registerTask('check', [
     'theme'
   , 'lintify'
   , 'setver'
-  , 'checklabels'
-  // , 'checkwidgets'
-  , 'checksettings'
+  , 'check:labels'
+  // , 'check:widgets'
+  , 'check:settings'
+  , 'check:deprecated'
   , 'mozutheme:quickcompile'
   ]);
 
@@ -60,13 +61,13 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('theme', [
-    'theme-about'
-  , 'theme-backoffice'
-  , 'theme-editors'
-  , 'theme-pagetypes'
-  , 'theme-settings'
+    'theme:about'
+  , 'theme:backoffice'
+  , 'theme:editors'
+  , 'theme:pagetypes'
+  , 'theme:settings'
   , 'widgetize'
-  , 'theme-ui'
+  , 'theme:ui'
   ]);
 
 };

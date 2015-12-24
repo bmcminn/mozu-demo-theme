@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 
 	// rename task
 	grunt.registerTask(
-		'checklabels'
+		'check:labels'
 	, 'Static analysis missing label references in theme files'
 	, function() {
 
