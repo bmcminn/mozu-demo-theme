@@ -19,3 +19,9 @@
 //      {% include "page" %}
 //    {% endspaceless %}
 //  {% endif %}
+
+
+// TODO: break out the .components/theme-ui/ folder into .theme-ui/
+
+
+// TODO: turn .components/ into .theme-json/ OR .theme/

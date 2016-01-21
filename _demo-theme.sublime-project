@@ -20,7 +20,6 @@
 				"compiled",
 				"node_modules",
 				"bower_components",
-				// "templates/email",
 				"templates/widgets",
 				"scripts/widgets",
 				"stylesheets/widgets",
