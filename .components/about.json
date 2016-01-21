@@ -1,12 +1,16 @@
 {
     "projectName": "Brandtley - High Fashion Theme",
+    "author": "Brandtley McMinn",
     "version": "1.0.0",
     "defaultLanguage": "en-US",
-    "baseCoreVersion": 8,
-    "baseTheme": "https://github.com/mozu/core-theme",
     "extends": null,
     "isDesktop": true,
     "isTablet": true,
     "isMobile": true,
-    "allowProduction": true
+    "allowProduction": true,
+    "baseThemeVersion": {
+        "commit": "c93e710b1bca845f9fcad54bebd7d1be3d4d14d7",
+        "version": "9.2.1"
+    },
+    "baseThemeChannel": "stable"
 }
