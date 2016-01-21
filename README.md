@@ -7,11 +7,13 @@ Before we get started, you should have the following software(s) setup:
 
 1. A text editor/IDE:
     - [Sublime Text](http://www.sublimetext.com/) and [Visual Studio Code](https://code.visualstudio.com/) are good cross-platform options (Win/OSX/Linux), but there are others available:
-        - Windows: [Visual Studio Express](http://www.visualstudio.com/downloads/download-visual-studio-vs)
-        - [Notepad++](http://notepad-plus-plus.org/)
-        - [Coda](https://panic.com/coda/)
-        - [Textmate](http://macromates.com/)
-        - [Neovim](http://neovim.org/), Vim/Vi, Emacs, Komodo, etc.
+        - Windows:
+            - [Visual Studio Express](http://www.visualstudio.com/downloads/download-visual-studio-vs)
+            - [Notepad++](http://notepad-plus-plus.org/)
+        - Mac OSX:
+            - [Coda](https://panic.com/coda/)
+            - [Textmate](http://macromates.com/)
+        - Linux users usually have their preferred editors.
 1. A terminal/shell application:
     - Windows: [Git Bash](https://msysgit.github.io/), Cmd/PowerShell (standard)
     - OSX: [iTerm](http://iterm2.com/), Mac Terminal (standard)
