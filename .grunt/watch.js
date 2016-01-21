@@ -1,26 +1,26 @@
 
 var configs = {
-			emails:   require('./juice.js')
-		, jsonlint: require('./jsonlint.js')
-		, jshint:   require('./jshint.js')
+      emails:   require('./juice.js')
+    , jsonlint: require('./jsonlint.js')
+    , jshint:   require('./jshint.js')
     , compress: require('./compress.js')
-		, mozusync: require('./mozusync.js')
-		}
-	;
+    , mozusync: require('./mozusync.js')
+    }
+  ;
 
 module.exports = {
 
-	options: {
-		spawn: false
-	}
+  options: {
+    spawn: false
+  }
 
 
 , json: {
-		files: configs.jsonlint.theme_json.src
-	, tasks: [
-			'jsonlint'
-		]
-	}
+    files: configs.jsonlint.theme_json.src
+  , tasks: [
+      'jsonlint'
+    ]
+  }
 
 
 , lintTooling: {
@@ -33,12 +33,12 @@ module.exports = {
 
 , javascript: {
     files: configs.jshint.theme_js
-	, tasks: [
-			'jshint:theme_js'
+  , tasks: [
+      'jshint:theme_js'
     , 'jsbeautifier'
     , 'mozusync:upload'
-		]
-	}
+    ]
+  }
 
 
 , themeJSON: {
@@ -65,40 +65,40 @@ module.exports = {
 
 
 , widgets: {
-		files: [
-			'.components/widgets/**'
-		]
-	, tasks: [
-			'widgetize'
-		, 'mozusync:upload'
-		]
-	}
+    files: [
+      '.components/widgets/**'
+    ]
+  , tasks: [
+      'widgetize'
+    , 'mozusync:upload'
+    ]
+  }
 
 
 , emails: {
-		files: [
-			configs.emails.emailSrc + '/**/*'
-		],
-		tasks: [
-			'juice'
-		, 'strainer:' + configs.emails.emailSrc + '/*.hypr*'
-		]
-	}
+    files: [
+      configs.emails.emailSrc + '/**/*'
+    ],
+    tasks: [
+      'juice'
+    , 'strainer:' + configs.emails.emailSrc + '/*.hypr*'
+    ]
+  }
 
 
 , compress: {
-		files: configs.compress.build.files[0].src
-	, tasks: [
-			'compress'
-		]
-	}
+    files: configs.compress.build.files[0].src
+  , tasks: [
+      'compress'
+    ]
+  }
 
 
 , sync: {
-		files: configs.mozusync.upload.src,
-		tasks: [
-			'mozusync:upload'
-		]
-	}
+    files: configs.mozusync.upload.src,
+    tasks: [
+      'mozusync:upload'
+    ]
+  }
 
 };

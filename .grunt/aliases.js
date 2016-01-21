@@ -6,12 +6,31 @@ module.exports = function(grunt) {
 
   'use strict';
 
+  // MACROS
+  grunt.registerTask('lintify', [
+    // 'jsonlint'
+    'jshint'
+  ]);
+
+
+  grunt.registerTask('theme', [
+    'theme:about'
+  , 'theme:backoffice'
+  , 'theme:editors'
+  , 'theme:pagetypes'
+  , 'theme:settings'
+  , 'widgetize'
+  , 'theme:ui'
+  ]);
+
+
+  // TASKS
   grunt.registerTask('default', [
     'theme'
   , 'lintify'
   // , 'jsbeautifier'
   , 'setver'
-  , 'mozutheme:quickcompile'
+  // , 'mozutheme:quickcompile'
   , 'mozusync:upload'
   ]);
 
@@ -32,7 +51,7 @@ module.exports = function(grunt) {
   // , 'check:widgets'
   , 'check:settings'
   , 'check:deprecated'
-  , 'mozutheme:quickcompile'
+  // , 'mozutheme:quickcompile'
   ]);
 
 
@@ -54,20 +73,6 @@ module.exports = function(grunt) {
   ]);
 
 
-  grunt.registerTask('lintify', [
-    'jsonlint'
-  , 'jshint'
-  ]);
 
-
-  grunt.registerTask('theme', [
-    'theme:about'
-  , 'theme:backoffice'
-  , 'theme:editors'
-  , 'theme:pagetypes'
-  , 'theme:settings'
-  , 'widgetize'
-  , 'theme:ui'
-  ]);
 
 };

@@ -1,32 +1,32 @@
 
 module.exports = {
 
-	options: {
-		mode: 'zip'
-	},
-
-	build: {
-		options: {
-			archive: 'theme-files.zip',
-			pretty: true
-		},
-		files: [
-			{
-				src: [
-					'compiled/**',
-					'labels/**',
-					'resources/**',
-					'scripts/**',
-					'stylesheets/**',
-					'templates/**',
-					'LICENSE',
-					'theme.json',
-					'theme-ui.json',
-					'thumb.png'
-				],
-				dest: '/'
-			}
-		]
-	}
+  build: {
+    options: {
+      archive: '<%= pkg.name %>-<%= pkg.version %>.zip',
+      pretty: true
+    },
+    files: [
+      {
+        src: [
+          'admin/**/*',
+          'compiled/**/*',
+          'labels/**/*',
+          'packageconfig.xml',
+          'resources/**/*',
+          'scripts/**/*',
+          'stylesheets/**/*',
+          'templates/**/*',
+          'theme.json',
+          '*thumb.png',
+          '*thumb.jpg',
+          'theme-ui.json',
+          '!**/*.orig',
+          '!.inherited'
+        ],
+        dest: '/'
+      }
+    ]
+  }
 
 };
