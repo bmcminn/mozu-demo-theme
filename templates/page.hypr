@@ -29,10 +29,24 @@
 
     <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %} Waffles</title>
 
-
-    {% if pageContext.feedUrl %}
-      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.feedUrl }}" />
+    {% if pageContext.feedUrl  %}
+      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.title }}" href="{{ pageContext.FeedUrl }}" />
     {% endif %}
+
+
+    {% with pageContext.crawlerInfo as crawlerInfo %}
+      {% if crawlerInfo.canonicalUrl  %}
+        <link rel="canonical" href="{{ crawlerInfo.canonicalUrl }}">
+      {% endif %}
+
+      {% if crawlerInfo.previousUrl  %}
+        <link rel="prev" href="{{ crawlerInfo.previousUrl }}">
+      {% endif %}
+
+      {% if crawlerInfo.nextUrl  %}
+        <link rel="next" href="{{ crawlerInfo.nextUrl }}">
+      {% endif %}
+    {% endwith %}
 
 
     {% block canonical-tag %}

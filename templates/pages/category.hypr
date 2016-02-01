@@ -4,31 +4,6 @@
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
 
 
-{# HEAD > CANONICAL TAG #}
-{% block canonical-tag %}
-	{% parent %}
-
-	{% with themeSettings.canonicalProtocol as canonicalProtocol|default('http') %}
-	{% with themeSettings.canonicalTrailingSlashes as trailingSlash|default('') %}
-	{% with siteContext.domains.primary.domainName as domainName %}
-	{% with '{0}://{1}{2}{3}'|string_format(canonicalProtocol, domainName, model.url, trailingSlash) as seoDomainName %}
-
-		{% if pageContext.pagination.startIndex %}
-			{% if pageContext.pagination.startIndex > 0 %}
-				<link rel="prev" href="{{ seoDomainName }}{% make_url "paging" null with page="prev" %}">
-			{% endif %}
-
-			<link rel="next" href="{{ seoDomainName }}{% make_url "paging" null with page="next" %}">
-		{% endif %}
-
-	{% endwith %}
-	{% endwith %}
-	{% endwith %}
-	{% endwith %}
-
-{% endblock canonical-tag %}
-
-
 {# BODY > CLASSES #}
 {% block body-tag-classes %} mz-category {% endblock body-tag-classes %}
 
