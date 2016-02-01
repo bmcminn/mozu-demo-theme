@@ -40,16 +40,16 @@ module.exports = function(grunt) {
                   next(cb);
                 }
 
-              , bowerjson: function(cb) {
-                  var bower = grunt.file.readJSON('bower.json');
+              // , bowerjson: function(cb) {
+              //     var bower = grunt.file.readJSON('bower.json');
 
-                  bower.version = newver;
+              //     bower.version = newver;
 
-                  grunt.file.write('bower.json', JSON.stringify(bower, null, 2));
-                  grunt.log.ok('Updated bower.json version to ' + newver);
+              //     grunt.file.write('bower.json', JSON.stringify(bower, null, 2));
+              //     grunt.log.ok('Updated bower.json version to ' + newver);
 
-                  next(cb);
-                }
+              //     next(cb);
+              //   }
 
               , themejson: function(cb) {
                   theme.about.version = newver;

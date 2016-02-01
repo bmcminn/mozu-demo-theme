@@ -1,4 +1,4 @@
-{% spaceless %}
+{# {% spaceless %} #}
 {% autoescape on %}
 
 {% block doctype %}
@@ -30,8 +30,8 @@
     <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %} Waffles</title>
 
 
-    {% if pageContext.FeedUrl %}
-      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
+    {% if pageContext.feedUrl %}
+      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.feedUrl }}" />
     {% endif %}
 
 
@@ -74,9 +74,6 @@
 
 
     <div id="page-wrapper" class="mz-l-pagewrapper">
-
-      {% dump model %}
-
 
       {% block utility-bar %}
         {% include "modules/utility-bar/header" %}
@@ -138,4 +135,4 @@
 
 </html>
 {% endautoescape %}
-{% endspaceless %}
+{# {% endspaceless %} #}

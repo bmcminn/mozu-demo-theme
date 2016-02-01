@@ -1,0 +1,48 @@
+<div class="soft-cart{% if model.items.length == 0 %} is-empty{% endif %}">
+
+	<h1>{{ labels.cart }}</h1>
+
+	<div class="soft-cart-total">
+		<span class="soft-cart-total-label">
+			{{ labels.total }}
+		</span>
+
+		<span class="soft-cart-total-amount">
+			{{ model.discountedTotal|currency }}
+		</span>
+	</div>
+
+	<div class="soft-cart-controls">
+		<a class="soft-cart-control soft-cart-control-checkout" data-mz-action="goToCart" href="/cart">
+			{{ labels.editOrCheckout }}
+		</a>
+	</div>
+
+	<div class="soft-cart-items-label">
+		{{ labels.items }}
+	</div>
+
+	<ul class="soft-cart-items">
+		{% for item in model.items %}
+			<li class="soft-cart-item" data-mz-cart-item="{{ item.id }}">
+
+				<img class="soft-cart-item-image" src="{{ item.product.imageUrl }}?max=300" alt="{{ item.product.name }}" />
+
+				<a class="soft-cart-item-title" href="{{ item.product.url }}">{{ item.product.name }} | {{ item.product.price.price|currency }}</a>
+
+				<span class="soft-cart-item-quantity">{{ labels.qty }}: {{ item.quantity }}</span>
+
+				<a class="soft-cart-item-action soft-cart-item-action-more" data-mz-action="increaseQuantity" data-mz-cart-item="{{ item.id }}" href="javascript:;" title="More">&#xFE3F;</a>
+
+				{% if item.quantity > 1 %}
+					<a class="soft-cart-item-action soft-cart-item-action-less" data-mz-action="decreaseQuantity" data-mz-cart-item="{{ item.id }}" href="javascript:;" title="Less">&#xFE40;</a>
+				{% endif %}
+
+				<a class="soft-cart-item-action soft-cart-item-action-remove" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}" href="javascript:;" title="Remove">&#x2715;</a>
+
+				<span class="soft-cart-item-total">{{ item.total|currency }}</span>
+
+			</li>
+		{% endfor %}
+	</ul>
+</div>

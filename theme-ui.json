@@ -3,18 +3,6 @@
   "items": [
     {
       "xtype": "panel",
-      "title": "TESTING",
-      "collapsed": false,
-      "items": [
-        {
-          "xtype": "mz-input-navnodemulti",
-          "name": "testingNavNodes",
-          "fieldLabel": "TESTING NAV NODES"
-        }
-      ]
-    },
-    {
-      "xtype": "panel",
       "title": "Anonymous Account Verification Options",
       "collapsed": false,
       "items": [
