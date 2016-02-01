@@ -45,23 +45,25 @@ Some other options:
     - I personally prefer Sublime Text and will be using it during the demonstration.
     - If you would like to use Sublime Text as well, I highly suggest installing the following Sublime Text packages:
         - Package Control: https://packagecontrol.io/installation
-        - Djaneiro: https://packagecontrol.io/packages/Djaneiro
-        - Django: https://packagecontrol.io/packages/Django
-        - LESS: https://packagecontrol.io/packages/LESS
-        - Emmet: https://packagecontrol.io/packages/Emmet
-        - Alignment: https://packagecontrol.io/packages/Alignment
+        - Djaneiro: [https://packagecontrol.io/packages/Djaneiro](https://packagecontrol.io/packages/Djaneiro)
+        - Django:   [https://packagecontrol.io/packages/Django](https://packagecontrol.io/packages/Django)
+        - LESS:     [https://packagecontrol.io/packages/LESS](https://packagecontrol.io/packages/LESS)
+        - Emmet:    [https://packagecontrol.io/packages/Emmet](https://packagecontrol.io/packages/Emmet)
+        - Alignment: [https://packagecontrol.io/packages/Alignment](https://packagecontrol.io/packages/Alignment)
     - These mostly provide syntax highlighting, however Django and Emmet provide code completion for common template tags to save time typing.
 1. Be sure your shell application is running correctly.
 1. Install Git, Python, and/or Node.js binaries as needed:
     - **Git**: [http://git-scm.com/downloads](http://git-scm.com/downloads)
         - We suggest that Windows folks install Git Bash when prompted
         - After it is installed, open Git Bash from the Start Menu and continue
-    - **Python**: [https://www.python.org/downloads/release/python-2710/](https://www.python.org/downloads/release/python-2710/)
-        - **NOTE: _WINDOWS USERS_:**  It is possible you do not have Python installed which is required for `node-gyp` to build correctly.
     - **Node.js**: [http://nodejs.org/dist](http://nodejs.org/dist)
         - Node latest stable build (5.0.x+) should work just fine
         - For Linux Ubuntu/Debian users, we suggest installing Node.js with NVM
             - [https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server#how-to-install-using-nvm](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server#how-to-install-using-nvm)
+    - **Yeoman**: [https://www.npmjs.com/package/yo](https://www.npmjs.com/package/yo)
+        - Application scaffolding framework.
+    - **Mozu Theme Generator**: [https://www.npmjs.com/package/generator-mozu-theme](https://www.npmjs.com/package/generator-mozu-theme)
+        - Mozu theme scaffolding module for initializing.
 
 
 ## Check your work
@@ -71,9 +73,9 @@ Some other options:
 
     ``` bash
     $ git --version   # should be 2.X.X+
-    $ python -V       # should be ~2.7.X+
     $ node -v         # should be 4.X.X+
     $ npm -v          # should be 3.X.X+; installed with Node.js
+    $ yo -v           # should be 1.6.x+
     ```
 
     - Once these are installed correctly and returning the correct version number(s), move on to the next step.
@@ -88,31 +90,20 @@ Some other options:
     $ cd mozu-demo-theme
     ```
 
-1. Once we are inside the project folder (`~/github/mozu-demo-theme`) we will need to duplicate the `mozu.config.json.base` file and rename it `mozu.config.json`.
-    - **NOTE:** We will configure `mozu.config.json` during the training course.
-
 1. Next we will run the following commands to install our node dependencies and build our project:
 
     ``` bash
     $ npm i
     # Wait for it to finish processing...
-
-    $ grunt check-theme
-    # Wait for it to finish processing...
     ```
 
-1. Once the build runs without fail, you're ready to get started!
+1. If the build runs without fail, you're ready to get started!
 
 
-## Final setup notes
+## Final installation notes
 
-The final component to our setup is to duplicate the `mozu.config.json.base` file and rename it as follows:
+We will be performing this same set of instructions as part of our theme setup check during training. However setting up your local dev environment prior to your scheduled training date helps to identify potential system issues ahead of time.
 
-```bash
-cp mozu.config.json.base mozu.config.json
-```
-
-**NOTE:** We will be performing this update as part of our theme setup and installation process during training, so this step isn't necessary prior to the scheduled training date.
 
 
 Happy Coding!
