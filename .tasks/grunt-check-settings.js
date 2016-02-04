@@ -60,6 +60,11 @@ module.exports = function(grunt) {
 
       _.each(files, function(filePath) {
 
+        // check if isDir (because typeahead.js/...)
+        if (grunt.file.isDir(filePath)) {
+          return;
+        }
+
         var file = {
               location:   filePath
             , content:    grunt.file.read(path.resolve('.', filePath))
