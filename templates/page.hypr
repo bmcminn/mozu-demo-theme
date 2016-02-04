@@ -142,7 +142,10 @@
     {% endblock trailing-scripts %}
 
 
-    {% visitor_tracking_pixel %}
+    {% if not pageContext.isDebugMode %}
+      {% visitor_tracking_pixel %}
+    {% endif %}
+
 
   </body>
 {% endblock body-tag %}
