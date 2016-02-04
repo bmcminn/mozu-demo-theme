@@ -1,0 +1,16 @@
+{% extends "page" %}
+
+
+{% block title-tag-content %}
+  {% firstof pageContext.metaTitle model.name %}  - {% parent %}
+{% endblock title-tag-content %}
+
+
+{% block body-tag-classes %} mz-blankpage {% endblock body-tag-classes %}
+
+
+{% block body-content %}
+
+  {% include_documents "testing/documents" listFQN="pages@mozu" sort="createDate asc" %}
+
+{% endblock body-content %}

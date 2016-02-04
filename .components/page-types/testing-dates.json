@@ -3,6 +3,6 @@
 	"title": "TEST Date time formats",
 	"entityType": "webpage",
 	"documentType": "web_page",
-	"template": "test-date-time",
+	"template": "testing-dates",
 	"userCreatable": true
 }

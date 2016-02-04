@@ -84,7 +84,7 @@
   {% endblock open-body-tag %}
 
 
-    {% include "debug/debug-hypr" %}
+    {% include "debug/models" %}
 
 
     <div id="page-wrapper" class="mz-l-pagewrapper">

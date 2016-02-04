@@ -1,0 +1,12 @@
+{
+  "xtype": "panel",
+  "title": "TESTING",
+  "collapsed": false,
+  "items": [
+    {
+      "xtype": "mz-input-navnodemulti",
+      "name": "testingNavNodes",
+      "fieldLabel": "TESTING NAV NODES"
+    }
+  ]
+}

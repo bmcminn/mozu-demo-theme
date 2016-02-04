@@ -1,0 +1,10 @@
+<textarea>
+  {% json_attribute model %}
+</textarea>
+
+
+{% for document in model.items %}
+    <li class="mz-documentlist-item" >
+      <a href="/cms/{{ document.listFQN }}/{{ document.name }}">{{ document.name }}</a>
+    </li>
+{% endfor %}

@@ -33,7 +33,8 @@
       <tr>
         <th>Value</th>
         <th>Expected (per PHP docs)</th>
-        <th>Actual</th>
+        <th><code>{ now }</code></th>
+        <th><code>{ now }</code></th>
         <th>Notes</th>
       </tr>
 

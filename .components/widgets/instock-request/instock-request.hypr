@@ -1,4 +1,4 @@
-{%if SiteContext.IsEditMode %}
+{% if SiteContext.IsEditMode %}
 <span>Instock Request Widget</span>
 {% else %}
 	{% if pagemodel.productUsage and pagemodel.productUsage != 'Bundle' %}
