@@ -6,8 +6,8 @@ define([
     var temp
       , regex = {
         }
-      , $slideshows   = $('[data-mz-widget="slideshow-bob"]')
-      , $slides       = $('[data-mz-widget="slideshow-mel"]')
+      , $slideshows   = $('[data-mz-widget="bcm~slideshow-bob"]')
+      , $slides       = $('[data-mz-widget="bcm~slideshow-mel"]')
       ;
 
 
