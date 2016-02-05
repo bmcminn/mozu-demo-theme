@@ -1,6 +1,6 @@
 
-{% with model.config as slide %}
 {% with pageContext.isEditMode as editMode %}
+{% with model.config as slide %}
 
   {% if editMode %}
     <div data-slideshow-id="{{ slide.id|lower }}" data-mz-widget="{{ model.definitionId|lower }}" data-widget-config="{% json_attribute model %}">
@@ -21,6 +21,7 @@
     {# RENDER DEFAULT MARKUP FOR SLIDES #}
     {% else %}
 
+{% comment %}
       {% if slide.image %}
         {% if slide.customTargetUrl %}
             <a href="{{ slide.customTargetUrl }}">
@@ -40,6 +41,7 @@
           {% endif %}
         </div>
       {% endif %}
+{% endcomment %}
 
 
     {% endif %}

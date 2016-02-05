@@ -92,7 +92,13 @@
         {
             "xtype": "box",
             "autoEl": {
-                "html": "<hr/><h3>Slideshow Options</h3>"
+                "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+            }
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3>Slideshow Options</h3>"
             }
         },
 
@@ -332,7 +338,6 @@
                 "xtype": "mz-input-number",
                 "anchor": "100%"
             }
-
 
     ]
 }

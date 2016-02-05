@@ -857,7 +857,13 @@
         {
           "xtype": "box",
           "autoEl": {
-            "html": "<hr/><h3>Slideshow Options</h3>"
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+          }
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3>Slideshow Options</h3>"
           }
         },
         {
@@ -1067,7 +1073,7 @@
     {
       "id": "bcm~slideshow-mel",
       "displayName": "Slideshow Mel",
-      "displayTemplate": "bcm/slideshow",
+      "displayTemplate": "bcm/slideshow-mel",
       "icon": "/resources/admin/widgets/bcm~slideshow-mel.png",
       "validPageTypes": [
         "*"
@@ -1093,7 +1099,7 @@
         {
           "xtype": "box",
           "autoEl": {
-            "html": "<hr/>"
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
           }
         },
         {
@@ -1115,7 +1121,13 @@
         {
           "xtype": "box",
           "autoEl": {
-            "html": "<hr/><h3>Custom Markup and Styles</h3><ul><li><code>{0}</code>: Target Url</li><li><code>{1}</code>: Custom Target Url</li><li><code>{2}</code>: Slide Image</li></ul>"
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+          }
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3>Custom Markup and Styles</h3><ul><li><code>{0}</code>: Target Url</li><li><code>{1}</code>: Custom Target Url</li><li><code>{2}</code>: Slide Image</li></ul>"
           }
         },
         {
