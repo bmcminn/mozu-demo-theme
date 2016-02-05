@@ -1,4 +1,4 @@
-{# {% spaceless %} #}
+{% spaceless %}
 {% autoescape on %}
 
 {% block doctype %}
@@ -17,6 +17,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="correlationId" content="{{ pageContext.correlationId }}">
 
     {% block meta-tags %}
       <meta name="description" content="{{ pageContext.metaDescription }}">
@@ -24,7 +25,6 @@
     {% endblock meta-tags %}
 
 
-    <meta name="correlationId" content="{{ pageContext.correlationId }}">
 
 
     <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %} Waffles</title>
@@ -47,11 +47,6 @@
         <link rel="next" href="{{ crawlerInfo.nextUrl }}">
       {% endif %}
     {% endwith %}
-
-
-    {% block canonical-tag %}
-      {% include "modules/canonical-tag" %}
-    {% endblock canonical-tag %}
 
 
     {% block storefront-less %}
@@ -152,4 +147,4 @@
 
 </html>
 {% endautoescape %}
-{# {% endspaceless %} #}
+{% endspaceless %}
