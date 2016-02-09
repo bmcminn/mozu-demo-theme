@@ -14,7 +14,7 @@
     {# RENDER CUSTOM MARKUP FOR SLIDES #}
     {% if slide.customMarkup %}
 
-      <style>{{ slide.customStyles|string_format(slide.image)|safe }}</style>
+      <style>{{ slide.customStyles|string_format(slide.image.imageUrl)|safe }}</style>
       {{ slide.customMarkup|string_format(slide.targetUrl, slide.customTargetUrl, slide.image.imageUrl)|safe }}
 
 
