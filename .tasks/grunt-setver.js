@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         async           = require('async'),
 
         done            = this.async(),
-        currentVersion  = theme.about.version,
+        currentVersion  = pkg.version,
         self            = this,
 
         applyVersion = function(newver) {
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
       applyVersion(manualVer);
       //done(true);
     } else {
-      applyVersion(theme.about.version);
+      applyVersion(currentVersion);
       // childProcess.exec(this.data.cmd || 'git describe --tags --always', function(err, stdout, stderr) {
       //   if (err || stderr) {
       //     return grunt.fail.fatal(err || stderr);

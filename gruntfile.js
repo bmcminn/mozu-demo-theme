@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('mozu-theme-helpers');
   grunt.loadTasks('./.tasks/');
 
   require('load-grunt-config')(grunt, {

@@ -9,7 +9,7 @@ module.exports = function(grunt) {
   // MACROS
   grunt.registerTask('lintify', [
     // 'jsonlint'
-    'jshint'
+    'jshint:dev'
   ]);
 
 
@@ -30,9 +30,21 @@ module.exports = function(grunt) {
   , 'lintify'
   // , 'jsbeautifier'
   , 'setver'
-  // , 'mozutheme:quickcompile'
+  , 'mozutheme:quickcompile'
   , 'mozusync:upload'
   ]);
+
+
+  grunt.registerTask('build', [
+    'theme'
+  , 'lintify'
+  , 'jshint:production'
+  // , 'jsbeautifier'
+  , 'setver'
+  , 'mozutheme:fullcompile'
+  , 'mozusync:upload'
+  ]);
+
 
 
   grunt.registerTask('init', [
@@ -51,7 +63,8 @@ module.exports = function(grunt) {
   // , 'check:widgets'
   , 'check:settings'
   , 'check:deprecated'
-  // , 'mozutheme:quickcompile'
+  , 'mozutheme:quickcompile'
+  , 'mozutheme:check'
   ]);
 
 
