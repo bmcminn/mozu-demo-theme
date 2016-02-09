@@ -1,178 +1,177 @@
+/* jshint laxbreak:true, laxcomma:true */
+/* global define:true */
+
 define([
-  'modules/jquery-mozu'
-// , 'shim!vendor/fitvids[jQuery=jquery]'
-], function($) {
+  // 'modules/jquery-mozu'
+  'underscore'
+],
 
-    var temp
-      , base = {
-          youtube:    '//www.youtube.com/embed/'
-        , ytNoCookie: '//www.youtube-nocookie.com/embed/'
-        , vimeo:      '//player.vimeo.com/video/'
-        , autoPlay:   'autoplay=false'
-        }
-      , regex = {
-          videoTime:      /#?t=(\d{1,}s?)/i
-        , vimeoID:        /^(\d{6,})/i
-        , vimeoUrl:       /\/(\d{6,})/i
-        , youtubeID:      /^([\w\d-_]{1,})/i
-        // , youtubeVideo:   /(?:embed\/|v=|\/)([\w\d-_]{1,})/i
-        , youtubeVideo:   /(?:v=|\/[^w\/])([A-z0-9-_]*)/i
-        , youtubeList:    /(list=[\w\d-_]{1,})/i
-        , youtubePrivacy: /youtube-nocookie/i
-        , youtubeUrl:     /youtu.?be/i
-        }
-      ;
+function(_) {
 
+  'use strict';
 
-    // Iterate over our video widget collection
-    $('[data-mz-widget="video-embed"]')
-      .each(function() {
-
-        var $this = $(this);
-
-        // $this.addClass('fade');
-        $this.video = {
-          model:    $this.data('mzConfig')
-        , url:      null
-        , time:     ''
-        };
-
-        $this.video.videoUrl =
-          $this.video.model.config.url.toString().replace(/https?:(\/\/)?/i, '');
+  var base = {
+        youtube:    '//www.youtube.com/embed/'
+      , ytNoCookie: '//www.youtube-nocookie.com/embed/'
+      , vimeo:      '//player.vimeo.com/video/'
+      , autoPlay:   'autoplay=false'
+      }
+    , regex = {
+        number:         /^[\d\.]+/
+      , vimeoIdFormat:  /^[\d]{6,}/
+      , videoID:        /(?:^[^<>htps\:\/]\/|(?:v=|\/(?!\/|embed|iframe|watch|vimeo|video|channels|staff|www|player|youtu\.?be)))([A-z0-9\-\_]{3,})/i
+      , time:           /[^\d\w][\&\?]?t=["]?([\dms]+)/i
+      , listID:         /[\&\?]?list=([\d\w-_]+)/i
+      , props:          /(controls|showinfo|rel|autoplay|loop|color|title|byline|portrait)=([\d\w]*)/gi
+      , serviceName:    /(vimeo|youtu.?be)/i
+      , ytNoCookie:     /youtube-nocookie/i
+      }
+    ;
 
 
-        // if it's a vimeo ID
-        if ($this.video.videoUrl.match(regex.vimeoID)) {
-          $this.video.id = $this.video.videoUrl.match(regex.vimeoID)[0];
-        }
-
-        // if it's a vimeo link
-        if ($this.video.videoUrl.match(regex.vimeoUrl)) {
-          $this.video.id = $this.video.videoUrl.match(regex.vimeoUrl)[1];
-        }
-
-        // set the video type
-        $this.video.type = 'vimeo';
+  var videos = document.querySelectorAll('[data-mz-widget="bcm~video"]');
+  var videosList = Array.apply(null, videos);
 
 
-        // if we haven't figured out what the video is...
-        if (!$this.video.id) {
+  videosList.forEach(function(model, index) {
 
-          // if it's a youtube ID
-          if ($this.video.videoUrl.match(regex.youtubeID)) {
-            $this.video.id = $this.video.videoUrl.match(regex.youtubeID)[0];
-          }
+    model = model.dataset.mzConfig;
 
-          // if it's a youtube link
-          if ($this.video.videoUrl.match(regex.youtubeVideo)) {
-            $this.video.id = $this.video.videoUrl.match(regex.youtubeVideo)[1];
-          }
+    var $videoUrl = model.config.url;
 
-           // if we have a list
-          if ($this.video.videoUrl.match(regex.youtubeList)) {
-            $this.video.list = $this.video.videoUrl.match(regex.youtubeList)[0];
-          }
-
-          $this.video.type = 'youtube';
-        }
+    // build video schema object
+    var video = {
+      url:          $videoUrl
+    , id:           $videoUrl.match(regex.videoID)
+    , service:      $videoUrl.match(regex.serviceName)
+    , listId:       $videoUrl.match(regex.listID)
+    , time:         $videoUrl.match(regex.time)
+    , props:        $videoUrl.match(regex.props)
+    , ytNoCookie:   $videoUrl.match(regex.ytNoCookie) ? true : false
+    };
 
 
-        // if it's a time
-        if ($this.video.videoUrl.match(regex.videoTime)) {
-          $this.video.time = $this.video.videoUrl.match(regex.videoTime)[0];
-        }
+    // if we have a video list, configure it proper
+    if (video.listId) {
+      video.listId = video.listId[1];
+    }
 
 
-        // TODO: accomodate all these variable settings...
+    // if we don't know what video to show
+    if (!video.id && !video.list) {
+      console.error({
+        message: "ERROR: Video widget URL value is misconfigured. Try a different URL"
+      , url: video.url
+      , widgetId: model.id
+      });
+      return;
 
-        // https://player.vimeo.com/video/129806257?
-        //   autoplay=1
-        // & loop=1
-        // & color=6c6e95
-        // & title=0
-        // & byline=0
-        // & portrait=0
+    // if we found an id
+    } else {
 
+      video.id = video.id[1];
 
-        // https://www.youtube-nocookie.com/embed/UkV46gvgXSM?
-        //   rel=0
-        // & controls=0
-        // & showinfo=0
-        // & autoplay=1
-
-        console.log($this.video);
-
-        // build the url depending what type of video it is
-        switch($this.video.type) {
-          case 'youtube':
-            if ($this.video.model.config.youtubeNocookie) {
-              base.youtube = base.ytNoCookie;
-            }
-
-            $this.video.url = [
-              base.youtube
-            , $this.video.id
-            , '?'
-            , $this.video.list                         ? $this.video.list : ''
-            , '&autoplay=0'
-            // , $this.video.model.config.autoplay        ? '&autoplay=1'    : '&autoplay=0'
-            , $this.video.model.config.loop            ? '&loop=1'        : '&loop=0'
-            , $this.video.model.config.youtubeControls ? '&controls=1'    : '&controls=0'
-            , $this.video.model.config.youtubeRel      ? '&rel=1'         : '&rel=0'
-            , $this.video.model.config.youtubeShowinfo ? '&showinfo=1'    : '&showinfo=0'
-            // TODO: video.time property
-            // , $this.video.time ? '?' + $this.video.time : ''
-            ].join('');
+    }
 
 
-            // '//www.youtube.com/embed/' + 'YOUTUBEID' + '?' + 'OPTIONS'
+    // do we have a service ID?
+    if (video.service) {
+      video.service = video.service[1].replace(/\./, '');
 
-            break;
+    } else {
 
-          case 'vimeo':
-            $this.video.url = [
-              base.vimeo
-            , $this.video.id
-            , $this.video.time
-            , '?'
-            , $this.video.model.config.autoplay ? '&autoplay=1' : '&autoplay=0'
-            , $this.video.model.config.loop     ? '&loop=1'     : '&loop=0'
+      // check if we have a vimeo ID format
+      if (video.id.match(regex.vimeoIdFormat)) {
+        video.service = 'vimeo';
+      // it's a youtube video
+      } else {
+        video.service = 'youtube';
+      }
+    }
 
-            ].join('');
 
-            break;
+    // get the time of the video
+    if (video.time) {
+      video.time = video.time[1];
+    }
+
+
+    // flatten the props list
+    if (video.props) {
+      video.props = video.props.map(function(prop, index) {
+
+        prop = prop.split('=');
+
+        // coerce numerical values to a proper number type
+        if (prop[1].match(regex.number)) {
+          prop[1] = parseInt(prop[1]);
         }
 
+        // map value back into the video definition
+        video[prop[0]] = prop[1];
 
-        console.debug('video widget', $this.video);
-
-
-        // If we couldn't figure out what the video was, pass back an error message
-        if (!$this.video.url) {
-          console.error('WIDGET_ERROR', {
-            type: 'INVALID_DATA'
-          , message: 'The video data provided was not a valid Youtube or Vimeo video link or ID.'
-          , widgetId: 'video-widget'
-          , data: $this.video
-          });
-          return;
-        }
-
-
-        // Append the video into the video container module
-        $this
-          .html([
-              '<iframe width="560" height="315"'
-            , 'src="' + $this.video.url + '"'
-            , 'frameborder="0"'
-            , 'webkitallowfullscreen'
-            , 'mozallowfullscreen'
-            , 'allowfullscreen></iframe>'
-          ].join(' '))
-          ;
+        return ;
 
       });
+    }
 
+
+    // map widget overrides to video object
+    video = _.extend(video, model.config);
+
+
+    // format the arguments we need for either service
+    var embedArguments = [];
+
+    if (video.service === 'youtube') {
+      embedArguments.push(
+        '&list='      + video.list ? video.list : ''
+      , '&controls='  + video.controls
+      , '&showinfo='  + video.showinfo
+      , '&rel='       + video.rel
+      );
+    }
+
+
+    if (video.service === 'vimeo') {
+      embedArguments.push(
+        '&color='     + video.color
+      , '&title='     + video.title
+      , '&byline='    + video.byline
+      , '&portrait='  + video.portrait
+      );
+    }
+
+
+    // compose the video embed
+    var embed = [
+        '<iframe src="'
+      , video.ytNoCookie ? base.ytNoCookie : base[video.service]
+      , video.id
+      , '?'
+      , embedArguments.join('')
+      , '&autoplay='  + video.autoplay
+      , '&loop='      + video.loop
+      , '&time='      + video.time
+      , '" '
+      , 'width="" height="" '
+      , 'webkitallowfullscreen mozallowfullscreen allowfullscreen'
+      , '></iframe>'
+      ].join('')
+    ;
+
+    embed = embed
+      .replace(/\?\&/, '?')
+      .replace(/\?"/, '"')
+      ;
+
+    // console.log(video);
+    console.log(embed);
+
+
+    // console.debug(video);
+    return video;
+
+  });
 
 });
-
