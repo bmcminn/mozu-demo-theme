@@ -1,4 +1,9 @@
 
+var path  = require('path')
+  , pkg   = require(path.resolve(process.cwd(), 'package.json'))
+  ;
+
+
 module.exports = {
   production: {
     src: [
@@ -9,30 +14,13 @@ module.exports = {
       'scripts/**/*.js'
     ]
   },
+
   dev: {
     src: '{<%= jshint.production.src %>}',
     options: {
       devel: true
     }
   },
-  options: {
-    es3: true,
-    browser: true,
-    undef: true,
-    laxcomma: true,
-    laxbreak: true,
-    nonstandard: true,
-    ignores: ['scripts/vendor/**/*.js'],
-    globals: {
-      console: true,
-      V: true,
-      JSON: true,
-      define: true,
-      require: true,
-      Modernizr: true,
-      process: true,
-      module: true,
-      order: true
-    }
-  }
-}
+
+  options: '<%= pkg.jshintConfig %>'
+};

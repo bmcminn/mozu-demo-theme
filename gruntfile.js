@@ -14,12 +14,13 @@ module.exports = function(grunt) {
   grunt.loadTasks('./.tasks/');
 
   require('load-grunt-config')(grunt, {
-      configPath: path.join(process.cwd(), '.grunt')
-    , pkg: pkg
-    , data: {
-        pkg:        pkg
-      , theme:      theme
-      , mozuconfig: mozuconfig
+      configPath: path.join(process.cwd(), '.grunt'),
+      pkg: pkg,
+      data: {
+        pkg:        pkg,
+        theme:      theme,
+        mozuconfig: mozuconfig
       }
     });
+
 };
