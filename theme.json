@@ -1270,9 +1270,9 @@
     }
   ],
   "about": {
-    "name": "Brandtley - High Fashion Theme v1.0.0",
+    "name": "Brandtley - High Fashion Theme v1.0.5",
     "projectName": "Brandtley - High Fashion Theme",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "defaultLanguage": "en-US",
     "baseCoreVersion": 8,
     "extends": null,

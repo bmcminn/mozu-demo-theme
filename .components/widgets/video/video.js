@@ -10,6 +10,8 @@ function(_) {
 
   'use strict';
 
+  var radix = 10;
+
   var base = {
         youtube:    '//www.youtube.com/embed/'
       , ytNoCookie: '//www.youtube-nocookie.com/embed/'
@@ -31,6 +33,10 @@ function(_) {
 
   var videos = document.querySelectorAll('[data-mz-widget="bcm~video"]');
   var videosList = Array.apply(null, videos);
+
+
+  console.log(videos);
+  console.log(videosList);
 
 
   videosList.forEach(function(model, index) {
@@ -104,7 +110,7 @@ function(_) {
 
         // coerce numerical values to a proper number type
         if (prop[1].match(regex.number)) {
-          prop[1] = parseInt(prop[1]);
+          prop[1] = parseInt(prop[1], radix);
         }
 
         // map value back into the video definition
