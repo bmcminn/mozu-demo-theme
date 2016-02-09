@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  {% if pageContext.isEditMode %}
+  {% if pageContext.isEditMode or pageContext.isDebugMode %}
     {% include "modules/json-required-for-hyprlive" %}
     {% include "modules/trailing-scripts" %}
     {% cms_resources %}
@@ -16,7 +16,7 @@
 <body>
 
   {% if pageContext.isEditMode or pageContext.isDebugMode or model.email == "brandtley_mcminn@volusion.com" %}
-    {% include "debug/debug-emails" with model=model %}
+    {% include "debug/models" with pageModel=model %}
   {% endif %}
 
 

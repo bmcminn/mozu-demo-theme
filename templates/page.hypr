@@ -79,7 +79,9 @@
   {% endblock open-body-tag %}
 
 
-    {% include "debug/models" %}
+    {% if pageContext.isDebugMode %}
+      {% include "debug/models" %}
+    {% endif %}
 
 
     <div id="page-wrapper" class="mz-l-pagewrapper">

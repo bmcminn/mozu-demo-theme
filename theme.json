@@ -1616,7 +1616,7 @@
     {
       "id": "order.shipped",
       "properties": {
-        "subject": "This is the subject line!"
+        "subject": "Your order shipped! Order: #{order.number}"
       },
       "template": "email/order-shipped",
       "title": "Order Shipped: NO this is the subject!"

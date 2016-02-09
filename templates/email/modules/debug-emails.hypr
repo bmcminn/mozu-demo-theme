@@ -1,0 +1,13 @@
+
+<label for="debug-model"><code>model</code>
+	<input id="debug-model" type="text" value="{% json_attribute model %}">
+</label>
+<label for="debug-pageContext"><code>pageContext</code>
+	<input id="debug-pageContext" type="text" value="{% json_attribute pageContext %}">
+</label>
+<label for="debug-siteContext"><code>siteContext</code>
+	<input id="debug-siteContext" type="text" value="{% json_attribute siteContext %}">
+</label>
+<label for="debug-domainName"><code>domainName</code>
+	<input id="debug-domainName" type="text" value="{% json_attribute domainName %}">
+</label>

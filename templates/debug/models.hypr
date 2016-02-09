@@ -1,10 +1,8 @@
 
+{# file: templates/debug/models.hypr #}
+
 {% with pageContext.isDebugMode as debugMode %}
 {% with pageContext.pageType as pageType %}
-
-
-
-  {% if debugMode %}
 
     <label for="debug-pageModel">
       <code>{{ pageType }} pageModel:&nbsp;</code>
@@ -64,8 +62,6 @@
     {% preload_json user            "user" %}
     {% preload_json themeSettings   "themeSettings" %}
     {% preload_json labels          "labels" %}
-
-  {% endif %}
 
 {% endwith %}
 {% endwith %}
