@@ -15,15 +15,15 @@ module.exports = {
     spawn: false
   },
 
-  lintTooling: {
-    files: configs.jshint.buildtools_js,
-    tasks: [
-      'jshint:buildtools_js'
-    ]
-  },
+  // lintTooling: {
+  //   files: configs.jshint.buildtools_js,
+  //   tasks: [
+  //     'jshint:buildtools_js'
+  //   ]
+  // },
 
   javascript: {
-    files: configs.jshint.theme_js,
+    files: configs.jshint.production.src,
     tasks: [
       'newer:jshint:dev',
       'newer:jsbeautifier',
@@ -33,7 +33,7 @@ module.exports = {
   },
 
   json: {
-    files: configs.jshint.theme_js,
+    files: configs.jshint.production.src,
     // files: [
     //   '.components/**/*.json',
     //   '.components/editors/**/*.js'
