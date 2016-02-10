@@ -10,6 +10,7 @@
     "defaultConfig": {
         "autoplay": false,
         "loop": false,
+        "allowfullscreen": true,
         "timestart": "0:00",
 
         "youtubeRel": false,

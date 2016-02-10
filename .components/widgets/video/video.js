@@ -10,14 +10,15 @@ function(_) {
 
   'use strict';
 
-  var radix = 10;
+  var radix = 10
 
-  var base = {
+    , base = {
         youtube:    '//www.youtube.com/embed/'
       , ytNoCookie: '//www.youtube-nocookie.com/embed/'
       , vimeo:      '//player.vimeo.com/video/'
       , autoPlay:   'autoplay=false'
       }
+
     , regex = {
         number:         /^[\d\.]+/
       , vimeoIdFormat:  /^[\d]{6,}/
@@ -31,17 +32,20 @@ function(_) {
     ;
 
 
-  var videos = document.querySelectorAll('[data-mz-widget="bcm~video"]');
-  var videosList = Array.apply(null, videos);
+  var videos      = document.querySelectorAll('[data-mz-widget="bcm~video"]');
+  var videosList  = Array.apply(null, videos);
 
 
+  // iterate over our video widgets and try to make them work
   videosList.forEach(function(model, index) {
 
+    // get our widget model data
     model = JSON.parse(model.dataset.mzConfig);
+
+    // build video schema object
 
     var $videoUrl = model.config.url;
 
-    // build video schema object
     var video = {
       url:          $videoUrl
     , id:           $videoUrl.match(regex.videoID)
@@ -61,6 +65,7 @@ function(_) {
 
     // if we don't know what video to show
     if (!video.id && !video.list) {
+      console.error({
         message: "ERROR: Video widget URL value is misconfigured. Try a different URL"
       , url: video.url
       , widgetId: model.id
