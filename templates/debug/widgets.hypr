@@ -12,7 +12,7 @@
 
     <label for="debug-{{ model.definitionId }}">
       <code>{{ model.definitionId }}:&nbsp;</code>
-      <textarea rows="1" id="debug-{{ model.definitionId }}" name="debug-{{ model.definitionId }}">{% json_attribute model.definitionId %}</textarea>
+      <textarea rows="1" id="debug-{{ model.definitionId }}" name="debug-{{ model.definitionId }}">{% json_attribute model %}</textarea>
     </label><br>
 
     {% preload_json widgetModel widgetName %}
