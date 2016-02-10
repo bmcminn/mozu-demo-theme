@@ -1,47 +1,47 @@
 {% extends "email/email" %}
 
 {% block body-content %}
-	<br>
+  <br>
 
-	{{ labels.giftCardEmailBanner|string_format(domainName)|safe }}
+  {{ labels.giftCardEmailBanner|string_format(domainName)|safe }}
 
-	<p>
-		{% with model.Order.billingInfo.billingContact as billingContact %}
+  <p>
+    {% with model.Order.billingInfo.billingContact as billingContact %}
 
-			{% if billingContact.firstName %}
-				{{ labels.giftCardEmailGreeting|string_format(billingContact.firstName, billingContact.lastNameOrSurname)|safe }}
+      {% if billingContact.firstName %}
+        {{ labels.giftCardEmailGreeting|string_format(billingContact.firstName, billingContact.lastNameOrSurname)|safe }}
 
-			{% else %}
-				{{ labels.emailOpeningAlternative|safe }}
+      {% else %}
+        {{ labels.emailOpeningAlternative|safe }}
 
-			{% endif %}
+      {% endif %}
 
-		{% endwith %}
-	</p>
+    {% endwith %}
+  </p>
 
-	{{ labels.giftCardEmailIntro|string_format(siteContext.generalSettings.websiteName)|safe }}
+  {{ labels.giftCardEmailIntro|string_format(siteContext.generalSettings.websiteName)|safe }}
 
-	{{ labels.giftCardEmailImage|string_format(domainName)|safe }}
+  {{ labels.giftCardEmailImage|string_format(domainName)|safe }}
 
-	<p>
-		<b>{{ labels.giftCardEmailAmount }}</b> <span class="mz-price">{{ model.Credit.CurrentBalance|currency }}</span>
-	</p>
+  <p>
+    <b>{{ labels.giftCardEmailAmount }}</b> <span class="mz-price">{{ model.Credit.CurrentBalance|currency }}</span>
+  </p>
 
-	<p>
-		<b>{{ labels.giftCardEmailClaimCode }}</b> {{ model.Credit.Code }}
-	</p>
+  <p>
+    <b>{{ labels.giftCardEmailClaimCode }}</b> {{ model.Credit.Code }}
+  </p>
 
-	<p>
-		{{ labels.giftCardEmailInstructions|string_format(domainName)|safe }}
-	</p>
+  <p>
+    {{ labels.giftCardEmailInstructions|string_format(domainName)|safe }}
+  </p>
 
-	<p>
-		{{ labels.giftCardEmailClosing|string_format(domainName)|safe }}
-	</p>
+  <p>
+    {{ labels.giftCardEmailClosing|string_format(domainName)|safe }}
+  </p>
 
 
-	<p>
-		{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
-	</p>
+  <p>
+    {{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }}
+  </p>
 
 {% endblock body-content %}

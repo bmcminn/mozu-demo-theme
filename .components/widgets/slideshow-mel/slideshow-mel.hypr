@@ -1,0 +1,61 @@
+
+{% with pageContext.isEditMode as editMode %}
+{% with model.config as slide %}
+
+  {% if editMode %}
+    <div data-slideshow-id="{{ slide.id|lower }}" data-mz-widget="{{ model.definitionId|lower }}" data-widget-config="{% json_attribute model %}">
+
+  {% else %}
+    <template data-slideshow-id="{{ slide.id|lower }}" data-mz-widget="{{ model.definitionId|lower }}" data-widget-config="{% json_attribute model %}">
+
+  {% endif %}
+
+
+    {# RENDER CUSTOM MARKUP FOR SLIDES #}
+    {% if slide.customMarkup %}
+
+      <style>{{ slide.customStyles|string_format(slide.image.imageUrl)|safe }}</style>
+      {{ slide.customMarkup|string_format(slide.targetUrl, slide.customTargetUrl, slide.image.imageUrl)|safe }}
+
+
+    {# RENDER DEFAULT MARKUP FOR SLIDES #}
+    {% else %}
+
+{% comment %}
+      {% if slide.image %}
+        {% if slide.customTargetUrl %}
+            <a href="{{ slide.customTargetUrl }}">
+
+          {% else %}
+
+            {% if slide.targetUrl %}
+              <a href="{{ slide.targetUrl }}">
+            {% endif %}
+
+          {% endif %}
+
+            <img data-lazy="{{ slide.image.imageUrl }}" alt="{% if slide.image.altText %}{{ slide.image.altText }}{% endif %}">
+
+          {% if slide.targetUrl or slide.customTargetUrl %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+{% endcomment %}
+
+
+    {% endif %}
+
+
+  {# CLOSE OUR SLIDE MARKUP #}
+  {% if editMode %}
+    </div>
+
+  {% else %}
+    </template>
+
+  {% endif %}
+
+
+{% endwith %}
+{% endwith %}

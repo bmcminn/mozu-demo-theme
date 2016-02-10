@@ -18,7 +18,7 @@ require([
 
       additionalEvents: {
         "change [data-mz-product-option]": "onOptionChange",
-        "blur [data-mz-product-option]": "onOptionChange",
+        "blur [data-mz-product-option]": "onOptionChange"
       },
 
       render: function () {

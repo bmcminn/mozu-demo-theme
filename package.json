@@ -1,36 +1,66 @@
 {
   "name": "demo-theme",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "",
   "repository": "https://github.com/bmcminn/mozu-demo-theme",
   "license": "MIT",
-  "config": {
-    "baseTheme": "core8",
-    "baseThemeRepo": "mozu/core-theme",
-    "baseThemeVersion": "^8.0.0"
+  "engines": {
+    "node": ">=4.0"
+  },
+  "dependencies": {
+    "backbone": "1.1.2",
+    "bootstrap": "3.2.0",
+    "jquery-colorbox": "1.5.15",
+    "jquery.cookie": "1.4.1",
+    "typeahead.js": "0.10.5",
+    "underscore": "1.6.0"
   },
   "devDependencies": {
-    "async": "^0.2",
-    "better-console": "^0.2.4",
     "chalk": "^1.1.1",
     "grunt": "^0.4.5",
     "grunt-contrib-compress": "^0.14.0",
+    "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-imagemin": "^0.9.4",
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-debug-task": "^0.1.7",
     "grunt-jsbeautifier": "^0.2.10",
-    "grunt-jsonlint": "^1.0.6",
     "grunt-juice-email": "^0.1.3",
-    "grunt-mozu-appdev-sync": "^1.1.0",
+    "grunt-mozu-appdev-sync": "^2.1.0",
     "grunt-newer": "^1.1.1",
     "less": "^2.5.1",
     "load-grunt-config": "^0.17.2",
-    "load-grunt-tasks": "^3.3.0",
     "lodash": "^3.5.0",
+    "mozu-theme-helpers": "^1.3.2",
     "semver": "^5.0.1",
-    "thmaa": "^0.10.5",
     "time-grunt": "^1.2.2"
+  },
+  "exportsOverride": {
+    "bootstrap": [
+      "js/affix.js",
+      "js/popover.js",
+      "js/tooltip.js",
+      "js/scrollspy.js"
+    ]
+  },
+  "jshintConfig": {
+    "laxbreak": true,
+    "laxcomma": true,
+    "es3": true,
+    "browser": true,
+    "undef": true,
+    "nonstandard": true,
+    "globals": {
+      "console": true,
+      "V": true,
+      "exports": true,
+      "JSON": true,
+      "define": true,
+      "require": true,
+      "Modernizr": true,
+      "process": true,
+      "module": true,
+      "order": true
+    }
   }
 }

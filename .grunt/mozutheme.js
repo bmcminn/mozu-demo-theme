@@ -1,16 +1,19 @@
 
 module.exports = {
 
-	'check': {},
-	'compile': {},
-	'update': {
-		'versionRange': '<%= pkg.config.baseThemeVersion %>'
-	},
-	'quickcompile': {
-		'command': 'compile',
-		'opts': {
-			'skipminification': true
-		}
-	}
+  check: {
+    command: 'check'
+  },
+
+  fullcompile: {
+    command: 'compile'
+  },
+
+  quickcompile: {
+    command: 'compile',
+    opts: {
+      skipminification: true
+    }
+  }
 
 };

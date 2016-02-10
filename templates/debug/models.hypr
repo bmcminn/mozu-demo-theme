@@ -1,0 +1,67 @@
+
+{# file: templates/debug/models.hypr #}
+
+{% with pageContext.isDebugMode as debugMode %}
+{% with pageContext.pageType as pageType %}
+
+    <label for="debug-pageModel">
+      <code>{{ pageType }} pageModel:&nbsp;</code>
+      <textarea rows="1" id="debug-pageModel" name="debug-pageModel">{% json_attribute pageModel %}
+      </textarea>
+    </label><br>
+
+
+    <label for="debug-siteContext">
+      <code>siteContext:&nbsp;</code>
+      <textarea rows="1" id="debug-siteContext" name="debug-siteContext">{% json_attribute siteContext %}
+      </textarea>
+    </label><br>
+
+
+    <label for="debug-pageContext">
+      <code>pageContext:&nbsp;</code>
+      <textarea rows="1" id="debug-pageContext" name="debug-pageContext">{% json_attribute pageContext %}
+      </textarea>
+    </label><br>
+
+
+    {% if pageType !== "email" %}
+
+      <label for="debug-navigation">
+        <code>navigation:&nbsp;</code>
+        <textarea rows="1" id="debug-navigation" name="debug-navigation">{% json_attribute navigation %}
+        </textarea>
+      </label><br>
+
+      <label for="debug-user">
+        <code>user:&nbsp;</code>
+        <textarea rows="1" id="debug-user" name="debug-user">{% json_attribute user %}
+        </textarea>
+      </label><br>
+
+    {% endif %}
+
+
+    <label for="debug-themeSettings">
+      <code>themeSettings:&nbsp;</code>
+      <textarea rows="1" id="debug-themeSettings" name="debug-themeSettings">{% json_attribute themeSettings %}
+      </textarea>
+    </label><br>
+
+
+    <label for="debug-labels">
+      <code>labels:&nbsp;</code>
+      <textarea rows="1" id="debug-labels" name="debug-labels">{% json_attribute labels %}
+      </textarea>
+    </label><br>
+
+    {% preload_json pageModel       "pageModel" %}
+    {% preload_json siteContext     "siteContext" %}
+    {% preload_json pageContext     "pageContext" %}
+    {% preload_json navigation      "navigation" %}
+    {% preload_json user            "user" %}
+    {% preload_json themeSettings   "themeSettings" %}
+    {% preload_json labels          "labels" %}
+
+{% endwith %}
+{% endwith %}

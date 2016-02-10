@@ -3,9 +3,6 @@
     "bannerImage": "/resources/images/banner.jpg",
     "bannerImageEnabled": false,
     "bannerImageRepeat": "repeat-x",
-    "canonicalProtocol": "http",
-    "canonicalHomepageSlug": "homepage",
-    "canonicalTrailingSlashes": true,
     "showCartItemDimensions": true,
     "showCartItemImage": true,
     "showCartItemOptions": true,
@@ -795,22 +792,16 @@
       ]
     },
     {
-      "id": "namespace~slideshow",
-      "displayName": "Slideshow",
-      "displayTemplate": "cms/slideshow",
-      "icon": "/resources/admin/widgets/09_slideshow.png",
+      "id": "bcm~slideshow-bob",
+      "displayName": "Slideshow Bob",
+      "displayTemplate": "bcm/slideshow-bob",
+      "icon": "/resources/admin/widgets/bcm~slideshow-bob.png",
       "validPageTypes": [
         "*"
       ],
       "defaultConfig": {
-        "anchor": "100%",
-        "xtype": "mz-input-text",
+        "id": "bob",
         "lazyLoadImages": true,
-        "slideImage1": null,
-        "slideImage2": null,
-        "slideImage3": null,
-        "slideImage4": null,
-        "slideImage5": null,
         "accessibility": true,
         "autoplay": false,
         "autoplaySpeed": 3000,
@@ -852,123 +843,28 @@
       },
       "editViewFields": [
         {
-          "xtype": "label",
-          "text": "Slide configurations"
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h2>Slideshow Configuration</h2>"
+          }
         },
         {
-          "name": "lazyLoadImages",
-          "fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https://css-tricks.com/snippets/javascript/lazy-loading-images/\">[?]</a>",
-          "xtype": "mz-input-checkbox"
+          "name": "id",
+          "fieldLabel": "Slideshow Name <a title=\"Unique name or ID of the current slideshow.\">[?]</a>",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "xtype": "box",
           "autoEl": {
-            "html": "<hr/>"
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
           }
-        },
-        {
-          "name": "slideUrl1",
-          "fieldLabel": "Slide 1 Url",
-          "xtype": "mz-input-navnode"
-        },
-        {
-          "name": "slideUrl1Custom",
-          "fieldLabel": "Slide 1 Url (custom url)"
-        },
-        {
-          "name": "slideImage1",
-          "fieldLabel": "Slide 1 Image",
-          "xtype": "mz-input-image"
         },
         {
           "xtype": "box",
           "autoEl": {
-            "html": "<hr/>"
+            "html": "<h3>Slideshow Options</h3>"
           }
-        },
-        {
-          "name": "slideUrl2",
-          "fieldLabel": "Slide 2 Url",
-          "xtype": "mz-input-navnode"
-        },
-        {
-          "name": "slideUrl2Custom",
-          "fieldLabel": "Slide 2 Url (custom url)"
-        },
-        {
-          "name": "slideImage2",
-          "fieldLabel": "Slide 2 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl3",
-          "fieldLabel": "Slide 3 Url",
-          "xtype": "mz-input-navnode"
-        },
-        {
-          "name": "slideUrl3Custom",
-          "fieldLabel": "Slide 3 Url (custom url)"
-        },
-        {
-          "name": "slideImage3",
-          "fieldLabel": "Slide 3 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl4",
-          "fieldLabel": "Slide 4 Url",
-          "xtype": "mz-input-navnode"
-        },
-        {
-          "name": "slideUrl4Custom",
-          "fieldLabel": "Slide 4 Url (custom url)"
-        },
-        {
-          "name": "slideImage4",
-          "fieldLabel": "Slide 4 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "name": "slideUrl5",
-          "fieldLabel": "Slide 5 Url",
-          "xtype": "mz-input-navnode"
-        },
-        {
-          "name": "slideUrl5Custom",
-          "fieldLabel": "Slide 5 Url (custom url)"
-        },
-        {
-          "name": "slideImage5",
-          "fieldLabel": "Slide 5 Image",
-          "xtype": "mz-input-image"
-        },
-        {
-          "xtype": "box",
-          "autoEl": {
-            "html": "<hr/>"
-          }
-        },
-        {
-          "xtype": "label",
-          "text": "Slideshow Options"
         },
         {
           "name": "accessibility",
@@ -983,7 +879,8 @@
         {
           "name": "autoplaySpeed",
           "fieldLabel": "Auto play change interval",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "centerMode",
@@ -992,11 +889,15 @@
         },
         {
           "name": "centerPadding",
-          "fieldLabel": "Side padding when in center mode. (px or %)"
+          "fieldLabel": "Side padding when in center mode. (px or %)",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "cssEase",
-          "fieldLabel": "CSS3 easing"
+          "fieldLabel": "CSS3 easing",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "dots",
@@ -1005,7 +906,9 @@
         },
         {
           "name": "dotsClass",
-          "fieldLabel": "Class for slide indicator dots container"
+          "fieldLabel": "Class for slide indicator dots container",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "draggable",
@@ -1014,12 +917,15 @@
         },
         {
           "name": "easing",
-          "fieldLabel": "animate() fallback easing"
+          "fieldLabel": "animate() fallback easing",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "edgeFriction",
           "fieldLabel": "Resistance when swiping edges of non-infinite carousels",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "fade",
@@ -1044,11 +950,14 @@
         {
           "name": "initialSlide",
           "fieldLabel": "Slide to start on",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "lazyLoad",
-          "fieldLabel": "Accepts 'ondemand' or 'progressive' for lazy load technique"
+          "fieldLabel": "Accepts 'ondemand' or 'progressive' for lazy load technique",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "pauseOnHover",
@@ -1062,36 +971,45 @@
         },
         {
           "name": "respondTo",
-          "fieldLabel": "Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two)."
+          "fieldLabel": "Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two).",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "rows",
           "fieldLabel": "Setting this to more than 1 initializes grid mode. Use slidesPerRow to set how many slides should be in each row.",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "slide",
-          "fieldLabel": "Slide element query"
+          "fieldLabel": "Slide element query",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
         },
         {
           "name": "slidesPerRow",
           "fieldLabel": "With grid mode intialized via the rows option, this sets how many slides are in each grid row. dver",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "slidesToShow",
           "fieldLabel": "# of slides to show at a time",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "slidesToScroll",
           "fieldLabel": "# of slides to scroll at a time",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "speed",
           "fieldLabel": "Transition speed",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "swipe",
@@ -1111,7 +1029,8 @@
         {
           "name": "touchThreshold",
           "fieldLabel": "To advance slides, the user must swipe a length of (1/touchThreshold) * the width of the slider.",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
         },
         {
           "name": "useCSS",
@@ -1146,7 +1065,82 @@
         {
           "name": "zIndex",
           "fieldLabel": "Set the zIndex values for slides, useful for IE9 and lower",
-          "xtype": "mz-input-number"
+          "xtype": "mz-input-number",
+          "anchor": "100%"
+        }
+      ]
+    },
+    {
+      "id": "bcm~slideshow-mel",
+      "displayName": "Slideshow Mel",
+      "displayTemplate": "bcm/slideshow-mel",
+      "icon": "/resources/admin/widgets/bcm~slideshow-mel.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "defaultConfig": {
+        "anchor": "100%",
+        "xtype": "mz-input-text",
+        "id": "bob"
+      },
+      "editViewFields": [
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h2>Slide Configuration</h2>"
+          }
+        },
+        {
+          "name": "id",
+          "fieldLabel": "Slideshow ID <a title=\"ID of the slideshow you want to put this slide into.\">[?]</a>",
+          "xtype": "mz-input-text",
+          "anchor": "100%"
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+          }
+        },
+        {
+          "name": "targetUrl",
+          "fieldLabel": "Target Url",
+          "xtype": "mz-input-navnode",
+          "anchor": "100%"
+        },
+        {
+          "name": "customTargetUrl",
+          "fieldLabel": "Custom Target Url",
+          "anchor": "100%"
+        },
+        {
+          "name": "image",
+          "fieldLabel": "Slide Image",
+          "xtype": "mz-input-image"
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+          }
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3>Custom Markup and Styles</h3><ul><li><code>{0}</code>: Target Url</li><li><code>{1}</code>: Custom Target Url</li><li><code>{2}</code>: Slide Image</li></ul>"
+          }
+        },
+        {
+          "name": "customMarkup",
+          "fieldLabel": "Custom Slide Markup/Content",
+          "xtype": "mz-input-code",
+          "anchor": "100%"
+        },
+        {
+          "name": "customStyles",
+          "fieldLabel": "Custom Slide Styles",
+          "xtype": "mz-input-code",
+          "anchor": "100%"
         }
       ]
     },
@@ -1276,9 +1270,9 @@
     }
   ],
   "about": {
-    "name": "Brandtley - High Fashion Theme v1.0.0",
+    "name": "Brandtley - High Fashion Theme v1.0.5",
     "projectName": "Brandtley - High Fashion Theme",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "defaultLanguage": "en-US",
     "baseCoreVersion": 8,
     "extends": null,
@@ -1286,7 +1280,12 @@
     "isTablet": true,
     "isMobile": true,
     "allowProduction": true,
-    "baseTheme": "https://github.com/mozu/core-theme"
+    "author": "Brandtley McMinn",
+    "baseThemeVersion": {
+      "commit": "c93e710b1bca845f9fcad54bebd7d1be3d4d14d7",
+      "version": "9.2.1"
+    },
+    "baseThemeChannel": "stable"
   },
   "backOfficeTemplates": [
     {
@@ -1595,13 +1594,29 @@
       "documentType": "web_page",
       "template": "location",
       "userCreatable": true
+    },
+    {
+      "id": "test~date-time-formats",
+      "title": "TEST Date time formats",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "testing-dates",
+      "userCreatable": true
+    },
+    {
+      "id": "test~documents",
+      "title": "TEST Documents",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "testing-documents",
+      "userCreatable": true
     }
   ],
   "emailTemplates": [
     {
       "id": "order.shipped",
       "properties": {
-        "subject": "This is the subject line!"
+        "subject": "Your order shipped! Order: #{order.number}"
       },
       "template": "email/order-shipped",
       "title": "Order Shipped: NO this is the subject!"

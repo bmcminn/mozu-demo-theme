@@ -1,0 +1,20 @@
+
+{% with pageContext.isEditMode as editMode %}
+{% with model.config as slideshow %}
+
+  {% if editMode %}
+    <p>Slideshow: {{ slideshow.id|lower }}</p>
+
+  {% else %}
+    {% require_script "widgets/slideshow-bob" %}
+
+  {% endif %}
+
+  {# TODO: consider allocating this into it's own stylesheet #}
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.8/slick.css"/>
+
+  <div data-mz-widget="{{ model.definitionId }}" data-slideshow="{{ slideshow.id|lower }}" data-slick="{% json_attribute model.config %}" data-mz-config="{% json_attribute model %}">
+  </div>
+
+{% endwith %}
+{% endwith %}

@@ -10,9 +10,9 @@
   TODO: need more work on this type of integration and a practical use case.
 {% endcomment %}
 
-<div data-mz-widget="video-embed" data-mz-video-url="{{ model.config.url|default(model) }}" data-mz-widget-model="{% json_attribute model %}">
+<div data-mz-widget="video-embed" data-mz-config="{% json_attribute model %}">
   <iframe src="" width="560" height="315"></iframe>
-	<noscript>{{ labels.videoNojsLoadMessage }}</noscript>
+  <noscript>{{ labels.videoNojsLoadMessage }}</noscript>
 </div>
 
 {# https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php #}

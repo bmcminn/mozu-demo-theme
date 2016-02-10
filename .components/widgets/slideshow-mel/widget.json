@@ -1,0 +1,114 @@
+{
+    "id": "bcm~slideshow-mel",
+    "displayName": "Slideshow Mel",
+    "displayTemplate": "bcm/slideshow-mel",
+    "icon": "/resources/admin/widgets/bcm~slideshow-mel.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "anchor": "100%",
+        "xtype": "mz-input-text",
+
+        // ----------------------------------
+
+        "id": "bob"
+        // "lazyLoadImages": true,
+        // "image": false
+    },
+
+    // ----------------------------------
+
+    "editViewFields": [
+
+
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h2>Slide Configuration</h2>"
+            }
+        },
+
+            {
+                "name": "id",
+                "fieldLabel": "Slideshow ID <a title=\"ID of the slideshow you want to put this slide into.\">[?]</a>",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+
+
+            // {
+            //     "name": "lazyLoadImages",
+            //     "fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https:\/\/css-tricks.com\/snippets\/javascript\/lazy-loading-images\/\">[?]</a>",
+            //     "xtype": "mz-input-checkbox"
+            // },
+
+
+        // ==================================================
+        // SLIDE ONE CONFIG
+        // --------------------------------------------------
+
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+            }
+        },
+
+
+            {
+                "name": "targetUrl",
+                "fieldLabel": "Target Url",
+                "xtype": "mz-input-navnode",
+                "anchor": "100%"
+            },
+
+                // {
+                //     "xtype": "label",
+                //     "text": "OR"
+                // },
+
+            {
+                "name": "customTargetUrl",
+                "fieldLabel": "Custom Target Url",
+                "anchor": "100%"
+            },
+
+            {
+                "name": "image",
+                "fieldLabel": "Slide Image",
+                "xtype": "mz-input-image"
+            },
+
+
+            // ======================================================================
+
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+            }
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3>Custom Markup and Styles</h3><ul><li><code>{0}</code>: Target Url</li><li><code>{1}</code>: Custom Target Url</li><li><code>{2}</code>: Slide Image</li></ul>"
+            }
+        },
+
+            {
+                "name": "customMarkup",
+                "fieldLabel": "Custom Slide Markup/Content",
+                "xtype": "mz-input-code",
+                "anchor": "100%"
+            },
+
+            {
+                "name": "customStyles",
+                "fieldLabel": "Custom Slide Styles",
+                "xtype": "mz-input-code",
+                "anchor": "100%"
+            }
+
+    ]
+}

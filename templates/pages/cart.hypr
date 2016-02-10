@@ -1,18 +1,26 @@
 {% extends "page" %}
 
+
 {% block title-tag-content %}{% firstof pageContext.metaTitle labels.cart %} - {% parent %}{% endblock title-tag-content %}
 
+
 {% block head-tag-scripts %}
-{% parent %}
-{% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
-{% include "modules/common/anti-clickjacking-script" %}
-{% endif %}
+  {% parent %}
+  {% if siteContext.checkoutSettings.visaCheckout.isEnabled and not pageContext.isEditMode %}
+    {% include "modules/common/anti-clickjacking-script" %}
+  {% endif %}
 {% endblock head-tag-scripts %}
 
 
+{% comment %}
+{% block stylesheets %}
+    {% parent %}
+
+{% endblock stylesheets %}
+{% endcomment %}
+
 
 {% block body-tag-classes %} mz-cart {% endblock body-tag-classes %}
-
 
 
 {% block site-nav %}{% endblock site-nav %}
@@ -23,19 +31,23 @@
 
 {% block body-content %}
 
-{% require_script "pages/cart" %}
+  {% require_script "pages/cart" %}
 
-{% preload_json model "cart" %}
+  {% preload_json model "cart" %}
 
-<div class="mz-l-container">
-	<h1 class="mz-pagetitle">{{ labels.cart }}</h1>
-	<form method="post" action="{{ siteContext.secureHost }}/cart/checkout" id="cartform">
-		{% dropzone "cart-top" scope="template" %}
-		<input type="hidden" name="id" value="{{ model.id }}" />
-				{% include "modules/common/message-bar" with model=model.messages %}
-				<table class="mz-table mz-table-cart" id="cart">
-						{% include "modules/cart/cart-table" %}
-				</table>
-	</form>
-</div>
+  <div class="mz-l-container">
+    <h1 class="mz-pagetitle">{{ labels.cart }}</h1>
+
+    <form method="post" action="{{ siteContext.secureHost }}/cart/checkout" id="cartform">
+      {% dropzone "cart-top" scope="template" %}
+
+      <input type="hidden" name="id" value="{{ model.id }}" />
+
+      {% include "modules/common/message-bar" with model=model.messages %}
+
+      <table class="mz-table mz-table-cart" id="cart">
+        {% include "modules/cart/cart-table" %}
+      </table>
+    </form>
+  </div>
 {% endblock body-content %}

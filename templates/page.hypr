@@ -11,126 +11,140 @@
 {% endblock open-html-tag %}
 
 {% block head-tag %}
-	<head>
+  <head>
 
-		{% include "modules/json-required-for-hyprlive" %}
+    {% include "modules/json-required-for-hyprlive" %}
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="correlationId" content="{{ pageContext.correlationId }}">
 
-		{% block meta-tags %}
-			<meta name="description" content="{{ pageContext.metaDescription }}">
-			<meta name="keywords" content="{{ pageContext.metaKeywords }}">
-		{% endblock meta-tags %}
+    {% block meta-tags %}
+      <meta name="description" content="{{ pageContext.metaDescription }}">
+      <meta name="keywords" content="{{ pageContext.metaKeywords }}">
+    {% endblock meta-tags %}
 
 
-		<meta name="correlationId" content="{{ pageContext.correlationId }}">
 
 
     <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %} Waffles</title>
 
-
-		{% if pageContext.FeedUrl %}
-			<link rel="alternate" type="application/rss+xml" title="{{ pageContext.Title }}" href="{{ pageContext.FeedUrl }}" />
-		{% endif %}
-
-
-		{% block canonical-tag %}
-			{% include "modules/canonical-tag" %}
-		{% endblock canonical-tag %}
+    {% if pageContext.feedUrl  %}
+      <link rel="alternate" type="application/rss+xml" title="{{ pageContext.title }}" href="{{ pageContext.FeedUrl }}" />
+    {% endif %}
 
 
-		{% block storefront-less %}
-			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" />
-		{% endblock storefront-less %}
+    {% with pageContext.crawlerInfo as crawlerInfo %}
+      {% if crawlerInfo.canonicalUrl  %}
+        <link rel="canonical" href="{{ crawlerInfo.canonicalUrl }}">
+      {% endif %}
 
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/overrides.less" %}" />
-			<link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/widgets.less" %}" />
-		{% endblock stylesheets %}
+      {% if crawlerInfo.previousUrl  %}
+        <link rel="prev" href="{{ crawlerInfo.previousUrl }}">
+      {% endif %}
+
+      {% if crawlerInfo.nextUrl  %}
+        <link rel="next" href="{{ crawlerInfo.nextUrl }}">
+      {% endif %}
+    {% endwith %}
 
 
-		{% block head-tag-scripts %}
-			<script src="{% make_url "cdn" "/scripts/vendor/modernizr.min.js" %}"></script>
-			{% include "modules/web-fonts-loader" %}
-		{% endblock head-tag-scripts %}
+    {% block storefront-less %}
+      <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" />
+    {% endblock storefront-less %}
+
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/overrides.less" %}" />
+      <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/widgets.less" %}" />
+    {% endblock stylesheets %}
 
 
-		{% cms_resources %}
-		{% header_content %}
+    {% block head-tag-scripts %}
+      <script src="{% make_url "cdn" "/scripts/vendor/modernizr.min.js" %}"></script>
+      {% include "modules/web-fonts-loader" %}
+    {% endblock head-tag-scripts %}
 
-	</head>
+
+    {% cms_resources %}
+    {% header_content %}
+
+  </head>
 {% endblock head-tag %}
 
 
 {% block body-tag %}
 
-	{% block open-body-tag %}
-	<body class="{% block body-tag-classes %}{% if siteContext.isEditMode %}mz-edit-mode{% endif %}{% endblock body-tag-classes %}">
-	{% endblock open-body-tag %}
+  {% block open-body-tag %}
+  <body class="{% block body-tag-classes %}{% if siteContext.isEditMode %} mz-edit-mode{% endif %}{% endblock body-tag-classes %}">
+  {% endblock open-body-tag %}
 
 
-		{% include "debug/debug-hypr" %}
+    {% if pageContext.isDebugMode %}
+      {% include "debug/models" %}
+    {% endif %}
 
 
-		<div id="page-wrapper" class="mz-l-pagewrapper">
+    <div id="page-wrapper" class="mz-l-pagewrapper">
 
-			{% block utility-bar %}
-				{% include "modules/utility-bar/header" %}
-			{% endblock utility-bar %}
-
-
-			{% block page-header %}
-				{% include "modules/page-header" %}
-			{% endblock page-header %}
+      {% block utility-bar %}
+        {% include "modules/utility-bar/header" %}
+      {% endblock utility-bar %}
 
 
-			{% block site-nav %}
-				{% include "modules/site-nav" %}
-			{% endblock site-nav %}
+      {% block page-header %}
+        {% include "modules/page-header" %}
+      {% endblock page-header %}
 
 
-			<div role="main" id="page-content" class="mz-l-pagecontent">
-
-				{% block breadcrumbs %}
-					{% if themeSettings.showBreadcrumbs and not pageContext.isMobile %}
-						{% include "modules/breadcrumbs" %}
-					{% endif %}
-				{% endblock breadcrumbs %}
+      {% block site-nav %}
+        {% include "modules/site-nav" %}
+      {% endblock site-nav %}
 
 
-				{% block body-content %}
-					{% dropzone "body" scope="page" %}
-				{% endblock body-content %}
+      <div role="main" id="page-content" class="mz-l-pagecontent">
+
+        {% block breadcrumbs %}
+          {% if themeSettings.showBreadcrumbs and not pageContext.isMobile %}
+            {% include "modules/breadcrumbs" %}
+          {% endif %}
+        {% endblock breadcrumbs %}
 
 
-				{% block body-below-content %}
-					{% dropzone "body-bottom" scope="template" %}
-				{% endblock body-below-content %}
-
-			</div>
+        {% block body-content %}
+          {% dropzone "body" scope="page" %}
+        {% endblock body-content %}
 
 
-			{% block page-footer %}
-				{% include "modules/page-footer" %}
-			{% endblock page-footer %}
+        {% block body-below-content %}
+          {% dropzone "body-bottom" scope="template" %}
+        {% endblock body-below-content %}
+
+      </div>
 
 
-			{% block softcart %}
-				{% include "modules/soft-cart/soft-cart-container" %}
-			{% endblock softcart %}
-
-		</div>
+      {% block page-footer %}
+        {% include "modules/page-footer" %}
+      {% endblock page-footer %}
 
 
-		{% block trailing-scripts %}
-			{% include "modules/trailing-scripts" %}
-		{% endblock trailing-scripts %}
+      {% block softcart %}
+        {% include "modules/soft-cart/soft-cart-container" %}
+      {% endblock softcart %}
+
+    </div>
 
 
-		{% visitor_tracking_pixel %}
+    {% block trailing-scripts %}
+      {% include "modules/trailing-scripts" %}
+    {% endblock trailing-scripts %}
 
-	</body>
+
+    {% if not pageContext.isDebugMode %}
+      {% visitor_tracking_pixel %}
+    {% endif %}
+
+
+  </body>
 {% endblock body-tag %}
 
 </html>

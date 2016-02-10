@@ -1,0 +1,397 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+
+{% block body-content %}
+  <style type="text/css">
+    table {
+      width: 100%;
+    }
+    table tr,
+    table td {
+      border: 1px solid #ccc;
+    }
+    table td {
+      padding: 0.5rem;
+    }
+  </style>
+
+
+  <p>
+    <a href="http://se2.php.net/manual/en/function.date.php" target="_blank">PHP Documentation Link</a> referenced in the <a href="http://developer.mozu.com/content/learn/themedev/ref/hyprlive-tags.htm#now" target="_blank"><code>{% {% templatetag openblock %} now {% templatetag closeblock %}</code> tag documents</a>.
+  </p>
+
+
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= DAY ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th><code>{ now }</code></th>
+        <th><code>{ now }</code></th>
+        <th>Notes</th>
+      </tr>
+
+      <tr>
+        <td>d</td>
+        <td>01 to 31</td>
+        <td>{% now "d" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>Mon through Sun</td>
+        <td>{% now "D" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>j</td>
+        <td>1 to 31</td>
+        <td>{% now "j" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>l</td>
+        <td>Sunday through Saturday</td>
+        <td>{% now "l" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td>1 (for Monday) through 7 (for Sunday)</td>
+        <td>{% now "N" %}</td>
+        <td>Returns an entirely wrong value per the PHP documentation</td>
+      </tr>
+      <tr>
+        <td>(j)S</td>
+        <td>st, nd, rd or th</td>
+        <td>{% now "jS" %}</td>
+        <td>Returns an incorrectly formatted value per the PHP documentation</td>
+      </tr>
+      <tr>
+        <td>w</td>
+        <td>0 (for Sunday) through 6 (for Saturday)</td>
+        <td>{% now "w" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>z</td>
+        <td>0 through 365</td>
+        <td>{% now "z" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= WEEK ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+
+      <tr>
+        <td>W</td>
+        <td>42 (the 42nd week in the year)</td>
+        <td>{% now "W" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= MONTH ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>January through December</td>
+        <td>{% now "F" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>m</td>
+        <td>01 through 12</td>
+        <td>{% now "m" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>M</td>
+        <td>Jan through Dec</td>
+        <td>{% now "M" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>n</td>
+        <td>1 through 12</td>
+        <td>{% now "n" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>t</td>
+        <td>28 through 31</td>
+        <td>{% now "t" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= YEAR ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>L</td>
+        <td>1 if it is a leap year, 0 otherwise.</td>
+        <td>{% now "L" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>o</td>
+        <td>1999 or 2003</td>
+        <td>{% now "o" %}</td>
+        <td>Does not return a value</td>
+      </tr>
+      <tr>
+        <td>Y</td>
+        <td>1999 or 2003</td>
+        <td>{% now "Y" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>y</td>
+        <td>99 or 03</td>
+        <td>{% now "y" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= TIME ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td>am or pm</td>
+        <td>{% now "a" %}</td>
+        <td>Returns an incorrectly formatted value per the PHP documentation</td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>AM or PM</td>
+        <td>{% now "A" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>000 through 999</td>
+        <td>{% now "B" %}</td>
+        <td>Does not return a value</td>
+      </tr>
+      <tr>
+        <td>g</td>
+        <td>1 through 12</td>
+        <td>{% now "g" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>G</td>
+        <td>0 through 23</td>
+        <td>{% now "G" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>h</td>
+        <td>01 through 12</td>
+        <td>{% now "h" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>H</td>
+        <td>00 through 23</td>
+        <td>{% now "H" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>i</td>
+        <td>00 to 59</td>
+        <td>{% now "i" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>s</td>
+        <td>00 through 59</td>
+        <td>{% now "s" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>u</td>
+        <td>654321</td>
+        <td>{% now "u" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= TIMEZONE ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>e</td>
+        <td>UTC, GMT, Atlantic/Azores</td>
+        <td>{% now "e" %}</td>
+        <td>Does not return a value</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>1 if Daylight Saving Time, 0 otherwise.</td>
+        <td>{% now "I" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>O</td>
+        <td>+0200</td>
+        <td>{% now "O" %}</td>
+        <td>Returns an incorrectly formatted value per the PHP documentation</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>+02:00</td>
+        <td>{% now "P" %}</td>
+        <td>Returns an incorrectly formatted value per the PHP documentation</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>EST, MDT ...</td>
+        <td>{% now "T" %}</td>
+        <td>Does not return a value</td>
+      </tr>
+      <tr>
+        <td>Z</td>
+        <td>-43200 through 50400</td>
+        <td>{% now "Z" %}</td>
+        <td>Does not return a value</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+<br>
+<br>
+<br>
+
+  <table>
+    <tbody>
+
+      <tr>
+        <th colspan="5">========= FULL DATE TIME ==========</th>
+      </tr>
+
+      <tr>
+        <th>Value</th>
+        <th>Expected (per PHP docs)</th>
+        <th>Actual</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>c</td>
+        <td>2004-02-12T15:19:21+00:00</td>
+        <td>{% now "c" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>r</td>
+        <td>Thu, 21 Dec 2000 16:01:07 +0200</td>
+        <td>{% now "r" %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>U</td>
+        <td>Seconds since the Unix Epoch</td>
+        <td>{% now "U" %}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+{% endblock body-content %}

@@ -3,29 +3,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	{% if pageContext.isEditMode %}
-		{% include "modules/json-required-for-hyprlive" %}
-		{% include "modules/trailing-scripts" %}
-		{% cms_resources %}
-	{% endif %}
+  {% if pageContext.isEditMode or pageContext.isDebugMode %}
+    {% include "modules/json-required-for-hyprlive" %}
+    {% include "modules/trailing-scripts" %}
+    {% cms_resources %}
+  {% endif %}
 </head>
 
 <body>
 
-	{% if pageContext.isEditMode or pageContext.isDebugMode or model.email == "brandtley_mcminn@volusion.com" %}
-		{% include "debug/debug-emails" with model=model %}
-	{% endif %}
+  {% if pageContext.isEditMode or pageContext.isDebugMode or model.email == "brandtley_mcminn@volusion.com" %}
+    {% include "debug/models" with pageModel=model %}
+  {% endif %}
 
 
   {% with siteContext.generalSettings.websiteName as storeName %}
 
-  	<table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">
-  		<tr>
-  			<td class="center" align="center" valign="top">
-  				<center>
+    <table id="backgroundTable" class="body" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center>
 
             {% block viewInBrowser %}
               <table>
@@ -73,69 +73,69 @@
 
 
         {% comment %}
-					<table class="container">
-						<thead>
-							<th>
-								<td><img src="https://{{ domainName }}/resources/images/email-banner.jpg"></td>
-							</th>
-						</thead>
+          <table class="container">
+            <thead>
+              <th>
+                <td><img src="https://{{ domainName }}/resources/images/email-banner.jpg"></td>
+              </th>
+            </thead>
 
-						<tr>
-							<td>
+            <tr>
+              <td>
 
-								<table class="row">
-									<tr>
-										<td class="wrapper last">
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
 
-											<div>
-												{{ pageContext.cmsContext.page.document.properties.html_1|safe }}
-											</div>
+                      <div>
+                        {{ pageContext.cmsContext.page.document.properties.html_1|safe }}
+                      </div>
 
-											{% block body-content %}
-											{% endblock body-content %}
+                      {% block body-content %}
+                      {% endblock body-content %}
 
-											<div>
-												{{ pageContext.cmsContext.page.document.properties.html_2|safe }}
-											</div>
+                      <div>
+                        {{ pageContext.cmsContext.page.document.properties.html_2|safe }}
+                      </div>
 
-										</td>
-									</tr>
-								</table>
-								{# end body content #}
+                    </td>
+                  </tr>
+                </table>
+                {# end body content #}
 
-								<table class="row">
-									<tr>
-										<td class="wrapper last">
-											<p>
-												{{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }},
-												{{ siteContext.domains.current.domainName|urlize|safe }}
-											</p>
-										</td>
-									</tr>
-								</table>
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last">
+                      <p>
+                        {{ labels.emailClosing|string_format(siteContext.generalSettings.websiteName)|safe }},
+                        {{ siteContext.domains.current.domainName|urlize|safe }}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
 
-								{# necessary? #}
-								<table class="row">
-									<tr>
-										<td class="wrapper last"></td>
-										<td class="expander"></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-					{# end main content container #}
+                {# necessary? #}
+                <table class="row">
+                  <tr>
+                    <td class="wrapper last"></td>
+                    <td class="expander"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          {# end main content container #}
 
-				</center>
-			</td>
-		</tr>
-	</table>
-	{# end main container #}
+        </center>
+      </td>
+    </tr>
+  </table>
+  {# end main container #}
 
 
-	{% block email-tracking-pixel %}
-		{# TODO: add snippet for tracking pixel here #}
-	{% endblock email-tracking-pixel %}
+  {% block email-tracking-pixel %}
+    {# TODO: add snippet for tracking pixel here #}
+  {% endblock email-tracking-pixel %}
 
 </body>
 </html>

@@ -1,0 +1,343 @@
+{
+    "id": "bcm~slideshow-bob",
+    "displayName": "Slideshow Bob",
+    "displayTemplate": "bcm/slideshow-bob",
+    "icon": "/resources/admin/widgets/bcm~slideshow-bob.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+
+        // ----------------------------------
+
+        "id": "bob",
+        "lazyLoadImages": true,
+
+
+        // ----------------------------------
+
+        // TODO: figure out how to make the commented features configurable
+
+        "accessibility":        true,
+        "autoplay":             false,
+        "autoplaySpeed":        3000,
+        "centerMode":           false,
+        "centerPadding":        "50px",
+        "cssEase":              "ease",
+        // "customPaging":         "",
+        "dots":                 false,
+        "dotsClass":            "slick-dots",
+        "draggable":            true,
+        "easing":               "linear",
+        "edgeFriction":         0.15,
+        "fade":                 false,
+        "arrows":               true,
+        // "appendArrows":         $element),
+        // "appendDots":           $element),
+        "mobileFirst":          false,
+        // "prevArrow":            (html,
+        // "nextArrow":            (html,
+        "infinite":             true,
+        "initialSlide":         0,
+        "lazyLoad":             "ondemand",
+        "pauseOnHover":         true,
+        "pauseOnDotsHover":     false,
+        "respondTo":            "window",
+        "responsive":           null,
+        "rows":                 1,
+        "slide":                "",
+        "slidesPerRow":         1,
+        "slidesToShow":         1,
+        "slidesToScroll":       1,
+        "speed":                300,
+        "swipe":                true,
+        "swipeToSlide":         false,
+        "touchMove":            true,
+        "touchThreshold":       5,
+        "useCSS":               true,
+        "variableWidth":        false,
+        "vertical":             false,
+        "verticalSwiping":      false,
+        "rtl":                  false,
+        "waitForAnimate":       true,
+        "zIndex":               1000
+
+    },
+    "editViewFields": [
+
+
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h2>Slideshow Configuration</h2>"
+            }
+        },
+
+            {
+                "name": "id",
+                "fieldLabel": "Slideshow Name <a title=\"Unique name or ID of the current slideshow.\">[?]</a>",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+
+            // {
+            //     "name": "lazyLoadImages",
+            //     "fieldLabel": "Lazy Load slides <a title=\"More info about lazy loading images\" href=\"https:\/\/css-tricks.com\/snippets\/javascript\/lazy-loading-images\/\">[?]</a>",
+            //     "xtype": "mz-input-checkbox"
+            // },
+
+
+        // ==================================================
+
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<hr style=\"margin-top: 3rem;margin-bottom: 3rem;border: 0;border-bottom: 1px solid #e3e3e3;\"/>"
+            }
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3>Slideshow Options</h3>"
+            }
+        },
+
+
+        // ==================================================
+        // SLIDESHOW OPTIONS CONFIG
+        // --------------------------------------------------
+
+            {
+                "name": "accessibility",
+                "fieldLabel": "Enables tabbing and arrow key navigation",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "autoplay",
+                "fieldLabel": "Enables auto play of slides",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "autoplaySpeed",
+                "fieldLabel": "Auto play change interval",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "centerMode",
+                "fieldLabel": "Enables centered view with partial prev/next slides. Use with odd numbe}red slidesToShow counts.",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "centerPadding",
+                "fieldLabel": "Side padding when in center mode. (px or %)",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            {
+                "name": "cssEase",
+                "fieldLabel": "CSS3 easing",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            // {
+            //  "name": "customPaging",
+            //  "fieldLabel": "a    Custom paging templates. See source for use example.",
+            // },
+            {
+                "name": "dots",
+                "fieldLabel": "Current slide indicator dots",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "dotsClass",
+                "fieldLabel": "Class for slide indicator dots container",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            {
+                "name": "draggable",
+                "fieldLabel": "Enables desktop dragging",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "easing",
+                "fieldLabel": "animate() fallback easing",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            {
+                "name": "edgeFriction",
+                "fieldLabel": "Resistance when swiping edges of non-infinite carousels",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "fade",
+                "fieldLabel": "Enables fade",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "arrows",
+                "fieldLabel": "Enable Next/Prev arrows",
+                "xtype": "mz-input-checkbox"
+            },
+            // {
+            //  "name": "appendArrows",
+            //      // string   $(element)
+            //  "fieldLabel": "Change where the navigation arrows are attached (Selector, htmlString, Array, Element, jQuery object)",
+            // },
+            // {
+            //  "name": "appendDots",
+            //      // string   $(element)
+            //  "fieldLabel": "Change where the navigation dots are attached (Selector, htmlString, Array, Element, jQuery object)",
+            // },
+            {
+                "name": "mobileFirst",
+                "fieldLabel": "Responsive settings use mobile first calculation",
+                "xtype": "mz-input-checkbox"
+            },
+            // {
+            //  "name": "prevArrow",
+            //      // string (html
+            //  "fieldLabel": "jQuery selector) object (DOM node",
+            // },
+            // {
+            //  "name": "nextArrow",
+            //      // string (html
+            //  "fieldLabel": "jQuery selector) object (DOM node",
+            // },
+            {
+                "name": "infinite",
+                "fieldLabel": "Infinite looping",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "initialSlide",
+                "fieldLabel": "Slide to start on",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "lazyLoad",
+                "fieldLabel": "Accepts 'ondemand' or 'progressive' for lazy load technique",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            {
+                "name": "pauseOnHover",
+                "fieldLabel": "Pauses autoplay on hover",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "pauseOnDotsHover",
+                "fieldLabel": "Pauses autoplay when a dot is hovered",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "respondTo",
+                "fieldLabel": "Width that responsive object responds to. Can be 'window', 'slider' or 'min' (the smaller of the two).",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            // {
+            //  "name": "responsive",
+            //  "fieldLabel": "Object containing breakpoints and settings objects (see demo). Enables settings sets at given screen width. Set settings to \"unslick\" instead of an object to disable slick at a given breakpoint.",
+            //  "xtype": "mz-input-textarea"
+            // },
+            {
+                "name": "rows",
+                "fieldLabel": "Setting this to more than 1 initializes grid mode. Use slidesPerRow to set how many slides should be in each row.",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "slide",
+                "fieldLabel": "Slide element query",
+                "xtype": "mz-input-text",
+                "anchor": "100%"
+            },
+            {
+                "name": "slidesPerRow",
+                "fieldLabel": "With grid mode intialized via the rows option, this sets how many slides are in each grid row. dver",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "slidesToShow",
+                "fieldLabel": "# of slides to show at a time",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "slidesToScroll",
+                "fieldLabel": "# of slides to scroll at a time",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "speed",
+                "fieldLabel": "Transition speed",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "swipe",
+                "fieldLabel": "Enables touch swipe",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "swipeToSlide",
+                "fieldLabel": "Swipe to slide irrespective of slidesToScroll",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "touchMove",
+                "fieldLabel": "Enables slide moving with touch",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "touchThreshold",
+                "fieldLabel": "To advance slides, the user must swipe a length of (1/touchThreshold) * the width of the slider.",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            },
+            {
+                "name": "useCSS",
+                "fieldLabel": "Enable/Disable CSS Transitions",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "variableWidth",
+                "fieldLabel": "Disables automatic slide width calculation",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "vertical",
+                "fieldLabel": "Vertical slide direction",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "verticalSwiping",
+                "fieldLabel": "Changes swipe direction to vertical",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "rtl",
+                "fieldLabel": "Change the slider's direction to become right-to-left",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "waitForAnimate",
+                "fieldLabel": "Ignores requests to advance the slide while animating",
+                "xtype": "mz-input-checkbox"
+            },
+            {
+                "name": "zIndex",
+                "fieldLabel": "Set the zIndex values for slides, useful for IE9 and lower",
+                "xtype": "mz-input-number",
+                "anchor": "100%"
+            }
+
+    ]
+}

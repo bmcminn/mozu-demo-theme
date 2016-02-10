@@ -1,0 +1,8 @@
+{
+	"id": "test~documents",
+	"title": "TEST Documents",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "testing-documents",
+	"userCreatable": true
+}

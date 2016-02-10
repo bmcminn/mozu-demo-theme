@@ -1,11 +1,11 @@
-﻿html {
+html {
     height: 100%;
 }
 
 body {
     margin: 0 auto;
     height: 100%;
-    background-color: @bodyBackgroundColor;
+    // background-color: @bodyBackgroundColor;
 	font-family: @fontFamily;
     font-size: @fontSize;
 	color: @textColor;
@@ -27,7 +27,7 @@ p {
     margin: @gutter/2 0;
 }
 
-// preventing FOUT since web fonts are loading asynchronously    
+// preventing FOUT since web fonts are loading asynchronously
 html.js.fontface.wf-loading body {
     visibility: hidden;
 }

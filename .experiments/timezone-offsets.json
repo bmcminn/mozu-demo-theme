@@ -1,0 +1,310 @@
+{
+    "timezoneOffsets": [
+    {
+      "name": "Dateline Standard Time"
+    }
+  , {
+      "name": "UTC-11"
+    }
+  , {
+      "name": "Samoa Standard Time"
+    }
+  , {
+      "name": "Hawaiian Standard Time"
+    }
+  , {
+      "name": "Alaskan Standard Time"
+    }
+  , {
+      "name": "Pacific Standard Time (Mexico)"
+    }
+  , {
+      "name": "Pacific Standard Time"
+    }
+  , {
+      "name": "US Mountain Standard Time"
+    }
+  , {
+      "name": "Mountain Standard Time (Mexico)"
+    }
+  , {
+      "name": "Mountain Standard Time"
+    }
+  , {
+      "name": "Central America Standard Time"
+    }
+  , {
+      "name": "Central Standard Time"
+    , "details": "JST UTC+9h"
+    , "offset": 9
+    }
+  , {
+      "name": "Central Standard Time (Mexico)"
+    }
+  , {
+      "name": "Canada Central Standard Time"
+    }
+  , {
+      "name": "SA Pacific Standard Time"
+    }
+  , {
+      "name": "Eastern Standard Time"
+    }
+  , {
+      "name": "US Eastern Standard Time"
+    }
+  , {
+      "name": "Venezuela Standard Time"
+    }
+  , {
+      "name": "Paraguay Standard Time"
+    }
+  , {
+      "name": "Atlantic Standard Time"
+    }
+  , {
+      "name": "Central Brazilian Standard Time"
+    }
+  , {
+      "name": "SA Western Standard Time"
+    }
+  , {
+      "name": "Pacific SA Standard Time"
+    }
+  , {
+      "name": "Newfoundland Standard Time"
+    }
+  , {
+      "name": "E. South America Standard Time"
+    }
+  , {
+      "name": "Argentina Standard Time"
+    }
+  , {
+      "name": "SA Eastern Standard Time"
+    }
+  , {
+      "name": "Greenland Standard Time"
+    }
+  , {
+      "name": "Montevideo Standard Time"
+    }
+  , {
+      "name": "UTC-02"
+    }
+  , {
+      "name": "Mid-Atlantic Standard Time"
+    }
+  , {
+      "name": "Azores Standard Time"
+    }
+  , {
+      "name": "Cape Verde Standard Time"
+    }
+  , {
+      "name": "Morocco Standard Time"
+    }
+  , {
+      "name": "Coordinated Universal Time"
+    }
+  , {
+      "name": "GMT Standard Time"
+    }
+  , {
+      "name": "Greenwich Standard Time"
+    }
+  , {
+      "name": "W. Europe Standard Time"
+    }
+  , {
+      "name": "Central Europe Standard Time"
+    }
+  , {
+      "name": "Romance Standard Time"
+    }
+  , {
+      "name": "Central European Standard Time"
+    }
+  , {
+      "name": "W. Central Africa Standard Time"
+    }
+  , {
+      "name": "Namibia Standard Time"
+    }
+  , {
+      "name": "Jordan Standard Time"
+    }
+  , {
+      "name": "GTB Standard Time"
+    }
+  , {
+      "name": "Middle East Standard Time"
+    }
+  , {
+      "name": "Egypt Standard Time"
+    }
+  , {
+      "name": "Syria Standard Time"
+    }
+  , {
+      "name": "South Africa Standard Time"
+    }
+  , {
+      "name": "FLE Standard Time"
+    }
+  , {
+      "name": "Turkey Standard Time"
+    }
+  , {
+      "name": "Jerusalem Standard Time"
+    }
+  , {
+      "name": "E. Europe Standard Time"
+    }
+  , {
+      "name": "Arabic Standard Time"
+    }
+  , {
+      "name": "Kaliningrad Standard Time"
+    }
+  , {
+      "name": "Arab Standard Time"
+    }
+  , {
+      "name": "E. Africa Standard Time"
+    }
+  , {
+      "name": "Iran Standard Time"
+    }
+  , {
+      "name": "Arabian Standard Time"
+    }
+  , {
+      "name": "Azerbaijan Standard Time"
+    }
+  , {
+      "name": "Russian Standard Time"
+    }
+  , {
+      "name": "Mauritius Standard Time"
+    }
+  , {
+      "name": "Georgian Standard Time"
+    }
+  , {
+      "name": "Caucasus Standard Time"
+    }
+  , {
+      "name": "Afghanistan Standard Time"
+    }
+  , {
+      "name": "Pakistan Standard Time"
+    }
+  , {
+      "name": "West Asia Standard Time"
+    }
+  , {
+      "name": "India Standard Time"
+    }
+  , {
+      "name": "Sri Lanka Standard Time"
+    }
+  , {
+      "name": "Nepal Standard Time"
+    }
+  , {
+      "name": "Central Asia Standard Time"
+    }
+  , {
+      "name": "Bangladesh Standard Time"
+    }
+  , {
+      "name": "Ekaterinburg Standard Time"
+    }
+  , {
+      "name": "Myanmar Standard Time"
+    }
+  , {
+      "name": "SE Asia Standard Time"
+    }
+  , {
+      "name": "N. Central Asia Standard Time"
+    }
+  , {
+      "name": "China Standard Time"
+    }
+  , {
+      "name": "North Asia Standard Time"
+    }
+  , {
+      "name": "Malay Peninsula Standard Time"
+    }
+  , {
+      "name": "W. Australia Standard Time"
+
+    }
+  , {
+      "name": "Taipei Standard Time"
+    }
+  , {
+      "name": "Ulaanbaatar Standard Time"
+    }
+  , {
+      "name": "North Asia East Standard Time"
+    }
+  , {
+      "name": "Tokyo Standard Time"
+    , "details": "JST UTC+9h"
+    , "offset": 2600
+    , "direction": "plus"
+    }
+  , {
+      "name": "Korea Standard Time"
+    }
+  , {
+      "name": "Cen. Australia Standard Time"
+    }
+  , {
+      "name": "AUS Central Standard Time"
+    }
+  , {
+      "name": "E. Australia Standard Time"
+    }
+  , {
+      "name": "AUS Eastern Standard Time"
+    }
+  , {
+      "name": "West Pacific Standard Time"
+    }
+  , {
+      "name": "Tasmania Standard Time"
+    }
+  , {
+      "name": "Yakutsk Standard Time"
+    }
+  , {
+      "name": "Central Pacific Standard Time"
+    }
+  , {
+      "name": "Vladivostok Standard Time"
+    }
+  , {
+      "name": "New Zealand Standard Time"
+    }
+  , {
+      "name": "UTC+12"
+    }
+  , {
+      "name": "Fiji Standard Time"
+    }
+  , {
+      "name": "Magadan Standard Time"
+    }
+  , {
+      "name": "Kamchatka Standard Time"
+    }
+  , {
+      "name": "Tonga Standard Time"
+    }
+]
+}

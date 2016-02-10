@@ -1,0 +1,21 @@
+
+    // YOUR FOOTER TEMPLATE
+    {% partial_cache %}
+    {% include "modules/footer-tiles" with navModel=navigation.tree %}
+    {% endpartial_cache %}
+
+
+    // templates/modules/footer-tiles.hypr
+    {% with themeSettings as setting %}
+      {% for node in navModel %}
+
+        {% if node.id|lower == setting.footerTile1|lower or node.id|lower == setting.footerTile2|lower ... %}
+          ... RENDER YOUR TILE HERE ...
+        {% endif %}
+
+        {% if node.children.length > 0 %}
+          {% include "modules/footer-tiles.hypr" with navModel=node.children %}
+        {% endif %}
+
+      {% endfor %}
+    {% endwith %}

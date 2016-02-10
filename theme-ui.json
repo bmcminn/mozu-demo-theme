@@ -25,42 +25,6 @@
     },
     {
       "xtype": "panel",
-      "title": "Canonical Settings",
-      "collapsed": false,
-      "items": [
-        {
-          "name": "canonicalHomepageSlug",
-          "fieldLabel": "Homepage slug (update this anytime you change the homepage in Site Builder)",
-          "xtype": "mz-input-text",
-          "anchor": "90%",
-          "width": "90%"
-        },
-        {
-          "name": "canonicalTrailingSlashes",
-          "fieldLabel": "Enable trailing slashes on canonical urls (<code>http://domain.com/link/path/here/</code>)",
-          "xtype": "mz-input-checkbox"
-        },
-        {
-          "name": "canonicalProtocol",
-          "fieldLabel": "Force secure Canonical links (ex: <code>https://domain.tld/</code>)",
-          "xtype": "mz-input-dropdown",
-          "anchor": "90%",
-          "width": "90%",
-          "store": [
-            [
-              "http",
-              "HTTP"
-            ],
-            [
-              "https",
-              "HTTPS"
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "xtype": "panel",
       "title": "Categories",
       "collapsed": false,
       "items": [

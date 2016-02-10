@@ -1,104 +1,92 @@
 
 var configs = {
-			emails:   require('./juice.js')
-		, jsonlint: require('./jsonlint.js')
-		, jshint:   require('./jshint.js')
-    , compress: require('./compress.js')
-		, mozusync: require('./mozusync.js')
-		}
-	;
+      emails:     require('./juice.js'),
+      // jsonlint:   require('./jsonlint.js'),
+      jshint:     require('./jshint.js'),
+      compress:   require('./compress.js'),
+      mozusync:   require('./mozusync.js')
+    }
+  ;
+
 
 module.exports = {
 
-	options: {
-		spawn: false
-	}
+  options: {
+    spawn: false
+  },
 
-
-, json: {
-		files: configs.jsonlint.theme_json.src
-	, tasks: [
-			'jsonlint'
-		]
-	}
-
-
-, lintTooling: {
-    files: configs.jshint.buildtools_js
-  , tasks: [
+  lintTooling: {
+    files: configs.jshint.buildtools_js,
+    tasks: [
       'jshint:buildtools_js'
     ]
-  }
+  },
 
-
-, javascript: {
-    files: configs.jshint.theme_js
-	, tasks: [
-			'jshint:theme_js'
-    , 'jsbeautifier'
-    , 'mozusync:upload'
-		]
-	}
-
-
-, themeJSON: {
-    files: [
-      '.components/**/*.json',
-      '.components/editors/**/*.js'
-    ],
+  javascript: {
+    files: configs.jshint.theme_js,
     tasks: [
-      'theme'
-    , 'mozusync:upload'
+      'newer:jshint:dev',
+      'newer:jsbeautifier',
+      'mozutheme:quickcompile',
+      'newer:mozusync:upload'
     ]
-  }
+  },
 
+  json: {
+    files: configs.jshint.theme_js,
+    // files: [
+    //   '.components/**/*.json',
+    //   '.components/editors/**/*.js'
+    // ],
+    tasks: [
+      'theme',
+      'newer:jshint:dev',
+      'newer:mozusync:upload'
+    ]
+  },
 
-, themeUI: {
+  themeUI: {
     files: [
       '.components/theme-ui/**'
     ],
     tasks: [
-      'theme-ui'
-    , 'mozusync:upload'
+      'theme-ui',
+      'newer:mozusync:upload'
+    ]
+  },
+
+  widgets: {
+    files: [
+      '.components/widgets/**'
+    ],
+    tasks: [
+      'widgetize',
+      'newer:mozusync:upload'
+    ]
+  },
+
+  emails: {
+    files: [
+      configs.emails.emailSrc + '/**/*'
+    ],
+    tasks: [
+      'juice',
+      'strainer:' + configs.emails.emailSrc + '/*.hypr*'
+    ]
+  },
+
+  compress: {
+    files: configs.compress.build.files[0].src,
+    tasks: [
+      'compress'
+    ]
+  },
+
+  sync: {
+    files: configs.mozusync.upload.src,
+    tasks: [
+      'newer:mozusync:upload'
     ]
   }
-
-
-, widgets: {
-		files: [
-			'.components/widgets/**'
-		]
-	, tasks: [
-			'widgetize'
-		, 'mozusync:upload'
-		]
-	}
-
-
-, emails: {
-		files: [
-			configs.emails.emailSrc + '/**/*'
-		],
-		tasks: [
-			'juice'
-		, 'strainer:' + configs.emails.emailSrc + '/*.hypr*'
-		]
-	}
-
-
-, compress: {
-		files: configs.compress.build.files[0].src
-	, tasks: [
-			'compress'
-		]
-	}
-
-
-, sync: {
-		files: configs.mozusync.upload.src,
-		tasks: [
-			'mozusync:upload'
-		]
-	}
 
 };

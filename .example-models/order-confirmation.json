@@ -199,7 +199,9 @@
         }
     ],
     "channelCode": "online",
-    "couponCodes": [],
+    "couponCodes": [
+        "27DCE483"
+    ],
     "currencyCode": "USD",
     "customerAccountId": 1004,
     "customerInteractionType": "Unknown",
@@ -352,7 +354,10 @@
                     }
                 ],
                 "price": {
-                    "price": 250
+                    "price": 8.99,
+                    "salePrice": 6.99,
+                    "msrp": 10.99
+                },
                 },
                 "discountsRestricted": false,
                 "isTaxable": true,

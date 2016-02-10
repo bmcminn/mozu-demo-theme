@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         async           = require('async'),
 
         done            = this.async(),
-        currentVersion  = theme.about.version,
+        currentVersion  = pkg.version,
         self            = this,
 
         applyVersion = function(newver) {
@@ -40,16 +40,16 @@ module.exports = function(grunt) {
                   next(cb);
                 }
 
-              , bowerjson: function(cb) {
-                  var bower = grunt.file.readJSON('bower.json');
+              // , bowerjson: function(cb) {
+              //     var bower = grunt.file.readJSON('bower.json');
 
-                  bower.version = newver;
+              //     bower.version = newver;
 
-                  grunt.file.write('bower.json', JSON.stringify(bower, null, 2));
-                  grunt.log.ok('Updated bower.json version to ' + newver);
+              //     grunt.file.write('bower.json', JSON.stringify(bower, null, 2));
+              //     grunt.log.ok('Updated bower.json version to ' + newver);
 
-                  next(cb);
-                }
+              //     next(cb);
+              //   }
 
               , themejson: function(cb) {
                   theme.about.version = newver;
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
       applyVersion(manualVer);
       //done(true);
     } else {
-      applyVersion(theme.about.version);
+      applyVersion(currentVersion);
       // childProcess.exec(this.data.cmd || 'git describe --tags --always', function(err, stdout, stderr) {
       //   if (err || stderr) {
       //     return grunt.fail.fatal(err || stderr);

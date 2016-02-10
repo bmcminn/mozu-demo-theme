@@ -1,0 +1,8 @@
+{
+	"id": "test~date-time-formats",
+	"title": "TEST Date time formats",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "testing-dates",
+	"userCreatable": true
+}

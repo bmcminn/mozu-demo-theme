@@ -1,0 +1,2 @@
+    {% require_script "modules/soft-cart" %}
+    <div class="soft-cart-wrap" data-mz-role="soft-cart"></div>

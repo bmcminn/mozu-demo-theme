@@ -65,6 +65,11 @@
       {% endfor %}
 
 
+      {% json model.couponCodes %}<br>
+
+      {{ model.couponCodes|first }}
+
+
       <div class="mz-l-stack-section">
         <h4 class="mz-l-stack-sectiontitle">{{ labels.orderSummary }}</h4>
 
