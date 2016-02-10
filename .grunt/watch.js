@@ -25,10 +25,10 @@ module.exports = {
   javascript: {
     files: configs.jshint.production.src,
     tasks: [
-      'newer:jshint:dev',
-      'newer:jsbeautifier',
+      'jshint:dev',
+      // 'jsbeautifier',
       'mozutheme:quickcompile',
-      'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -40,8 +40,8 @@ module.exports = {
     // ],
     tasks: [
       'theme',
-      'newer:jshint:dev',
-      'newer:mozusync:upload'
+      'jshint:dev',
+      'mozusync:upload'
     ]
   },
 
@@ -51,7 +51,7 @@ module.exports = {
     ],
     tasks: [
       'theme-ui',
-      'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -61,7 +61,7 @@ module.exports = {
     ],
     tasks: [
       'widgetize',
-      'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -85,7 +85,7 @@ module.exports = {
   sync: {
     files: configs.mozusync.upload.src,
     tasks: [
-      'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   }
 
