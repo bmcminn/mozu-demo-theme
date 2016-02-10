@@ -1,0 +1,24 @@
+{% with pageContext.isDebugMode as debugMode %}
+{% with pageContext.pageType as pageType %}
+{% with "{0}||{1}"|string_format(model.definitionId, model.id) as widgetName %}
+
+  <div data-mz-role="widget-debug-panel" data-widget-id="{{ widgetName }}">
+
+    <label for="debug-widgetId">
+      <code>widgetId:&nbsp;</code>
+      <textarea rows="1" id="debug-widgetId" name="debug-widgetId">{{ widgetName }}</textarea>
+    </label><br>
+
+
+    <label for="debug-{{ model.definitionId }}">
+      <code>{{ model.definitionId }}:&nbsp;</code>
+      <textarea rows="1" id="debug-{{ model.definitionId }}" name="debug-{{ model.definitionId }}">{% json_attribute model.definitionId %}</textarea>
+    </label><br>
+
+    {% preload_json widgetModel widgetName %}
+
+  </div>
+
+{% endwith %}
+{% endwith %}
+{% endwith %}
