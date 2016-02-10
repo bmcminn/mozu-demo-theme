@@ -6,24 +6,20 @@
     "validPageTypes": [
         "*"
     ],
-
     "defaultConfig": {
         "autoplay": false,
         "loop": false,
         "allowfullscreen": true,
         "timestart": "0:00",
-
         "youtubeRel": false,
         "youtubeControls": true,
         "youtubeShowinfo": true,
         "youtubeNocookie": false,
-
         "vimeoPortrait": true,
         "vimeoTitle": true,
         "vimeoByline": true,
         "vimeoColor": "#00adef"
     },
-
     "editViewFields": [
         {
             "fieldLabel": "Video ID or URL",
@@ -32,96 +28,84 @@
             "allowBlank": false,
             "anchor": "90%"
         },
-
-
-
         {
             "xtype": "box",
             "autoEl": {
                 "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">General Settings</h3>"
             }
         },
-            {
-                "fieldLabel": "Autoplay this video",
-                "xtype": "mz-input-checkbox",
-                "name": "autoplay"
-            },
-            {
-                "fieldLabel": "Loop this video",
-                "xtype": "mz-input-checkbox",
-                "name": "loop"
-            },
-            {
-                "fieldLabel": "Allow full screen",
-                "xtype": "mz-input-checkbox",
-                "name": "allowfullscreen"
-            },
-
-            {
-                "anchor": "20%",
-                "xtype": "mz-input-text",
-                "fieldLabel": "Start video at specific time (ex: mm:ss)",
-                "name": "timestart"
-            },
-
-
-
+        {
+            "fieldLabel": "Autoplay this video",
+            "xtype": "mz-input-checkbox",
+            "name": "autoplay"
+        },
+        {
+            "fieldLabel": "Loop this video",
+            "xtype": "mz-input-checkbox",
+            "name": "loop"
+        },
+        {
+            "fieldLabel": "Allow full screen",
+            "xtype": "mz-input-checkbox",
+            "name": "allowfullscreen"
+        },
+        {
+            "anchor": "20%",
+            "xtype": "mz-input-text",
+            "fieldLabel": "Start video at specific time (ex: mm:ss)",
+            "name": "timestart"
+        },
         {
             "xtype": "box",
             "autoEl": {
                 "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">YouTube Settings</h3>"
             }
         },
-            {
-                "fieldLabel": "Show Related videos after video",
-                "xtype": "mz-input-checkbox",
-                "name": "youtubeRel"
-            },
-            {
-                "fieldLabel": "Show video controls",
-                "xtype": "mz-input-checkbox",
-                "name": "youtubeControls"
-            },
-            {
-                "fieldLabel": "Show video info",
-                "xtype": "mz-input-checkbox",
-                "name": "youtubeShowinfo"
-            },
-            {
-                "fieldLabel": "Show video info",
-                "xtype": "mz-input-checkbox",
-                "name": "youtubeNocookie"
-            },
-
-
-
+        {
+            "fieldLabel": "Show Related videos after video",
+            "xtype": "mz-input-checkbox",
+            "name": "youtubeRel"
+        },
+        {
+            "fieldLabel": "Show video controls",
+            "xtype": "mz-input-checkbox",
+            "name": "youtubeControls"
+        },
+        {
+            "fieldLabel": "Show video info",
+            "xtype": "mz-input-checkbox",
+            "name": "youtubeShowinfo"
+        },
+        {
+            "fieldLabel": "Show video info",
+            "xtype": "mz-input-checkbox",
+            "name": "youtubeNocookie"
+        },
         {
             "xtype": "box",
             "autoEl": {
                 "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">Vimeo Settings</h3>"
             }
         },
-
-            {
-                "fieldLabel": "Show Portrait",
-                "xtype": "mz-input-checkbox",
-                "name": "vimeoPortrait"
-            },
-            {
-                "fieldLabel": "Show Title",
-                "xtype": "mz-input-checkbox",
-                "name": "vimeoTitle"
-            },
-            {
-                "fieldLabel": "Show Byline",
-                "xtype": "mz-input-checkbox",
-                "name": "vimeoByline"
-            },
-            {
-                "fieldLabel": "Vimeo Player controls color",
-                "xtype": "mz-input-color",
-                "name": "vimeoColor"
-            }
-
+        {
+            "fieldLabel": "Show Portrait",
+            "xtype": "mz-input-checkbox",
+            "name": "vimeoPortrait"
+        },
+        {
+            "fieldLabel": "Show Title",
+            "xtype": "mz-input-checkbox",
+            "name": "vimeoTitle"
+        },
+        {
+            "fieldLabel": "Show Byline",
+            "xtype": "mz-input-checkbox",
+            "name": "vimeoByline"
+        },
+        {
+            "fieldLabel": "Vimeo Player controls color",
+            "xtype": "mz-input-color",
+            "name": "vimeoColor"
+        }
     ]
 }
