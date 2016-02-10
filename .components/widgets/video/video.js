@@ -35,13 +35,9 @@ function(_) {
   var videosList = Array.apply(null, videos);
 
 
-  console.log(videos);
-  console.log(videosList);
-
-
   videosList.forEach(function(model, index) {
 
-    model = model.dataset.mzConfig;
+    model = JSON.parse(model.dataset.mzConfig);
 
     var $videoUrl = model.config.url;
 
@@ -65,7 +61,6 @@ function(_) {
 
     // if we don't know what video to show
     if (!video.id && !video.list) {
-      console.error({
         message: "ERROR: Video widget URL value is misconfigured. Try a different URL"
       , url: video.url
       , widgetId: model.id
@@ -74,7 +69,6 @@ function(_) {
 
     // if we found an id
     } else {
-
       video.id = video.id[1];
 
     }
@@ -156,12 +150,13 @@ function(_) {
       , video.id
       , '?'
       , embedArguments.join('')
-      , '&autoplay='  + video.autoplay
-      , '&loop='      + video.loop
-      , '&time='      + video.time
+      , '&allowfullscreen='   + video.allowfullscreen
+      , '&autoplay='          + video.autoplay
+      , '&loop='              + video.loop
+      , '&time='              + video.time
       , '" '
       , 'width="" height="" '
-      , 'webkitallowfullscreen mozallowfullscreen allowfullscreen'
+      // , 'webkitallowfullscreen mozallowfullscreen allowfullscreen'
       , '></iframe>'
       ].join('')
     ;
@@ -171,11 +166,9 @@ function(_) {
       .replace(/\?"/, '"')
       ;
 
-    // console.log(video);
-    console.log(embed);
+    // write video embed into widget container
+    videos[index].innerHTML = embed;
 
-
-    // console.debug(video);
     return video;
 
   });

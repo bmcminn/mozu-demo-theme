@@ -10,7 +10,11 @@
   TODO: need more work on this type of integration and a practical use case.
 {% endcomment %}
 
-<div data-mz-widget="video-embed" data-mz-config="{% json_attribute model %}">
+{% if pageContext.isDebugMode %}
+  {% include "debug/widgets" with widgetModel=model %}
+{% endif %}
+
+<div data-mz-widget="{{ model.definitionId }}" data-mz-config="{% json_attribute model %}">
   <iframe src="" width="560" height="315"></iframe>
   <noscript>{{ labels.videoNojsLoadMessage }}</noscript>
 </div>

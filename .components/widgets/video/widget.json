@@ -1,5 +1,5 @@
 {
-    "id": "video",
+    "id": "bcm~video",
     "displayName": "Video",
     "displayTemplate": "cms/video",
     "icon": "/resources/admin/widgets/08_video.png",
@@ -32,11 +32,13 @@
             "anchor": "90%"
         },
 
+
+
         {
-            "anchor": "93%",
-            "xtype": "label",
-            "text": "<h2>Optional Video config</h2>",
-            "margin": "20px 0 0 0"
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">General Settings</h3>"
+            }
         },
             {
                 "fieldLabel": "Autoplay this video",
@@ -49,16 +51,25 @@
                 "name": "loop"
             },
             {
-                "anchor": "200px",
+                "fieldLabel": "Allow full screen",
+                "xtype": "mz-input-checkbox",
+                "name": "allowfullscreen"
+            },
+
+            {
+                "anchor": "20%",
                 "xtype": "mz-input-text",
                 "fieldLabel": "Start video at specific time (ex: mm:ss)",
                 "name": "timestart"
             },
 
 
+
         {
-            "xtype": "label",
-            "text": "<h2>YouTube Settings</h2>"
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">YouTube Settings</h3>"
+            }
         },
             {
                 "fieldLabel": "Show Related videos after video",
@@ -82,10 +93,14 @@
             },
 
 
+
         {
-            "xtype": "label",
-            "text": "<h2>Vimeo Settings</h2>"
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">Vimeo Settings</h3>"
+            }
         },
+
             {
                 "fieldLabel": "Show Portrait",
                 "xtype": "mz-input-checkbox",
