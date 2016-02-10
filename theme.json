@@ -291,8 +291,8 @@
     ],
     "textColor": "#444444",
     "gutterWidth": "25px",
-    "bodyBackgroundImage": "",
     "bodyBackgroundColor": "#f90",
+    "bodyBackgroundImage": "",
     "primaryFont": "Source Sans Pro",
     "fontSize": "14px",
     "loadGoogleFonts": [
@@ -1178,15 +1178,16 @@
       "defaultConfig": {
         "autoplay": false,
         "loop": false,
-        "timestart": "0:00",
-        "youtubeRel": false,
-        "youtubeControls": true,
-        "youtubeShowinfo": true,
-        "youtubeNocookie": false,
-        "vimeoPortrait": true,
-        "vimeoTitle": true,
-        "vimeoByline": true,
-        "vimeoColor": "#00adef"
+        "allowfullscreen": true,
+        "rel": false,
+        "controls": true,
+        "showinfo": true,
+        "ytNoCookie": false,
+        "portrait": true,
+        "badge": false,
+        "title": true,
+        "byline": true,
+        "color": "#00adef"
       },
       "editViewFields": [
         {
@@ -1220,8 +1221,8 @@
         {
           "anchor": "20%",
           "xtype": "mz-input-text",
-          "fieldLabel": "Start video at specific time (ex: mm:ss)",
-          "name": "timestart"
+          "fieldLabel": "Start video at specific time (ex: 00:00:00)",
+          "name": "t"
         },
         {
           "xtype": "box",
@@ -1230,24 +1231,30 @@
           }
         },
         {
+          "fieldLabel": "Video Playlist ID",
+          "xtype": "mz-input-text",
+          "anchor": "90%",
+          "name": "list"
+        },
+        {
           "fieldLabel": "Show Related videos after video",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeRel"
+          "name": "rel"
         },
         {
           "fieldLabel": "Show video controls",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeControls"
+          "name": "controls"
         },
         {
           "fieldLabel": "Show video info",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeShowinfo"
+          "name": "showinfo"
         },
         {
           "fieldLabel": "Show video info",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeNocookie"
+          "name": "ytNoCookie"
         },
         {
           "xtype": "box",
@@ -1258,30 +1265,35 @@
         {
           "fieldLabel": "Show Portrait",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoPortrait"
+          "name": "portrait"
+        },
+        {
+          "fieldLabel": "Show \"Staff Picks\" Badge",
+          "xtype": "mz-input-checkbox",
+          "name": "badge"
         },
         {
           "fieldLabel": "Show Title",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoTitle"
+          "name": "title"
         },
         {
           "fieldLabel": "Show Byline",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoByline"
+          "name": "byline"
         },
         {
           "fieldLabel": "Vimeo Player controls color",
           "xtype": "mz-input-color",
-          "name": "vimeoColor"
+          "name": "color"
         }
       ]
     }
   ],
   "about": {
-    "name": "Brandtley - High Fashion Theme v1.0.0",
+    "name": "Brandtley - High Fashion Theme v1.0.5",
     "projectName": "Brandtley - High Fashion Theme",
-    "version": "1.0.0",
+    "version": "1.0.5",
     "defaultLanguage": "en-US",
     "baseCoreVersion": 8,
     "extends": null,
