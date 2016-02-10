@@ -1,6 +1,9 @@
 /* jshint laxbreak:true, laxcomma:true */
 /* global define:true */
 
+// TODO: cleanup file, kinda jumbled up a bit, could streamline this into an app structure with a minimal business logic section at the bottom
+// TODO: instead of manually mapping the vimeo/youtube settings, just generate from video.props data
+
 define([
   // 'modules/jquery-mozu'
   'underscore'
@@ -23,15 +26,17 @@ function(_) {
         number:         /^[\d\.]+/
       , vimeoIdFormat:  /^[\d]{6,}/
       , videoID:        /(?:^[^<>htps\:\/]\/|(?:v=|\/(?!\/|embed|iframe|watch|vimeo|video|channels|staff|www|player|youtu\.?be)))([A-z0-9\-\_]{3,})/i
-      , time:           /[^\d\w][\&\?]?t=["]?([\dms]+)/i
-      , listID:         /[\&\?]?list=([\d\w-_]+)/i
-      , props:          /(controls|showinfo|rel|autoplay|loop|color|title|byline|portrait)=([\d\w]*)/gi
+      , t:              /[^\d\w][\&\?\#]?t=["]?([\dms]+)/i
+      , list:           /[\&\?]?list=([\d\w-_]+)/i
+      // , props:          /[\?&](t|list|controls|showinfo|rel|autoplay|loop|color|title|byline|portrait)=([\d\w\-\_]*)/gi
+      , props:          /[\?\&]([\w\d]+)=([\d\w\-\_]*)/gi
       , serviceName:    /(vimeo|youtu.?be)/i
       , ytNoCookie:     /youtube-nocookie/i
       }
     ;
 
 
+  var pageContext = require.mozuData('pageContext');
   var videos      = document.querySelectorAll('[data-mz-widget="bcm~video"]');
   var videosList  = Array.apply(null, videos);
 
@@ -42,25 +47,19 @@ function(_) {
     // get our widget model data
     model = JSON.parse(model.dataset.mzConfig);
 
-    // build video schema object
 
+    // build video schema object
     var $videoUrl = model.config.url;
 
     var video = {
       url:          $videoUrl
     , id:           $videoUrl.match(regex.videoID)
     , service:      $videoUrl.match(regex.serviceName)
-    , listId:       $videoUrl.match(regex.listID)
-    , time:         $videoUrl.match(regex.time)
+    , list:         $videoUrl.match(regex.list)
+    , t:            $videoUrl.match(regex.time)
     , props:        $videoUrl.match(regex.props)
     , ytNoCookie:   $videoUrl.match(regex.ytNoCookie) ? true : false
     };
-
-
-    // if we have a video list, configure it proper
-    if (video.listId) {
-      video.listId = video.listId[1];
-    }
 
 
     // if we don't know what video to show
@@ -96,14 +95,14 @@ function(_) {
 
 
     // get the time of the video
-    if (video.time) {
-      video.time = video.time[1];
+    if (video.t) {
+      video.t = video.t[1];
     }
 
 
     // flatten the props list
     if (video.props) {
-      video.props = video.props.map(function(prop, index) {
+      video.props = video.props.forEach(function(prop, index) {
 
         prop = prop.split('=');
 
@@ -115,7 +114,7 @@ function(_) {
         // map value back into the video definition
         video[prop[0]] = prop[1];
 
-        return ;
+        // return ;
 
       });
     }
@@ -130,7 +129,7 @@ function(_) {
 
     if (video.service === 'youtube') {
       embedArguments.push(
-        '&list='      + video.list ? video.list : ''
+        '&list='      + video.list
       , '&controls='  + video.controls
       , '&showinfo='  + video.showinfo
       , '&rel='       + video.rel
@@ -141,6 +140,7 @@ function(_) {
     if (video.service === 'vimeo') {
       embedArguments.push(
         '&color='     + video.color
+      , '&badge='     + video.badge
       , '&title='     + video.title
       , '&byline='    + video.byline
       , '&portrait='  + video.portrait
@@ -158,7 +158,7 @@ function(_) {
       , '&allowfullscreen='   + video.allowfullscreen
       , '&autoplay='          + video.autoplay
       , '&loop='              + video.loop
-      , '&time='              + video.time
+      , '&time='              + video.t
       , '" '
       , 'width="" height="" '
       // , 'webkitallowfullscreen mozallowfullscreen allowfullscreen'
@@ -171,9 +171,18 @@ function(_) {
       .replace(/\?"/, '"')
       ;
 
+
     // write video embed into widget container
     videos[index].innerHTML = embed;
 
+
+    // debug our model if we're in debugMode
+    if (pageContext.isDebugMode) {
+      console.debug('widget:', model.id, model, video);
+    }
+
+
+    // return the instance of this video
     return video;
 
   });
