@@ -3,6 +3,11 @@
 
 // TODO: cleanup file, kinda jumbled up a bit, could streamline this into an app structure with a minimal business logic section at the bottom
 // TODO: instead of manually mapping the vimeo/youtube settings, just generate from video.props data
+// TODO: look into integrating image thumbnail overlays until video resolves
+//    - http://stackoverflow.com/questions/2068344/how-do-i-get-a-youtube-video-thumbnail-from-the-youtube-api
+//    - http://stackoverflow.com/questions/1361149/get-img-thumbnails-from-vimeo
+
+
 
 define([
   // 'modules/jquery-mozu'
