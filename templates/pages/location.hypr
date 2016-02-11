@@ -1,8 +1,18 @@
 {% extends "page" %}
 
-{% block title-tag-content %}{% firstof pageContext.metaTitle labels.localStores %} - {% parent %}{% endblock title-tag-content %}
 
-{% block body-tag-classes %} mz-locations {% endblock body-tag-classes %}
+{% block title-tag-content %}{{ pageContext.metaTitle|default(labels.localStores) }} - {% parent %}{% endblock title-tag-content %}
+
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/pages/{0}.less"|string_format(pageContext.cmsContext.template.path) %}" />
+  {% parent %}
+{% endblock stylesheets %}
+
+
+{% block body-tag-classes %}{% parent %} {% endblock body-tag-classes %}
+{# {% block body-tag-classes %} mz-locations {% endblock body-tag-classes %} #}
+
 
 {% block body-content %}
 

@@ -1,11 +1,19 @@
 {% extends "page" %}
 
 {# HEAD > TITLE TAG #}
-{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block title-tag-content %}{{ pageContext.metaTitle|default(model.name) }} - {% parent %}{% endblock title-tag-content %}
+
+
+{# HEAD > STYLESHEETS #}
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/pages/{0}.less"|string_format(pageContext.cmsContext.template.path) %}" />
+  {% parent %}
+{% endblock stylesheets %}
 
 
 {# BODY > CLASSES #}
-{% block body-tag-classes %} mz-category {% endblock body-tag-classes %}
+{% block body-tag-classes %}{% parent %} {% endblock body-tag-classes %}
+{# {% block body-tag-classes %} mz-category {% endblock body-tag-classes %} #}
 
 
 {# BODY > CONTENT CONTAINER #}

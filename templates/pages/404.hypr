@@ -1,15 +1,23 @@
 {% extends "page" %}
 
-{% block title-tag-content %}{% firstof pageContext.metaTitle labels.pageNotFound %} - {% parent %}{% endblock title-tag-content %}
+{% block title-tag-content %}{{ pageContext.metaTitle|default(labels.pageNotFound) }}  - {% parent %}{% endblock title-tag-content %}
 
-{% block body-tag-classes %} mz-notfoundpage {% endblock body-tag-classes %}
+
+{% block stylesheets %}
+  {% parent %}
+{% endblock stylesheets %}
+
+
+{% block body-tag-classes %}{% parent %} mz-notfoundpage {% endblock body-tag-classes %}
+
 
 {% block body-content %}
-<div class="mz-l-container">
-    <h1 class="mz-pagetitle">{{ labels.pageNotFound }}</h1>
-    {% dropzone "notfound" scope="template" %}
-</div>
+  <div class="mz-l-container">
+  	<h1 class="mz-pagetitle">{{ labels.pageNotFound }}</h1>
+  	{% dropzone "notfound" scope="template" %}
+	</div>
 {% endblock body-content %}
+
 
 {% block body-below-content %}
 {% endblock body-below-content %}

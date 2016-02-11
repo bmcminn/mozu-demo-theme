@@ -1,26 +1,29 @@
 html {
-    height: 100%;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 body {
-    margin: 0 auto;
-    height: 100%;
-    // background-color: @bodyBackgroundColor;
-	font-family: @fontFamily;
-    font-size: @fontSize;
+  margin: 0 auto;
+  height: 100%;
+  background-color: @bodyBackgroundColor;
+  font-family: @fontFamily;
+  font-size: @fontSize;
 	color: @textColor;
 }
+
 h1, h2, h3, h4, h5, h6 {
     color: @textColor;
 }
+
 a {
-    color: @linkColor;
-    &:visited {
-        color: @linkVisitedColor;
-    }
-    &:hover {
-        color: @linkHoverColor;
-    }
+  color: @linkColor;
+  &:visited {
+    color: @linkVisitedColor;
+  }
+  &:hover {
+    color: @linkHoverColor;
+  }
 }
 
 p {
