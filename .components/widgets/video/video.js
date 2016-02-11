@@ -88,14 +88,15 @@ function(_) {
       video.service = video.service[1].replace(/\./, '');
 
     } else {
-
       // check if we have a vimeo ID format
       if (video.id.match(regex.vimeoIdFormat)) {
         video.service = 'vimeo';
+
       // it's a youtube video
       } else {
         video.service = 'youtube';
       }
+
     }
 
 
