@@ -1,3 +1,9 @@
+/**
+ *
+ * @sauce: http://www.mathieusavard.info/threesixty/demo.html
+ * @alternative: http://www.jqueryscript.net/demo/jQuery-Plugin-For-Draggable-360-Degrees-Product-Image-View-j360/
+ *
+ */
 
 define([
   'underscore'
