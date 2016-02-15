@@ -358,38 +358,37 @@
                     "salePrice": 6.99,
                     "msrp": 10.99
                 },
-                },
-                "discountsRestricted": false,
-                "isTaxable": true,
-                "productType": "Purse",
-                "productUsage": "Configurable",
-                "bundledProducts": [],
-                "productCode": "LUC-BAG-001",
-                "name": "Allison Handbag",
-                "description": "Inspired by the timeless glamour and style of a classic carryall but updated with a embossed crocodile pattern. We've combined quality materials and time-tested techniques to craft this handbag in a variety of colors.",
-                "goodsType": "Physical",
-                "isPackagedStandAlone": false,
-                "productReservationId": 8,
-                "measurements": {
-                    "height": {
-                        "unit": "in",
-                        "value": 1
-                    },
-                    "width": {
-                        "unit": "in",
-                        "value": 1
-                    },
-                    "length": {
-                        "unit": "in",
-                        "value": 1
-                    },
-                    "weight": {
-                        "unit": "lbs",
-                        "value": 1
-                    }
-                },
-                "fulfillmentStatus": "PendingFulfillment"
             },
+            "discountsRestricted": false,
+            "isTaxable": true,
+            "productType": "Purse",
+            "productUsage": "Configurable",
+            "bundledProducts": [],
+            "productCode": "LUC-BAG-001",
+            "name": "Allison Handbag",
+            "description": "Inspired by the timeless glamour and style of a classic carryall but updated with a embossed crocodile pattern. We've combined quality materials and time-tested techniques to craft this handbag in a variety of colors.",
+            "goodsType": "Physical",
+            "isPackagedStandAlone": false,
+            "productReservationId": 8,
+            "measurements": {
+                "height": {
+                    "unit": "in",
+                    "value": 1
+                },
+                "width": {
+                    "unit": "in",
+                    "value": 1
+                },
+                "length": {
+                    "unit": "in",
+                    "value": 1
+                },
+                "weight": {
+                    "unit": "lbs",
+                    "value": 1
+                }
+            },
+            "fulfillmentStatus": "PendingFulfillment",
             "quantity": 1,
             "subtotal": 250,
             "extendedTotal": 250,
