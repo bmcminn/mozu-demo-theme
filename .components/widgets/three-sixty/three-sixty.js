@@ -51,11 +51,12 @@ function(_, $) {
     }
 
 
+    // TODO: make all of these settings within widget.json
     model.sliderConfig = {
         images:     model.$images
       , method:     'mousemove'
       , cycle:      2
-      , direction:  'backward'
+      // , direction:  'backward'
       // , width:  image.frameWidth
       // , height: image.height
       // , speed:  1200
@@ -77,7 +78,7 @@ function(_, $) {
 
 
     // debug our model if we're in debugMode
-    if (pageContext.isDebugMode) {
+    if (pageContext && pageContext.isDebugMode) {
       console.debug(model.widgetName + ':', model.id, model);
     }
 
