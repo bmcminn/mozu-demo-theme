@@ -44,9 +44,9 @@ module.exports = {
     tasks: [
       'theme',
       // 'newer:jshint:dev',
-      'jshint:dev',
-      // 'newer:mozusync:upload'
-      'mozusync:upload'
+      'jshint:dev'
+    // , 'newer:mozusync:upload'
+    , 'mozusync:upload'
     ]
   },
 
@@ -55,9 +55,9 @@ module.exports = {
       '.components/theme-ui/**'
     ],
     tasks: [
-      'theme-ui',
-      // 'newer:mozusync:upload'
-      'mozusync:upload'
+      'theme-ui'
+    // , 'newer:mozusync:upload'
+    // , 'mozusync:upload'
     ]
   },
 
@@ -66,9 +66,9 @@ module.exports = {
       '.components/widgets/**'
     ],
     tasks: [
-      'widgetize',
-      // 'newer:mozusync:upload'
-      'mozusync:upload'
+      'widgetize'
+    // , 'newer:mozusync:upload'
+    , 'newer:mozusync:upload'
     ]
   },
 
@@ -92,8 +92,8 @@ module.exports = {
   sync: {
     files: configs.mozusync.upload.src,
     tasks: [
-      // 'newer:mozusync:upload'
       'mozusync:upload'
+      // 'mozusync:upload'
     ]
   }
 
