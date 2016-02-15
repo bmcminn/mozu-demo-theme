@@ -15,33 +15,38 @@ module.exports = {
     spawn: false
   },
 
-  lintTooling: {
-    files: configs.jshint.buildtools_js,
-    tasks: [
-      'jshint:buildtools_js'
-    ]
-  },
+  // lintTooling: {
+  //   files: configs.jshint.buildtools_js,
+  //   tasks: [
+  //     'jshint:buildtools_js'
+  //   ]
+  // },
 
-  javascript: {
-    files: configs.jshint.theme_js,
-    tasks: [
-      'newer:jshint:dev',
-      'newer:jsbeautifier',
-      'mozutheme:quickcompile',
-      'newer:mozusync:upload'
-    ]
-  },
+  // javascript: {
+  //   files: configs.jshint.theme_js,
+  //   tasks: [
+  //     // 'newer:jshint:dev',
+  //     'jshint:dev',
+  //     // 'newer:jsbeautifier',
+  //     'jsbeautifier',
+  //     'mozutheme:quickcompile',
+  //     // 'newer:mozusync:upload'
+  //     'mozusync:upload'
+  //   ]
+  // },
 
   json: {
-    files: configs.jshint.theme_js,
+    files: configs.jshint.production.src,
     // files: [
     //   '.components/**/*.json',
     //   '.components/editors/**/*.js'
     // ],
     tasks: [
       'theme',
-      'newer:jshint:dev',
-      'newer:mozusync:upload'
+      // 'newer:jshint:dev',
+      'jshint:dev',
+      // 'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -51,7 +56,8 @@ module.exports = {
     ],
     tasks: [
       'theme-ui',
-      'newer:mozusync:upload'
+      // 'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -61,7 +67,8 @@ module.exports = {
     ],
     tasks: [
       'widgetize',
-      'newer:mozusync:upload'
+      // 'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   },
 
@@ -85,7 +92,8 @@ module.exports = {
   sync: {
     files: configs.mozusync.upload.src,
     tasks: [
-      'newer:mozusync:upload'
+      // 'newer:mozusync:upload'
+      'mozusync:upload'
     ]
   }
 
