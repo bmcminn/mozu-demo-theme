@@ -11,19 +11,19 @@ module.exports = function(grunt) {
     , chalk       = require('chalk')
     , jsonHelper  = require('./helpers-json.js')
 
-    , paths = {
-        themeJson:            path.resolve('.', 'theme.json')
-      , themeUIJSON:          path.resolve('.', 'theme-ui.json')
-      , aboutJson:            path.resolve('.', '.components', 'about.json')
-      , editorsJS:            path.resolve('.', 'admin', 'editors')
-      }
+    , cwd         = process.cwd()
 
-    , expands = {
-        themeSettings:        path.resolve('.', '.components', 'theme-settings', '*.json')
-      , themeUISettings:      path.resolve('.', '.components', 'theme-ui', '*.json')
-      , pageTypes:            path.resolve('.', '.components', 'page-types', '*.json')
-      , backofficeTemplates:  path.resolve('.', '.components', 'backoffice-templates', '*.json')
-      , editors:              path.resolve('.', '.components', 'editors', '**', '*.json')
+    , paths = {
+        themeJSON:            path.resolve(cwd, 'theme.json')
+      , themeUIJSON:          path.resolve(cwd, 'theme-ui.json')
+      , adminEditors:         path.resolve(cwd, 'admin', 'editors')
+
+      , aboutJSON:            path.resolve(cwd, '.theme', 'about', 'about.json')
+      , themeSettings:        path.resolve(cwd, '.theme', 'settings', '*.json')
+      , pageTypes:            path.resolve(cwd, '.theme', 'pageTypes', '*.json')
+      , backofficeTemplates:  path.resolve(cwd, '.theme', 'backOfficeTemplates', '*.json')
+      , editors:              path.resolve(cwd, '.theme', 'editors', '**', '*.json')
+      , themeUISettings:      path.resolve(cwd, '.theme-ui', '*.json')
       }
     ;
 
@@ -117,8 +117,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'settings'
-      , files:        expands.themeSettings
-      , renderTarget: paths.themeJson
+      , files:        paths.themeSettings
+      , renderTarget: paths.themeJSON
       , mergeType:    'merge'
       , subhead: [
           'Merging themeSettings from'
@@ -141,8 +141,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'backOfficeTemplates'
-      , files:        expands.backofficeTemplates
-      , renderTarget: paths.themeJson
+      , files:        paths.backofficeTemplates
+      , renderTarget: paths.themeJSON
       , mergeType:    'push'
       , subhead: [
           'Merging backofficeTemplates from'
@@ -165,8 +165,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'pageTypes'
-      , files:        expands.pageTypes
-      , renderTarget: paths.themeJson
+      , files:        paths.pageTypes
+      , renderTarget: paths.themeJSON
       , mergeType:    'push'
       , subhead: [
           'Merging pageTypes from'
@@ -187,8 +187,8 @@ module.exports = function(grunt) {
   , 'Inserts theme About data into theme config'
   , function() {
 
-      var theme = grunt.file.readJSON(paths.themeJson)
-        , about = grunt.file.readJSON(paths.aboutJson)
+      var theme = grunt.file.readJSON(paths.themeJSON)
+        , about = grunt.file.readJSON(paths.aboutJSON)
         , contract = {
             name: about.projectName + ' v' + about.version,
             projectName: "Mozu Theme",
@@ -210,7 +210,7 @@ module.exports = function(grunt) {
       theme.about = _.merge(contract, about);
 
       // write the theme.json file updates to disk
-      grunt.file.writeJSON(paths.themeJson, theme);
+      grunt.file.writeJSON(paths.themeJSON, theme);
 
     });
 
@@ -224,14 +224,14 @@ module.exports = function(grunt) {
     'theme:editors'
   , 'Gathers up all editor configs and assets to disseminate into theme folders.'
   , function() {
-      var theme   = grunt.file.readJSON(paths.themeJson)
-        , editors = grunt.file.expand(expands.editors)
+      var theme   = grunt.file.readJSON(paths.themeJSON)
+        , editors = grunt.file.expand(paths.editors)
         ;
 
       // init or reset the target collection
       theme.editors = [];
 
-      grunt.log.subhead('Merging pageType configurations from', chalk.cyan('.components/editors') + chalk.white('...'));
+      grunt.log.subhead('Merging editors configurations from', chalk.cyan('.components/editors') + chalk.white('...'));
 
       _.each(editors, function(fileLoc) {
         // push the config back into theme.json
@@ -249,14 +249,14 @@ module.exports = function(grunt) {
 
         // copy the editor file to the editors directory
         } else {
-          grunt.file.copy(editorJS, path.resolve(paths.editorsJS, editorJson.path));
+          grunt.file.copy(editorJS, path.resolve(paths.adminEditors, editorJson.path));
 
         }
 
       });
 
       // write theme back to system
-      grunt.file.writeJSON(paths.themeJson, theme);
+      grunt.file.writeJSON(paths.themeJSON, theme);
 
     });
 
@@ -274,7 +274,7 @@ module.exports = function(grunt) {
       grunt.mozu.mergeThemeComponents({
         target:       'items'
       , renderTarget: paths.themeUIJSON
-      , files:        expands.themeUISettings
+      , files:        paths.themeUISettings
       , mergeType:    'push'
       , baseModel:    { "title": "Navigation" }
       , subhead: [

@@ -60,7 +60,7 @@ module.exports = function(grunt) {
     'jshint:production',
   // 'jsbeautifier',
     'setver',
-    'mozutheme:fullcompile',
+    'mozutheme:compile',
     'mozusync:upload'
   ]);
 

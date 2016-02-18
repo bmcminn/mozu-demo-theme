@@ -63,7 +63,7 @@ module.exports = {
 
   widgets: {
     files: [
-      '.components/widgets/**'
+      '.theme/widgets/**'
     ],
     tasks: [
       'widgetize'

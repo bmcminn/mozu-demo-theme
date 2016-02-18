@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             vendor: './scripts/vendor',
             icons:  './resources/admin/widgets'
           }
-        , widgetsSrc: path.resolve('.', '.components', 'widgets', '**', 'widget.json')
+        , widgetsSrc: path.resolve('.', '.theme', 'widgets', '**', 'widget.json')
         , pageHypr: path.resolve('.','templates','page.hypr')
         }
 
