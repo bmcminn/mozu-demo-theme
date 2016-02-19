@@ -11,10 +11,3 @@
 
 
 {% block body-tag-classes %}{% parent %} {% endblock body-tag-classes %}
-
-
-{% comment %}
-{% block body-content %}
-
-{% endblock body-content %}
-{% endcomment %}
