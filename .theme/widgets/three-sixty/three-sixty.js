@@ -7,21 +7,18 @@
 
 define([
   'underscore'
-, 'vendor/clog'
+// , 'clog'
 , 'modules/jquery-mozu'
 // , 'vendor/jquery.three-sixty'
 , 'shim!vendor/jquery.three-sixty[jquery=jQuery]'
 ],
-function(_, Clog, $) {
+function(_, $) {
 
   'use strict';
 
   var pageContext       = require.mozuData('pageContext');
   var threeSixtys       = document.querySelectorAll('[data-mz-widget="bcm~three-sixty"]');
   var threeSixtysList   = Array.apply(null, threeSixtys);
-
-
-  Clog.log('waffles');
 
 
   // iterate over our video widgets and try to make them work
