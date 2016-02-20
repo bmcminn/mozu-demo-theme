@@ -2,6 +2,8 @@
   "accountMyWishlist": "My Wishlist",
   "accountNoCredits": "You have no store credits.",
   "accountNoOrders": "You have not placed any orders.",
+  "loginOrdersPlacedByAccount": "Orders placed with your account",
+  "loginOrdersPlacedByGuest": "Orders placed as a guest or single order lookup",
   "accountNoReturns": "You have not requested any returns.",
   "accountNoWishlists": "You do not have any wishlist items.",
   "accountOptIn": "Please keep me up to date on store news and specials",

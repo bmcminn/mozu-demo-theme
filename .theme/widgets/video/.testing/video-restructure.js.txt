@@ -1,0 +1,214 @@
+/* jshint laxbreak:true, laxcomma:true */
+/* global define:true */
+
+define([
+  'underscore'
+, 'modules/jquery-mozu'
+],
+
+function(_) {
+
+  'use strict';
+
+  var radix = 10
+
+    , base = {
+        youtube:    '//www.youtube.com/embed/'
+      , ytNoCookie: '//www.youtube-nocookie.com/embed/'
+      , vimeo:      '//player.vimeo.com/video/'
+      , autoPlay:   'autoplay=false'
+      }
+
+    , regex = {
+        number:         /^[\d\.]+/
+      , vimeoIdFormat:  /^[\d]{6,}/
+      , videoID:        /(?:^[^<>htps\:\/]\/|(?:v=|\/(?!\/|embed|iframe|watch|vimeo|video|channels|staff|www|player|youtu\.?be)))([A-z0-9\-\_]{3,})/i
+      , t:              /[^\d\w][\&\?\#]?t=["]?([\dms]+)/i
+      // , props:          /[\?&](t|list|controls|showinfo|rel|autoplay|loop|color|title|byline|portrait)=([\d\w\-\_]*)/gi
+      , props:          /[\?\&]([\w\d]+)=([\d\w\-\_]*)/gi
+      , serviceName:    /(vimeo|youtu.?be)/i
+      , ytNoCookie:     /youtube-nocookie/i
+      }
+    ;
+
+
+  var pageContext = require.mozuData('pageContext');
+  var videos      = document.querySelectorAll('[data-mz-widget="bcm~video"]');
+  var videosList  = Array.apply(null, videos);
+
+
+
+  var videoWidget = {
+
+        buildVideoModel: function(videoUrl) {
+          this.url           = videoUrl
+          this.id            = videoUrl.match(regex.videoID)
+          this.service       = videoUrl.match(regex.serviceName)
+          this.list          = videoUrl.match(regex.listID)
+          this.t             = videoUrl.match(regex.t)
+          this.props         = videoUrl.match(regex.props)
+          this.ytNoCookie    = videoUrl.match(regex.ytNoCookie) ? true : false
+        }
+
+
+
+      , buildEmbedCode: function(videoModel) {
+
+          var embedArguments = [];
+
+          if (videoModel.service === 'youtube') {
+            embedArguments.push(
+              '&list='      + videoModel.list
+            , '&controls='  + videoModel.controls
+            , '&showinfo='  + videoModel.showinfo
+            , '&rel='       + videoModel.rel
+            );
+          }
+
+
+          if (videoModel.service === 'vimeo') {
+            embedArguments.push(
+              '&color='     + videoModel.color
+            , '&title='     + videoModel.title
+            , '&byline='    + videoModel.byline
+            , '&portrait='  + videoModel.portrait
+            );
+          }
+
+
+          // compose the video embed
+          var embed = [
+              '<iframe src="'
+            , videoModel.ytNoCookie ? base.ytNoCookie : base[videoModel.service]
+            , videoModel.id
+            , '?'
+            , embedArguments.join('')
+            , '&allowfullscreen='   + videoModel.allowfullscreen
+            , '&autoplay='          + videoModel.autoplay
+            , '&loop='              + videoModel.loop
+            , '&t='              + videoModel.t
+            , '" '
+            , 'width="" height="" '
+            // , 'webkitallowfullscreen mozallowfullscreen allowfullscreen'
+            , '></iframe>'
+            ].join('')
+          ;
+
+          embed = embed
+            .replace(/\?\&/, '?')
+            .replace(/\?"/, '"')
+            ;
+
+          return embed;
+
+        }
+
+
+
+      , parseVideoProps: function(videoModel) {
+
+          return videoModel.props.map(function(prop, index) {
+
+            prop = prop.split('=');
+
+            // coerce numerical values to a proper number type
+            if (prop[1].match(regex.number)) {
+              prop[1] = parseInt(prop[1], radix);
+            }
+
+            // map value back into the video definition
+            videoModel[prop[0]] = prop[1];
+
+            return videoModel;
+
+          });
+        }
+
+  }
+
+
+
+  // iterate over our video widgets and try to make them work
+  videosList.forEach(function(model, index) {
+
+    // get our widget model data
+    model = JSON.parse(model.dataset.mzConfig);
+
+    // build video schema object
+    var videoUrl  = model.config.url
+      , video     = videoWidget.buildVideoModel(videoUrl)
+      ;
+
+    // debug our model if we're in debugMode
+    if (pageContext.isDebugMode) {
+      console.debug('widget:', model.id, model, video);
+    }
+
+    // if we have a video list, configure it proper
+    if (video.list) {
+      video.list = video.list[1];
+    }
+
+    // if we don't know what video to show
+    if (!video.id && !video.list) {
+      console.error({
+        message: "ERROR: Video widget URL value is misconfigured. Try a different URL"
+      , url: video.url
+      , widgetId: model.id
+      });
+      return;
+
+    // if we found an id
+    } else {
+      video.id = video.id[1];
+
+    }
+
+    // do we have a service ID?
+    if (video.service) {
+      video.service = video.service[1].replace(/\./, '');
+
+    } else {
+
+      // check if we have a vimeo ID format
+      if (video.id.match(regex.vimeoIdFormat)) {
+        video.service = 'vimeo';
+      // it's a youtube video
+      } else {
+        video.service = 'youtube';
+      }
+    }
+
+
+    // get the t of the video
+    if (video.t) {
+      video.t = video.t[1];
+    }
+
+
+    // flatten the props list
+    if (video.props) {
+      video.props = parseVideoProps(video.props);
+    }
+
+
+    // map widget overrides to video object
+    video = _.extend(video, model.config);
+
+
+    // format the arguments we need for either service
+    var embed = buildEmbedCode(video);
+
+
+    // write video embed into widget container
+    videos[index].innerHTML = embed;
+
+    return video;
+
+  });
+
+
+
+
+
+});

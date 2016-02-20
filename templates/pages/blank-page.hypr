@@ -1,10 +1,13 @@
 {% extends "page" %}
 
-{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
-
-{% block body-tag-classes %} mz-blankpage {% endblock body-tag-classes %}
-
-{# {% block body-content %} #}
+{% block title-tag-content %}{{ pageContext.metaTitle|default(model.name) }} - {% parent %}{% endblock title-tag-content %}
 
 
-{# {% endblock body-content %} #}
+{% comment %}
+{% block stylesheets %}
+  {% parent %}
+{% endblock stylesheets %}
+{% endcomment %}
+
+
+{% block body-tag-classes %}{% parent %} {% endblock body-tag-classes %}

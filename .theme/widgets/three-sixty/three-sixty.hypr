@@ -1,0 +1,21 @@
+
+{# <img src="{% make_url "image" model.config.imageURL %}" data-image="{% json_attribute model %}" alt="model.config.alt"> #}
+
+{% with pageContext.isEditMode as editMode %}
+{% with model.config as slideshow %}
+
+  {% if editMode %}
+    <p>{{ model.config.widgetName }}: {{ slideshow.id|lower }}</p>
+
+  {% else %}
+    {% require_script "widgets/three-sixty" %}
+
+  {% endif %}
+
+  <div data-mz-widget="{{ model.definitionId }}" data-slideshow="{{ slideshow.id|lower }}" data-mz-config="{% json_attribute model %}">
+    {# <img src="" alt=""> #}
+  </div>
+
+{% endwith %}
+{% endwith %}
+

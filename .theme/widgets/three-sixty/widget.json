@@ -1,0 +1,45 @@
+{
+    "id": "bcm~three-sixty",
+    "displayName": "360º Slider",
+    "displayTemplate": "bcm/three-sixty",
+    "icon": "/resources/admin/widgets/00_photo.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "widgetName": "360º Slider",
+        "quality": 70
+    },
+    "editViewFields": [
+        {
+            "name": "URL",
+            "fieldLabel": "360º Slider Image",
+            "xtype": "mz-input-image"
+        },
+        {
+            "name": "width",
+            "fieldLabel": "Image width <a title=\"Width of image in pixels.\">[?]</a>",
+            "xtype": "mz-input-number",
+            "allowBlank": false
+        },
+        {
+            "name": "height",
+            "fieldLabel": "Image height <a title=\"Height of image in pixels.\">[?]</a>",
+            "xtype": "mz-input-number",
+            "allowBlank": false
+        },
+        {
+            "name": "frameCount",
+            "fieldLabel": "Number of image frames <a title=\"Number of individual frames contained in the image. Used to determine frame width.\">[?]</a>",
+            "xtype": "mz-input-number",
+            "allowBlank": false
+        },
+        {
+            "name": "quality",
+            "fieldLabel": "Image quality threshold <a title=\"Defaults to 70% quality.\">[?]</a>",
+            "xtype": "mz-input-number",
+            "allowBlank": false
+        }
+
+    ]
+}

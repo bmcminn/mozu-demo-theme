@@ -1,10 +1,16 @@
 {% extends "page" %}
 
+{% block title-tag-content %}{{ pageContext.metaTitle|default(model.content.productName) }} - {% parent %}{% endblock title-tag-content %}
 
-{% block title-tag-content %}{% firstof pageContext.metaTitle model.content.productName %}  - {% parent %}{% endblock title-tag-content %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/pages/{0}.less"|string_format(pageContext.cmsContext.template.path) %}" />
+  {% parent %}
+{% endblock stylesheets %}
 
 
-{% block body-tag-classes %} mz-product {% endblock body-tag-classes %}
+{% block body-tag-classes %}{% parent %} {% endblock body-tag-classes %}
+{# {% block body-tag-classes %} mz-product {% endblock body-tag-classes %} #}
 
 
 {% block body-content %}

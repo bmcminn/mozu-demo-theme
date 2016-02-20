@@ -291,8 +291,8 @@
     ],
     "textColor": "#444444",
     "gutterWidth": "25px",
-    "bodyBackgroundImage": "",
     "bodyBackgroundColor": "#f90",
+    "bodyBackgroundImage": "",
     "primaryFont": "Source Sans Pro",
     "fontSize": "14px",
     "loadGoogleFonts": [
@@ -1168,7 +1168,51 @@
       }
     },
     {
-      "id": "video",
+      "id": "bcm~three-sixty",
+      "displayName": "360º Slider",
+      "displayTemplate": "bcm/three-sixty",
+      "icon": "/resources/admin/widgets/00_photo.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "defaultConfig": {
+        "widgetName": "360º Slider",
+        "quality": 70
+      },
+      "editViewFields": [
+        {
+          "name": "URL",
+          "fieldLabel": "360º Slider Image",
+          "xtype": "mz-input-image"
+        },
+        {
+          "name": "width",
+          "fieldLabel": "Image width <a title=\"Width of image in pixels.\">[?]</a>",
+          "xtype": "mz-input-number",
+          "allowBlank": false
+        },
+        {
+          "name": "height",
+          "fieldLabel": "Image height <a title=\"Height of image in pixels.\">[?]</a>",
+          "xtype": "mz-input-number",
+          "allowBlank": false
+        },
+        {
+          "name": "frameCount",
+          "fieldLabel": "Number of image frames <a title=\"Number of individual frames contained in the image. Used to determine frame width.\">[?]</a>",
+          "xtype": "mz-input-number",
+          "allowBlank": false
+        },
+        {
+          "name": "quality",
+          "fieldLabel": "Image quality threshold <a title=\"Defaults to 70% quality.\">[?]</a>",
+          "xtype": "mz-input-number",
+          "allowBlank": false
+        }
+      ]
+    },
+    {
+      "id": "bcm~video",
       "displayName": "Video",
       "displayTemplate": "cms/video",
       "icon": "/resources/admin/widgets/08_video.png",
@@ -1178,15 +1222,16 @@
       "defaultConfig": {
         "autoplay": false,
         "loop": false,
-        "timestart": "0:00",
-        "youtubeRel": false,
-        "youtubeControls": true,
-        "youtubeShowinfo": true,
-        "youtubeNocookie": false,
-        "vimeoPortrait": true,
-        "vimeoTitle": true,
-        "vimeoByline": true,
-        "vimeoColor": "#00adef"
+        "allowfullscreen": true,
+        "rel": false,
+        "controls": true,
+        "showinfo": true,
+        "ytNoCookie": false,
+        "portrait": true,
+        "badge": false,
+        "title": true,
+        "byline": true,
+        "color": "#00adef"
       },
       "editViewFields": [
         {
@@ -1197,10 +1242,10 @@
           "anchor": "90%"
         },
         {
-          "anchor": "93%",
-          "xtype": "label",
-          "text": "<h2>Optional Video config</h2>",
-          "margin": "20px 0 0 0"
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">General Settings</h3>"
+          }
         },
         {
           "fieldLabel": "Autoplay this video",
@@ -1213,58 +1258,78 @@
           "name": "loop"
         },
         {
-          "anchor": "200px",
-          "xtype": "mz-input-text",
-          "fieldLabel": "Start video at specific time (ex: mm:ss)",
-          "name": "timestart"
+          "fieldLabel": "Allow full screen",
+          "xtype": "mz-input-checkbox",
+          "name": "allowfullscreen"
         },
         {
-          "xtype": "label",
-          "text": "<h2>YouTube Settings</h2>"
+          "anchor": "20%",
+          "xtype": "mz-input-text",
+          "fieldLabel": "Start video at specific time (ex: 00:00:00)",
+          "name": "t"
+        },
+        {
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">YouTube Settings</h3>"
+          }
+        },
+        {
+          "fieldLabel": "Video Playlist ID",
+          "xtype": "mz-input-text",
+          "anchor": "90%",
+          "name": "list"
         },
         {
           "fieldLabel": "Show Related videos after video",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeRel"
+          "name": "rel"
         },
         {
           "fieldLabel": "Show video controls",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeControls"
+          "name": "controls"
         },
         {
           "fieldLabel": "Show video info",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeShowinfo"
+          "name": "showinfo"
         },
         {
           "fieldLabel": "Show video info",
           "xtype": "mz-input-checkbox",
-          "name": "youtubeNocookie"
+          "name": "ytNoCookie"
         },
         {
-          "xtype": "label",
-          "text": "<h2>Vimeo Settings</h2>"
+          "xtype": "box",
+          "autoEl": {
+            "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">Vimeo Settings</h3>"
+          }
         },
         {
           "fieldLabel": "Show Portrait",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoPortrait"
+          "name": "portrait"
+        },
+        {
+          "fieldLabel": "Show \"Staff Picks\" Badge",
+          "xtype": "mz-input-checkbox",
+          "name": "badge"
         },
         {
           "fieldLabel": "Show Title",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoTitle"
+          "name": "title"
         },
         {
           "fieldLabel": "Show Byline",
           "xtype": "mz-input-checkbox",
-          "name": "vimeoByline"
+          "name": "byline"
         },
         {
           "fieldLabel": "Vimeo Player controls color",
           "xtype": "mz-input-color",
-          "name": "vimeoColor"
+          "name": "color"
         }
       ]
     }

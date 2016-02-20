@@ -1,0 +1,22 @@
+{% with pageContext.isDebugMode as debugMode %}
+{% with pageContext.pageType as pageType %}
+
+  <div data-mz-role="widget-debug-panel" data-widget-id="{{ model.id }}">
+
+    <label for="debug-widgetId-{{ model.id }}">
+      <code>widgetId:&nbsp;</code>
+      <textarea rows="1" id="debug-widgetId-{{ model.id }}" name="debug-widgetId-{{ model.id }}">{{ model.id }}</textarea>
+    </label><br>
+
+
+    <label for="debug-config-{{ model.id }}">
+      <code>{{ model.definitionId }}:&nbsp;</code>
+      <textarea rows="1" id="debug-config-{{ model.id }}" name="debug-config-{{ model.id }}">{% json_attribute model %}</textarea>
+    </label><br>
+
+    {% preload_json widgetModel model.id %}
+
+  </div>
+
+{% endwith %}
+{% endwith %}

@@ -1,0 +1,122 @@
+{
+    "id": "bcm~video",
+    "displayName": "Video",
+    "displayTemplate": "cms/video",
+    "icon": "/resources/admin/widgets/08_video.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        "autoplay": false,
+        "loop": false,
+        "allowfullscreen": true,
+        "rel": false,
+        "controls": true,
+        "showinfo": true,
+        "ytNoCookie": false,
+        "portrait": true,
+        "badge": false,
+        "title": true,
+        "byline": true,
+        "color": "#00adef"
+    },
+    "editViewFields": [
+        {
+            "fieldLabel": "Video ID or URL",
+            "xtype": "mz-input-text",
+            "name": "url",
+            "allowBlank": false,
+            "anchor": "90%"
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">General Settings</h3>"
+            }
+        },
+        {
+            "fieldLabel": "Autoplay this video",
+            "xtype": "mz-input-checkbox",
+            "name": "autoplay"
+        },
+        {
+            "fieldLabel": "Loop this video",
+            "xtype": "mz-input-checkbox",
+            "name": "loop"
+        },
+        {
+            "fieldLabel": "Allow full screen",
+            "xtype": "mz-input-checkbox",
+            "name": "allowfullscreen"
+        },
+        {
+            "anchor": "20%",
+            "xtype": "mz-input-text",
+            "fieldLabel": "Start video at specific time (ex: 00:00:00)",
+            "name": "t"
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">YouTube Settings</h3>"
+            }
+        },
+        {
+            "fieldLabel": "Video Playlist ID",
+            "xtype": "mz-input-text",
+            "anchor": "90%",
+            "name": "list"
+        },
+        {
+            "fieldLabel": "Show Related videos after video",
+            "xtype": "mz-input-checkbox",
+            "name": "rel"
+        },
+        {
+            "fieldLabel": "Show video controls",
+            "xtype": "mz-input-checkbox",
+            "name": "controls"
+        },
+        {
+            "fieldLabel": "Show video info",
+            "xtype": "mz-input-checkbox",
+            "name": "showinfo"
+        },
+        {
+            "fieldLabel": "Show video info",
+            "xtype": "mz-input-checkbox",
+            "name": "ytNoCookie"
+        },
+        {
+            "xtype": "box",
+            "autoEl": {
+                "html": "<h3 style=\"margin: 3rem 0 1rem; padding: 0 0 1rem; border-bottom: 1px solid #e3e3e3\">Vimeo Settings</h3>"
+            }
+        },
+        {
+            "fieldLabel": "Show Portrait",
+            "xtype": "mz-input-checkbox",
+            "name": "portrait"
+        },
+        {
+            "fieldLabel": "Show \"Staff Picks\" Badge",
+            "xtype": "mz-input-checkbox",
+            "name": "badge"
+        },
+        {
+            "fieldLabel": "Show Title",
+            "xtype": "mz-input-checkbox",
+            "name": "title"
+        },
+        {
+            "fieldLabel": "Show Byline",
+            "xtype": "mz-input-checkbox",
+            "name": "byline"
+        },
+        {
+            "fieldLabel": "Vimeo Player controls color",
+            "xtype": "mz-input-color",
+            "name": "color"
+        }
+    ]
+}

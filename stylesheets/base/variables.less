@@ -1,4 +1,4 @@
-@fontFamily:                      {{ themeSettings.primaryFont }}, sans-serif;
+@fontFamily:                      @theme-settings-primaryFont, sans-serif;
 @fontSize:                        1rem;
 @fontSizeSmall:                   @fontSize * 0.8;
 @fontSizeLarger:                  @fontSize * 1.4;
@@ -8,6 +8,9 @@
 
 //
 // Color defs
+//
+//
+//
 //
 
 @white:                           #fff;
@@ -37,7 +40,7 @@
 // Color Variables
 //
 
-@textColor:                       {{ themeSettings.textColor }};
+@textColor:                       @theme-settings-textColor;
 @linkColor:                       @gray-dark;
 @linkHoverColor:                  @gray;
 @linkVisitedColor:                @black;
@@ -52,8 +55,8 @@
 @unavailableText:                 @red-dark;
 
 
-@bodyBackgroundColor:             {{ themeSettings.bodyBackgroundColor }};
-@bodyBackgroundImage:             "{{ themeSettings.bodyBackgroundImage }}";
+@bodyBackgroundColor:             @theme-settings-bodyBackgroundColor;
+// @bodyBackgroundImage:             "@{theme-settings-bodyBackgroundImage}";
 
 @errorBorder:                     darken(spin(@errorBackground, -10), 3%);
 @successBorder:                   darken(spin(@successBackground, -10), 3%);
@@ -62,7 +65,7 @@
 
 @errorIcon:                       "../resources/images/error-exclamation.png";
 @columnWidth-2col:                435px;
-@gutter:                          {{ themeSettings.gutterWidth }};
+@gutter:                          @theme-settings-gutterWidth;
 @inputBorder:                     @gray-light;
 
 
@@ -75,9 +78,9 @@
 @addressTileHeight:               240px;
 @addressTileWidth:                @defaultTileWidth;
 
-@productImagesContainerWidth:     {{ themeSettings.productImagesContainerWidth }}px;
+@productImagesContainerWidth:     (@theme-settings-productImagesContainerWidth * 1px);
 
 @orderDetailWidth:                200px;
 
-@itemListingThumbSize:            {{ themeSettings.itemListingThumbSize }};
-@productListingThumbSize:         {{ themeSettings.listProductThumbSize }}px;
+@itemListingThumbSize:            @theme-settings-itemListingThumbSize;
+@productListingThumbSize:         (@theme-settings-listProductThumbSize * 1px);

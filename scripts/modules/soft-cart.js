@@ -67,8 +67,7 @@ define([
       highlightItem: function (itemid) {
         this.view.$('.soft-cart-item[data-mz-cart-item="' + itemid + '"]')
           .removeClass('highlight')
-          .addClass('highlight')
-          ;
+          .addClass('highlight');
       }
     };
 

@@ -1,5 +1,6 @@
 {
   "textColor": "#444444",
   "gutterWidth": "25px",
+  "bodyBackgroundColor": "#fe57a1",
   "bodyBackgroundImage": false
 }

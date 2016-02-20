@@ -31,6 +31,7 @@ mozu.config.json
 *.sublime-workspace
 *.fileList
 *.psd
+*.psb
 
 # File system stuff
 .DS_Store

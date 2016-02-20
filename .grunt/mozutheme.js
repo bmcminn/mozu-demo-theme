@@ -5,7 +5,7 @@ module.exports = {
     command: 'check'
   },
 
-  fullcompile: {
+  compile: {
     command: 'compile'
   },
 

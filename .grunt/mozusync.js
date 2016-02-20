@@ -35,7 +35,8 @@ module.exports = {
   },
   wipe: {
     options: {
-      action: 'deleteAll'
+      action: 'deleteAll',
+      soloOnly: false
     },
     src: '<%= mozusync.upload.src %>'
   }
