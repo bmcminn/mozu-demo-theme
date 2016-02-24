@@ -273,7 +273,13 @@ define([
       },
 
       handleLoginComplete: function () {
-        window.location.reload();
+        var self = this;
+        if (self.redirectTemplate) {
+          window.location.href = self.redirectTemplate;
+        }
+        else {
+          window.location.reload();
+        }
       },
 
       displayResetPasswordMessage: function () {
@@ -347,14 +353,16 @@ define([
           //var user = api.createSync('user', payload);
           this.setLoading(true);
 
-          return api.action('customer', 'createStorefront', payload).then(function () {
-            if (self.redirectTemplate) {
-              window.location.pathname = self.redirectTemplate;
-            }
-            else {
-              window.location.reload();
-            }
-          }, self.displayApiMessage);
+          return api
+            .action('customer', 'createStorefront', payload)
+            .then(function () {
+              if (self.redirectTemplate) {
+                window.location.pathname = self.redirectTemplate;
+              }
+              else {
+                window.location.reload();
+              }
+            }, self.displayApiMessage);
         }
       }
     });
@@ -384,15 +392,20 @@ define([
         var signupPage = new SignupPopover();
         signupPage.formSelector = 'form[name="mz-signupform"]';
         signupPage.pageType = 'signup';
-        signupPage.redirectTemplate = 'myaccount';
+        signupPage.redirectTemplate = '/myaccount';
         signupPage.init(this);
       });
 
       $('[data-mz-action="loginpage-submit"]').each(function () {
-        var loginPage = new SignupPopover();
+        var loginPage = new LoginPopover();
         loginPage.formSelector = 'form[name="mz-loginform"]';
         loginPage.pageType = 'login';
+        loginPage.redirectTemplate = '/myaccount';
+
+        console.log('loginPage', loginPage);
+
         loginPage.init(this);
+
       });
 
       $('[data-mz-action="anonymousorder-submit"]').each(function () {
