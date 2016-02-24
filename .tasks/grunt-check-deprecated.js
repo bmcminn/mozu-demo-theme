@@ -79,7 +79,6 @@ module.exports = function(grunt) {
             break;
         }
 
-
         // if we found file settings
         if (file.settings) {
 
