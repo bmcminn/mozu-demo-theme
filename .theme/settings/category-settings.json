@@ -4,5 +4,6 @@
   "listProductShortDesc": true,
   "listProductThumbSize": 160,
   "showCategoryFacets": true,
+  "hiddenCategories": [],
   "showChildCategoriesInFaceting": true
 }
