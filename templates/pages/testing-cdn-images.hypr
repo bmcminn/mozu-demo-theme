@@ -1,0 +1,26 @@
+{% extends "page" %}
+
+{% block title-tag-content %}
+  {{ pageContext.metaTitle|default(model.name) }}  - {% parent %}
+{% endblock title-tag-content %}
+
+
+{% block body-content %}
+
+  {% parent %}
+
+  <h2><code>crop</code> parameter:</h2>
+
+  <p>
+    Works:<br>
+    <img src="http://cdn-sb.mozu.com/14878-20657/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf?_mzcb=_1455742483315&amp;crop=100,100,300,300" alt="">
+  </p>
+
+
+  <p>
+    Works:<br>
+    <img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop=100,100,300,300 as_params %}" alt="">
+  </p>
+
+
+{% endblock body-content %}

@@ -1,0 +1,8 @@
+{
+	"id": "test~cdn-images",
+	"title": "TEST CDN Images",
+	"entityType": "webpage",
+	"documentType": "web_page",
+	"template": "testing-cdn-images",
+	"userCreatable": true
+}
