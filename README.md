@@ -11,5 +11,5 @@ _**NOTE:** I would highly suggest looking at the [GETTING_STARTED.md](/GETTING_S
 - [ ] Document features of this repo
 - [ ] Better docs on build.js
     - https://www.youtube.com/watch?v=m6VNhqKDM4E
-- [ ] break out the `.components/theme-ui/` folder into `.theme-ui/`
-- [ ] turn `.components/` into `.theme-json/` OR `.theme/`
+- [x] break out the `.components/theme-ui/` folder into `.theme-ui/`
+- [x] turn `.components/` into `.theme-json/` OR `.theme/`

@@ -12,9 +12,12 @@
     "listProductShortDesc": true,
     "listProductThumbSize": 160,
     "showCategoryFacets": true,
+    "hiddenCategories": [],
     "showChildCategoriesInFaceting": true,
     "isCvvSuppressed": false,
     "billingEmailEnabled": true,
+    "blankOptionText": "---",
+    "ccYears": "0,1,2,3",
     "requireCheckoutAgreeToTerms": true,
     "visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",
     "showCheckoutCommentsField": true,
@@ -314,6 +317,112 @@
       }
     ]
   },
+  "layoutWidgets": [
+    {
+      "id": "mz-1-col",
+      "category": "*",
+      "displayName": "1 Column 100",
+      "displayTemplate": "base",
+      "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 100
+      },
+      "customEditor": "layout",
+      "icon": "/resources/admin/widgets/1-col_icon.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "columns": [
+        {
+          "width": "100%"
+        }
+      ]
+    },
+    {
+      "id": "mz-2-col",
+      "category": "*",
+      "displayName": "2 Column 50/50",
+      "displayTemplate": "base",
+      "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 50,
+        "mz-col2": 50
+      },
+      "customEditor": "layout",
+      "icon": "/resources/admin/widgets/2-col_icon.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "columns": [
+        {
+          "width": "50%"
+        },
+        {
+          "width": "50%"
+        }
+      ]
+    },
+    {
+      "id": "mz-3-col",
+      "category": "*",
+      "displayName": "3 Column 33/33/33",
+      "displayTemplate": "base",
+      "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 33.33,
+        "mz-col2": 33.33,
+        "mz-col3": 33.33
+      },
+      "customEditor": "layout",
+      "icon": "/resources/admin/widgets/3-col_icon.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "columns": [
+        {
+          "width": "33.3%"
+        },
+        {
+          "width": "33.3%"
+        },
+        {
+          "width": "33.3%"
+        }
+      ]
+    },
+    {
+      "id": "mz-4-col",
+      "category": "*",
+      "displayName": "4 Column 25/25/25/25",
+      "displayTemplate": "base",
+      "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 25,
+        "mz-col2": 25,
+        "mz-col3": 25,
+        "mz-col4": 25
+      },
+      "customEditor": "layout",
+      "icon": "/resources/admin/widgets/4-col_icon.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "columns": [
+        {
+          "width": "25%"
+        },
+        {
+          "width": "25%"
+        },
+        {
+          "width": "25%"
+        },
+        {
+          "width": "25%"
+        }
+      ]
+    }
+  ],
   "widgets": [
     {
       "id": "catNav",
@@ -1156,6 +1265,26 @@
       ]
     },
     {
+      "id": "testing~documents-list",
+      "displayName": "List Documents (TEST)",
+      "displayTemplate": "bcm/testing-documents",
+      "icon": "/resources/admin/widgets/00_photo.png",
+      "validPageTypes": [
+        "*"
+      ],
+      "defaultConfig": {
+        "listFQN": "files@mozu"
+      },
+      "editViewFields": [
+        {
+          "anchor": "93%",
+          "name": "listFQN",
+          "xtype": "mz-input-text",
+          "fieldLabel": "List FQN"
+        }
+      ]
+    },
+    {
       "id": "content",
       "displayName": "Text Editor",
       "displayTemplate": "cms/text-editor",
@@ -1596,27 +1725,6 @@
       "userCreatable": true
     },
     {
-      "id": "forgotpassword",
-      "title": "Forgot Password",
-      "entityType": "forgotpassword",
-      "template": "forgot-password",
-      "userCreatable": false
-    },
-    {
-      "id": "login",
-      "title": "Login",
-      "entityType": "login",
-      "template": "login",
-      "userCreatable": false
-    },
-    {
-      "id": "signup",
-      "title": "Sign Up",
-      "entityType": "signup",
-      "template": "signup",
-      "userCreatable": false
-    },
-    {
       "id": "my_account",
       "title": "My Account",
       "entityType": "customer",
@@ -1661,6 +1769,22 @@
       "userCreatable": true
     },
     {
+      "id": "test~cc-dates",
+      "title": "TEST Credit Card Date generation",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "testing-cc-dates",
+      "userCreatable": true
+    },
+    {
+      "id": "test~cdn-images",
+      "title": "TEST CDN Images",
+      "entityType": "webpage",
+      "documentType": "web_page",
+      "template": "testing-cdn-images",
+      "userCreatable": true
+    },
+    {
       "id": "test~date-time-formats",
       "title": "TEST Date time formats",
       "entityType": "webpage",
@@ -1675,6 +1799,48 @@
       "documentType": "web_page",
       "template": "testing-documents",
       "userCreatable": true
+    },
+    {
+      "entityType": "anonymous_account",
+      "id": "my_anonymous_account",
+      "template": "my-anonymous-account",
+      "title": "Anonymous Order Status",
+      "userCreatable": false
+    },
+    {
+      "entityType": "forgotpassword",
+      "id": "forgotpassword",
+      "template": "forgot-password",
+      "title": "Forgot Password",
+      "userCreatable": false
+    },
+    {
+      "entityType": "login",
+      "id": "login",
+      "template": "login",
+      "title": "Login",
+      "userCreatable": false
+    },
+    {
+      "entityType": "customer",
+      "id": "my_account",
+      "template": "my-account",
+      "title": "My Account",
+      "userCreatable": false
+    },
+    {
+      "entityType": "resetPasswordConfirmDetails",
+      "id": "reset_password",
+      "template": "reset-password",
+      "title": "Reset Password",
+      "userCreatable": false
+    },
+    {
+      "entityType": "signup",
+      "id": "signup",
+      "template": "signup",
+      "title": "Sign Up",
+      "userCreatable": false
     }
   ],
   "emailTemplates": [

@@ -1,7 +1,0 @@
-{
-	"id": "login",
-	"title": "Login",
-	"entityType": "login",
-	"template": "login",
-	"userCreatable": false
-}
