@@ -1,0 +1,10 @@
+
+  TESTING LIST
+
+      <textarea>{% json_attribute model.items %}</textarea>
+
+    {% if model.items %}
+      <textarea>{% json_attribute model.items %}</textarea>
+
+    {% endif %}
+

@@ -1,8 +1,8 @@
-﻿.mz-sitenav {
+.mz-sitenav {
     @navHeight: 37px;
     width: 100%;
     background: #666;
-    height: @navHeight;
+    // height: @navHeight;
     overflow: visible;
     .clearfix();
 
@@ -11,7 +11,7 @@
         > .mz-sitenav-item:first-child {
             padding-left: @gutter * .75;
         }
-    } 
+    }
 
     .mz-sitenav-item {
         display: table-cell;
@@ -22,7 +22,7 @@
         .mz-sitenav-item-inner {
             position: relative;
         }
-        
+
         &:hover .mz-sitenav-sub {
             visibility: visible;
             .transition-delay(0s);

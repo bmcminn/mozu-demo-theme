@@ -1,0 +1,21 @@
+{
+    "id": "testing~documents-list",
+    "displayName": "List Documents (TEST)",
+    "displayTemplate": "bcm/testing-documents",
+    "icon": "/resources/admin/widgets/00_photo.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "defaultConfig": {
+        // "headingText": "Heading Text Goes Here",
+        "listFQN": "files@mozu"
+    },
+    "editViewFields": [
+        {
+            "anchor": "93%",
+            "name": "listFQN",
+            "xtype": "mz-input-text",
+            "fieldLabel": "List FQN"
+        }
+    ]
+}
