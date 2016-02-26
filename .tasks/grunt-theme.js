@@ -122,55 +122,7 @@ module.exports = function(grunt) {
       , mergeType:    'merge'
       , subhead: [
           'Merging themeSettings from'
-        , chalk.cyan('.components/theme-settings') + chalk.white('...')
-        ].join(' ')
-      });
-
-    });
-
-
-
-  /**
-   * [description]
-   * @return null
-   */
-  grunt.registerTask(
-    'theme:backoffice'
-  , 'Aggregates all backoffice configs.'
-  , function() {
-
-      grunt.mozu.mergeThemeComponents({
-        target:       'backOfficeTemplates'
-      , files:        paths.backofficeTemplates
-      , renderTarget: paths.themeJSON
-      , mergeType:    'push'
-      , subhead: [
-          'Merging backofficeTemplates from'
-        , chalk.cyan('.components/backoffice-templates') + chalk.white('...')
-        ].join(' ')
-      });
-
-    });
-
-
-
-  /**
-   * Compiles all components/pageTypes configs
-   * @return null
-   */
-  grunt.registerTask(
-    'theme:pagetypes'
-  , 'Gather pagetype configs into theme.json.'
-  , function() {
-
-      grunt.mozu.mergeThemeComponents({
-        target:       'pageTypes'
-      , files:        paths.pageTypes
-      , renderTarget: paths.themeJSON
-      , mergeType:    'push'
-      , subhead: [
-          'Merging pageTypes from'
-        , chalk.cyan('.components/page-types') + chalk.white('...')
+        , chalk.cyan('.theme/settings/') + chalk.white('...')
         ].join(' ')
       });
 
@@ -204,13 +156,61 @@ module.exports = function(grunt) {
         ;
 
       // init or reset the about collection in theme.json
-      grunt.log.subhead('Getting about data from', chalk.cyan('.components/about.json') + chalk.white('...'));
+      grunt.log.subhead('Getting about config from', chalk.cyan('.theme/about.json') + chalk.white('...'));
 
       // asign the new about collection to theme settings
       theme.about = _.merge(contract, about);
 
       // write the theme.json file updates to disk
       grunt.file.writeJSON(paths.themeJSON, theme);
+
+    });
+
+
+
+  /**
+   * [description]
+   * @return null
+   */
+  grunt.registerTask(
+    'theme:backoffice'
+  , 'Aggregates all backoffice configs.'
+  , function() {
+
+      grunt.mozu.mergeThemeComponents({
+        target:       'backOfficeTemplates'
+      , files:        paths.backofficeTemplates
+      , renderTarget: paths.themeJSON
+      , mergeType:    'push'
+      , subhead: [
+          'Merging backofficeTemplates from'
+        , chalk.cyan('.theme/backOfficeTemplates/') + chalk.white('...')
+        ].join(' ')
+      });
+
+    });
+
+
+
+  /**
+   * Compiles all components/pageTypes configs
+   * @return null
+   */
+  grunt.registerTask(
+    'theme:pagetypes'
+  , 'Gather pagetype configs into theme.json.'
+  , function() {
+
+      grunt.mozu.mergeThemeComponents({
+        target:       'pageTypes'
+      , files:        paths.pageTypes
+      , renderTarget: paths.themeJSON
+      , mergeType:    'push'
+      , subhead: [
+          'Merging pageTypes from'
+        , chalk.cyan('.theme/pageTypes/') + chalk.white('...')
+        ].join(' ')
+      });
 
     });
 
@@ -231,7 +231,7 @@ module.exports = function(grunt) {
       // init or reset the target collection
       theme.editors = [];
 
-      grunt.log.subhead('Merging editors configurations from', chalk.cyan('.components/editors') + chalk.white('...'));
+      grunt.log.subhead('Merging editors configurations from', chalk.cyan('.theme/editors/') + chalk.white('...'));
 
       _.each(editors, function(fileLoc) {
         // push the config back into theme.json
@@ -279,7 +279,7 @@ module.exports = function(grunt) {
       , baseModel:    { "title": "Navigation" }
       , subhead: [
           'Merging theme-ui from'
-        , chalk.cyan('.components/theme-ui') + chalk.white('...')
+        , chalk.cyan('.theme-ui/') + chalk.white('...')
         ].join(' ')
       });
 
