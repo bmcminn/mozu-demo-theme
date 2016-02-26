@@ -1,0 +1,7 @@
+{
+    "entityType": "customer",
+    "id": "my_account",
+    "template": "my-account",
+    "title": "My Account",
+    "userCreatable": false
+}
