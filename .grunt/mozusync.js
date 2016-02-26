@@ -4,6 +4,7 @@ module.exports = {
     applicationKey: '<%= mozuconfig.workingApplicationKey %>',
     context: '<%= mozuconfig %>'
   },
+
   upload: {
     options: {
       'action': 'upload',
@@ -26,6 +27,7 @@ module.exports = {
       '!.inherited'
     ]
   },
+
   del: {
     options: {
       action: 'delete'
@@ -33,6 +35,7 @@ module.exports = {
     src: '<%= mozusync.upload.src %>',
     remove: []
   },
+
   wipe: {
     options: {
       action: 'deleteAll',

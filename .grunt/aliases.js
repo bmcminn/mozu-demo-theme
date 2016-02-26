@@ -21,7 +21,6 @@ module.exports = function(grunt) {
     'theme:editors',
     'theme:pagetypes',
     'theme:settings',
-    'widgetize',
     'theme:ui'
   ]);
 
@@ -63,14 +62,6 @@ module.exports = function(grunt) {
     'mozutheme:compile',
     'mozusync:upload'
   ]);
-
-
-  // grunt.registerTask('init', [
-  //   'default',
-  //   'check:labels',
-  //   'check:widgets',
-  //   'check:settings'
-  // ]);
 
 
   grunt.registerTask('emails', [
