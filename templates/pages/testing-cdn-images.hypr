@@ -22,5 +22,15 @@
     <img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop=100,100,300,300 as_params %}" alt="">
   </p>
 
+<hr>
+
+    <h2>TESTING IMAGE META DATA</h2>
+
+    <p>
+        Works:<br>
+        <img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop=100,100,300,300 as_params %}" alt="">
+    </p>
+
+
 
 {% endblock body-content %}

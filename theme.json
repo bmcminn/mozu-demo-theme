@@ -315,7 +315,8 @@
         "label": "Paragraph",
         "tagName": "p"
       }
-    ]
+    ],
+    "testingDateField": "testing"
   },
   "layoutWidgets": [
     {
@@ -1464,9 +1465,9 @@
     }
   ],
   "about": {
-    "name": "Brandtley - High Fashion Theme v1.0.5",
+    "name": "Brandtley - High Fashion Theme v1.0.0",
     "projectName": "Brandtley - High Fashion Theme",
-    "version": "1.0.5",
+    "version": "1.0.0",
     "defaultLanguage": "en-US",
     "baseCoreVersion": 8,
     "extends": null,

@@ -18,8 +18,7 @@
     "editViewFields": [
         {
             "name": "imageURL",
-            "xtype": "mz-input-image",
-            "dataFormat": "urlOnly"
+            "xtype": "mz-input-image"
         }
     ]
 }

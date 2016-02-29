@@ -277,6 +277,18 @@
           "dataFormat": "urlOnly"
         }
       ]
+    },
+    {
+      "xtype": "panel",
+      "title": "TESTING",
+      "collapsed": false,
+      "items": [
+        {
+          "xtype": "mz-input-date",
+          "name": "testingDateField",
+          "fieldLabel": "Enter a random Date"
+        }
+      ]
     }
   ]
 }
