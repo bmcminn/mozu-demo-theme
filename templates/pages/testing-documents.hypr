@@ -11,4 +11,8 @@
 
   {# {% include_documents "testing/documents" listFQN="pages@mozu" sort="createDate asc" %} #}
 
+    {% set_var waffles=123456789 %}
+
+    {{ waffles }}
+
 {% endblock body-content %}
