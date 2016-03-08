@@ -1,5 +1,6 @@
 {% extends "page" %}
 
+
 {% block title-tag-content %}{{ pageContext.metaTitle|default(model.name) }} - {% parent %}{% endblock title-tag-content %}
 
 
@@ -14,6 +15,11 @@
 
 
 {% block body-content %}
+
+<div>
+{% firstof pageContext.metaTitle model.name %} | Sigma Beauty
+</div>
+
 
   {% parent %}
 
