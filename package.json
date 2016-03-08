@@ -26,11 +26,13 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jsbeautifier": "^0.2.10",
     "grunt-juice-email": "^0.1.3",
+    "grunt-mjml": "^0.1.1",
     "grunt-mozu-appdev-sync": "^2.2.0",
     "grunt-newer": "^1.1.1",
     "less": "^2.6.0",
     "load-grunt-config": "^0.17.2",
     "lodash": "^3.10.1",
+    "mjml": "^1.2.1",
     "mozu-theme-helpers": "^1.3.2",
     "semver": "^5.1.0",
     "time-grunt": "^1.3.0"
