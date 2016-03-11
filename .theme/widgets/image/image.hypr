@@ -1,5 +1,5 @@
 
-<img src="{% make_url "image" model.config.imageURL %}" data-image="{% json_attribute model %}" alt="model.config.alt">
+<img src="{% make_url "image" model.config.image.imageUrl %}" data-image="{% json_attribute model %}" alt="model.config.alt">
 
 {% comment %}
 <div class="mz-cms-image" data-mz-cms-image="{% json_attribute model.config|default('{}') %}">

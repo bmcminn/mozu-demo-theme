@@ -18,6 +18,12 @@
     </label><br>
 
 
+    <label for="debug-queryParams">
+        <code>pageContext.query:&nbsp;</code>
+        <textarea rows="1" id="debug-queryParams" name="debug-queryParams">{% json_attribute pageContext.query %}</textarea>
+    </label><br>
+
+
     <label for="debug-pageContext">
         <code>pageContext:&nbsp;</code>
         <textarea rows="1" id="debug-pageContext" name="debug-pageContext">{% json_attribute pageContext %}</textarea>
