@@ -25,6 +25,8 @@ admin/editors/
 
 # Mozu configs
 mozu.config.json
+theme*.json
+
 
 # Files
 *.zip
