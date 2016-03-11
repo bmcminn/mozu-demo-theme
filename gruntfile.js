@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
   var path        = require('path')
     , pkg         = grunt.file.readJSON('./package.json')
-    , theme       = grunt.file.exists('./theme.json') ? grunt.file.readJSON('theme.json') : {}
+    // , theme       = grunt.file.exists('./theme.json') ? grunt.file.readJSON('theme.json') : {}
     , mozuconfig  = grunt.file.exists('./mozu.config.json') ? grunt.file.readJSON('./mozu.config.json') : {}
     ;
 
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       pkg: pkg,
       data: {
         pkg:        pkg,
-        theme:      theme,
+        // theme:      theme,
         mozuconfig: mozuconfig
       }
     });

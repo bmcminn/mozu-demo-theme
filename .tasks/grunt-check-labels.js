@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     , chalk   = require('chalk')
     , path    = require('path')
     , EOL     = require('os').EOL
-    , theme   = grunt.file.readJSON('./theme.json')
+    // , theme   = grunt.file.readJSON('./theme.json')
 
     , temp
     ;

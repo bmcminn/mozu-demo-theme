@@ -1,5 +1,5 @@
 /* jshint laxbreak:true, laxcomma:true */
-/* global module, require, __dirname */
+/* global module, require, process, __dirname */
 
 module.exports = function(grunt) {
 
@@ -8,28 +8,40 @@ module.exports = function(grunt) {
   // Load modules
   var _           = require('lodash')
     , path        = require('path')
+    , fs          = grunt.file
     , chalk       = require('chalk')
     , jsonHelper  = require('./helpers-json.js')
 
-    , cwd         = process.cwd()
+    , PATHS = {
+        ABOUT_JSON:             path.resolve(process.cwd(), '.theme', 'about', 'about.json')
+      , THEME_JSON:             path.resolve(process.cwd(), 'theme.json')
+      , THEME_UI_JSON:          path.resolve(process.cwd(), 'theme-ui.json')
+      , ADMIN_EDITORS:          path.resolve(process.cwd(), 'admin', 'editors')
+      }
 
-    , paths = {
-        themeJSON:            path.resolve(cwd, 'theme.json')
-      , themeUIJSON:          path.resolve(cwd, 'theme-ui.json')
-      , adminEditors:         path.resolve(cwd, 'admin', 'editors')
-
-      , aboutJSON:            path.resolve(cwd, '.theme', 'about', 'about.json')
-      , themeSettings:        path.resolve(cwd, '.theme', 'settings', '*.json')
-      , pageTypes:            path.resolve(cwd, '.theme', 'pageTypes', '*.json')
-      , backofficeTemplates:  path.resolve(cwd, '.theme', 'backOfficeTemplates', '*.json')
-      , editors:              path.resolve(cwd, '.theme', 'editors', '**', '*.json')
-      , themeUISettings:      path.resolve(cwd, '.theme-ui', '*.json')
+    , GLOBS = {
+        THEME_SETTINGS:         path.resolve(process.cwd(), '.theme', 'settings', '*.json')
+      , PAGE_TYPES:             path.resolve(process.cwd(), '.theme', 'pageTypes', '*.json')
+      , BACKOFFICE_TEMPLATES:   path.resolve(process.cwd(), '.theme', 'backOfficeTemplates', '*.json')
+      , EDITORS:                path.resolve(process.cwd(), '.theme', 'editors', '**', '*.json')
+      , THEME_UI_SETTINGS:      path.resolve(process.cwd(), '.theme-ui', '*.json')
       }
     ;
 
 
   // load JSON.minify
   JSON.minify = jsonHelper.minify;
+
+
+  function checkForThemes() {
+    if (!fs.exists(PATHS.THEME_JSON)) {
+      fs.write(PATHS.THEME_JSON, JSON.stringify({}));
+    }
+
+    if (!fs.exists(PATHS.THEME_UI_JSON)) {
+      fs.write(PATHS.THEME_UI_JSON, JSON.stringify({}));
+    }
+  }
 
 
 
@@ -39,11 +51,11 @@ module.exports = function(grunt) {
    * @param  {[type]} data [description]
    * @return null
    */
-  grunt.file.writeJSON = function(path, data, spaces) {
+  fs.writeJSON = function(path, data, spaces) {
     if (!spaces) {
       spaces = 2;
     }
-    grunt.file.write(path, JSON.stringify(data, null, spaces));
+    fs.write(path, JSON.stringify(data, null, spaces));
   };
 
 
@@ -75,8 +87,8 @@ module.exports = function(grunt) {
     grunt.log.subhead(config.subhead);
 
     // setup variables
-    var renderModel = config.baseModel || grunt.file.readJSON(config.renderTarget)
-      , targetFiles = grunt.file.expand(config.files)
+    var renderModel = config.baseModel || fs.readJSON(config.renderTarget)
+      , targetFiles = fs.expand(config.files)
       ;
 
     // init or reset the settings collection in renderModel.json
@@ -85,7 +97,7 @@ module.exports = function(grunt) {
     // iterate over each renderModel settings config and merge them into the
     //  settings collection
     _.each(targetFiles, function(targetFile) {
-      targetFile = grunt.file.readJSON(targetFile);
+      targetFile = fs.readJSON(targetFile);
 
       // push targetFile results to target
       if (config.mergeType === 'push') {
@@ -100,7 +112,7 @@ module.exports = function(grunt) {
     });
 
     // write renderModel back to system
-    grunt.file.writeJSON(config.renderTarget, renderModel);
+    fs.writeJSON(config.renderTarget, renderModel);
 
   };
 
@@ -115,13 +127,15 @@ module.exports = function(grunt) {
   , 'Aggregates all theme settings configs.'
   , function() {
 
+
+
       grunt.mozu.mergeThemeComponents({
         target:       'settings'
-      , files:        paths.themeSettings
-      , renderTarget: paths.themeJSON
+      , files:        GLOBS.THEME_SETTINGS
+      , renderTarget: PATHS.THEME_JSON
       , mergeType:    'merge'
       , subhead: [
-          'Merging themeSettings from'
+          'Merging .theme/ from'
         , chalk.cyan('.theme/settings/') + chalk.white('...')
         ].join(' ')
       });
@@ -139,8 +153,10 @@ module.exports = function(grunt) {
   , 'Inserts theme About data into theme config'
   , function() {
 
-      var theme = grunt.file.readJSON(paths.themeJSON)
-        , about = grunt.file.readJSON(paths.aboutJSON)
+      checkForThemes();
+
+      var theme = fs.readJSON(PATHS.THEME_JSON) || {}
+        , about = fs.readJSON(PATHS.ABOUT_JSON)
         , contract = {
             name: about.projectName + ' v' + about.version,
             projectName: "Mozu Theme",
@@ -162,7 +178,7 @@ module.exports = function(grunt) {
       theme.about = _.merge(contract, about);
 
       // write the theme.json file updates to disk
-      grunt.file.writeJSON(paths.themeJSON, theme);
+      fs.writeJSON(PATHS.THEME_JSON, theme);
 
     });
 
@@ -179,8 +195,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'backOfficeTemplates'
-      , files:        paths.backofficeTemplates
-      , renderTarget: paths.themeJSON
+      , files:        GLOBS.BACKOFFICE_TEMPLATES
+      , renderTarget: PATHS.THEME_JSON
       , mergeType:    'push'
       , subhead: [
           'Merging backofficeTemplates from'
@@ -203,8 +219,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'pageTypes'
-      , files:        paths.pageTypes
-      , renderTarget: paths.themeJSON
+      , files:        GLOBS.PAGE_TYPES
+      , renderTarget: PATHS.THEME_JSON
       , mergeType:    'push'
       , subhead: [
           'Merging pageTypes from'
@@ -224,8 +240,11 @@ module.exports = function(grunt) {
     'theme:editors'
   , 'Gathers up all editor configs and assets to disseminate into theme folders.'
   , function() {
-      var theme   = grunt.file.readJSON(paths.themeJSON)
-        , editors = grunt.file.expand(paths.editors)
+
+      checkForThemes();
+
+      var theme   = fs.readJSON(PATHS.THEME_JSON)
+        , editors = fs.expand(GLOBS.EDITORS)
         ;
 
       // init or reset the target collection
@@ -235,8 +254,8 @@ module.exports = function(grunt) {
 
       _.each(editors, function(fileLoc) {
         // push the config back into theme.json
-        var editorJson  = grunt.file.readJSON(fileLoc)
-          , editorJS    = grunt.file.expand(path.resolve(path.dirname(fileLoc), '*.js'))[0]
+        var editorJson  = fs.readJSON(fileLoc)
+          , editorJS    = fs.expand(path.resolve(path.dirname(fileLoc), '*.js'))[0]
           ;
 
         // add in the editor config to theme.json
@@ -249,14 +268,14 @@ module.exports = function(grunt) {
 
         // copy the editor file to the editors directory
         } else {
-          grunt.file.copy(editorJS, path.resolve(paths.adminEditors, editorJson.path));
+          fs.copy(editorJS, path.resolve(PATHS.ADMIN_EDITORS, editorJson.path));
 
         }
 
       });
 
       // write theme back to system
-      grunt.file.writeJSON(paths.themeJSON, theme);
+      fs.writeJSON(PATHS.THEME_JSON, theme);
 
     });
 
@@ -273,8 +292,8 @@ module.exports = function(grunt) {
 
       grunt.mozu.mergeThemeComponents({
         target:       'items'
-      , renderTarget: paths.themeUIJSON
-      , files:        paths.themeUISettings
+      , renderTarget: PATHS.THEME_UI_JSON
+      , files:        GLOBS.THEME_UI_SETTINGS
       , mergeType:    'push'
       , baseModel:    { "title": "Navigation" }
       , subhead: [
