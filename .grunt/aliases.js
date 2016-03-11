@@ -28,7 +28,7 @@ module.exports = function(grunt) {
   grunt.registerTask('check', [
     'theme',
     'lintify',
-    'setver',
+    // 'setver',
     'check:labels',
   // 'check:widgets',
     'check:settings',
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
     'theme',
     'lintify',
   // 'jsbeautifier',
-    'setver',
+    // 'setver',
     'mozutheme:quickcompile',
     'mozusync:upload'
   ]);
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
     'lintify',
     'jshint:production',
   // 'jsbeautifier',
-    'setver',
+    // 'setver',
     'mozutheme:compile',
     'mozusync:upload'
   ]);

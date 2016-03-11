@@ -2,13 +2,15 @@ module.exports = {
 
   options: {
     applicationKey: '<%= mozuconfig.workingApplicationKey %>',
-    context: '<%= mozuconfig %>'
+    context: '<%= mozuconfig %>',
+    noAuthDialog: false
   },
 
   upload: {
     options: {
-      'action': 'upload',
-      'noclobber': true
+      action: 'upload',
+      noclobber: true,
+      noAuthDialog: 1
     },
     src: [
       'admin/**/*',
