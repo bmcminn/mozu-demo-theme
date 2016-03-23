@@ -7,6 +7,12 @@
       "xtype": "mz-input-checkbox",
       "name": "isCvvSuppressed",
       "fieldLabel": "CVV Suppressed"
+    },
+    {
+      "xtype": "mz-input-number",
+      "name": "ccYears",
+      "fieldLabel": "Credit Card Years <a title=\"number of years to list for valid CC year\">[?]</a>",
+      "allowBlank": false
     }
   ]
 }
