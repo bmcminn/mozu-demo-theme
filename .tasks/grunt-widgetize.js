@@ -101,15 +101,15 @@ module.exports = function(grunt) {
     // get our assets listing and delete all files
     if (grunt.file.exists(paths.widgetAssets)) {
 
-      grunt.log.subhead('Deleting widget asset files');
+      grunt.log.subhead('Deleting widget asset files...');
 
       // delete all of our assets
       _.each(grunt.file.readJSON(paths.widgetAssets), function(filepath) {
-        grunt.log.warn('deleting:', chalk.red(destPath(filepath)));
+        grunt.log.debug(chalk.red('>>'), 'deleting:', chalk.red(destPath(filepath)));
 
         // some widgets use duplicated assets like icons and templates
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('file already deleted:', chalk.yellow(destPath(filepath)));
+          grunt.log.debug(chalk.red('>>'), 'file already deleted:', chalk.yellow(destPath(filepath)));
         } else {
           grunt.file.delete(filepath);
         }
@@ -150,16 +150,16 @@ module.exports = function(grunt) {
       writeDir    = path.dirname(widgetDef.displayTemplate);
 
 
-      grunt.log.subhead('Widget:', _.unescape(widgetDef.displayName.replace(/<\/?\w+>/g, '')));
+      grunt.log.subhead('Compiling widget:', _.unescape(widgetDef.displayName.replace(/<\/?\w+>/g, '')));
 
 
       // add our widget config to theme.json 'widgets'
-      grunt.log.ok('appending widget config into', chalk.cyan('theme.json'), chalk.magenta('> widgets'));
+      grunt.log.debug(chalk.green('>>'), chalk.white('appending widget config into', chalk.cyan('theme.json'), chalk.magenta('> widgets')));
       theme.widgets.push(widgetDef);
 
 
       // merge label definitions
-      grunt.log.ok('merging label definitions');
+      grunt.log.debug(chalk.green('>>'), 'merging label definitions');
 
       // collect all widget labels files
       labels.files  = grunt.file.expand(path.resolve(currentDir, 'labels', '*.json'));
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
         // copy our vendor scripts
         if (subdir === 'vendor') {
           temp = path.resolve(paths.dest.vendor, filename);
-          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.log.debug(chalk.green('>>'), 'copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
           assets.push(temp);
         }
@@ -213,7 +213,7 @@ module.exports = function(grunt) {
         // copy our js files over
         if (subdir === undefined && filename.match(/\.js$/)) {
           temp = path.resolve(paths.dest.js, filename);
-          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.log.debug(chalk.green('>>'), 'copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
           assets.push(temp);
         }
@@ -221,7 +221,7 @@ module.exports = function(grunt) {
         // copy our less files over
         if (filename.match(/\.less$/)) {
           temp = path.resolve(paths.dest.less, filename);
-          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.log.debug(chalk.green('>>'), 'copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
           lessFiles.push('@import "' + paths.dest.less.substr(1) + '/' + filename + '";');
           assets.push(temp);
@@ -230,7 +230,7 @@ module.exports = function(grunt) {
         // copy our hypr and hypr.live files over
         if (filename.match(/\.hypr(?:\.live)?$/)) {
           temp = path.resolve(paths.dest.hypr, writeDir, filename);
-          grunt.log.ok('copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
+          grunt.log.debug(chalk.green('>>'), 'copying', chalk.cyan(filename), 'into', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
           assets.push(temp);
         }
@@ -240,7 +240,7 @@ module.exports = function(grunt) {
         // copy our widget icons to our resources/admin/widgets directory
         if (subdir === undefined && filename.match(/\.(png|jpeg|jpg|gif)$/)) {
           temp = path.resolve(paths.dest.icons, filename);
-          grunt.log.ok('copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
+          grunt.log.debug(chalk.green('>>'), 'copying', chalk.cyan(filename), 'to', chalk.yellow(destPath(temp)));
           grunt.file.copy(abspath, temp);
           assets.push(temp);
         }
@@ -256,7 +256,7 @@ module.exports = function(grunt) {
     _.each(labels.langs, function(lang) {
       temp = path.resolve(paths.dest.labels, lang.name+'.json');
       grunt.log.ok('writing', chalk.cyan(destPath(temp)));
-      grunt.file.write(temp, JSON.stringify(lang.labels, null, 2));
+      grunt.file.write(temp, JSON.stringify(lang.labels, null, 4));
     });
 
 
@@ -266,7 +266,7 @@ module.exports = function(grunt) {
     // write our assets.json data
     temp = paths.widgetAssets;
     grunt.log.ok('writing', chalk.cyan(destPath(temp)));
-    grunt.file.write(temp, JSON.stringify(assets, null, 2));
+    grunt.file.write(temp, JSON.stringify(assets, null, 4));
 
     // write our widgets.less file
     temp = path.resolve(paths.less, 'widgets.less');
@@ -276,7 +276,7 @@ module.exports = function(grunt) {
     // write our changes to theme.json
     temp = path.resolve('theme.json');
     grunt.log.ok('writing', chalk.cyan(destPath(temp)));
-    grunt.file.write(temp, JSON.stringify(theme, null, 2));
+    grunt.file.write(temp, JSON.stringify(theme, null, 4));
 
   });
 };

@@ -20,8 +20,10 @@ module.exports = function(grunt) {
     'theme:backoffice',
     'theme:editors',
     'theme:pagetypes',
+    'theme:layoutWidgets',
     'theme:settings',
-    'theme:ui'
+    'theme:ui',
+    'widgetize'
   ]);
 
 
