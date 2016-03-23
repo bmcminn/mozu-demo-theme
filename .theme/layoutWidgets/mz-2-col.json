@@ -1,0 +1,25 @@
+{
+    "id": "mz-2-col",
+    "category": "*",
+    "displayName": "2 Column 50/50",
+    "displayTemplate": "base",
+    "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 50,
+        "mz-col2": 50
+    },
+    "customEditor": "layout",
+    "icon": "/resources/admin/widgets/2-col_icon.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "columns": [
+        {
+            "width": "50%"
+        },
+        {
+
+            "width": "50%"
+        }
+    ]
+}

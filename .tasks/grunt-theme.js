@@ -24,6 +24,7 @@ module.exports = function(grunt) {
       , PAGE_TYPES:             path.resolve(process.cwd(), '.theme', 'pageTypes', '*.json')
       , BACKOFFICE_TEMPLATES:   path.resolve(process.cwd(), '.theme', 'backOfficeTemplates', '*.json')
       , EDITORS:                path.resolve(process.cwd(), '.theme', 'editors', '**', '*.json')
+      , LAYOUT_WIDGETS:         path.resolve(process.cwd(), '.theme', 'layoutWidgets', '**', '*.json')
       , THEME_UI_SETTINGS:      path.resolve(process.cwd(), '.theme-ui', '*.json')
       }
     ;
@@ -53,7 +54,7 @@ module.exports = function(grunt) {
    */
   fs.writeJSON = function(path, data, spaces) {
     if (!spaces) {
-      spaces = 2;
+      spaces = 4;
     }
     fs.write(path, JSON.stringify(data, null, spaces));
   };
@@ -201,6 +202,30 @@ module.exports = function(grunt) {
       , subhead: [
           'Merging backofficeTemplates from'
         , chalk.cyan('.theme/backOfficeTemplates/') + chalk.white('...')
+        ].join(' ')
+      });
+
+    });
+
+
+
+  /**
+   * [description]
+   * @return null
+   */
+  grunt.registerTask(
+    'theme:layoutWidgets'
+  , 'Aggregates all layoutWidget configs.'
+  , function() {
+
+      grunt.mozu.mergeThemeComponents({
+        target:       'layoutWidgets'
+      , files:        GLOBS.LAYOUT_WIDGETS
+      , renderTarget: PATHS.THEME_JSON
+      , mergeType:    'push'
+      , subhead: [
+          'Merging layoutWidgets from'
+        , chalk.cyan('.theme/layoutWidgets/') + chalk.white('...')
         ].join(' ')
       });
 

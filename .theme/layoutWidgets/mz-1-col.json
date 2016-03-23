@@ -1,0 +1,20 @@
+{
+    "id": "mz-1-col",
+    "category": "*",
+    "displayName": "1 Column 100",
+    "displayTemplate": "base",
+    "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 100
+    },
+    "customEditor": "layout",
+    "icon": "/resources/admin/widgets/1-col_icon.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "columns": [
+        {
+            "width": "100%"
+        }
+    ]
+}

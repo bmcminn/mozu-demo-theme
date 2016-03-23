@@ -1,0 +1,30 @@
+{
+    "id": "mz-3-col",
+    "category": "*",
+    "displayName": "3 Column 33/33/33",
+    "displayTemplate": "base",
+    "defaultConfig": {
+        "title": "Dropzone",
+        "mz-col1": 33.33,
+        "mz-col2": 33.33,
+        "mz-col3": 33.33
+    },
+    "customEditor": "layout",
+    "icon": "/resources/admin/widgets/3-col_icon.png",
+    "validPageTypes": [
+        "*"
+    ],
+    "columns": [
+        {
+            "width": "33.3%"
+        },
+        {
+
+            "width": "33.3%"
+        },
+        {
+
+            "width": "33.3%"
+        }
+    ]
+}
