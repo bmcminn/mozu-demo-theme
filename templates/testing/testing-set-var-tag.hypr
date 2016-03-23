@@ -1,0 +1,36 @@
+<div>
+    <h2>SET_VAR TAG:</h2>
+
+
+    {% set_var testBool true %}
+    <code>set_var testBool true</code> {{ testBool }}
+
+    <br>
+
+    {% set_var testBool false %}
+    <code>set_var testBool false:</code> {{ testBool }}
+
+<hr>
+
+    {% set_var testInt 123456 %}
+    <code>set_var testInt 123456:</code> {{ testInt }}
+
+    <br>
+
+    {% set_var testFloat 123.456 %}
+    <code>set_var testFloat 123.456:</code> {{ testFloat }}
+
+<hr>
+
+    {% set_var testString "waffle cones" %}
+    <code>set_var testString "waffle cones":</code> {{ testString }}
+
+    <br>
+
+    <code>testString|replace("waffle", "icecream"):</code> {{ testString|replace('waffle', 'icecream') }}
+
+<hr>
+
+    <script src="https://gist.github.com/bmcminn/aeb98b99c7f7986eed3d.js?file=set_var.hypr"></script>
+
+</div>

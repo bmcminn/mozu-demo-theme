@@ -1,0 +1,45 @@
+
+{% comment %}
+
+<h2><code>crop</code> parameter:</h2>
+
+<p>
+Works:<br>
+<img src="http://cdn-sb.mozu.com/14878-20657/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf?_mzcb=_1455742483315&amp;crop=100,100,300,300" alt="">
+</p>
+
+
+<p>
+Works:<br>
+<img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop=100,100,300,300 as_params %}" alt="">
+</p>
+
+<hr>
+{% endcomment %}
+
+<h2>TESTING IMAGE META DATA</h2>
+
+<p>
+    Doesn't work:
+    <img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop=100,100,300,300 as_params %}" alt="">
+
+    Works:
+    <img src="{% make_url "image" "/cms/files/e4841ba1-4e71-4a4e-9a41-694a693e26bf" with crop="100,100,300,300" as_params %}" alt="">
+</p>
+
+
+
+<h2>TESTING CDN FILES</h2>
+
+<p>
+    HARD LINK FROM FILE MANAGER:
+    <a href="http://cdn-sb.mozu.com/14878-m1/cms/files/40ea0f94-af62-49e0-90b2-c6590d2f5b76">gboxportfolio.pdf</a>
+</p>
+
+<p>
+    MAKE_URL:
+    <a href="{% make_url "cdn" "/cms/files/gboxportfolio.pdf" %}">gboxportfolio.pdf</a>
+    <br>
+    <br>
+    <code>&lt;a href="{% templatetag openblock %} make_url "cdn" "/cms/files/gboxportfolio.pdf" {% templatetag closeblock %}"&gt;gboxportfolio.pdf&lt;/a&gt;</code>
+</p>

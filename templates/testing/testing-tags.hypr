@@ -1,0 +1,10 @@
+<div>
+    <h2>SET_VAR:</h2>
+
+    {% set set_waffles=123456789 %}
+    {# {% set_var set_var_waffles=123456789 %} #}
+
+    {{ set_waffles }}
+    {# {{ set_var_waffles }} #}
+
+</div>

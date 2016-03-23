@@ -1,0 +1,11 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{{ pageContext.metaTitle|default(labels.signUp) }} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-signuppage {% endblock body-tag-classes %}
+
+{% block body-content %}
+
+    {% include "testing/{0}"|string_format(pageModel.name) %}
+
+{% endblock body-content %}

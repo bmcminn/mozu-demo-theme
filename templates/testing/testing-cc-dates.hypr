@@ -1,0 +1,92 @@
+<h2>CURRENT CC YEAR (STATIC)</h2>
+
+<select name="cc-static" id="cc-static">
+    <option></option>
+    <option {% if model.expireYear == "2014" %}selected="selected"{% endif %} value="2014">2014</option>
+    <option {% if model.expireYear == "2015" %}selected="selected"{% endif %} value="2015">2015</option>
+    <option {% if model.expireYear == "2016" %}selected="selected"{% endif %} value="2016">2016</option>
+    <option {% if model.expireYear == "2017" %}selected="selected"{% endif %} value="2017">2017</option>
+    <option {% if model.expireYear == "2018" %}selected="selected"{% endif %} value="2018">2018</option>
+    <option {% if model.expireYear == "2019" %}selected="selected"{% endif %} value="2019">2019</option>
+    <option {% if model.expireYear == "2020" %}selected="selected"{% endif %} value="2020">2020</option>
+    <option {% if model.expireYear == "2021" %}selected="selected"{% endif %} value="2021">2021</option>
+    <option {% if model.expireYear == "2022" %}selected="selected"{% endif %} value="2022">2022</option>
+    <option {% if model.expireYear == "2023" %}selected="selected"{% endif %} value="2023">2023</option>
+    <option {% if model.expireYear == "2024" %}selected="selected"{% endif %} value="2024">2024</option>
+</select>
+
+
+<h3>Source:</h3>
+
+<script src="https://gist.github.com/bmcminn/eef7c2af07c36d3bfdd9.js?file=old-cc-year.twig"></script>
+
+<hr>
+
+
+<h2>NEW CC YEAR (DYNAMIC)</h2>
+
+<blockquote>
+    SAUCE: <a href="https://www.chargesmart.com/blog/2012/07/the-mystery-behind-expiration-dates-on-credit-cards/">CC's should expire within 3 years from date of issue</a>
+</blockquote>
+
+{% with pageContext.now|date('Y') as currentYear %}
+
+<p>
+    The current (dumb) way to build a CC year field is to statically type the years from {{ currentYear }} - {{ currentYear|add(10) }} (10 years).
+
+    This is simplistic, invalid, and opens people up to potential security and usability issues.
+</p>
+
+<p>
+    Per the <i>Sauce</i> link above, current Fraud and Loss prevention laws dictate that credit cards issued should only be valid for three (3) years.
+</p>
+
+<p>
+    That said, the solution is to get the current year, as all years previous to this year ({{ currentYear }}) are now expired, and generate a list that is <code>N</code> years long where <code>!N&lt;4</code>. This covers all cards set to expire this year ({{ currentYear }}), but also covers cards that were issued later this year that expire after X months into three years from now.
+</p>
+<p>
+    The second consideration is that at a minimum, CC's are issued for a term of 3 years, which
+</p>
+{% endwith %}
+
+
+<h3>Working Example:</h3>
+
+
+{% set_var currentYear  pageContext.now|date('Y') %}
+{% set_var yearsList    "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"|split(',') %} {# this gives us a list of 26 years #}
+{% set_var ccYears      themeSettings.ccYears|default(10) %}
+
+{# sanity check that theme setting is less than the length of yearsList (26) #}
+{% if yearsList.length < ccYears %}
+    {% set_var ccYears yearsList.length %}
+{% endif %}
+
+{# sanity check that the valid length of years is not less than 4 #}
+{% if ccYears < 4 %}
+    {% set_var ccYears 4 %}
+{% endif %}
+
+<code>ccYears: </code>{{ ccYears }}
+
+<br><br>
+
+{% partial_cache currentYear, ccYears %}
+    <label for="cc-year-dynamic">CC Year: </label>
+    <select name="cc-year-dynamic" id="cc-year-dynamic" required>
+        <option>{{ themeSetting.blankOptionText|default('') }}</option>
+        {% for year in yearsList %}
+            {% if forloop.counter0 < ccYears %}
+                {% set_var thisYear currentYear|add(forloop.counter0) %}
+                <option value="{{ thisYear }}"{% if model.expireYear == thisYear %} selected="selected"{% endif %}>{{ thisYear }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+{% endpartial_cache %}
+
+
+
+<h3>Source:</h3>
+
+<script src="https://gist.github.com/bmcminn/eef7c2af07c36d3bfdd9.js?file=new-cc-year.twig"></script>
+

@@ -1,8 +1,0 @@
-{
-	"id": "test~cc-dates",
-	"title": "TEST Credit Card Date generation",
-	"entityType": "webpage",
-	"documentType": "web_page",
-	"template": "testing-cc-dates",
-	"userCreatable": true
-}

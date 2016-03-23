@@ -1,8 +1,0 @@
-{
-    "id": "test~makeurl",
-    "title": "Test: make_url",
-    "entityType": "webpage",
-    "documentType": "web_page",
-    "template": "testing-makeurl",
-    "userCreatable": true
-}
