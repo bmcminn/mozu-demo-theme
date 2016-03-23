@@ -2,7 +2,7 @@
   "isCvvSuppressed": false,
   "billingEmailEnabled": true,
   "blankOptionText": "---",
-  "ccYears": "0,1,2,3",
+  "ccYears": 15,
   "requireCheckoutAgreeToTerms": true,
   "visaCheckoutSdkUrl": "https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",
   "showCheckoutCommentsField": true
