@@ -14,7 +14,8 @@
         {
             "name": "URL",
             "fieldLabel": "360º Slider Image",
-            "xtype": "mz-input-image"
+            "xtype": "mz-input-image",
+            "allowBlank": false
         },
         {
             "name": "width",
