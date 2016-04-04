@@ -1,0 +1,26 @@
+var api = require('modules/api')
+  , Hypr = require('hyprlive')
+  ;
+
+var pcode = 'PCODEHERE'
+  , pmodel = {}
+  ;
+
+
+var template = [
+  "{% json_attribute model|get_product_attribute('Tenant~Size') %}"
+, "{{ model|get_product_attribute_value('Tenant~Size') }}"
+, "{{ model|get_product_attribute_values('Tenant~Size') }}"
+].join('\n');
+
+
+api
+  .request('GET', '/api/commerce/catalog/storefront/products/' + pcode)
+  .then(function(model) {
+    pmodel = model;
+    console.log(model);
+  })
+  ;
+
+
+Hypr.engine.render(template, { locals: { model: pmodel }});
