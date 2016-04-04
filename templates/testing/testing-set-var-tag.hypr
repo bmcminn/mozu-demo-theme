@@ -1,36 +1,167 @@
-<div>
-    <h2>SET_VAR TAG:</h2>
+{% set_var gistSnippet '<script src="https://gist.github.com/bmcminn/aeb98b99c7f7986eed3d.js?file={0}"></script>' %}
 
+
+<div>
+    <h1>SET_VAR TAG:</h1>
+
+
+
+    <h2><code>set_var</code> with booleans</h2>
 
     {% set_var testBool true %}
-    <code>set_var testBool true</code> {{ testBool }}
-
-    <br>
+    {{ testBool }} <br>
 
     {% set_var testBool false %}
-    <code>set_var testBool false:</code> {{ testBool }}
+    {{ testBool }} <br>
+
+    <br>
+
+    {{ gistSnippet|string_format('set_var-test-bool.twig')|safe }}
+
+
+
 
 <hr>
+    <h2><code>set_var</code> with numbers</h2>
 
     {% set_var testInt 123456 %}
-    <code>set_var testInt 123456:</code> {{ testInt }}
-
-    <br>
+    {{ testInt }} <br>
 
     {% set_var testFloat 123.456 %}
-    <code>set_var testFloat 123.456:</code> {{ testFloat }}
-
-<hr>
-
-    {% set_var testString "waffle cones" %}
-    <code>set_var testString "waffle cones":</code> {{ testString }}
+    {{ testFloat }} <br>
 
     <br>
 
-    <code>testString|replace("waffle", "icecream"):</code> {{ testString|replace('waffle', 'icecream') }}
+    {{ gistSnippet|string_format('set_var-test-nums.twig')|safe }}
+
+
+
+
+<hr>
+    <h2><code>set_var</code> with strings</h2>
+
+    {% set_var testString "waffle cones" %}
+    {{ testString }} <br>
+    {{ testString|replace('waffle', 'icecream') }} <br>
+
+    <br>
+
+    {{ gistSnippet|string_format('set_var-test-string.twig')|safe }}
+
+
 
 <hr>
 
-    <script src="https://gist.github.com/bmcminn/aeb98b99c7f7986eed3d.js?file=set_var.hypr"></script>
+    <h2><code>set_var</code> in a <code>forloop</code> tag</h2>
+
+    {% set_var testForloop "outside of forloop" %}
+
+    {% for mod in "1,2,3,4,5,6"|split(',') %}
+        {% if mod == 3 %}
+            {% set_var testForloop "inside of forloop" %}
+        {% endif %}
+    {% endfor %}
+
+    {{ testForloop }} <br>
+
+    <br>
+
+    {{ gistSnippet|string_format('set_var-test-forloop.twig')|safe }}
+
+
+
+
+<hr>
+
+    <h2><code>set_var</code> in a <code>with</code> tag</h2>
+
+    {% set_var testWith "outside of `with` tag" %}
+
+    {% with "1,2,3,4,5,6"|split(',') as catList %}
+
+        {% set_var testWith "inside of `with` tag" %}
+
+        <b>Inside `with` tag:</b>&nbsp;<code>{{ testWith }}</code><br>
+
+    {% endwith %}
+
+    <b>Outside `with` tag:</b>&nbsp;<code>{{ testWith }}</code> <br>
+
+    <br>
+
+    {{ gistSnippet|string_format('set_var-test-with.twig')|safe }}
+
+
+
+
+<hr>
+
+    <h2><code>set_var</code> within a <code>forloop</code> tag within a <code>with</code> tag</h2>
+
+    {% set_var testWithForloop "outside of `with` tag" %}
+
+    {% with "1,2,3,4,5,6"|split(',') as catList %}
+
+        {% set_var testWithForloop "inside of `with` tag" %}
+
+        {% for mod in catList %}
+            {% if mod == 3 %}
+                {% set_var testWithForloop "inside of forloop" %}
+            {% endif %}
+        {% endfor %}
+
+        <b>Inside `with` tag:</b>&nbsp;<code>{{ testWithForloop }}</code><br>
+
+    {% endwith %}
+
+    <b>Outside `with` tag:</b>&nbsp;<code>{{ testWithForloop }}</code> <br>
+
+    <br>
+
+    {{ gistSnippet|string_format('set_var-test-with-forloop.twig')|safe }}
+
+
+
+<hr>
+
+    <h2>Dynamically update <code>set_var</code> value in a <code>forloop</code></h2>
+
+    CHECK IF VALUE DEFINED:
+    {% for mod in "1,2,3,4,5,6"|split(',') %}
+        {% if testForLoop %}
+            {% set_var testForloop testForLoop|add(1) %}
+        {% else %}
+            {% set_var testForloop 0 %}
+        {% endif %}
+        {{ testForLoop }}
+    {% endfor %}
+
+    <br><br>
+
+
+    SIMILAR CHECK WITH DEFAULT() FILTER:
+    {% for mod in "1,2,3,4,5,6"|split(',') %}
+       {% set_var testForloop testForLoop|default(0)|add(1) %}
+       {{ testForLoop }}
+    {% endfor %}
+
+
+    <br>{{ testForloop }} <br>
+
+
+
+    DEFINED OUTSIDE OF LOOP:
+    {% set_var testForloop 0 %}
+
+    {% for mod in "1,2,3,4,5,6"|split(',') %}
+        {% set_var testForloop testForLoop|add(1) %}
+        {{ testForLoop }}
+    {% endfor %}
+
+    <br><br>
+
+
+    {{ gistSnippet|string_format('set_var-test-block-scope.twig')|safe }}
+
 
 </div>
