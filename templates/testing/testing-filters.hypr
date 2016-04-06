@@ -1,0 +1,45 @@
+<div>
+
+    <h2>
+        <code>|slugify</code>
+        <small>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.mozu.com/docs/developer/themes/reference.htm#slugify">(doc link)</a></small>
+    </h2>
+    <pre>
+    Test string:    <code>{% templatetag openvariable %} "Q&amp;A's For slugify filter!"|slugify {% templatetag closevariable %}</code>
+    Expected:       <code>qas-for-slugify-filter</code>
+    ------------------------------------------------------------
+    Hypr result:    {{ "Q&A's For slugify filter!"|slugify }}
+    Hyprlive:       <span data-mz-template="{% templatetag openvariable %} 'Q&A`s For slugify filter!'|slugify {% templatetag closevariable %}">wait for it...</span>
+
+
+    Test string:    <code>{% templatetag openvariable %} "1, 2, 3, We Run for our Lives!!!"|slugify {% templatetag closevariable %}</code>
+    Expected:       <code>1-2-3-we-run-for-our-lives</code>
+    ------------------------------------------------------------
+    Hypr result:    {{ '1, 2, 3, We Run for our Lives!!!'|slugify }}
+    Hyprlive:       <span data-mz-template="{% templatetag openvariable %} '1, 2, 3, We Run for our Lives!!!'|slugify {% templatetag closevariable %}">wait for it...</span>
+
+
+    Test string:    <code>{% templatetag openvariable %} 'Would`st thou like to live, deliciously?'|slugify {% templatetag closevariable %}</code>
+    Expected:       <code>wouldst-thou-like-to-live-deliciously</code>
+    ------------------------------------------------------------
+    Hypr result:    {{ 'Would`st thou like to live, deliciously?'|slugify }}
+    Hyprlive:       <span data-mz-template="{% templatetag openvariable %} 'Would`st thou like to live, deliciously?'|slugify {% templatetag closevariable %}">wait for it...</span>
+    </pre>
+
+</div>
+
+{% require_script "testing/filters" %}
+
+<br>
+<hr>
+<br>
+<br>
+
+{% set_var gist '<script src="https://gist.github.com/bmcminn/de85e4b226d19673e309ff37934684e3.js?file={0}"></script>' %}
+
+<h2>Sample Template</h2>
+{{ gist|string_format('filters.twig')|safe }}
+
+<h2>Sample JS Snippets</h2>
+{{ gist|string_format('filters.js')|safe }}
+
